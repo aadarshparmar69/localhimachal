@@ -13,6 +13,10 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        display: ['"Playfair Display"', 'serif'],
+        body: ['"DM Sans"', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -57,6 +61,28 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Custom Himachali colors
+        mountain: {
+          mist: "hsl(var(--mountain-mist))",
+        },
+        snow: {
+          white: "hsl(var(--snow-white))",
+        },
+        cedar: {
+          brown: "hsl(var(--cedar-brown))",
+        },
+        pine: {
+          deep: "hsl(var(--pine-deep))",
+        },
+        temple: {
+          gold: "hsl(var(--temple-gold))",
+        },
+        sky: {
+          himalayan: "hsl(var(--sky-himalayan))",
+        },
+        stone: {
+          grey: "hsl(var(--stone-grey))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -65,25 +91,59 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+        "fade-up": {
+          from: { opacity: "0", transform: "translateY(30px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+        "fade-in": {
+          from: { opacity: "0" },
+          to: { opacity: "1" },
+        },
+        "scale-in": {
+          from: { opacity: "0", transform: "scale(0.95)" },
+          to: { opacity: "1", transform: "scale(1)" },
+        },
+        "slide-in-right": {
+          from: { transform: "translateX(100%)" },
+          to: { transform: "translateX(0)" },
+        },
+        "slide-in-left": {
+          from: { transform: "translateX(-100%)" },
+          to: { transform: "translateX(0)" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-20px)" },
+        },
+        shimmer: {
+          "0%": { backgroundPosition: "-200% 0" },
+          "100%": { backgroundPosition: "200% 0" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "fade-up": "fade-up 0.8s ease-out forwards",
+        "fade-in": "fade-in 0.6s ease-out forwards",
+        "scale-in": "scale-in 0.5s ease-out forwards",
+        "slide-in-right": "slide-in-right 0.5s ease-out",
+        "slide-in-left": "slide-in-left 0.5s ease-out",
+        float: "float 6s ease-in-out infinite",
+        shimmer: "shimmer 2s linear infinite",
+      },
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "hero-gradient": "linear-gradient(180deg, hsla(152, 35%, 15%, 0.85) 0%, hsla(25, 30%, 12%, 0.95) 100%)",
+        "card-gradient": "linear-gradient(145deg, hsla(30, 20%, 98%, 1) 0%, hsla(30, 25%, 95%, 1) 100%)",
+        "gold-gradient": "linear-gradient(135deg, hsla(38, 70%, 55%, 1) 0%, hsla(32, 65%, 45%, 1) 100%)",
+        shimmer: "linear-gradient(90deg, transparent, hsla(38, 70%, 55%, 0.1), transparent)",
       },
     },
   },
