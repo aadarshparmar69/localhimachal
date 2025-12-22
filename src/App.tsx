@@ -8,9 +8,11 @@ import Index from "./pages/Index";
 import ExplorePage from "./pages/ExplorePage";
 import DistrictPage from "./pages/DistrictPage";
 import TreksPage from "./pages/TreksPage";
+import TrekDetailPage from "./pages/TrekDetailPage";
 import HomestaysPage from "./pages/HomestaysPage";
 import CulturePage from "./pages/CulturePage";
 import PlanPage from "./pages/PlanPage";
+import HiddenPlacePage from "./pages/HiddenPlacePage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,7 +28,9 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/explore" element={<ExplorePage />} />
             <Route path="/district/:slug" element={<DistrictPage />} />
+            <Route path="/district/:districtSlug/:placeSlug" element={<HiddenPlacePage />} />
             <Route path="/treks" element={<TreksPage />} />
+            <Route path="/trek/:slug" element={<TrekDetailPage />} />
             <Route path="/homestays" element={<HomestaysPage />} />
             <Route path="/culture" element={<CulturePage />} />
             <Route path="/plan" element={<PlanPage />} />
