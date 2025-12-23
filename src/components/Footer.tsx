@@ -145,15 +145,15 @@ export const Footer = () => {
           <div className="flex flex-wrap items-center justify-center gap-8 text-primary-foreground/70 font-body text-sm">
             <div className="flex items-center gap-2">
               <MapPin className="w-4 h-4" />
-              <span>Shimla, Himachal Pradesh, India</span>
+              <span>Dharamshala, Himachal Pradesh, India</span>
             </div>
             <div className="flex items-center gap-2">
               <Mail className="w-4 h-4" />
-              <span>hello@localhimachal.com</span>
+              <span>contact@localhimachal.in</span>
             </div>
             <div className="flex items-center gap-2">
               <Phone className="w-4 h-4" />
-              <span>+91 98765 43210</span>
+              <span>+91 9015931203 </span>
             </div>
           </div>
         </div>
