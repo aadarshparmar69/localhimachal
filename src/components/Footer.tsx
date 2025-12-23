@@ -1,31 +1,49 @@
 import { Link } from "react-router-dom";
 import { Mountain, Mail, MapPin, Phone, Instagram, Facebook, Youtube, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
 const footerLinks = {
-  explore: [
-    { name: "Districts", path: "/explore" },
-    { name: "Treks", path: "/treks" },
-    { name: "Homestays", path: "/homestays" },
-    { name: "Temples", path: "/temples" },
-  ],
-  culture: [
-    { name: "Festivals", path: "/culture#festivals" },
-    { name: "Folk Music", path: "/culture#music" },
-    { name: "Architecture", path: "/culture#architecture" },
-    { name: "Local Food", path: "/culture#food" },
-  ],
-  plan: [
-    { name: "Best Time to Visit", path: "/plan#seasons" },
-    { name: "Packing Guide", path: "/plan#packing" },
-    { name: "Budget Tips", path: "/plan#budget" },
-    { name: "Responsible Travel", path: "/plan#responsible" },
-  ],
+  explore: [{
+    name: "Districts",
+    path: "/explore"
+  }, {
+    name: "Treks",
+    path: "/treks"
+  }, {
+    name: "Homestays",
+    path: "/homestays"
+  }, {
+    name: "Temples",
+    path: "/temples"
+  }],
+  culture: [{
+    name: "Festivals",
+    path: "/culture#festivals"
+  }, {
+    name: "Folk Music",
+    path: "/culture#music"
+  }, {
+    name: "Architecture",
+    path: "/culture#architecture"
+  }, {
+    name: "Local Food",
+    path: "/culture#food"
+  }],
+  plan: [{
+    name: "Best Time to Visit",
+    path: "/plan#seasons"
+  }, {
+    name: "Packing Guide",
+    path: "/plan#packing"
+  }, {
+    name: "Budget Tips",
+    path: "/plan#budget"
+  }, {
+    name: "Responsible Travel",
+    path: "/plan#responsible"
+  }]
 };
-
 export const Footer = () => {
-  return (
-    <footer className="bg-foreground text-primary-foreground">
+  return <footer className="bg-foreground text-primary-foreground">
       {/* Newsletter Section */}
       <div className="border-b border-primary-foreground/10">
         <div className="container mx-auto px-4 lg:px-8 py-16">
@@ -38,11 +56,7 @@ export const Footer = () => {
               No spam, just mountain magic.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Your email address"
-                className="flex-1 px-4 py-3 rounded-lg bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/50 focus:outline-none focus:border-primary-foreground/40 font-body"
-              />
+              <input type="email" placeholder="Your email address" className="flex-1 px-4 py-3 rounded-lg bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/50 focus:outline-none focus:border-primary-foreground/40 font-body" />
               <Button variant="hero" size="lg">
                 Subscribe
               </Button>
@@ -93,16 +107,11 @@ export const Footer = () => {
           <div>
             <h4 className="font-display text-lg font-semibold mb-6">Explore</h4>
             <ul className="space-y-3">
-              {footerLinks.explore.map((link) => (
-                <li key={link.path}>
-                  <Link
-                    to={link.path}
-                    className="text-primary-foreground/70 hover:text-primary-foreground transition-colors font-body"
-                  >
+              {footerLinks.explore.map(link => <li key={link.path}>
+                  <Link to={link.path} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors font-body">
                     {link.name}
                   </Link>
-                </li>
-              ))}
+                </li>)}
             </ul>
           </div>
 
@@ -110,16 +119,11 @@ export const Footer = () => {
           <div>
             <h4 className="font-display text-lg font-semibold mb-6">Culture</h4>
             <ul className="space-y-3">
-              {footerLinks.culture.map((link) => (
-                <li key={link.path}>
-                  <Link
-                    to={link.path}
-                    className="text-primary-foreground/70 hover:text-primary-foreground transition-colors font-body"
-                  >
+              {footerLinks.culture.map(link => <li key={link.path}>
+                  <Link to={link.path} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors font-body">
                     {link.name}
                   </Link>
-                </li>
-              ))}
+                </li>)}
             </ul>
           </div>
 
@@ -127,16 +131,11 @@ export const Footer = () => {
           <div>
             <h4 className="font-display text-lg font-semibold mb-6">Plan Your Trip</h4>
             <ul className="space-y-3">
-              {footerLinks.plan.map((link) => (
-                <li key={link.path}>
-                  <Link
-                    to={link.path}
-                    className="text-primary-foreground/70 hover:text-primary-foreground transition-colors font-body"
-                  >
+              {footerLinks.plan.map(link => <li key={link.path}>
+                  <Link to={link.path} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors font-body">
                     {link.name}
                   </Link>
-                </li>
-              ))}
+                </li>)}
             </ul>
           </div>
         </div>
@@ -161,9 +160,8 @@ export const Footer = () => {
 
         {/* Copyright */}
         <div className="mt-8 text-center text-primary-foreground/50 font-body text-sm">
-          <p>© 2024 Local Himachal. Made with ❤️ in the mountains.</p>
+          <p>© 2025 Local Himachal </p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
