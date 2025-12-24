@@ -158,9 +158,10 @@ export default function HiddenGemDetailPage() {
             <div className="lg:col-span-2 space-y-12">
               {/* Poetic Quote */}
               <ScrollReveal>
-                <QuoteFadeIn className="text-2xl md:text-3xl font-display italic text-primary/80 border-l-4 border-primary pl-6">
-                  "{gem.poeticQuote}"
-                </QuoteFadeIn>
+                <QuoteFadeIn 
+                  quote={gem.poeticQuote}
+                  className="border-l-4 border-primary pl-6"
+                />
               </ScrollReveal>
 
               {/* Emotional Opening */}
