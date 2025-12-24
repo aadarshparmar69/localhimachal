@@ -13,6 +13,8 @@ import HomestaysPage from "./pages/HomestaysPage";
 import CulturePage from "./pages/CulturePage";
 import PlanPage from "./pages/PlanPage";
 import HiddenPlacePage from "./pages/HiddenPlacePage";
+import HiddenGemsPage from "./pages/HiddenGemsPage";
+import HiddenGemDetailPage from "./pages/HiddenGemDetailPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -29,6 +31,8 @@ const App = () => (
             <Route path="/explore" element={<ExplorePage />} />
             <Route path="/district/:slug" element={<DistrictPage />} />
             <Route path="/district/:districtSlug/:placeSlug" element={<HiddenPlacePage />} />
+            <Route path="/hidden-gems" element={<HiddenGemsPage />} />
+            <Route path="/hidden-gems/:slug" element={<HiddenGemDetailPage />} />
             <Route path="/treks" element={<TreksPage />} />
             <Route path="/trek/:slug" element={<TrekDetailPage />} />
             <Route path="/homestays" element={<HomestaysPage />} />

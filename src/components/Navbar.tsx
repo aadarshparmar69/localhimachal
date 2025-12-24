@@ -1,13 +1,14 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Mountain, MapPin, Home, Compass, BookOpen, Route } from "lucide-react";
+import { Menu, X, Mountain, MapPin, Home, Compass, BookOpen, Route, Gem } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const navItems = [
   { name: "Home", path: "/", icon: Home },
   { name: "Explore", path: "/explore", icon: MapPin },
+  { name: "Hidden Gems", path: "/hidden-gems", icon: Gem },
   { name: "Treks", path: "/treks", icon: Route },
   { name: "Homestays", path: "/homestays", icon: Home },
   { name: "Culture", path: "/culture", icon: BookOpen },
