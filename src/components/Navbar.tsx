@@ -1,9 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Mountain, MapPin, Home, Compass, BookOpen, Route, Gem } from "lucide-react";
+import { Menu, X, MapPin, Home, Compass, BookOpen, Route, Gem } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import logo from "@/assets/logo.png";
 
 const navItems = [
   { name: "Home", path: "/", icon: Home },
@@ -50,15 +51,11 @@ export const Navbar = () => {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3 group">
-              <div className={cn(
-                "p-2 rounded-xl transition-all duration-300 group-hover:scale-105",
-                scrolled || !isHome ? "bg-primary/10" : "bg-primary-foreground/10"
-              )}>
-                <Mountain className={cn(
-                  "w-6 h-6 transition-colors",
-                  scrolled || !isHome ? "text-primary" : "text-primary-foreground"
-                )} />
-              </div>
+              <img 
+                src={logo} 
+                alt="Local Himachal Logo" 
+                className="h-10 w-auto transition-all duration-300 group-hover:scale-105"
+              />
               <div className="flex flex-col">
                 <span className={cn(
                   "font-display text-xl font-semibold tracking-tight transition-colors",

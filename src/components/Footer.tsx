@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { Mountain, Mail, MapPin, Phone, Instagram, Facebook, Youtube, Twitter } from "lucide-react";
+import { Mail, MapPin, Phone, Instagram, Facebook, Youtube, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/logo.png";
 const footerLinks = {
   explore: [{
     name: "Districts",
@@ -71,9 +72,11 @@ export const Footer = () => {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-3 mb-6">
-              <div className="p-2 rounded-xl bg-primary-foreground/10">
-                <Mountain className="w-6 h-6" />
-              </div>
+              <img 
+                src={logo} 
+                alt="Local Himachal Logo" 
+                className="h-10 w-auto"
+              />
               <div className="flex flex-col">
                 <span className="font-display text-xl font-semibold tracking-tight">
                   Local Himachal
