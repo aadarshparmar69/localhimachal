@@ -72,11 +72,7 @@ export const Footer = () => {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-3 mb-6">
-              <img 
-                src={logo} 
-                alt="Local Himachal Logo" 
-                className="h-10 w-auto"
-              />
+              
               <div className="flex flex-col">
                 <span className="font-display text-xl font-semibold tracking-tight">
                   Local Himachal
