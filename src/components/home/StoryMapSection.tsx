@@ -10,7 +10,7 @@ const districts = [
     description: "Ancient temples, Chaugan meadow, and pristine Himalayan valleys.",
     image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=600&q=80",
     link: "/district/chamba",
-    position: { x: 32, y: 12 },
+    position: { x: 35, y: 15 },
   },
   {
     id: "kangra",
@@ -18,7 +18,7 @@ const districts = [
     description: "Dharamshala, tea gardens, and the majestic Dhauladhar range.",
     image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80",
     link: "/district/kangra",
-    position: { x: 28, y: 32 },
+    position: { x: 32, y: 35 },
   },
   {
     id: "lahaul-spiti",
@@ -26,7 +26,7 @@ const districts = [
     description: "The land of lamas, ancient monasteries, and stark high-altitude beauty.",
     image: "https://images.unsplash.com/photo-1581159959249-fd74c26a5b80?w=600&q=80",
     link: "/district/lahaul-spiti",
-    position: { x: 58, y: 18 },
+    position: { x: 58, y: 22 },
   },
   {
     id: "kullu",
@@ -34,7 +34,7 @@ const districts = [
     description: "The valley of gods, temples, and vibrant festivals.",
     image: "https://images.unsplash.com/photo-1597074866923-dc0589150358?w=600&q=80",
     link: "/district/kullu",
-    position: { x: 48, y: 38 },
+    position: { x: 50, y: 40 },
   },
   {
     id: "mandi",
@@ -42,7 +42,7 @@ const districts = [
     description: "Temple town with ancient pilgrimage sites and scenic lakes.",
     image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
     link: "/district/mandi",
-    position: { x: 38, y: 48 },
+    position: { x: 42, y: 52 },
   },
   {
     id: "hamirpur",
@@ -50,7 +50,7 @@ const districts = [
     description: "Land of learning with the highest literacy in Himachal.",
     image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&q=80",
     link: "/district/hamirpur",
-    position: { x: 28, y: 48 },
+    position: { x: 32, y: 50 },
   },
   {
     id: "una",
@@ -58,7 +58,7 @@ const districts = [
     description: "Gateway to Himachal with rich historical heritage.",
     image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=600&q=80",
     link: "/district/una",
-    position: { x: 18, y: 52 },
+    position: { x: 22, y: 55 },
   },
   {
     id: "bilaspur",
@@ -66,7 +66,7 @@ const districts = [
     description: "Gobind Sagar Lake and ancient Naina Devi temple.",
     image: "https://images.unsplash.com/photo-1544085311-11a028465b03?w=600&q=80",
     link: "/district/bilaspur",
-    position: { x: 28, y: 58 },
+    position: { x: 30, y: 62 },
   },
   {
     id: "solan",
@@ -74,7 +74,7 @@ const districts = [
     description: "Mushroom city with beautiful monasteries and breweries.",
     image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80",
     link: "/district/solan",
-    position: { x: 35, y: 68 },
+    position: { x: 38, y: 70 },
   },
   {
     id: "shimla",
@@ -82,7 +82,7 @@ const districts = [
     description: "Colonial echoes, pine forests, and gateway to the inner Himalayas.",
     image: "https://images.unsplash.com/photo-1597074866923-dc0589150358?w=600&q=80",
     link: "/district/shimla",
-    position: { x: 48, y: 60 },
+    position: { x: 52, y: 65 },
   },
   {
     id: "kinnaur",
@@ -90,7 +90,7 @@ const districts = [
     description: "Where the Hindustan-Tibet road winds through apple orchards.",
     image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=600&q=80",
     link: "/district/kinnaur",
-    position: { x: 68, y: 45 },
+    position: { x: 70, y: 48 },
   },
   {
     id: "sirmaur",
@@ -98,7 +98,7 @@ const districts = [
     description: "Renuka Lake, Shivalik hills, and ancient Rajput heritage.",
     image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&q=80",
     link: "/district/sirmaur",
-    position: { x: 50, y: 78 },
+    position: { x: 52, y: 82 },
   },
 ];
 
