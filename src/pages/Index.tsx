@@ -3,7 +3,6 @@ import { Footer } from "@/components/Footer";
 import { HeroSection } from "@/components/home/HeroSection";
 import { IntroSection } from "@/components/home/IntroSection";
 import { ExperiencesSection } from "@/components/home/ExperiencesSection";
-import { StoryMapSection } from "@/components/home/StoryMapSection";
 import { CultureQuoteSection } from "@/components/home/CultureQuoteSection";
 import { GallerySection } from "@/components/home/GallerySection";
 import { TreksMotionSection } from "@/components/home/TreksMotionSection";
@@ -26,7 +25,6 @@ const Index = () => {
         <HeroSection />
         <IntroSection />
         <ExperiencesSection />
-        <StoryMapSection />
         <CultureQuoteSection />
         <GallerySection />
         <TreksMotionSection />
