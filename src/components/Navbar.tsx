@@ -1,33 +1,27 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, MapPin, Home, Compass, BookOpen, Route, Gem } from "lucide-react";
+import { Menu, X, Compass } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 const navItems = [{
   name: "Home",
-  path: "/",
-  icon: Home
+  path: "/"
 }, {
   name: "Explore",
-  path: "/explore",
-  icon: MapPin
+  path: "/explore"
 }, {
   name: "Hidden Gems",
-  path: "/hidden-gems",
-  icon: Gem
+  path: "/hidden-gems"
 }, {
   name: "Treks",
-  path: "/treks",
-  icon: Route
+  path: "/treks"
 }, {
   name: "Homestays",
-  path: "/homestays",
-  icon: Home
+  path: "/homestays"
 }, {
   name: "Culture",
-  path: "/culture",
-  icon: BookOpen
+  path: "/culture"
 }];
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -136,7 +130,6 @@ export const Navbar = () => {
                 delay: index * 0.05
               }}>
                       <Link to={item.path} className={cn("flex items-center gap-3 px-4 py-4 rounded-xl font-body text-base font-medium transition-all min-h-[56px]", location.pathname === item.path ? "bg-primary/10 text-primary" : "text-muted-foreground hover:text-foreground hover:bg-secondary active:bg-secondary")}>
-                        <item.icon className="w-5 h-5 flex-shrink-0" />
                         {item.name}
                       </Link>
                     </motion.div>)}
