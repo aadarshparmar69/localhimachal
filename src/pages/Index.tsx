@@ -6,7 +6,7 @@ import { ExperiencesSection } from "@/components/home/ExperiencesSection";
 import { CultureQuoteSection } from "@/components/home/CultureQuoteSection";
 import { GallerySection } from "@/components/home/GallerySection";
 import { TreksMotionSection } from "@/components/home/TreksMotionSection";
-import { DistrictGridSection } from "@/components/home/DistrictGridSection";
+
 import { ResponsibleTravelSection } from "@/components/home/ResponsibleTravelSection";
 import { ClosingSection } from "@/components/home/ClosingSection";
 import { Helmet } from "react-helmet-async";
@@ -29,7 +29,7 @@ const Index = () => {
         <CultureQuoteSection />
         <GallerySection />
         <TreksMotionSection />
-        <DistrictGridSection />
+        
         <ResponsibleTravelSection />
         <ClosingSection />
       </main>
