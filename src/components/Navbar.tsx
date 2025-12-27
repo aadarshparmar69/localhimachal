@@ -65,7 +65,7 @@ export const Navbar = () => {
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2 sm:gap-3 group min-h-[44px]">
               <div className="flex flex-col">
-                <span className="">Local Himachal</span>
+                <span className="text-stone-100">Local Himachal</span>
                 <span className={cn("text-[10px] sm:text-xs font-body transition-colors", scrolled || !isHome || isOpen ? "text-muted-foreground" : "text-primary-foreground/70")}>
                   Travel Like a Local
                 </span>
