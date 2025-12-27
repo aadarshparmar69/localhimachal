@@ -1,4 +1,4 @@
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useRef } from "react";
 import { Mountain, MapPin, Palette, Home, Compass } from "lucide-react";
@@ -50,37 +50,46 @@ export const ExperiencesSection = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section className="py-24 md:py-32 bg-secondary/20 overflow-hidden">
-      <div className="container mx-auto px-4 lg:px-8 mb-12">
+    <section className="py-16 sm:py-24 md:py-32 bg-secondary/20 overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 mb-8 sm:mb-12">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="max-w-2xl"
         >
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground tracking-tight mb-4">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-foreground tracking-tight mb-3 sm:mb-4">
             Ways to experience
           </h2>
-          <p className="font-body text-muted-foreground text-lg leading-relaxed">
+          <p className="font-body text-muted-foreground text-base sm:text-lg leading-relaxed">
             Every journey through Himachal unfolds differently. Choose what calls to you.
           </p>
         </motion.div>
       </div>
 
-      {/* Horizontal Scroll Container */}
+      {/* Horizontal Scroll Container - Touch friendly */}
       <div
         ref={scrollContainerRef}
-        className="flex gap-6 overflow-x-auto pb-8 px-4 lg:px-8 snap-x snap-mandatory scrollbar-hide cursor-grab active:cursor-grabbing"
-        style={{
-          scrollbarWidth: "none",
-          msOverflowStyle: "none",
-        }}
+        className="flex gap-4 sm:gap-6 overflow-x-auto pb-6 sm:pb-8 px-4 sm:px-6 lg:px-8 snap-x snap-mandatory scrollbar-hide touch-action-pan-x"
       >
         {experiences.map((exp, index) => (
           <ExperienceCard key={exp.id} experience={exp} index={index} />
         ))}
+        {/* End spacer for scroll */}
+        <div className="flex-shrink-0 w-4 sm:w-8" aria-hidden="true" />
       </div>
+      
+      {/* Scroll hint for mobile */}
+      <motion.p
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+        viewport={{ once: true }}
+        className="container mx-auto px-4 sm:px-6 lg:px-8 font-body text-xs sm:text-sm text-muted-foreground sm:hidden"
+      >
+        ← Swipe to explore
+      </motion.p>
     </section>
   );
 };
@@ -91,74 +100,40 @@ interface ExperienceCardProps {
 }
 
 const ExperienceCard = ({ experience, index }: ExperienceCardProps) => {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  const rotateX = useSpring(useTransform(y, [-100, 100], [5, -5]), { stiffness: 300, damping: 30 });
-  const rotateY = useSpring(useTransform(x, [-100, 100], [-5, 5]), { stiffness: 300, damping: 30 });
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    x.set(e.clientX - centerX);
-    y.set(e.clientY - centerY);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
   const Icon = experience.icon;
 
   return (
     <motion.div
-      ref={cardRef}
-      initial={{ opacity: 0, x: 50 }}
+      initial={{ opacity: 0, x: 30 }}
       whileInView={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
+      transition={{ duration: 0.5, delay: index * 0.08 }}
       viewport={{ once: true }}
-      style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      className="flex-shrink-0 w-[300px] md:w-[360px] snap-start perspective-1000"
+      className="flex-shrink-0 w-[260px] sm:w-[300px] md:w-[360px] snap-start"
     >
       <Link to={experience.link} className="block group">
-        <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-card shadow-card">
+        <div className="relative aspect-[3/4] rounded-xl sm:rounded-2xl overflow-hidden bg-card shadow-card active:scale-[0.98] sm:hover:shadow-elevated transition-all duration-300">
           <img
             src={experience.image}
             alt={experience.title}
-            className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+            className="w-full h-full object-cover transition-transform duration-500 sm:group-hover:scale-105"
+            loading="lazy"
           />
           {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/30 to-transparent" />
           
           {/* Icon */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.3 + index * 0.1 }}
-            className="absolute top-6 left-6 w-10 h-10 rounded-xl bg-primary-foreground/10 backdrop-blur-sm flex items-center justify-center border border-primary-foreground/10"
-          >
-            <Icon className="w-5 h-5 text-primary-foreground" strokeWidth={1.5} />
-          </motion.div>
+          <div className="absolute top-4 sm:top-6 left-4 sm:left-6 w-9 h-9 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-primary-foreground/10 backdrop-blur-sm flex items-center justify-center border border-primary-foreground/10">
+            <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary-foreground" strokeWidth={1.5} />
+          </div>
 
           {/* Content */}
-          <div className="absolute bottom-0 left-0 right-0 p-6">
-            <motion.h3
-              className="font-display text-2xl text-primary-foreground mb-2 transition-transform duration-300 group-hover:-translate-y-1"
-            >
+          <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
+            <h3 className="font-display text-xl sm:text-2xl text-primary-foreground mb-1 sm:mb-2 transition-transform duration-300 sm:group-hover:-translate-y-1">
               {experience.title}
-            </motion.h3>
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              className="font-body text-sm text-primary-foreground/70 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-            >
+            </h3>
+            <p className="font-body text-xs sm:text-sm text-primary-foreground/70 leading-relaxed line-clamp-2 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300">
               {experience.description}
-            </motion.p>
+            </p>
           </div>
         </div>
       </Link>
