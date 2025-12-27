@@ -381,14 +381,9 @@ const TrekDetailPage = () => {
                         <Backpack className="w-5 h-5 sm:w-6 sm:h-6 text-primary flex-shrink-0" />
                         Packing Essentials
                       </h2>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                        {trekEnriched.packing.essentials.map((item, i) => (
-                          <div key={i} className="flex items-center gap-2 sm:gap-3">
-                            <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-600 flex-shrink-0" />
-                            <span className="font-body text-foreground text-sm sm:text-base">{item}</span>
-                          </div>
-                        ))}
-                      </div>
+                      <p className="font-body text-muted-foreground leading-relaxed text-sm sm:text-base">
+                        {trekEnriched.packing.essentials}
+                      </p>
                     </div>
                   </ScrollReveal>
                 )}
