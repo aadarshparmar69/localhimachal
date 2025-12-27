@@ -1,103 +1,128 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { ArrowRight, Mountain, Clock } from "lucide-react";
 import { treks } from "@/data/treks";
-import { Clock, Mountain, Calendar, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useRef } from "react";
 
-const difficultyColors = {
-  Easy: "bg-primary/10 text-primary",
-  Moderate: "bg-accent/10 text-accent",
-  Hard: "bg-destructive/10 text-destructive",
+const featuredTreks = treks.slice(0, 6);
+
+const difficultyColors: Record<string, string> = {
+  Easy: "bg-green-100 text-green-700",
+  Moderate: "bg-amber-100 text-amber-700", 
+  Hard: "bg-red-100 text-red-700",
 };
 
 export const TreksSection = () => {
-  const featuredTreks = treks.slice(0, 6);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section className="py-24 bg-secondary/30 relative overflow-hidden">
-      <div className="container mx-auto px-4 lg:px-8">
+    <section className="py-16 sm:py-24 lg:py-32 bg-muted/30">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="flex flex-col md:flex-row md:items-end md:justify-between mb-16"
+          className="text-center mb-10 sm:mb-14"
         >
-          <div>
-            <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-body mb-4">
-              Adventure Awaits
-            </span>
-            <h2 className="font-display text-4xl md:text-5xl font-semibold text-foreground mb-4">
-              Popular Treks
-            </h2>
-            <p className="font-body text-muted-foreground max-w-xl">
-              From gentle forest walks to challenging high-altitude expeditions, 
-              Himachal offers trails for every soul.
-            </p>
-          </div>
-          <Link
-            to="/treks"
-            className="mt-6 md:mt-0 inline-flex items-center gap-2 text-primary font-body font-medium hover:gap-4 transition-all"
-          >
-            View All Treks
-            <ArrowRight className="w-4 h-4" />
-          </Link>
+          <p className="text-sm tracking-[0.15em] uppercase text-muted-foreground mb-3">
+            Trails & Adventures
+          </p>
+          <h2 className="font-display text-responsive-title text-foreground mb-4">
+            Walk the ancient paths
+          </h2>
+          <p className="font-body text-muted-foreground max-w-2xl mx-auto">
+            From gentle day hikes to challenging high-altitude expeditions, 
+            these trails reveal the true majesty of the Himalayas.
+          </p>
         </motion.div>
 
-        {/* Treks Horizontal Scroll */}
-        <div className="relative -mx-4 px-4">
-          <div className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide">
-            {featuredTreks.map((trek, index) => (
-              <motion.div
-                key={trek.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="flex-shrink-0 w-[320px] md:w-[380px] snap-start"
+        {/* Horizontal scrollable on mobile */}
+        <div 
+          ref={scrollRef}
+          className="flex gap-4 overflow-x-auto pb-4 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 sm:overflow-visible scrollbar-hide touch-action-pan-x"
+        >
+          {featuredTreks.map((trek, index) => (
+            <motion.div
+              key={trek.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="flex-shrink-0 w-[85%] sm:w-auto"
+            >
+              <Link
+                to={`/treks/${trek.slug}`}
+                className="group block bg-card rounded-xl overflow-hidden shadow-soft hover:shadow-card transition-all"
               >
-                <Link
-                  to={`/trek/${trek.slug}`}
-                  className="group block bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-elevated transition-all duration-500"
-                >
-                  <div className="relative aspect-[4/3] overflow-hidden">
-                    <img
-                      src={trek.image}
-                      alt={trek.name}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute top-4 left-4">
-                      <span className={cn(
-                        "px-3 py-1 rounded-full text-xs font-body font-medium",
-                        difficultyColors[trek.difficulty]
-                      )}>
-                        {trek.difficulty}
-                      </span>
+                {/* Image */}
+                <div className="aspect-[16/10] overflow-hidden relative">
+                  <img
+                    src={trek.image}
+                    alt={trek.name}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  {/* Difficulty Badge */}
+                  <div className="absolute top-3 left-3">
+                    <span className={cn(
+                      "text-xs font-medium px-2.5 py-1 rounded-full",
+                      difficultyColors[trek.difficulty]
+                    )}>
+                      {trek.difficulty}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-4 sm:p-5">
+                  <h3 className="font-display text-lg text-foreground mb-2 group-hover:text-primary transition-colors">
+                    {trek.name}
+                  </h3>
+                  
+                  <div className="flex items-center gap-4 text-xs text-muted-foreground mb-3">
+                    <div className="flex items-center gap-1">
+                      <Clock className="w-3.5 h-3.5" />
+                      <span>{trek.duration}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Mountain className="w-3.5 h-3.5" />
+                      <span>{trek.altitude}</span>
                     </div>
                   </div>
-                  <div className="p-6">
-                    <h3 className="font-display text-xl font-semibold text-card-foreground mb-2 group-hover:text-primary transition-colors">
-                      {trek.name}
-                    </h3>
-                    <p className="font-body text-sm text-muted-foreground mb-4 line-clamp-2">
-                      {trek.description}
-                    </p>
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground font-body">
-                      <div className="flex items-center gap-1">
-                        <Clock className="w-4 h-4" />
-                        <span>{trek.duration}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Mountain className="w-4 h-4" />
-                        <span>{trek.altitude}</span>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
+
+                  <p className="text-sm text-muted-foreground line-clamp-2">
+                    {trek.description}
+                  </p>
+                </div>
+              </Link>
+            </motion.div>
+          ))}
         </div>
+
+        {/* Scroll hint on mobile */}
+        <div className="flex justify-center mt-4 sm:hidden">
+          <span className="text-xs text-muted-foreground">← Swipe to explore →</span>
+        </div>
+
+        {/* View All */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="text-center mt-8 sm:mt-12"
+        >
+          <Link 
+            to="/treks" 
+            className="inline-flex items-center gap-2 text-foreground font-medium hover:text-primary transition-colors group"
+          >
+            View all treks
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

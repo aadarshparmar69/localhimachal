@@ -1,5 +1,8 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
 export const ClosingSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -8,36 +11,84 @@ export const ClosingSection = () => {
     offset: ["start end", "end start"],
   });
 
-  const imageScale = useTransform(scrollYProgress, [0, 0.5], [1.05, 1]);
-  const textOpacity = useTransform(scrollYProgress, [0.2, 0.4, 0.7, 0.9], [0, 1, 1, 0.5]);
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+  const contentOpacity = useTransform(scrollYProgress, [0.2, 0.5], [0, 1]);
 
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[70vh] sm:min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-[70vh] sm:min-h-[80vh] flex items-center justify-center overflow-hidden"
     >
-      <motion.div style={{ scale: imageScale }} className="absolute inset-0 will-change-transform">
+      {/* Background Image with Parallax */}
+      <motion.div
+        style={{ y: backgroundY }}
+        className="absolute inset-0 will-change-transform"
+      >
         <img
-          src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1920&q=80"
-          alt="Mountain Vista"
-          className="w-full h-full object-cover"
+          src="https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=1920&q=80"
+          alt="Misty Himalayan mountains at dawn"
+          className="w-full h-[120%] object-cover"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-foreground/50 sm:bg-foreground/40" />
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/60 to-foreground/40" />
       </motion.div>
 
+      {/* Content */}
       <motion.div
-        style={{ opacity: textOpacity }}
-        className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl"
+        style={{ opacity: contentOpacity }}
+        className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl"
       >
-        <p className="font-display text-xl sm:text-2xl md:text-4xl lg:text-5xl text-primary-foreground leading-relaxed tracking-tight">
-          Travel slowly.<br />
-          Listen carefully.<br />
-          <span className="text-accent">Leave lightly.</span>
-        </p>
-      </motion.div>
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-sm tracking-[0.15em] uppercase text-primary-foreground/60 mb-4"
+        >
+          The journey awaits
+        </motion.p>
 
-      <div className="absolute bottom-0 left-0 right-0 h-24 sm:h-32 bg-gradient-to-t from-background to-transparent" />
+        <motion.h2
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className="font-display text-responsive-title text-primary-foreground mb-6"
+        >
+          Let the mountains find you
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="font-body text-base sm:text-lg text-primary-foreground/70 mb-8 sm:mb-10 leading-relaxed"
+        >
+          Some places change you. Himachal is one of them.
+          <span className="hidden sm:inline"><br /></span>
+          <span className="sm:hidden"> </span>
+          Come as a traveler, leave as someone who understands why these mountains are sacred.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
+          <Link to="/plan-your-trip">
+            <Button 
+              size="lg"
+              className="bg-primary-foreground text-foreground hover:bg-primary-foreground/90 font-medium"
+            >
+              Start Planning
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </Button>
+          </Link>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };
