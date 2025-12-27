@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, MapPin, Home, Compass, BookOpen, Route, Gem } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -17,28 +17,16 @@ const navItems = [
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [hidden, setHidden] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const location = useLocation();
 
-  const handleScroll = useCallback(() => {
-    const currentScrollY = window.scrollY;
-    
-    // Show/hide header based on scroll direction
-    if (currentScrollY > lastScrollY && currentScrollY > 100) {
-      setHidden(true);
-    } else {
-      setHidden(false);
-    }
-    
-    setScrolled(currentScrollY > 50);
-    setLastScrollY(currentScrollY);
-  }, [lastScrollY]);
-
   useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [handleScroll]);
+  }, []);
 
   useEffect(() => {
     setIsOpen(false);
@@ -60,10 +48,7 @@ export const Navbar = () => {
 
   return (
     <>
-      <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: hidden && !isOpen ? -100 : 0 }}
-        transition={{ duration: 0.3, ease: "easeOut" }}
+      <nav
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
           scrolled || !isHome || isOpen
@@ -152,7 +137,7 @@ export const Navbar = () => {
             </button>
           </div>
         </div>
-      </motion.nav>
+      </nav>
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
