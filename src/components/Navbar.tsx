@@ -53,7 +53,7 @@ export const Navbar = () => {
   }, [isOpen]);
   const isHome = location.pathname === "/";
   return <>
-      <nav className="bg-[#3c431e]">
+      <nav className="bg-[#3c431e] sticky top-0 z-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 bg-[#3c431e]">
           <div className="flex items-center justify-between h-16 sm:h-20 bg-[#3c431e]">
             {/* Logo */}
