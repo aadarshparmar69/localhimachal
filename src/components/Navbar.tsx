@@ -53,7 +53,7 @@ export const Navbar = () => {
   }, [isOpen]);
   const isHome = location.pathname === "/";
   return <>
-      <nav className={cn("fixed top-0 left-0 right-0 z-50 transition-all duration-300", scrolled || !isHome || isOpen ? "bg-[#3c431e] backdrop-blur-xl shadow-soft" : "bg-transparent")}>
+      <nav className="bg-[#3c431e]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 bg-[#3c431e]">
           <div className="flex items-center justify-between h-16 sm:h-20 bg-[#3c431e]">
             {/* Logo */}
