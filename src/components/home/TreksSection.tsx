@@ -54,7 +54,7 @@ export const TreksSection = () => {
               className="flex-shrink-0 w-[85%] sm:w-auto"
             >
               <Link
-                to={`/treks/${trek.slug}`}
+                to={`/trek/${trek.slug}`}
                 className="group block bg-card rounded-xl overflow-hidden shadow-soft hover:shadow-card transition-all"
               >
                 {/* Image */}
