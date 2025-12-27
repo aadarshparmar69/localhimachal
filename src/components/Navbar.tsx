@@ -65,8 +65,8 @@ export const Navbar = () => {
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2 sm:gap-3 group min-h-[44px]">
               <div className="flex flex-col">
-                <span className="text-stone-100">Local Himachal</span>
-                <span className={cn("text-[10px] sm:text-xs font-body transition-colors", scrolled || !isHome || isOpen ? "text-muted-foreground" : "text-primary-foreground/70")}>
+                <span className="text-white font-semibold">Local Himachal</span>
+                <span className="text-[10px] sm:text-xs font-body text-white/80">
                   Travel Like a Local
                 </span>
               </div>
@@ -74,7 +74,7 @@ export const Navbar = () => {
 
             {/* Desktop Nav */}
             <div className="hidden lg:flex items-center gap-1">
-              {navItems.map(item => <Link key={item.path} to={item.path} className={cn("px-4 py-2 rounded-lg font-body text-sm font-medium transition-all duration-300 min-h-[44px] flex items-center", location.pathname === item.path ? scrolled || !isHome ? "bg-primary/10 text-primary" : "bg-primary-foreground/20 text-primary-foreground" : scrolled || !isHome ? "text-muted-foreground hover:text-foreground hover:bg-secondary" : "text-primary-foreground/80 hover:text-primary-foreground hover:bg-primary-foreground/10")}>
+              {navItems.map(item => <Link key={item.path} to={item.path} className={cn("px-4 py-2 rounded-lg font-body text-sm font-medium transition-all duration-300 min-h-[44px] flex items-center text-white hover:bg-white/10", location.pathname === item.path && "bg-white/20")}>
                   {item.name}
                 </Link>)}
             </div>
@@ -82,7 +82,7 @@ export const Navbar = () => {
             {/* CTA Button - Desktop */}
             <div className="hidden lg:block">
               <Link to="/plan">
-                <Button variant={scrolled || !isHome ? "default" : "outline"} size="default" className={cn("gap-2 min-h-[44px]", !scrolled && isHome && "border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10")}>
+                <Button size="default" className="gap-2 min-h-[44px] bg-[#3d441e] text-white hover:bg-[#3d441e]/90 border-none">
                   <Compass className="w-4 h-4" />
                   Plan Your Trip
                 </Button>
@@ -90,7 +90,7 @@ export const Navbar = () => {
             </div>
 
             {/* Mobile Menu Button */}
-            <button onClick={() => setIsOpen(!isOpen)} className={cn("lg:hidden p-3 rounded-lg transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center", scrolled || !isHome || isOpen ? "hover:bg-secondary text-foreground" : "hover:bg-primary-foreground/10 text-primary-foreground")} aria-label={isOpen ? "Close menu" : "Open menu"} aria-expanded={isOpen}>
+            <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden p-3 rounded-lg transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center text-white hover:bg-white/10" aria-label={isOpen ? "Close menu" : "Open menu"} aria-expanded={isOpen}>
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
