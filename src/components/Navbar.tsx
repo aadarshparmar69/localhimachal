@@ -76,7 +76,7 @@ export const Navbar = () => {
             {/* CTA Button - Desktop */}
             <div className="hidden lg:block">
               <Link to="/plan">
-                <Button size="default" className="gap-2 min-h-[44px] bg-[#3d441e] text-white hover:bg-[#3d441e]/90 border-none">
+                <Button size="default" className="gap-2 min-h-[44px] bg-[#3d441e] text-white hover:bg-[#3d441e]/90 border border-white/60">
                   <Compass className="w-4 h-4" />
                   Plan Your Trip
                 </Button>
