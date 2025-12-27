@@ -15,7 +15,7 @@ export const IntroSection = () => {
   return (
     <section
       ref={containerRef}
-      className="relative py-20 sm:py-32 lg:py-40 bg-background overflow-hidden"
+      className="relative py-12 sm:py-16 lg:py-20 bg-background overflow-hidden"
     >
       {/* Subtle background texture */}
       <div className="absolute inset-0 opacity-30">

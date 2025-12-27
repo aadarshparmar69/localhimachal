@@ -7,7 +7,7 @@ const featuredHomestays = homestays.slice(0, 4);
 
 export const HomestaysSection = () => {
   return (
-    <section className="py-16 sm:py-24 lg:py-32 bg-background">
+    <section className="py-12 sm:py-16 lg:py-20 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
