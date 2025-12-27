@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 
 export const CulturePreviewSection = () => {
   return (
-    <section className="py-16 sm:py-24 lg:py-32 bg-muted/40 relative overflow-hidden">
+    <section className="py-12 sm:py-16 lg:py-20 bg-muted/40 relative overflow-hidden">
       {/* Decorative background */}
       <div className="absolute inset-0 opacity-40">
         <div 

@@ -7,7 +7,7 @@ const featuredDistricts = districts.slice(0, 6);
 
 export const DistrictPreviewSection = () => {
   return (
-    <section className="py-16 sm:py-24 lg:py-32 bg-muted/30">
+    <section className="py-12 sm:py-16 lg:py-20 bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
