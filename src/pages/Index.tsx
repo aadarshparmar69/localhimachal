@@ -2,12 +2,12 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { HeroSection } from "@/components/home/HeroSection";
 import { IntroSection } from "@/components/home/IntroSection";
-import { ExperiencesSection } from "@/components/home/ExperiencesSection";
-import { CultureQuoteSection } from "@/components/home/CultureQuoteSection";
-import { GallerySection } from "@/components/home/GallerySection";
-import { TreksMotionSection } from "@/components/home/TreksMotionSection";
-
-import { ResponsibleTravelSection } from "@/components/home/ResponsibleTravelSection";
+import { DistrictPreviewSection } from "@/components/home/DistrictPreviewSection";
+import { HiddenGemsSection } from "@/components/home/HiddenGemsSection";
+import { TreksSection } from "@/components/home/TreksSection";
+import { HomestaysSection } from "@/components/home/HomestaysSection";
+import { CulturePreviewSection } from "@/components/home/CulturePreviewSection";
+import { PlanTripSection } from "@/components/home/PlanTripSection";
 import { ClosingSection } from "@/components/home/ClosingSection";
 import { Helmet } from "react-helmet-async";
 
@@ -25,12 +25,12 @@ const Index = () => {
       <main>
         <HeroSection />
         <IntroSection />
-        <ExperiencesSection />
-        <CultureQuoteSection />
-        <GallerySection />
-        <TreksMotionSection />
-        
-        <ResponsibleTravelSection />
+        <DistrictPreviewSection />
+        <HiddenGemsSection />
+        <TreksSection />
+        <HomestaysSection />
+        <CulturePreviewSection />
+        <PlanTripSection />
         <ClosingSection />
       </main>
       
