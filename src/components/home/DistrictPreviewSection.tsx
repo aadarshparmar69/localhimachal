@@ -40,7 +40,7 @@ export const DistrictPreviewSection = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <Link
-                to={`/explore/${district.slug}`}
+                to={`/district/${district.slug}`}
                 className="group block relative aspect-[4/3] rounded-xl overflow-hidden shadow-card"
               >
                 <img
