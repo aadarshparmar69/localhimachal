@@ -83,6 +83,9 @@ export default {
         stone: {
           grey: "hsl(var(--stone-grey))",
         },
+        header: {
+          bg: "hsl(var(--header-bg))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

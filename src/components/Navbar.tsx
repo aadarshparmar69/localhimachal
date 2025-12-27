@@ -52,7 +52,7 @@ export const Navbar = () => {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
           scrolled || !isHome || isOpen
-            ? "bg-background/95 backdrop-blur-xl border-b border-border/50 shadow-soft"
+            ? "bg-header-bg backdrop-blur-xl border-b border-border/50 shadow-soft"
             : "bg-transparent"
         )}
       >
