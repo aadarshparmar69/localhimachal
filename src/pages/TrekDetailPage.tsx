@@ -350,22 +350,22 @@ const TrekDetailPage = () => {
                         <div>
                           <h4 className="font-body font-medium text-foreground mb-2 text-sm sm:text-base">Permits Required</h4>
                           <p className="font-body text-muted-foreground leading-relaxed text-sm sm:text-base">
-                            {trekEnriched.permits.permitsNeeded}
+                            {trekEnriched.permits.details}
                           </p>
                         </div>
                         <div>
                           <h4 className="font-body font-medium text-foreground mb-2 text-sm sm:text-base">Local Guides</h4>
                           <p className="font-body text-muted-foreground leading-relaxed text-sm sm:text-base">
-                            {trekEnriched.permits.localGuides}
+                            {trekEnriched.permits.guideNecessity}
                           </p>
                         </div>
                         <div className="bg-red-500/10 rounded-lg sm:rounded-xl p-3 sm:p-4 border border-red-500/20">
                           <div className="flex items-center gap-2 mb-2">
                             <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 text-red-600 flex-shrink-0" />
-                            <span className="font-body font-medium text-red-700 text-sm sm:text-base">Safety Alerts</span>
+                            <span className="font-body font-medium text-red-700 text-sm sm:text-base">Safety Considerations</span>
                           </div>
                           <p className="font-body text-red-700/80 text-sm sm:text-base">
-                            {trekEnriched.permits.safetyAlerts}
+                            {trekEnriched.permits.safetyConsiderations}
                           </p>
                         </div>
                       </div>
@@ -401,12 +401,12 @@ const TrekDetailPage = () => {
                       Responsible Trekking
                     </h2>
                     <ul className="space-y-3 sm:space-y-4">
-                      {(trekEnriched?.responsible.guidelines || [
+                      {[
                         "Carry all trash back with you",
                         "Respect local customs and traditions",
                         "Stay on marked trails",
                         "Don't disturb wildlife"
-                      ]).map((guideline, i) => (
+                      ].map((guideline, i) => (
                         <li key={i} className="flex items-start gap-2 sm:gap-3">
                           <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-600 flex-shrink-0 mt-0.5" />
                           <span className="font-body text-muted-foreground text-sm sm:text-base">{guideline}</span>
