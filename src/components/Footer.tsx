@@ -43,9 +43,9 @@ const footerLinks = {
   }]
 };
 export const Footer = () => {
-  return <footer className="bg-foreground text-primary-foreground">
+  return <footer className="text-primary-foreground bg-[#321a01]">
       {/* Newsletter Section */}
-      <div className="border-b border-primary-foreground/10">
+      <div className="border-b border-primary-foreground/10 bg-[#321a01]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 bg-[#321a01]">
           <div className="max-w-2xl mx-auto text-center">
             <h3 className="font-display text-2xl sm:text-3xl md:text-4xl font-semibold mb-3 sm:mb-4">
