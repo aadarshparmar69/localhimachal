@@ -1,24 +1,25 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import { closingContent } from "@/data/cultureContent";
 
 export const CultureClosing = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const prefersReducedMotion = useReducedMotion();
+  
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"]
   });
 
-  // Reduced effects for mobile performance
-  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0.5]);
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1.05, 1, 1.02]);
+  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], prefersReducedMotion ? [1, 1, 1, 1] : [0, 1, 1, 0.6]);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], prefersReducedMotion ? [1, 1, 1] : [1.03, 1, 1.01]);
 
   return (
     <section 
       ref={sectionRef}
-      className="relative min-h-[80vh] sm:min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-[70vh] sm:min-h-[80vh] flex items-center justify-center overflow-hidden"
     >
-      {/* Background - Simplified on mobile */}
+      {/* Background - Desktop with scale */}
       <motion.div 
         className="absolute inset-0 hidden sm:block"
         style={{ scale }}
@@ -45,17 +46,17 @@ export const CultureClosing = () => {
 
       {/* Content */}
       <motion.div 
-        className="relative container mx-auto px-4 sm:px-6 lg:px-8 text-center py-16 sm:py-0"
+        className="relative container mx-auto px-4 sm:px-6 lg:px-8 text-center py-12 sm:py-0"
         style={{ opacity }}
       >
         <div className="max-w-3xl mx-auto">
           {/* Quote */}
           <motion.blockquote
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="font-display text-xl sm:text-2xl md:text-4xl lg:text-5xl text-primary-foreground italic leading-snug mb-8 sm:mb-12"
+            className="font-display text-xl sm:text-2xl lg:text-4xl text-primary-foreground italic leading-snug mb-6 sm:mb-10"
           >
             "{closingContent.quote}"
           </motion.blockquote>
@@ -66,16 +67,16 @@ export const CultureClosing = () => {
             whileInView={{ scaleX: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="w-16 sm:w-24 h-px bg-primary-foreground/30 mx-auto mb-8 sm:mb-12"
+            className="w-16 sm:w-20 h-px bg-primary-foreground/30 mx-auto mb-6 sm:mb-10"
           />
 
           {/* Final Paragraph */}
           <motion.p
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             viewport={{ once: true }}
-            className="font-body text-base sm:text-lg md:text-xl text-primary-foreground/80 leading-relaxed"
+            className="font-body text-base sm:text-lg text-primary-foreground/80 leading-relaxed"
           >
             {closingContent.finalParagraph}
           </motion.p>
@@ -83,7 +84,7 @@ export const CultureClosing = () => {
       </motion.div>
 
       {/* Fade out gradient at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 sm:h-32 bg-gradient-to-t from-background to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-20 sm:h-28 bg-gradient-to-t from-background to-transparent" />
     </section>
   );
 };
