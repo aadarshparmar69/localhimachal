@@ -81,7 +81,7 @@ const PlanPage = () => {
 
       <Navbar />
 
-      <main className="pt-16 md:pt-20">
+      <main>
         {/* Hero Section */}
         <section className="relative py-16 md:py-24 bg-gradient-to-br from-primary via-pine-deep to-primary overflow-hidden">
           <div className="absolute inset-0 opacity-20">
