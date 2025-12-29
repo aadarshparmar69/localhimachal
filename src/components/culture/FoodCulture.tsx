@@ -1,22 +1,31 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { foodContent } from "@/data/cultureContent";
+import { UtensilsCrossed } from "lucide-react";
 
 export const FoodCulture = () => {
+  const prefersReducedMotion = useReducedMotion();
+  
   return (
-    <section className="py-16 sm:py-24 md:py-32 bg-secondary/20">
+    <section id="food" className="py-12 sm:py-16 lg:py-20 bg-secondary/20 relative">
+      {/* Section divider top */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+      
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="max-w-3xl mb-10 sm:mb-16"
+          className="max-w-3xl mb-10 sm:mb-14"
         >
-          <span className="inline-block font-body text-primary text-xs sm:text-sm uppercase tracking-widest mb-3 sm:mb-4">
-            Culinary Heritage
-          </span>
-          <h2 className="font-display text-2xl sm:text-3xl md:text-5xl font-semibold text-foreground mb-3 sm:mb-4">
+          <div className="flex items-center gap-2 mb-3">
+            <UtensilsCrossed className="w-4 h-4 text-primary/60" />
+            <span className="font-body text-primary text-xs sm:text-sm uppercase tracking-[0.2em]">
+              Culinary Heritage
+            </span>
+          </div>
+          <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-semibold text-foreground mb-3">
             {foodContent.title}
           </h2>
           <p className="font-body text-base sm:text-lg text-accent italic">
@@ -24,47 +33,48 @@ export const FoodCulture = () => {
           </p>
         </motion.div>
 
-        {/* Stacked Sections on Mobile */}
-        <div className="space-y-12 sm:space-y-24">
+        {/* Alternating Sections */}
+        <div className="space-y-10 sm:space-y-16">
           {foodContent.sections.map((section, index) => (
             <motion.div
               key={section.heading}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              viewport={{ once: true, margin: "-50px" }}
-              className={`grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-12 items-center`}
+              viewport={{ once: true, margin: "-30px" }}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10 items-center"
             >
               <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
-                <h3 className="font-display text-xl sm:text-2xl md:text-3xl font-semibold text-foreground mb-4 sm:mb-6">
+                <h3 className="font-display text-xl sm:text-2xl font-semibold text-foreground mb-3 sm:mb-4">
                   {section.heading}
                 </h3>
-                <p className="font-body text-muted-foreground leading-relaxed text-sm sm:text-base md:text-lg">
+                <p className="font-body text-muted-foreground leading-[1.8] text-sm sm:text-base">
                   {section.content}
                 </p>
               </div>
               
               <div className={`relative ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                <div className="relative aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden shadow-elevated">
+                <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-elevated">
                   <img
                     src={foodContent.image}
                     alt={section.heading}
                     className="w-full h-full object-cover"
-                    style={{
-                      objectPosition: `${50 + index * 15}% 50%`
-                    }}
+                    style={{ objectPosition: `${50 + index * 15}% 50%` }}
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/15 to-transparent" />
                 </div>
                 
-                {/* Decorative element - hidden on mobile */}
-                <div className="absolute -bottom-4 -right-4 w-16 sm:w-24 h-16 sm:h-24 bg-accent/10 rounded-full blur-xl -z-10 hidden sm:block" />
+                {/* Decorative element */}
+                <div className="absolute -bottom-3 -right-3 w-16 sm:w-20 h-16 sm:h-20 bg-accent/10 rounded-full blur-xl -z-10 hidden sm:block" />
               </div>
             </motion.div>
           ))}
         </div>
       </div>
+      
+      {/* Section divider bottom */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
     </section>
   );
 };

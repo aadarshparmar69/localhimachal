@@ -1,48 +1,56 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import { modernLife } from "@/data/cultureContent";
+import { Layers } from "lucide-react";
 
 export const ModernLifeSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const prefersReducedMotion = useReducedMotion();
+  
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"]
   });
 
-  // Reduced parallax effect on mobile
-  const leftImageX = useTransform(scrollYProgress, [0, 1], [-10, 10]);
-  const rightImageX = useTransform(scrollYProgress, [0, 1], [10, -10]);
+  const leftImageX = useTransform(scrollYProgress, [0, 1], prefersReducedMotion ? [0, 0] : [-8, 8]);
+  const rightImageX = useTransform(scrollYProgress, [0, 1], prefersReducedMotion ? [0, 0] : [8, -8]);
 
   return (
     <section 
       ref={sectionRef}
-      className="py-16 sm:py-24 md:py-32 bg-secondary/20 overflow-hidden"
+      className="py-12 sm:py-16 lg:py-20 bg-secondary/20 overflow-hidden relative"
     >
+      {/* Section divider top */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+      
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="max-w-3xl mx-auto text-center mb-10 sm:mb-16"
+          className="max-w-3xl mx-auto text-center mb-10 sm:mb-14"
         >
-          <span className="inline-block font-body text-primary text-xs sm:text-sm uppercase tracking-widest mb-3 sm:mb-4">
-            Present & Future
-          </span>
-          <h2 className="font-display text-2xl sm:text-3xl md:text-5xl font-semibold text-foreground mb-3 sm:mb-4">
+          <div className="flex items-center justify-center gap-2 mb-3">
+            <Layers className="w-4 h-4 text-primary/60" />
+            <span className="font-body text-primary text-xs sm:text-sm uppercase tracking-[0.2em]">
+              Present & Future
+            </span>
+          </div>
+          <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-semibold text-foreground mb-3">
             {modernLife.title}
           </h2>
-          <p className="font-body text-base sm:text-lg text-accent italic mb-4 sm:mb-6">
+          <p className="font-body text-base sm:text-lg text-accent italic mb-3 sm:mb-4">
             {modernLife.subtitle}
           </p>
-          <p className="font-body text-muted-foreground leading-relaxed text-sm sm:text-base">
+          <p className="font-body text-muted-foreground leading-relaxed text-sm sm:text-base max-w-2xl mx-auto">
             {modernLife.description}
           </p>
         </motion.div>
 
-        {/* Split Screen Images - Stacked on mobile */}
-        <div className="relative mb-10 sm:mb-16 h-48 sm:h-64 md:h-96 rounded-xl sm:rounded-2xl overflow-hidden">
+        {/* Split Screen Images */}
+        <div className="relative mb-10 sm:mb-14 h-44 sm:h-56 md:h-80 rounded-xl overflow-hidden">
           {/* Mobile: Simple stacked images */}
           <div className="sm:hidden absolute inset-0">
             <img
@@ -51,8 +59,8 @@ export const ModernLifeSection = () => {
               className="w-full h-full object-cover"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-foreground/40 flex items-center justify-center">
-              <span className="font-display text-xl text-primary-foreground/90 italic">
+            <div className="absolute inset-0 bg-foreground/50 flex items-center justify-center">
+              <span className="font-display text-lg text-primary-foreground/90 italic">
                 Between worlds
               </span>
             </div>
@@ -85,35 +93,37 @@ export const ModernLifeSection = () => {
             <div className="absolute inset-0 bg-gradient-to-l from-transparent to-background/90" />
           </motion.div>
 
-          {/* Center text - desktop only */}
           <div className="absolute inset-0 items-center justify-center hidden sm:flex">
-            <span className="font-display text-2xl md:text-4xl text-foreground/80 italic">
+            <span className="font-display text-xl md:text-3xl text-foreground/80 italic">
               Between worlds
             </span>
           </div>
         </div>
 
-        {/* Aspects - Single column on mobile */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-8">
+        {/* Aspects Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {modernLife.aspects.map((aspect, index) => (
             <motion.div
               key={aspect.heading}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 14 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: index * 0.08 }}
               viewport={{ once: true }}
-              className="bg-card rounded-xl sm:rounded-2xl p-5 sm:p-8 shadow-soft"
+              className="bg-card rounded-xl p-5 sm:p-6 shadow-soft border border-border/30"
             >
-              <h3 className="font-display text-lg sm:text-xl font-semibold text-foreground mb-3 sm:mb-4">
+              <h3 className="font-display text-lg font-semibold text-foreground mb-2 sm:mb-3">
                 {aspect.heading}
               </h3>
-              <p className="font-body text-muted-foreground leading-relaxed text-sm sm:text-base">
+              <p className="font-body text-muted-foreground leading-[1.7] text-sm sm:text-base">
                 {aspect.content}
               </p>
             </motion.div>
           ))}
         </div>
       </div>
+      
+      {/* Section divider bottom */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
     </section>
   );
 };
