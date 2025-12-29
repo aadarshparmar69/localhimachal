@@ -8,6 +8,7 @@ import { TreksSection } from "@/components/home/TreksSection";
 import { HomestaysSection } from "@/components/home/HomestaysSection";
 import { CulturePreviewSection } from "@/components/home/CulturePreviewSection";
 import { PlanTripSection } from "@/components/home/PlanTripSection";
+import { AtmosphereSection } from "@/components/home/AtmosphereSection";
 import { ClosingSection } from "@/components/home/ClosingSection";
 import { Helmet } from "react-helmet-async";
 
@@ -31,6 +32,7 @@ const Index = () => {
         <HomestaysSection />
         <CulturePreviewSection />
         <PlanTripSection />
+        <AtmosphereSection />
         <ClosingSection />
       </main>
       

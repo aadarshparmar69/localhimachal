@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -6,18 +6,20 @@ import { ArrowRight } from "lucide-react";
 
 export const ClosingSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const prefersReducedMotion = useReducedMotion();
+  
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"],
   });
 
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
-  const contentOpacity = useTransform(scrollYProgress, [0.2, 0.5], [0, 1]);
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["-5%", prefersReducedMotion ? "-5%" : "10%"]);
+  const contentOpacity = useTransform(scrollYProgress, [0.1, 0.4], [0, 1]);
 
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[70vh] sm:min-h-[80vh] flex items-center justify-center overflow-hidden"
+      className="relative min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center overflow-hidden"
     >
       {/* Background Image with Parallax */}
       <motion.div
@@ -36,15 +38,15 @@ export const ClosingSection = () => {
 
       {/* Content */}
       <motion.div
-        style={{ opacity: contentOpacity }}
-        className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl"
+        style={{ opacity: prefersReducedMotion ? 1 : contentOpacity }}
+        className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl py-16"
       >
         <motion.p
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-sm tracking-[0.15em] uppercase text-primary-foreground/60 mb-4"
+          className="text-sm tracking-[0.2em] uppercase text-primary-foreground/50 mb-4"
         >
           The journey awaits
         </motion.p>
@@ -54,7 +56,7 @@ export const ClosingSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="font-display text-responsive-title text-primary-foreground mb-6"
+          className="font-display text-responsive-title text-primary-foreground mb-5"
         >
           Let the mountains find you
         </motion.h2>
@@ -81,7 +83,7 @@ export const ClosingSection = () => {
           <Link to="/plan-your-trip">
             <Button 
               size="lg"
-              className="bg-primary-foreground text-foreground hover:bg-primary-foreground/90 font-medium"
+              className="bg-primary-foreground text-foreground hover:bg-primary-foreground/90 font-medium shadow-lg"
             >
               Start Planning
               <ArrowRight className="w-4 h-4 ml-2" />

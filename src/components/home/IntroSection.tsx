@@ -1,63 +1,92 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
 export const IntroSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const prefersReducedMotion = useReducedMotion();
+  
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"],
   });
 
-  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0.8]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0.9]);
+
+  // Line-by-line reveal animation
+  const lines = [
+    "This is not a travel guide.",
+    "It's a doorway into the soul of a place where ancient temples whisper stories,",
+    "where village elders share wisdom over chai,",
+    "and where every mountain path leads to something unexpected."
+  ];
 
   return (
     <section
       ref={containerRef}
-      className="relative py-12 sm:py-16 lg:py-20 bg-background overflow-hidden"
+      className="relative py-16 sm:py-20 lg:py-24 bg-background overflow-hidden"
     >
       {/* Subtle background texture */}
-      <div className="absolute inset-0 opacity-30">
+      <div className="absolute inset-0">
         <div 
-          className="absolute inset-0"
+          className="absolute inset-0 opacity-50"
           style={{
-            backgroundImage: `radial-gradient(circle at 20% 50%, hsl(var(--primary) / 0.03) 0%, transparent 50%),
-                              radial-gradient(circle at 80% 80%, hsl(var(--accent) / 0.03) 0%, transparent 40%)`
+            backgroundImage: `radial-gradient(circle at 30% 20%, hsl(var(--primary) / 0.04) 0%, transparent 50%),
+                              radial-gradient(circle at 70% 80%, hsl(var(--accent) / 0.03) 0%, transparent 40%)`
           }}
         />
       </div>
 
       <motion.div 
-        style={{ opacity }}
+        style={{ opacity: prefersReducedMotion ? 1 : opacity }}
         className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl relative z-10"
       >
-        {/* Editorial Text */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-12 sm:mb-16"
-        >
-          <h2 className="font-display text-responsive-title text-foreground mb-6 sm:mb-8">
+        {/* Editorial Text with line-by-line reveal */}
+        <div className="text-center mb-10 sm:mb-12">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.7 }}
+            className="font-display text-responsive-title text-foreground mb-8 sm:mb-10"
+          >
             Beyond the tourist trail
-          </h2>
-          <p className="font-body text-responsive-body text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-            This is not a travel guide. It's a doorway into the soul of a place where ancient temples 
-            whisper stories, where village elders share wisdom over chai, and where every mountain path 
-            leads to something unexpected. We believe the best journeys are the ones that change you—slowly, 
-            gently, and forever.
-          </p>
-        </motion.div>
+          </motion.h2>
+          
+          <div className="space-y-1 sm:space-y-2">
+            {lines.map((line, index) => (
+              <motion.p
+                key={index}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-30px" }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+                className="font-body text-responsive-body text-muted-foreground leading-relaxed"
+              >
+                {line}
+              </motion.p>
+            ))}
+          </div>
+          
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-30px" }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="font-body text-responsive-body text-foreground/80 leading-relaxed mt-6 font-medium"
+          >
+            We believe the best journeys are the ones that change you—slowly, gently, and forever.
+          </motion.p>
+        </div>
 
         {/* Decorative line */}
         <motion.div
           initial={{ scaleX: 0 }}
           whileInView={{ scaleX: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="w-24 h-px bg-gradient-to-r from-transparent via-accent to-transparent mx-auto mb-12 sm:mb-16"
+          transition={{ duration: 1, delay: 0.4 }}
+          className="w-32 h-px bg-gradient-to-r from-transparent via-accent/60 to-transparent mx-auto mb-10 sm:mb-12"
         />
 
         {/* Links */}
@@ -65,7 +94,7 @@ export const IntroSection = () => {
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
           className="flex flex-col sm:flex-row gap-4 sm:gap-8 justify-center items-center"
         >
           <Link 

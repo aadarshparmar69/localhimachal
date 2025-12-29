@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, MapPin, Users } from "lucide-react";
 import { homestays } from "@/data/homestays";
@@ -6,18 +6,41 @@ import { homestays } from "@/data/homestays";
 const featuredHomestays = homestays.slice(0, 4);
 
 export const HomestaysSection = () => {
+  const prefersReducedMotion = useReducedMotion();
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: prefersReducedMotion ? 0 : 0.1,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20, scale: 0.98 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      scale: 1,
+      transition: { duration: 0.5 }
+    }
+  };
+
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-background">
+    <section className="py-14 sm:py-18 lg:py-20 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-10 sm:mb-16"
+          className="text-center mb-10 sm:mb-14"
         >
-          <p className="text-sm tracking-[0.15em] uppercase text-muted-foreground mb-3">
+          <p className="text-sm tracking-[0.2em] uppercase text-muted-foreground mb-3">
             Stay Local
           </p>
           <h2 className="font-display text-responsive-title text-foreground mb-4">
@@ -29,26 +52,29 @@ export const HomestaysSection = () => {
           </p>
         </motion.div>
 
-        {/* Homestays Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-10 sm:mb-12">
-          {featuredHomestays.map((homestay, index) => (
+        {/* Homestays Grid with fade + scale animation */}
+        <motion.div 
+          className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 mb-10 sm:mb-12"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          {featuredHomestays.map((homestay) => (
             <motion.div
               key={homestay.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              variants={itemVariants}
             >
               <Link
                 to={`/homestays/${homestay.slug}`}
-                className="group flex flex-col sm:flex-row bg-card rounded-xl overflow-hidden shadow-soft hover:shadow-card transition-shadow"
+                className="group flex flex-col sm:flex-row bg-card rounded-xl overflow-hidden shadow-soft hover:shadow-card transition-all duration-300 hover:-translate-y-1"
               >
                 {/* Image */}
                 <div className="sm:w-2/5 aspect-[16/10] sm:aspect-auto overflow-hidden">
                   <img
                     src={homestay.image}
                     alt={homestay.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
                     loading="lazy"
                   />
                 </div>
@@ -60,7 +86,7 @@ export const HomestaysSection = () => {
                     <span>{homestay.village}, {homestay.district}</span>
                   </div>
                   
-                  <h3 className="font-display text-lg text-foreground mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="font-display text-lg text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
                     {homestay.name}
                   </h3>
                   
@@ -81,7 +107,7 @@ export const HomestaysSection = () => {
               </Link>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* View All */}
         <motion.div

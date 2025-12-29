@@ -1,12 +1,40 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import { useRef } from "react";
 
 export const CulturePreviewSection = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const prefersReducedMotion = useReducedMotion();
+  
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", prefersReducedMotion ? "0%" : "15%"]);
+
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-muted/40 relative overflow-hidden">
+    <section 
+      ref={containerRef}
+      className="py-16 sm:py-20 lg:py-24 relative overflow-hidden"
+    >
+      {/* Background with slow parallax */}
+      <motion.div 
+        style={{ y: backgroundY }}
+        className="absolute inset-0 will-change-transform"
+      >
+        <img
+          src="https://images.unsplash.com/photo-1545562083-c583d014b4f2?w=1920&q=80"
+          alt="Himachali culture and traditions"
+          className="w-full h-[120%] object-cover opacity-20"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-muted/90 via-muted/80 to-muted" />
+      </motion.div>
+      
       {/* Decorative background */}
-      <div className="absolute inset-0 opacity-40">
+      <div className="absolute inset-0">
         <div 
           className="absolute inset-0"
           style={{
@@ -22,10 +50,10 @@ export const CulturePreviewSection = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.6 }}
             className="mb-6 sm:mb-8"
           >
-            <span className="font-display text-6xl sm:text-8xl text-accent/30">"</span>
+            <span className="font-display text-7xl sm:text-8xl text-accent/30 leading-none">"</span>
           </motion.div>
 
           {/* Quote */}
@@ -33,7 +61,7 @@ export const CulturePreviewSection = () => {
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
             className="font-display text-xl sm:text-2xl lg:text-3xl text-foreground leading-relaxed mb-6 sm:mb-8 italic"
           >
             In Himachal, every village has a deity, every festival is a celebration of life, 
@@ -45,7 +73,7 @@ export const CulturePreviewSection = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
             className="text-sm text-muted-foreground mb-8 sm:mb-10"
           >
             — The Spirit of Himachali Hospitality
@@ -56,7 +84,7 @@ export const CulturePreviewSection = () => {
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
           >
             <Link 
               to="/culture" 
