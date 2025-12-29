@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, MapPin, Phone, Instagram, Facebook, Youtube, Twitter } from "lucide-react";
+import { Mail, MapPin, Phone, Instagram, Linkedin, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 const footerLinks = {
   explore: [{
@@ -87,20 +87,21 @@ export const Footer = () => {
             <div className="flex items-center gap-3">
               {[{
               icon: Instagram,
-              href: "#"
+              href: "https://www.instagram.com/localhimachal.in?igsh=N2JsOW5ybmRkZjg5",
+              label: "Instagram"
             }, {
-              icon: Facebook,
-              href: "#"
-            }, {
-              icon: Youtube,
-              href: "#"
+              icon: Linkedin,
+              href: "https://www.linkedin.com/company/localhimachal/",
+              label: "LinkedIn"
             }, {
               icon: Twitter,
-              href: "#"
+              href: "https://x.com/LocalHimachal",
+              label: "X (Twitter)"
             }].map(({
               icon: Icon,
-              href
-            }, index) => <a key={index} href={href} className="p-2.5 sm:p-2 rounded-lg bg-primary-foreground/10 hover:bg-primary-foreground/20 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center" aria-label={`Social link ${index + 1}`}>
+              href,
+              label
+            }) => <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="p-2.5 sm:p-2 rounded-lg bg-primary-foreground/10 hover:bg-primary-foreground/20 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center" aria-label={label}>
                   <Icon className="w-5 h-5" />
                 </a>)}
             </div>
