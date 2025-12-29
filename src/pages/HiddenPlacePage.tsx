@@ -18,7 +18,7 @@ const HiddenPlacePage = () => {
     return (
       <>
         <Navbar />
-        <main className="pt-20 min-h-screen flex items-center justify-center px-4">
+        <main className="min-h-screen flex items-center justify-center px-4">
           <div className="text-center">
             <h1 className="font-display text-2xl sm:text-4xl font-semibold text-foreground mb-4">
               Place Not Found
@@ -49,7 +49,7 @@ const HiddenPlacePage = () => {
 
       <Navbar />
 
-      <main className="pt-16 sm:pt-20">
+      <main>
         {/* Hero Section - Mobile optimized */}
         <section className="relative h-[65vh] sm:h-[80vh] min-h-[450px] sm:min-h-[600px] overflow-hidden">
           <motion.img

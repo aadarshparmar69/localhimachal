@@ -62,7 +62,7 @@ export default function HiddenGemDetailPage() {
 
       <Navbar />
       
-      <main className="min-h-screen bg-background pt-16 sm:pt-20">
+      <main className="min-h-screen bg-background">
         {/* Hero Section - Mobile optimized */}
         <section className="relative h-[60vh] sm:h-[70vh] min-h-[400px] sm:min-h-[500px] overflow-hidden">
           <img

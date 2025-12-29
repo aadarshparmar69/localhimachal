@@ -58,7 +58,7 @@ export default function HiddenGemsPage() {
       
       <main className="min-h-screen bg-background">
         {/* Hero Section */}
-        <section className="relative pt-24 md:pt-32 pb-12 md:pb-20 overflow-hidden">
+        <section className="relative pt-12 md:pt-16 pb-12 md:pb-20 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
           <div className="absolute top-20 left-1/4 w-48 md:w-96 h-48 md:h-96 bg-primary/5 rounded-full blur-3xl" />
           <div className="absolute bottom-0 right-1/4 w-32 md:w-64 h-32 md:h-64 bg-accent/10 rounded-full blur-3xl" />

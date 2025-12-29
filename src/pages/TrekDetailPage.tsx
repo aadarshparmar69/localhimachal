@@ -23,7 +23,7 @@ const TrekDetailPage = () => {
     return (
       <>
         <Navbar />
-        <main className="pt-20 min-h-screen flex items-center justify-center px-4">
+        <main className="min-h-screen flex items-center justify-center px-4">
           <div className="text-center">
             <h1 className="font-display text-2xl sm:text-4xl font-semibold text-foreground mb-4">
               Trek Not Found
@@ -60,7 +60,7 @@ const TrekDetailPage = () => {
 
       <Navbar />
 
-      <main className="pt-16 sm:pt-20">
+      <main>
         {/* Hero Section - Mobile optimized */}
         <section className="relative h-[60vh] sm:h-[70vh] min-h-[400px] sm:min-h-[500px] overflow-hidden">
           <motion.img
