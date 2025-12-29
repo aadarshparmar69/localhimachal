@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Mountain, Clock } from "lucide-react";
 import { treks } from "@/data/treks";
@@ -8,26 +8,47 @@ import { useRef } from "react";
 const featuredTreks = treks.slice(0, 6);
 
 const difficultyColors: Record<string, string> = {
-  Easy: "bg-green-100 text-green-700",
-  Moderate: "bg-amber-100 text-amber-700", 
-  Hard: "bg-red-100 text-red-700",
+  Easy: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400",
+  Moderate: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400", 
+  Hard: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400",
 };
 
 export const TreksSection = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const prefersReducedMotion = useReducedMotion();
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: prefersReducedMotion ? 0 : 0.1,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.5 }
+    }
+  };
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-muted/30">
+    <section className="py-14 sm:py-18 lg:py-20 bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
           className="text-center mb-10 sm:mb-14"
         >
-          <p className="text-sm tracking-[0.15em] uppercase text-muted-foreground mb-3">
+          <p className="text-sm tracking-[0.2em] uppercase text-muted-foreground mb-3">
             Trails & Adventures
           </p>
           <h2 className="font-display text-responsive-title text-foreground mb-4">
@@ -37,38 +58,48 @@ export const TreksSection = () => {
             From gentle day hikes to challenging high-altitude expeditions, 
             these trails reveal the true majesty of the Himalayas.
           </p>
+          
+          {/* Decorative underline animation */}
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="w-20 h-0.5 bg-gradient-to-r from-transparent via-primary/40 to-transparent mx-auto mt-6"
+          />
         </motion.div>
 
-        {/* Horizontal scrollable on mobile */}
-        <div 
+        {/* Horizontal scrollable on mobile, grid on desktop */}
+        <motion.div 
           ref={scrollRef}
-          className="flex gap-4 overflow-x-auto pb-4 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 sm:overflow-visible scrollbar-hide touch-action-pan-x"
+          className="flex gap-4 overflow-x-auto pb-4 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-5 sm:overflow-visible scrollbar-hide snap-x snap-mandatory"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
         >
-          {featuredTreks.map((trek, index) => (
+          {featuredTreks.map((trek) => (
             <motion.div
               key={trek.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="flex-shrink-0 w-[85%] sm:w-auto"
+              variants={itemVariants}
+              className="flex-shrink-0 w-[80%] sm:w-auto snap-start"
             >
               <Link
                 to={`/trek/${trek.slug}`}
-                className="group block bg-card rounded-xl overflow-hidden shadow-soft hover:shadow-card transition-all"
+                className="group block bg-card rounded-xl overflow-hidden shadow-soft hover:shadow-card transition-all duration-300"
               >
                 {/* Image */}
                 <div className="aspect-[16/10] overflow-hidden relative">
                   <img
                     src={trek.image}
                     alt={trek.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
                     loading="lazy"
                   />
                   {/* Difficulty Badge */}
                   <div className="absolute top-3 left-3">
                     <span className={cn(
-                      "text-xs font-medium px-2.5 py-1 rounded-full",
+                      "text-xs font-medium px-2.5 py-1 rounded-full backdrop-blur-sm",
                       difficultyColors[trek.difficulty]
                     )}>
                       {trek.difficulty}
@@ -78,7 +109,7 @@ export const TreksSection = () => {
 
                 {/* Content */}
                 <div className="p-4 sm:p-5">
-                  <h3 className="font-display text-lg text-foreground mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="font-display text-lg text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
                     {trek.name}
                   </h3>
                   
@@ -100,19 +131,24 @@ export const TreksSection = () => {
               </Link>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Scroll hint on mobile */}
-        <div className="flex justify-center mt-4 sm:hidden">
-          <span className="text-xs text-muted-foreground">← Swipe to explore →</span>
-        </div>
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="flex justify-center mt-4 sm:hidden"
+        >
+          <span className="text-xs text-muted-foreground/60">← Swipe to explore →</span>
+        </motion.div>
 
         {/* View All */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
           className="text-center mt-8 sm:mt-12"
         >
           <Link 
