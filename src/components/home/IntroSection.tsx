@@ -25,7 +25,7 @@ export const IntroSection = () => {
   return (
     <section
       ref={containerRef}
-      className="relative py-16 sm:py-20 lg:py-24 bg-background overflow-hidden"
+      className="relative py-10 sm:py-14 lg:py-16 bg-background overflow-hidden"
     >
       {/* Subtle background texture */}
       <div className="absolute inset-0">
@@ -43,13 +43,13 @@ export const IntroSection = () => {
         className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl relative z-10"
       >
         {/* Editorial Text with line-by-line reveal */}
-        <div className="text-center mb-10 sm:mb-12">
+        <div className="text-center mb-8 sm:mb-10">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.7 }}
-            className="font-display text-responsive-title text-foreground mb-8 sm:mb-10"
+            className="font-display text-responsive-title text-foreground mb-6 sm:mb-8"
           >
             Beyond the tourist trail
           </motion.h2>
@@ -74,20 +74,11 @@ export const IntroSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-30px" }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="font-body text-responsive-body text-foreground/80 leading-relaxed mt-6 font-medium"
+            className="font-body text-responsive-body text-foreground/80 leading-relaxed mt-5 font-medium"
           >
             We believe the best journeys are the ones that change you—slowly, gently, and forever.
           </motion.p>
         </div>
-
-        {/* Decorative line */}
-        <motion.div
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, delay: 0.4 }}
-          className="w-32 h-px bg-gradient-to-r from-transparent via-accent/60 to-transparent mx-auto mb-10 sm:mb-12"
-        />
 
         {/* Links */}
         <motion.div
@@ -114,6 +105,15 @@ export const IntroSection = () => {
           </Link>
         </motion.div>
       </motion.div>
+
+      {/* Section divider - decorative element */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.6 }}
+        className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent via-muted/30 to-muted/60 pointer-events-none"
+      />
     </section>
   );
 };
