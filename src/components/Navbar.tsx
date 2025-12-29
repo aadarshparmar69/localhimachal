@@ -144,7 +144,7 @@ export const Navbar = () => {
                 delay: navItems.length * 0.05
               }} className="pt-4 mt-2 border-t border-border">
                     <Link to="/plan" onClick={() => setIsOpen(false)}>
-                      <Button variant="default" size="lg" className="w-full gap-2 min-h-[56px]">
+                      <Button variant="default" size="lg" className="w-full gap-2 min-h-[56px] bg-[#3c431e] hover:bg-[#3c431e]/90 text-white">
                         <Compass className="w-5 h-5" />
                         Plan Your Trip
                       </Button>
