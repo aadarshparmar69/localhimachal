@@ -18,7 +18,7 @@ export const districts: District[] = [
     slug: "kinnaur",
     tagline: "Where Gods Descend to Earth",
     description: "A mystical land of apple orchards, ancient temples, and towering peaks where the Hindustan-Tibet road weaves through impossible terrain.",
-    image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80",
+    image: "https://www.oyorooms.com/travel-guide/wp-content/uploads/2020/01/NAKO-1-1.jpg",
     altitude: "2,320 - 6,816m",
     bestTime: "May - October",
     famousFor: ["Kinnaur Kailash", "Apple Orchards", "Chitkul", "Sangla Valley"],
