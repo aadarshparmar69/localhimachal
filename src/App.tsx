@@ -16,6 +16,7 @@ import PlanPage from "./pages/PlanPage";
 import HiddenPlacePage from "./pages/HiddenPlacePage";
 import HiddenGemsPage from "./pages/HiddenGemsPage";
 import HiddenGemDetailPage from "./pages/HiddenGemDetailPage";
+import AdminPage from "./pages/AdminPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -40,6 +41,7 @@ const App = () => (
             <Route path="/homestays" element={<HomestaysPage />} />
             <Route path="/culture" element={<CulturePage />} />
             <Route path="/plan" element={<PlanPage />} />
+            <Route path="/admin" element={<AdminPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
