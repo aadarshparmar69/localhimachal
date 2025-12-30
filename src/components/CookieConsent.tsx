@@ -30,11 +30,11 @@ const CookieConsent = () => {
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
+          exit={{ opacity: 0, y: 20 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="fixed top-0 left-0 right-0 z-[100] bg-header-bg border-b border-border shadow-soft"
+          className="fixed bottom-0 left-0 right-0 z-[100] bg-header-bg border-t border-border shadow-elevated safe-padding-bottom"
           role="dialog"
           aria-modal="true"
           aria-label="Cookie consent"
