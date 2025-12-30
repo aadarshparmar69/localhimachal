@@ -5,7 +5,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { getEnrichedDistrictBySlug } from "@/data/districtsEnriched";
 import { getTreksByDistrict } from "@/data/treks";
-import { getHomestaysByDistrict } from "@/data/homestays";
+import { homestays } from "@/data/homestays";
 import { getHiddenGemsByDistrict } from "@/data/hiddenGems";
 import { 
   MapPin, Calendar, Mountain, ArrowLeft, ArrowRight, Home, Route, 
@@ -20,7 +20,7 @@ const DistrictPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const district = getEnrichedDistrictBySlug(slug || "");
   const districtTreks = getTreksByDistrict(slug || "");
-  const districtHomestays = getHomestaysByDistrict(slug || "");
+  const districtHomestays = homestays.filter(h => h.district.toLowerCase().includes(slug?.toLowerCase() || ""));
   const districtHiddenGems = getHiddenGemsByDistrict(slug || "");
 
   if (!district) {

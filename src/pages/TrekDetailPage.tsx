@@ -5,7 +5,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { getTrekBySlug } from "@/data/treks";
 import { getTrekEnrichedBySlug } from "@/data/treksEnriched";
-import { getHomestaysByDistrict } from "@/data/homestays";
+import { homestays } from "@/data/homestays";
 import { 
   MapPin, Calendar, Mountain, ArrowLeft, Clock, Home, 
   Tent, Utensils, Droplets, Shield, Backpack, Leaf, Heart,
@@ -41,7 +41,7 @@ const TrekDetailPage = () => {
     );
   }
 
-  const nearbyHomestays = getHomestaysByDistrict(trek.district);
+  const nearbyHomestays = homestays.filter(h => h.district.toLowerCase().includes(trek.district.toLowerCase()));
 
   const difficultyColor = {
     Easy: "bg-green-500/20 text-green-700",
