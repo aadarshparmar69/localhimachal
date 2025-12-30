@@ -14,6 +14,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const districts = [
   "Bilaspur", "Chamba", "Hamirpur", "Kangra", "Kinnaur", "Kullu",
@@ -85,18 +86,38 @@ export const ItineraryForm = () => {
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    console.log("Form submitted:", data);
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    
-    toast({
-      title: "Request Submitted!",
-      description: "We'll get back to you within 24 hours with a custom itinerary.",
-    });
+    try {
+      const { error } = await supabase
+        .from('itinerary_requests')
+        .insert({
+          full_name: data.fullName,
+          email: data.email,
+          phone: data.phone,
+          budget: data.budget,
+          travelers: data.travelers,
+          duration: data.duration,
+          districts: data.districts,
+          holiday_type: data.holidayType,
+          notes: data.notes || null
+        });
+
+      if (error) throw error;
+
+      setIsSubmitted(true);
+      toast({
+        title: "Request Submitted!",
+        description: "We'll get back to you within 24 hours with a custom itinerary.",
+      });
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast({
+        title: "Submission Failed",
+        description: "Please try again or contact us directly.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isSubmitted) {
