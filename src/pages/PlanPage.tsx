@@ -23,12 +23,12 @@ const PlanPage = () => {
 
       <main>
         <PlanHero />
+        <ItineraryForm />
         <BestTimeToVisit />
         <TripEssentials />
         <PackingGuide />
         <HowToReach />
         <ResponsibleTravel />
-        <ItineraryForm />
         <ContactSection />
       </main>
 
