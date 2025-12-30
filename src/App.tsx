@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import ScrollRestoration from "./components/ScrollRestoration";
+import CookieConsent from "./components/CookieConsent";
 import Index from "./pages/Index";
 import ExplorePage from "./pages/ExplorePage";
 import DistrictPage from "./pages/DistrictPage";
@@ -27,6 +28,7 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
+        <CookieConsent />
         <BrowserRouter>
           <ScrollRestoration />
           <Routes>
