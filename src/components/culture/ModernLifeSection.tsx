@@ -54,7 +54,7 @@ export const ModernLifeSection = () => {
           {/* Mobile: Simple stacked images */}
           <div className="sm:hidden absolute inset-0">
             <img
-              src="https://images.unsplash.com/photo-1587381420270-3e1a5b9e6904?w=800&q=80"
+              src="https://www.sahapedia.org/sites/default/files/styles/sp_inline_images/public/2a_0.jpg?itok=oeDuihyQ"
               alt="Traditional Himachal"
               className="w-full h-full object-cover"
               loading="lazy"
@@ -72,7 +72,7 @@ export const ModernLifeSection = () => {
             style={{ x: leftImageX }}
           >
             <img
-              src="https://images.unsplash.com/photo-1587381420270-3e1a5b9e6904?w=800&q=80"
+              src="https://www.sahapedia.org/sites/default/files/styles/sp_inline_images/public/2a_0.jpg?itok=oeDuihyQ"
               alt="Traditional Himachal"
               className="w-full h-full object-cover"
               loading="lazy"
@@ -85,7 +85,7 @@ export const ModernLifeSection = () => {
             style={{ x: rightImageX }}
           >
             <img
-              src="https://images.unsplash.com/photo-1534430480872-3498386e7856?w=800&q=80"
+              src="https://i.pinimg.com/736x/f3/86/0c/f3860cf4e6357278251ad53ca34b7055.jpg"
               alt="Modern Himachal"
               className="w-full h-full object-cover"
               loading="lazy"
