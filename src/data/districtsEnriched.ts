@@ -97,7 +97,7 @@ Life here is seasonal. Summers are busy with agriculture, tourism, and festivals
 
 The Great Himalayan National Park (GHNP), a UNESCO World Heritage Site, lies within Kullu and protects rare flora and fauna. This makes Kullu not just scenic, but ecologically crucial.`,
     whyItMatters: "Kullu is not just a destination—it's a transition zone between modern tourism and ancient mountain living. Those who move slowly here discover something deeper than scenery: a rhythm shaped by rivers, seasons, and belief.",
-    image: "https://images.unsplash.com/photo-1597074866923-dc0589150358?w=800&q=80",
+    image: "https://experiencemyindia.com/wp-content/uploads/2024/09/Kullu-Manali-Blog.jpg",
     altitude: "1,200 - 6,000m",
     bestTime: "March - June, Sept - Nov",
     famousFor: ["Dussehra", "Parvati Valley", "Manikaran", "Great Himalayan NP"],
@@ -183,7 +183,7 @@ The district borders Tibet and retains strong Indo-Tibetan cultural influences. 
 
 The environment is fragile. Small ecological disruptions have visible long-term effects, which locals understand deeply. This awareness shapes everything from farming practices to hospitality.`,
     whyItMatters: "Kinnaur does not cater to visitors. It tolerates them. Those who approach with humility often leave transformed—not entertained, but grounded.",
-    image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80",
+    image: "https://www.oyorooms.com/travel-guide/wp-content/uploads/2020/01/NAKO-1-1.jpg",
     altitude: "2,000 - 6,800m",
     bestTime: "April - June, Sept - Oct",
     famousFor: ["Kinnaur Kailash", "Apple Orchards", "Chitkul", "Sangla Valley"],
