@@ -96,7 +96,7 @@ Limited local buses operate from Rohru, but schedules depend on weather. Private
     seoDescription: "Discover Dodra-Kwar, remote twin settlements in Shimla's Pabbar Valley. Experience authentic Himalayan village life, traditional architecture, and untouched natural beauty.",
 
     nearbyTreks: ["chanshal-pass-trek"],
-    image: "/placeholder.svg"
+    image: "https://ghumakkadi.com/media/dodra-kwar-dodra_76245_600x400.webp"
   },
 
   {
@@ -159,7 +159,7 @@ Most visitors reach by private taxi or motorcycle. Public transport runs only to
     seoTitle: "Chanshal Pass: Highest Motorable Pass in Shimla Region | Local Himachal",
     seoDescription: "Explore Chanshal Pass at 4,000m - one of Himachal's highest motorable passes. Experience vast alpine meadows, dramatic landscapes, and true mountain solitude.",
 
-    image: "/placeholder.svg"
+    image:"https://i0.wp.com/lahimalaya.com/wp-content/uploads/2023/08/Chanshal-and-surrounding-snowy-peaks-of-lesser-Himalayas-scaled.jpg?fit=2560%2C1440&ssl=1"
   },
 
   {
@@ -221,7 +221,7 @@ July and August bring monsoon rains that intensify the river's flow and greenery
     seoDescription: "Discover Pabbar Valley near Rohru - traditional villages, apple orchards, ancient temples, and authentic Himachali culture away from tourist crowds.",
 
     nearbyTreks: ["chanshal-pass-trek"],
-    image: "/placeholder.svg"
+    image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/4e/cd/29/buran-ghati-trek-pabbar.jpg?w=1200&h=-1&s=1"
   },
 
   // Kullu Region - Banjar/Tirthan Belt
@@ -346,7 +346,7 @@ Monsoon months bring mist, slippery trails, and leeches. Winters are harsh, with
     seoDescription: "Trek to Serolsar Lake through dense oak forests near Jalori Pass. Experience a sacred Himalayan lake protected by centuries of local reverence.",
 
     nearbyTreks: ["jalori-pass"],
-    image: "/placeholder.svg"
+    image: "https://blogs.innerpece.com/wp-content/uploads/2025/04/innerpece-Shoja-Village-in-Himalayan.png"
   },
 
   {
@@ -408,7 +408,7 @@ Monsoon months are lush but damp. Winter brings snowfall, transforming the villa
     seoDescription: "Discover Jibhi village - pine forests, mountain streams, traditional homes, and authentic Himalayan hospitality in Kullu's Tirthan region.",
 
     nearbyTreks: ["jalori-pass", "serolsar-lake"],
-    image: "/placeholder.svg"
+    image: "https://d2qa7a8q0vuocm.cloudfront.net/images/25178020230702180435.png"
   },
 
   {
@@ -470,7 +470,7 @@ Monsoon months enhance greenery but also bring travel disruptions. Winter is col
     seoDescription: "Explore Sainj Valley in the GHNP buffer zone - rich biodiversity, traditional villages, and responsible ecotourism in Kullu district.",
 
     nearbyTreks: ["shangarh-meadows"],
-    image: "/placeholder.svg"
+    image: "https://himalayasdigital.com/wp-content/uploads/2025/06/SainjValley_A-Hidden-Treasure-in-the-Heart-of-Himachal_Pradesh.webp"
   },
 
   {
@@ -529,7 +529,7 @@ Monsoon brings intense greenery but muddy conditions. Winters cover the meadow i
     seoTitle: "Shangarh Meadows: Sacred Alpine Grassland in Sainj Valley | Local Himachal",
     seoDescription: "Experience Shangarh Meadows - a vast, sacred grassland above Sainj Valley. Untouched by commercialization, protected by community beliefs.",
 
-    image: "/placeholder.svg"
+    image: "https://i0.wp.com/travelshoebum.com/wp-content/uploads/2017/07/dsc_0933.jpg?resize=1200%2C795&ssl=1"
   },
 
   // Mandi Region
@@ -591,7 +591,7 @@ Monsoon months increase greenery but also bring road risks. Winters are cold but
     seoTitle: "Barot Valley: Hidden River Valley & Trout Fishing in Mandi | Local Himachal",
     seoDescription: "Discover Barot Valley - forests, the Uhl River, trout fishing, and peaceful village life in Mandi district. A quiet escape from crowded hill stations.",
 
-    image: "/placeholder.svg"
+    image: "https://himalayasdigital.com/wp-content/uploads/2025/04/barot-1-2.webp"
   },
 
   {
@@ -652,7 +652,7 @@ July and August see heavy rainfall. Winters are cold and quiet, with limited act
     seoTitle: "Gada Gushaini: Authentic Village Life in Mandi District | Local Himachal",
     seoDescription: "Experience Gada Gushaini - a quiet village in Mandi with traditional architecture, forest surroundings, and authentic Himalayan agricultural life.",
 
-    image: "/placeholder.svg"
+    image: "https://i0.wp.com/travelshoebum.com/wp-content/uploads/2019/06/DSC_1794.jpg?fit=4928%2C3264&ssl=1"
   },
 
   // Kangra Region
@@ -714,7 +714,7 @@ Monsoon and winter travel is not recommended due to landslides, snow, and isolat
     seoTitle: "Rajgundha Valley: Remote High-Altitude Trek Beyond Bir | Local Himachal",
     seoDescription: "Explore Rajgundha Valley - a remote, traditional valley beyond Bir accessible only by trekking. Experience authentic Himalayan isolation.",
 
-    image: "/placeholder.svg"
+    image: "https://www.thehillgypsy.com/wp-content/uploads/2020/02/cover-image-5.jpg"
   },
 
   // Shimla - Narkanda Region
@@ -776,7 +776,7 @@ Winter brings snow and cold temperatures but also quiet beauty.`,
     seoTitle: "Thanedar: Birthplace of Apple Cultivation in Himachal | Local Himachal",
     seoDescription: "Visit Thanedar near Narkanda - where apple cultivation began in Himachal. Experience orchard life, colonial history, and agricultural heritage.",
 
-    image: "/placeholder.svg"
+    image:" https://www.banjaracamps.com/images/hero-banner/thanedar-slide-1.jpg"
   },
 
   {
@@ -837,7 +837,7 @@ Monsoon brings mist and dampness but enhances the forest atmosphere. Winter snow
     seoTitle: "Tani Jubbar Lake: Sacred Forest Lake Near Narkanda | Local Himachal",
     seoDescription: "Discover Tani Jubbar Lake - a small, sacred lake encircled by ancient forests near Narkanda. Protected by local beliefs, valued for its spiritual calm.",
 
-    image: "/placeholder.svg"
+    image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/53/1d/99/fb-img-1490889471340.jpg?w=800&h=400&s=1"
   },
 
   // Chamba Region
@@ -899,7 +899,7 @@ Monsoon travel is risky due to landslides, while winters are extremely harsh.`,
     seoTitle: "Churah Valley: Remote Traditional Valley in Chamba | Local Himachal",
     seoDescription: "Explore Churah Valley in interior Chamba - rugged landscapes, traditional villages, unique dialects, and authentic mountain isolation.",
 
-    image: "/placeholder.svg"
+    image: "https://www.himalayanecotourism.com/wp-content/uploads/2023/06/churah-to-see-link.jpg"
   },
 
   {
@@ -960,7 +960,7 @@ The rest of the year, Pangi remains largely inaccessible due to snow and extreme
     seoTitle: "Pangi Valley: Remote Himalayan Valley via Sach Pass | Local Himachal",
     seoDescription: "Explore Pangi Valley - one of Himachal's most remote regions. Dramatic landscapes, resilient culture, and true Himalayan isolation beyond Sach Pass.",
 
-    image: "/placeholder.svg"
+    image: "https://www.himalayanecotourism.com/wp-content/uploads/2023/06/pangi-031.jpg"
   }
 ];
 
