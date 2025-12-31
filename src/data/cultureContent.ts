@@ -100,7 +100,6 @@ export const foodContent = {
     {
       heading: "The Mountain Kitchen",
       content: "Himachali cuisine is born from necessity and refined through generations. At high altitudes where growing seasons are short and winters long, preservation becomes art. Dried meats, fermented vegetables, and grains that store well form the foundation. What might seem like simple fare to plains visitors represents accumulated wisdom about nutrition, storage, and the uses of every available ingredient."
-       image: "https://blog.ecohospitality.in/wp-content/uploads/2024/07/Dham-1.jpg"
     },
     {
       heading: "Dham: The Sacred Feast",
