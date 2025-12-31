@@ -23,7 +23,7 @@ export const treks: Trek[] = [
     altitude: "4,270m",
     bestSeason: "June - October",
     description: "Cross from lush Kullu Valley into the barren landscapes of Lahaul through one of Himachal's most dramatic passes.",
-    image: "https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=800&q=80",
+    image: "https://skyhike.in/uploads/itinerary/2pVRmRVrkeUeuIteBdaFv7YlP8bcTadDKf3Xn1GW.jpg",
     highlights: ["Dramatic terrain change", "Chandratal Lake", "Camping by streams", "Wildflowers in summer"]
   },
   {
@@ -36,7 +36,7 @@ export const treks: Trek[] = [
     altitude: "2,875m",
     bestSeason: "Year-round",
     description: "The perfect introduction to Himalayan trekking with stunning views of the Dhauladhar range.",
-    image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7YGe6knDHY5TbfBD9-i9Tl985SkpDqi7wJQ&s",
     highlights: ["Panoramic Dhauladhar views", "Easy accessibility", "Night camping", "Sunset views"]
   },
   {
@@ -49,7 +49,7 @@ export const treks: Trek[] = [
     altitude: "5,319m",
     bestSeason: "July - September",
     description: "One of India's most challenging treks, connecting the green Parvati Valley to the stark Pin Valley in Spiti.",
-    image: "https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?w=800&q=80",
+    image: "https://gafindia.in/wp-content/uploads/2024/12/india-pin-parvati01.webp",
     highlights: ["High altitude glaciers", "Remote wilderness", "Two distinct landscapes", "Ultimate adventure"]
   },
   {
@@ -62,7 +62,7 @@ export const treks: Trek[] = [
     altitude: "2,960m",
     bestSeason: "March - November",
     description: "Trek through ancient forests to natural hot springs at the top, where Lord Shiva is said to have meditated.",
-    image: "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=800&q=80",
+    image: "https://www.trailhikers.in/wp-content/uploads/2019/11/Kheerganga-Trek-001.jpg",
     highlights: ["Natural hot springs", "Parvati Valley views", "Sacred cave", "Forest camping"]
   },
   {
@@ -75,7 +75,7 @@ export const treks: Trek[] = [
     altitude: "4,300m",
     bestSeason: "May - October",
     description: "A high-altitude glacial lake where Sage Bhrigu is believed to have meditated, with meadows that change color with seasons.",
-    image: "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=800&q=80",
+    image: "https://mountainsojourns.com/wp-content/uploads/36_BhriguLakeTrek-Manali.jpg",
     highlights: ["Sacred lake", "360° mountain views", "Colorful meadows", "Short but challenging"]
   },
   {
@@ -88,7 +88,7 @@ export const treks: Trek[] = [
     altitude: "4,300m",
     bestSeason: "June - September",
     description: "The 'Moon Lake' is a crescent-shaped wonder surrounded by barren mountains, accessible by vehicle and short trek.",
-    image: "https://images.unsplash.com/photo-1434394354979-a235cd36269d?w=800&q=80",
+    image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/e5/bc/20/the-memserizing-beauty.jpg?w=1200&h=1200&s=1",
     highlights: ["Crescent moon shape", "Changing colors", "Camping by lake", "Stargazing"]
   },
   {
@@ -101,7 +101,7 @@ export const treks: Trek[] = [
     altitude: "4,220m",
     bestSeason: "March - June",
     description: "Snow-covered trails through pine forests leading to a pass with views of Parvati and Sainj valleys.",
-    image: "https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=800&q=80",
+    image: "https://www.trekupindia.com/blog/storage/sar-pass-trek-trekup-india-scaled-1-1.webp",
     highlights: ["Snow slides", "Dense forests", "Valley views", "Adventure camping"]
   },
   {
@@ -114,7 +114,7 @@ export const treks: Trek[] = [
     altitude: "2,730m",
     bestSeason: "Year-round",
     description: "A sacred lake with a floating island and a 14th-century pagoda temple dedicated to Sage Prashar.",
-    image: "https://images.unsplash.com/photo-1605649487212-47bdab064df7?w=800&q=80",
+    image: "https://www.captureatrip.com/_next/image?url=https%3A%2F%2Fd1zvcmhypeawxj.cloudfront.net%2Flocation%2FHimachal%20Pradesh%2Fblogs%2Fprashar-lake-trek-f941e4ecde-qexx7x-webp-0fb0346249-1752061981000.webp&w=3840&q=75",
     highlights: ["Floating island mystery", "Ancient temple", "Snow views", "Easy weekend trek"]
   },
   {
@@ -127,7 +127,7 @@ export const treks: Trek[] = [
     altitude: "4,080m",
     bestSeason: "Aug - September",
     description: "A sacred pilgrimage trek to the lake at the foot of Mount Manimahesh, Shiva's abode.",
-    image: "https://images.unsplash.com/photo-1585136917228-06f238d15e3e?w=800&q=80",
+    image: "https://utsav.gov.in/public/uploads/event_cover_image/event_128/16496860702058808643.jpg",
     highlights: ["Sacred pilgrimage", "Manimahesh peak views", "Religious significance", "Mountain lake"]
   },
   {
@@ -140,7 +140,7 @@ export const treks: Trek[] = [
     altitude: "5,242m",
     bestSeason: "July - September",
     description: "A challenging trek to the sacred Shivling rock formation at Kinnaur Kailash, revered as Shiva's winter home.",
-    image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80",
+    image: "https://www.ntpgroups.com/uploaded_files/thumb_cache/thumb_840_649_kinner.jpg",
     highlights: ["Sacred Shivling", "Parikrama path", "High altitude challenge", "Spiritual journey"]
   },
   {
@@ -153,7 +153,7 @@ export const treks: Trek[] = [
     altitude: "3,690m",
     bestSeason: "May - October",
     description: "Trek to the source of River Beas beneath the towering peaks of Pir Panjal range.",
-    image: "https://images.unsplash.com/photo-1597074866923-dc0589150358?w=800&q=80",
+    image: "https://dwq3yv87q1b43.cloudfront.net/public/blogs/fit-in/1200x675/Blog_20240928-1608963128-1727505792.jpg",
     highlights: ["Beas River source", "Glacial lake", "Mountain views", "Alpine meadows"]
   },
   {
@@ -166,7 +166,7 @@ export const treks: Trek[] = [
     altitude: "3,647m",
     bestSeason: "March - June, Sept - Nov",
     description: "Highest peak of outer Himalayas with ancient Shirgul Mahadev temple at the summit.",
-    image: "https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=800&q=80",
+    image: "https://brozaadventures.com/soft/file_store/highlight/530832491CJ.jpg",
     highlights: ["Highest outer Himalayan peak", "Ancient temple", "Panoramic views", "Dense forests"]
   }
 ];
