@@ -270,7 +270,7 @@ Unlike lush Himachali valleys, Spiti is stark and open. Mountains are bare, shad
 
 Spiti lies at an average altitude of 12,000–14,000 feet. The landscape is cold desert, shaped by wind rather than water. The terrain dictates everything—architecture, clothing, food, travel, and belief systems. Villages are positioned to maximize sunlight and minimize wind exposure.`,
     whyItMatters: "Spiti does not offer comfort. It offers clarity. Many leave changed—not relaxed, but reoriented. It is not a place you consume. It is a place you endure and remember.",
-    image: "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=800&q=80",
+    image: "https://www.tourmyindia.com/socialimg/lahaul-spiti-valley-himachal.jpg",
     altitude: "3,650 - 6,600m",
     bestTime: "June - September",
     famousFor: ["Key Monastery", "Chandratal", "Dhankar", "Pin Valley"],
@@ -358,7 +358,7 @@ This accessibility shaped its past. Kangra was a center of power, art, and invas
 
 The district is the birthplace of Kangra miniature paintings, one of India's most refined art forms. These paintings depict mythology, romance, and daily life with delicate precision.`,
     whyItMatters: "Kangra is where Himachal's softness lives. It balances devotion, art, and nature without extremes. Those who listen here learn history—not from books, but from land.",
-    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&q=80",
+    image: "https://media.istockphoto.com/id/474565222/photo/kangra-fort-dharamshala-himachal-pradesh-india.jpg?s=612x612&w=0&k=20&c=rgAJ1oKbFaFC5Mu3YLI2Nxw2jjy9UDO33L-oqjMgbOI=",
     altitude: "427 - 5,033m",
     bestTime: "Feb - April, Sept - Nov",
     famousFor: ["Dharamshala", "McLeodganj", "Kangra Fort", "Palampur Tea"],
@@ -444,7 +444,7 @@ The Ravi River flows through the heart of the district, shaping settlements, agr
 
 Chamba lies in the northwestern part of Himachal Pradesh and is one of the most geographically diverse districts. Altitude varies dramatically—from around 800 meters to over 6,000 meters—creating multiple climate zones within the same district.`,
     whyItMatters: "Chamba represents continuity. It shows what Himachal looked like before speed arrived—and why slowing down still matters.",
-    image: "https://images.unsplash.com/photo-1585136917228-06f238d15e3e?w=800&q=80",
+    image: "https://antelopetourandtravel.com/wp-content/uploads/2022/07/chambaintro.webp",
     altitude: "800 - 6,000m",
     bestTime: "April - June, Sept - Oct",
     famousFor: ["Khajjiar", "Chamba Rumal", "Manimahesh", "Pangi Valley"],
@@ -531,7 +531,7 @@ Shimla district is not about escape. It is about coexistence—between governanc
 
 Shimla district lies in the lower to mid-Himalayan range, with elevations ranging from about 300 meters to over 6,000 meters in higher reaches. The climate is moderate compared to higher districts, making it suitable for year-round habitation.`,
     whyItMatters: "Shimla shows how Himachal balances power and people. It is not the prettiest district, but it is one of the most influential—and understanding it explains much of the state's direction.",
-    image: "https://images.unsplash.com/photo-1597074866923-dc0589150358?w=800&q=80",
+    image: "https://s7ap1.scene7.com/is/image/incredibleindia/cityscape-of-shimla-himachal-pradesh-city-1-hero?qlt=82&ts=1742171983523",
     altitude: "300 - 6,000m",
     bestTime: "Year-round",
     famousFor: ["Mall Road", "Toy Train", "Kufri", "Colonial Architecture"],
@@ -618,7 +618,7 @@ Life in Mandi moves around water. The Beas, Uhl, and other rivers shape agricult
 
 Mandi lies in central Himachal, acting as a gateway between lower and upper regions. Its geography is gentler than high-altitude districts but still distinctly mountainous. This geography supports stable settlements and long-standing temple towns.`,
     whyItMatters: "Mandi teaches that devotion can shape geography and time. It reminds travelers that movement is not always upward—sometimes depth lies in the valley.",
-    image: "https://images.unsplash.com/photo-1605649487212-47bdab064df7?w=800&q=80",
+    image: "https://www.buranshtales.com/_next/image?url=%2Fblogs%2Fmandi-himachal-temples-59ae8c54.jpg&w=3840&q=75",
     altitude: "760 - 5,669m",
     bestTime: "Feb - April, Sept - Nov",
     famousFor: ["Prashar Lake", "Rewalsar", "Shivaratri Fair", "Janjehli"],
@@ -703,7 +703,7 @@ Known as the "Mushroom City of India," Solan balances agriculture, education, an
 
 Solan is less about spectacle and more about stability. Many residents work in education, pharmaceuticals, agriculture, or research. Community life centers around schools, markets, and local festivals.`,
     whyItMatters: "Solan shows that not every place needs drama to matter. It represents the everyday backbone of Himachal—functional, grounded, and quietly essential.",
-    image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80",
+    image: "https://travelthrivehub.com/wp-content/uploads/2025/10/Snowfall_solan_city1-e1761131265164.webp",
     altitude: "300 - 3,647m",
     bestTime: "Year-round",
     famousFor: ["Kasauli", "Mohan Shakti Heritage Park", "Barog", "Chail"],
@@ -790,7 +790,7 @@ Unlike districts shaped by tourism or high-altitude drama, Sirmaur is subtle. It
 
 Sirmaur's geography is diverse but underappreciated. The terrain is rugged but greener than high-altitude regions. Forests cover a significant portion of the district and are closely guarded by both government and local belief systems.`,
     whyItMatters: "Sirmaur represents the quieter soul of Himachal—untouched not by isolation, but by choice. It reminds travelers that not every place wants to be discovered.",
-    image: "https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=800&q=80",
+    image: "https://www.adotrip.com/public/images/city/master_images/5e4d2253304d8-Sirmaur_Attractions.jpg",
     altitude: "300 - 3,647m",
     bestTime: "March - June, Sept - Nov",
     famousFor: ["Renuka Lake", "Churdhar Trek", "Nahan", "Haripurdhar"],
@@ -877,7 +877,7 @@ Known for its high literacy rate and strong educational culture, Hamirpur reflec
 
 People leave for work and return for life. Many families have members working across India, but community ties remain strong. Hamirpur shows Himachal as a home, not a destination.`,
     whyItMatters: "Hamirpur shows the foundation of Himachal Pradesh—education, stability, and everyday resilience. It may not inspire postcards, but it sustains the state.",
-    image: "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=800&q=80",
+    image: "https://upload.wikimedia.org/wikipedia/commons/e/e6/Hamirpur%2C_Himachal_Pradesh.jpg",
     altitude: "400 - 1,100m",
     bestTime: "Oct - March",
     famousFor: ["Sujanpur Tihra", "Nadaun", "Gasota Mahadev", "Historic Forts"],
@@ -962,7 +962,7 @@ Unlike the cold, pine-covered regions people associate with Himachal, Una sits c
 
 Una lies in the southwestern corner of Himachal Pradesh, bordering Punjab. Summers are hot, winters mild, and snowfall is rare. This climate allows year-round habitation and farming.`,
     whyItMatters: "Una reminds travelers that Himachal is not only mountains and snow. It is also faith, movement, and cultural exchange. Understanding Una completes the picture of the state's diversity.",
-    image: "https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?w=800&q=80",
+    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjovCd0xmvMy1ChT6wiPdXB-wpB6JQHYjsH6fWnPajOGpQDCBkllmWAh3yxPq-UVIERKvzo0abcwvFi6UDnR_iDWhG6jUv1qlAqgPe-1USSxXLaHDpN7_E729_LumFd5JlMrlolWxz-Ww/s1600-rw/Gobind+Sagar+Lake.jpg",
     altitude: "350 - 1,200m",
     bestTime: "Oct - March",
     famousFor: ["Chintpurni Temple", "Naina Devi", "Amb", "Shiv Bari Temple"],
@@ -1048,7 +1048,7 @@ Today, Bilaspur lives with memory and modernity side by side. The hills remain, 
 
 Bilaspur lies in central Himachal Pradesh with Shivalik hills, rocky terrain, and semi-arid vegetation. The Sutlej River, now tamed by the dam, remains central to the district's ecology and economy. Climate is moderate, with hot summers and mild winters.`,
     whyItMatters: "Bilaspur tells a modern Himachal story—of development, sacrifice, and adaptation. It reminds visitors that progress always reshapes landscapes and lives.",
-    image: "https://images.unsplash.com/photo-1434394354979-a235cd36269d?w=800&q=80",
+    image: "https://realhimachal.in/wp-content/uploads/2023/12/Chandpur-Bridge-Arial-View.jpg",
     altitude: "350 - 1,700m",
     bestTime: "Year-round",
     famousFor: ["Gobind Sagar", "Bhakra Dam", "Naina Devi", "Water Sports"],
