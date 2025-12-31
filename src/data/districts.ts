@@ -30,7 +30,7 @@ export const districts: District[] = [
     slug: "kullu",
     tagline: "Valley of Gods",
     description: "Legendary valley blessed by Sage Vyas, where every village has a deity and every festival is a celebration of life.",
-    image: "https://images.unsplash.com/photo-1597074866923-dc0589150358?w=800&q=80",
+    image: "https://experiencemyindia.com/wp-content/uploads/2024/09/Kullu-Manali-Blog.jpg",
     altitude: "1,230 - 5,289m",
     bestTime: "March - June, Sept - Nov",
     famousFor: ["Dussehra", "Parvati Valley", "Manikaran", "Great Himalayan NP"],
