@@ -4,15 +4,15 @@
 export const cultureHero = {
   title: "Culture That Lives, Not Performs",
   subtitle: "In Himachal Pradesh, culture is not a curated display for visitors. It is the daily rhythm of life — woven into prayers whispered at dawn, meals shared in silence, and dances that rise from the soil after a successful harvest.",
-  image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80",
+  image: "https://www.shutterstock.com/shutterstock/videos/3799931453/thumb/1.jpg?ip=x480",
 };
 
 export const introContent = {
   paragraphs: [
-    "There is a particular stillness in the Himachali mountains that prepares you for what you're about to witness. The culture here doesn't announce itself with fanfare — it seeps into you slowly, through the wood smoke curling from slate rooftops, through the unhurried footsteps of women carrying bundles of fodder down ancient trails, through the distant temple bells that mark time in a land where clocks seem irrelevant.",
-    "Unlike the performative traditions of tourist hotspots, Himachali culture exists because it must. The festivals are not events — they are necessities of the spirit. The songs are not entertainment — they are collective memory. The architecture is not aesthetic — it is survival. Every tradition carries within it the wisdom of generations who learned to live in one of the world's most unforgiving yet beautiful landscapes.",
-    "To understand Himachal's soul, one must understand that here, the sacred and the mundane are inseparable. A farmer doesn't work the land — he serves it. A woman doesn't cook a meal — she performs a daily ritual of sustenance. A child doesn't play — she learns the old ways through games that have remained unchanged for centuries.",
-    "This is not a place where culture is preserved in museums or revived for cameras. It lives, breathes, and continues — often out of sight, in villages that appear on no tourist map, in dialects that have no written form, in recipes that exist only in the hands of grandmothers who learned by watching, not reading."
+    "There is a particular stillness in the Himachali mountains that prepares you for what you're about to witness. The culture here doesn't announce itself with fanfare it seeps into you slowly, through the wood smoke curling from slate rooftops, through the unhurried footsteps of women carrying bundles of fodder down ancient trails, through the distant temple bells that mark time in a land where clocks seem irrelevant.",
+    "Unlike the performative traditions of tourist hotspots, Himachali culture exists because it must. The festivals are not events  they are necessities of the spirit. The songs are not entertainment they are collective memory. The architecture is not aesthetic it is survival. Every tradition carries within it the wisdom of generations who learned to live in one of the world's most unforgiving yet beautiful landscapes.",
+    "To understand Himachal's soul, one must understand that here, the sacred and the mundane are inseparable. A farmer doesn't work the land  he serves it. A woman doesn't cook a meal she performs a daily ritual of sustenance. A child doesn't play she learns the old ways through games that have remained unchanged for centuries.",
+    "This is not a place where culture is preserved in museums or revived for cameras. It lives, breathes, and continues  often out of sight, in villages that appear on no tourist map, in dialects that have no written form, in recipes that exist only in the hands of grandmothers who learned by watching, not reading."
   ]
 };
 
