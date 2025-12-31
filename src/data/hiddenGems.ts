@@ -284,7 +284,7 @@ Monsoon months bring mist and lush greenery but also leeches and slippery paths.
     seoDescription: "Escape to Shoja village near Jalori Pass - dense forests, mountain views, and peaceful trails. Perfect for travelers seeking Himalayan solitude.",
 
     nearbyTreks: ["jalori-pass", "serolsar-lake"],
-    image: "/placeholder.svg"
+    image: "https://blogs.innerpece.com/wp-content/uploads/2025/04/innerpece-Shoja-Village-in-Himalayan.png"
   },
 
   {
