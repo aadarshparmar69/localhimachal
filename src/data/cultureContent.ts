@@ -27,7 +27,7 @@ export const regionalCulture = {
       "In Spiti, the Key Monastery has watched over the valley for over a thousand years. Its monks maintain practices that have vanished elsewhere, including tantric traditions passed down through unbroken lineages. The annual festivals — Losar, Buddha Purnima, and the masked Cham dances — aren't tourist spectacles. They are religious necessities, believed to ward off evil, purify the community, and ensure continued blessing.",
       "The people here speak tongues that have no written script yet contain within them poetry and philosophy accumulated over millennia. Their homes are built from mud and stone, their fields irrigated through channels that represent generations of collective labor. In winter, when snow isolates villages for months, communities turn inward — storytelling, prayer, and the slow work of handicrafts sustaining both body and spirit."
     ],
-    image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=1200&q=80"
+    image: "https://www.mountainiq.com/wp-content/uploads/2016/06/trekking-in-nepal-1.jpg"
   },
   midHimalayas: {
     title: "The Mid-Himalayas",
@@ -39,7 +39,7 @@ export const regionalCulture = {
       "The temple architecture of this region represents the Kath-Khuni tradition at its finest. Alternating layers of deodar wood and stone, joined without mortar or nails, create structures that have survived major earthquakes while more modern buildings crumbled. The carved wooden facades tell stories from the epics, each figure representing a philosophy, each pattern a prayer.",
       "Music in these valleys is inseparable from life. The Nati dance — recognized as the world's largest folk dance — isn't performed for audiences. It emerges spontaneously during festivals, weddings, and fairs, as hundreds of villagers link arms and move in hypnotic synchronized steps, often for hours without stopping. The rhythms are simple; the effect is transcendent."
     ],
-    image: "https://images.unsplash.com/photo-1585752531168-2c4e5e7c4499?w=1200&q=80"
+    image: "https://himalayansaga.com/wp-content/uploads/2022/03/sangla.jpg"
   },
   lowerHills: {
     title: "The Lower Hills",
@@ -51,7 +51,7 @@ export const regionalCulture = {
       "Temples like Brajeshwari and Jwala Ji draw pilgrims from across North India, yet retain practices found nowhere else. The eternal flame at Jwala Ji — natural gas vents that have burned for millennia — has inspired worship since before recorded history. The Hindi spoken here carries distinct Pahari inflections; the food incorporates both plains and mountain influences.",
       "In the lower hills, the Gaddi pastoral culture adds another layer. These semi-nomadic shepherds move between winter pastures in the Shivaliks and summer grazing grounds in Lahaul, maintaining traditions of transhumance that date back centuries. Their distinctive clothing, their particular dialect, and their seasonal festivals mark them as a community apart."
     ],
-    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1200&q=80"
+    image: "https://thumbs.dreamstime.com/b/valleys-mountain-ridges-shivalik-range-lower-himalayas-pine-trees-foreground-uttarakhand-india-283187907.jpg"
   }
 };
 
@@ -64,31 +64,31 @@ export const festivalsContent = {
       name: "Kullu Dussehra",
       timing: "October (7 days)",
       essence: "When over 200 village deities gather to honor Lord Raghunath, the valley becomes a meeting ground of the divine. This is not celebration — it is congregation.",
-      image: "https://images.unsplash.com/photo-1605649487212-47bdab064df7?w=800&q=80"
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa1_IYlN0ryuVaZdRvVfbSYelRRgVEfK76lA&s"
     },
     {
       name: "Losar",
       timing: "February-March",
       essence: "In the Buddhist highlands, the New Year brings masked dances, monastery rituals, and community feasting that mark the turning of the year and the defeat of evil.",
-      image: "https://images.unsplash.com/photo-1567591370504-80ae7f97fcd3?w=800&q=80"
+      image: "https://www.lchangnang.com/blog/wp-content/uploads/2023/11/Losar-Festival.webp"
     },
     {
       name: "Fagli",
       timing: "February",
       essence: "The Kinnauri festival of colors predates Holi by centuries. It is a time of licensed mischief, gender-role reversal, and the symbolic driving out of winter's demons.",
-      image: "https://images.unsplash.com/photo-1512036666432-2f565f4b5fc4?w=800&q=80"
+      image: "https://bhigasa.in/wp-content/uploads/2024/04/Blog-1-Heading-1024x640.jpg"
     },
     {
       name: "Minjar",
       timing: "July-August",
       essence: "In Chamba, the festival celebrates the maize harvest. Silk tassels representing the crop are offered to the river, seeking blessings for abundance.",
-      image: "https://images.unsplash.com/photo-1533669955142-6a73332af4db?w=800&q=80"
+      image: "https://www.tourmyindia.com/socialimg/minjar-mela-himachal.jpg"
     },
     {
       name: "Phulaich",
       timing: "September",
       essence: "In Kinnaur, the flower festival thanks local deities for a successful harvest. Villages come alive with the fragrance of fresh blooms and ancient songs.",
-      image: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=800&q=80"
+      image: "https://culturetravel.in/images/cultureEvents/phulaichFestival/main.jpg"
     }
   ]
 };
@@ -100,6 +100,7 @@ export const foodContent = {
     {
       heading: "The Mountain Kitchen",
       content: "Himachali cuisine is born from necessity and refined through generations. At high altitudes where growing seasons are short and winters long, preservation becomes art. Dried meats, fermented vegetables, and grains that store well form the foundation. What might seem like simple fare to plains visitors represents accumulated wisdom about nutrition, storage, and the uses of every available ingredient."
+       image: "https://blog.ecohospitality.in/wp-content/uploads/2024/07/Dham-1.jpg"
     },
     {
       heading: "Dham: The Sacred Feast",
