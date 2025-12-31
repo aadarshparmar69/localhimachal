@@ -18,7 +18,7 @@ export const homestays: Homestay[] = [
     village: "Gushaini",
     district: "Tirthan Valley, Kullu",
     description: "Wake up surrounded by apple orchards in the serene Tirthan Valley, with the river flowing nearby.",
-    image: "https://images.unsplash.com/photo-1587381420270-3e1a5b9e6904?w=800&q=80",
+    image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/06/17/de/d2/new-unit.jpg?w=1800&h=1000&s=1",
     priceRange: "₹1,200 – ₹1,800",
     externalLink: "https://www.instagram.com/theorchardstays/"
   },
@@ -29,7 +29,7 @@ export const homestays: Homestay[] = [
     village: "Kaza",
     district: "Spiti Valley",
     description: "Experience the raw beauty of Spiti from a traditional mountain home in the heart of Kaza.",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+    image: "https://gos3.ibcdn.com/c7b2011e-b968-44b2-872c-233394a07ab9.jpg",
     priceRange: "₹1,800 – ₹3,500",
     externalLink: "https://www.makemytrip.com/hotels/spiti_valley_home_stay-details-spiti.html"
   },
@@ -40,7 +40,7 @@ export const homestays: Homestay[] = [
     village: "Tirthan Valley",
     district: "Kullu",
     description: "By the crystal Tirthan River, this homestay is your gateway to the Great Himalayan National Park.",
-    image: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80",
+    image: "https://www.tirthanvalleystay.com/wp-content/uploads/2024/02/461856748.webp",
     priceRange: "₹2,000 – ₹4,000",
     externalLink: "https://www.homestaysofindia.com/himachal/"
   },
@@ -51,7 +51,7 @@ export const homestays: Homestay[] = [
     village: "Dharamkot",
     district: "McLeodganj",
     description: "A peaceful haven for seekers, with Triund trail at your doorstep and Dalai Lama's temple nearby.",
-    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&q=80",
+    image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/68/b0/16/front-entrance.jpg?w=1200&h=-1&s=1",
     priceRange: "₹1,200 – ₹3,000",
     externalLink: "https://www.airbnb.co.in/s/Dharamkot–India/homes"
   },
@@ -62,7 +62,7 @@ export const homestays: Homestay[] = [
     village: "Jibhi",
     district: "Banjar Valley",
     description: "Hidden in the Banjar Valley, this cozy cottage offers the perfect escape into untouched village life.",
-    image: "https://images.unsplash.com/photo-1510798831971-661eb04b3739?w=800&q=80",
+    image: "https://r1imghtlak.mmtcdn.com/1e560da60a0811ecb26d0a58a9feac02.jpeg?&output-quality=75&downsize=520:350&crop=520:350;0,32&output-format=jpg",
     priceRange: "₹1,500 – ₹3,500",
     externalLink: "https://www.homestays.co.in"
   },
@@ -73,7 +73,7 @@ export const homestays: Homestay[] = [
     village: "Kalpa",
     district: "Kinnaur",
     description: "Watch the sunrise paint Kinnaur Kailash golden from your window, surrounded by apple orchards.",
-    image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80",
+    image: "https://a0.muscache.com/im/pictures/hosting/Hosting-37756446/original/7d9a5e72-4f8d-4680-818a-dc9f8c4a97ef.jpeg?im_w=720",
     priceRange: "₹1,500 – ₹4,000",
     externalLink: "https://www.airbnb.co.in/s/Kalpa–India/homes"
   },
@@ -84,7 +84,7 @@ export const homestays: Homestay[] = [
     village: "Malana Village",
     district: "Parvati Valley",
     description: "Experience the world's oldest democracy in this isolated village with unique customs and traditions.",
-    image: "https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?w=800&q=80",
+    image: "https://pix10.agoda.net/hotelImages/32578670/0/9493c005e6a477d64fd5e93cf60ab079.jpg?ce=0&s=702x392",
     priceRange: "₹1,200 – ₹3,000",
     externalLink: "https://www.airbnb.co.in/s/Malana–India/homes"
   },
@@ -95,7 +95,7 @@ export const homestays: Homestay[] = [
     village: "Bir Billing",
     district: "Kangra",
     description: "Base yourself in the paragliding capital of India, with Tibetan culture and adventure awaiting.",
-    image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80",
+    image: "https://birbillingadventure.com/wp-content/uploads/2024/09/Bir-Himachal-Pradesh.jpg",
     priceRange: "₹1,500 – ₹4,000",
     externalLink: "https://www.makemytrip.com/hotels/p-homestays-in-bir_billing.html"
   },
@@ -106,7 +106,7 @@ export const homestays: Homestay[] = [
     village: "Bhuntar",
     district: "near Parvati Valley",
     description: "A tranquil retreat near Parvati Valley, perfect for those seeking peace and mountain serenity.",
-    image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80",
+    image: "https://r1imghtlak.ibcdn.com/0cef7a74-090c-48d9-8726-1bb47824ef99.jpg?output-quality=75&downsize=243:162&output-format=webp",
     priceRange: "₹1,000 – ₹2,500",
     externalLink: "https://www.airbnb.co.in/s/Bhuntar–India/homes"
   },
@@ -117,7 +117,7 @@ export const homestays: Homestay[] = [
     village: "Kalgha",
     district: "Parvati Valley",
     description: "Nestled in Kalgha village with stunning valley views and authentic Himachali hospitality.",
-    image: "https://images.unsplash.com/photo-1596178065887-1198b6148b2b?w=800&q=80",
+    image: "https://content3.jdmagicbox.com/v2/comp/kullu/h8/9999p1902.1902.230430103828.y5h8/catalogue/dreamcatcher-homestay-kalgha-kullu-home-stay-7j77sr1dpc.jpg",
     priceRange: "₹1,200 – ₹3,500",
     externalLink: "https://www.airbnb.co.in/s/Kalgha–India/homes"
   },
@@ -128,7 +128,7 @@ export const homestays: Homestay[] = [
     village: "Naddi",
     district: "Dharamshala",
     description: "Wake up to panoramic Himalayan views in this peaceful village above Dharamshala.",
-    image: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=800&q=80",
+    image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2a/e8/a8/b3/caption.jpg?w=1200&h=-1&s=1",
     priceRange: "₹900 – ₹2,800",
     externalLink: "https://www.airbnb.co.in/s/Dharamshala–India/homes"
   },
@@ -139,7 +139,7 @@ export const homestays: Homestay[] = [
     village: "Chojh Village",
     district: "Kasol",
     description: "A hidden gem in Chojh village offering riverside tranquility near the vibrant Kasol.",
-    image: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=800&q=80",
+    image: "https://r2imghtlak.ibcdn.com/r2-mmt-htl-image/htl-imgs/202003101149239952-2a131051-31d9-4157-977b-7065ad6e0f0a.jpg?output-quality=75&downsize=243:162&output-format=webp",
     priceRange: "₹1,000 – ₹3,000",
     externalLink: "https://www.airbnb.co.in/s/Chojh–India/homes"
   },
@@ -150,7 +150,7 @@ export const homestays: Homestay[] = [
     village: "Shimla",
     district: "Shimla",
     description: "A charming compact stay in the queen of hills, blending colonial heritage with modern comfort.",
-    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+    image: "https://r2imghtlak.ibcdn.com/r2-mmt-htl-image/htl-imgs/202410161142544340-f9c9f671-e41a-40b0-805b-7d2a39370166.jpg?output-quality=75&downsize=243:162&output-format=webp",
     priceRange: "₹1,500 – ₹3,500",
     externalLink: "https://www.airbnb.co.in/s/Shimla–India/homes"
   },
@@ -161,7 +161,7 @@ export const homestays: Homestay[] = [
     village: "Kasol",
     district: "Parvati Valley",
     description: "Adventure-focused accommodation in Kasol, perfect for trekkers exploring Parvati Valley.",
-    image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80",
+    image: "https://himtrekstays.com/wp-content/uploads/2025/04/Himtrek-Stays-Kasol-5-1-scaled.webp",
     priceRange: "₹1,800 – ₹4,000",
     externalLink: "https://himtrekstays.com/st_hotel/himtrek-stays-kasol/"
   }
