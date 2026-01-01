@@ -114,7 +114,7 @@ export const HeroSection = () => {
         duration: 0.6
       }} className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4">
           <Link to="/explore">
-            <Button variant="default" size="lg" className="w-full sm:w-auto bg-primary-foreground text-foreground hover:bg-primary-foreground/90 font-medium px-8 shadow-lg">
+            <Button variant="default" size="lg" className="w-full sm:w-auto bg-header-bg text-foreground hover:bg-header-bg/90 font-medium px-8 shadow-lg">
               Explore Districts
             </Button>
           </Link>

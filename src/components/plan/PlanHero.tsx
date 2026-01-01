@@ -83,8 +83,8 @@ export const PlanHero = () => {
           >
             <a
               href="#seasons"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-primary-foreground text-primary rounded-lg font-body font-medium 
-                         transition-all duration-300 hover:bg-primary-foreground/90 hover:shadow-elevated touch-manipulation"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-header-bg text-foreground rounded-lg font-body font-medium 
+                         transition-all duration-300 hover:bg-header-bg/90 hover:shadow-elevated touch-manipulation"
             >
               <Mountain className="w-4 h-4" />
               Start Planning
