@@ -295,7 +295,7 @@ const DistrictPage = () => {
               </div>
 
               {/* Sidebar - Stacks on mobile */}
-              <div className="lg:col-span-1">
+              <div className="lg:col-span-1 self-start">
                 <div className="lg:sticky lg:top-24 space-y-4 sm:space-y-6">
                   {/* Quick Info */}
                   <ScrollReveal>
