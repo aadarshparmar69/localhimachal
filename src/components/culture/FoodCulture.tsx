@@ -56,10 +56,9 @@ export const FoodCulture = () => {
               <div className={`relative ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
                 <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-elevated">
                   <img
-                    src={foodContent.image}
+                    src={section.image}
                     alt={section.heading}
                     className="w-full h-full object-cover"
-                    style={{ objectPosition: `${50 + index * 15}% 50%` }}
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-foreground/15 to-transparent" />
