@@ -83,7 +83,7 @@ export const ClosingSection = () => {
           <Link to="/plan">
             <Button 
               size="lg"
-              className="bg-header-bg text-foreground hover:bg-header-bg/90 font-medium shadow-lg"
+              className="bg-primary-foreground text-foreground hover:bg-primary-foreground/90 font-medium shadow-lg"
             >
               Start Planning
               <ArrowRight className="w-4 h-4 ml-2" />
