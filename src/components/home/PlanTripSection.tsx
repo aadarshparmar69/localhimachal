@@ -109,7 +109,7 @@ export const PlanTripSection = () => {
           <Link to="/plan">
             <Button 
               size="lg" 
-              className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg"
+              className="bg-[#3c431e] text-white hover:bg-[#3c431e]/90 shadow-lg"
             >
               Start Planning
               <ArrowRight className="w-4 h-4 ml-2" />
