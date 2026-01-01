@@ -97,7 +97,7 @@ export const IntroSection = () => {
           </Link>
           <span className="hidden sm:block text-border">•</span>
           <Link 
-            to="/plan-your-trip" 
+            to="/plan" 
             className="group flex items-center gap-2 text-foreground font-medium hover:text-primary transition-colors"
           >
             Plan Your Journey
