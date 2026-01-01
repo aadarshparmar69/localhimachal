@@ -10,13 +10,11 @@ import { Badge } from "@/components/ui/badge";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { hiddenGems, hiddenGemCategories, HiddenGem } from "@/data/hiddenGems";
 import { cn } from "@/lib/utils";
-
 const difficultyColors = {
   Easy: "bg-green-500/20 text-green-700 border-green-500/30",
   Moderate: "bg-amber-500/20 text-amber-700 border-amber-500/30",
   Challenging: "bg-red-500/20 text-red-700 border-red-500/30"
 };
-
 const categoryIcons: Record<string, string> = {
   valley: "🏔️",
   village: "🏘️",
@@ -26,11 +24,9 @@ const categoryIcons: Record<string, string> = {
   waterfall: "💦",
   trek: "🥾"
 };
-
 export default function HiddenGemsPage() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedDifficulty, setSelectedDifficulty] = useState<string | null>(null);
-
   const filteredGems = hiddenGems.filter(gem => {
     if (selectedCategory && gem.category !== selectedCategory) return false;
     if (selectedDifficulty && gem.difficulty !== selectedDifficulty) return false;
@@ -46,9 +42,7 @@ export default function HiddenGemsPage() {
     }
     gemsByRegion[region].push(gem);
   });
-
-  return (
-    <>
+  return <>
       <Helmet>
         <title>Hidden Gems of Himachal Pradesh | Offbeat Destinations | Local Himachal</title>
         <meta name="description" content="Discover Himachal's best-kept secrets - remote valleys, sacred lakes, ancient villages, and mountain passes that remain untouched by mass tourism." />
@@ -59,7 +53,7 @@ export default function HiddenGemsPage() {
       <main className="min-h-screen bg-background">
         {/* Hero Section */}
         <section className="relative pt-12 md:pt-16 pb-12 md:pb-20 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent bg-stone-100" />
           <div className="absolute top-20 left-1/4 w-48 md:w-96 h-48 md:h-96 bg-primary/5 rounded-full blur-3xl" />
           <div className="absolute bottom-0 right-1/4 w-32 md:w-64 h-32 md:h-64 bg-accent/10 rounded-full blur-3xl" />
           
@@ -101,60 +95,22 @@ export default function HiddenGemsPage() {
               
               {/* Category filters - horizontal scroll on mobile */}
               <div className="flex gap-2 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap scrollbar-hide">
-                <Button
-                  variant={selectedCategory === null ? "default" : "outline"}
-                  size="sm"
-                  onClick={() => setSelectedCategory(null)}
-                  className={cn(
-                    "text-xs flex-shrink-0 min-h-[36px] touch-manipulation",
-                    selectedCategory === null && "bg-[#3c431e] text-white hover:bg-[#3c431e]/90"
-                  )}
-                >
+                <Button variant={selectedCategory === null ? "default" : "outline"} size="sm" onClick={() => setSelectedCategory(null)} className={cn("text-xs flex-shrink-0 min-h-[36px] touch-manipulation", selectedCategory === null && "bg-[#3c431e] text-white hover:bg-[#3c431e]/90")}>
                   All Places
                 </Button>
-                {hiddenGemCategories.map(cat => (
-                  <Button
-                    key={cat.id}
-                    variant={selectedCategory === cat.id ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => setSelectedCategory(cat.id)}
-                    className={cn(
-                      "text-xs flex-shrink-0 min-h-[36px] touch-manipulation",
-                      selectedCategory === cat.id && "bg-[#3c431e] text-white hover:bg-[#3c431e]/90"
-                    )}
-                  >
+                {hiddenGemCategories.map(cat => <Button key={cat.id} variant={selectedCategory === cat.id ? "default" : "outline"} size="sm" onClick={() => setSelectedCategory(cat.id)} className={cn("text-xs flex-shrink-0 min-h-[36px] touch-manipulation", selectedCategory === cat.id && "bg-[#3c431e] text-white hover:bg-[#3c431e]/90")}>
                     {cat.icon} {cat.name}
-                  </Button>
-                ))}
+                  </Button>)}
               </div>
 
               {/* Difficulty filters */}
               <div className="flex gap-2 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap scrollbar-hide">
-                <Button
-                  variant={selectedDifficulty === null ? "default" : "outline"}
-                  size="sm"
-                  onClick={() => setSelectedDifficulty(null)}
-                  className={cn(
-                    "text-xs flex-shrink-0 min-h-[36px] touch-manipulation",
-                    selectedDifficulty === null && "bg-[#3c431e] text-white hover:bg-[#3c431e]/90"
-                  )}
-                >
+                <Button variant={selectedDifficulty === null ? "default" : "outline"} size="sm" onClick={() => setSelectedDifficulty(null)} className={cn("text-xs flex-shrink-0 min-h-[36px] touch-manipulation", selectedDifficulty === null && "bg-[#3c431e] text-white hover:bg-[#3c431e]/90")}>
                   Any Difficulty
                 </Button>
-                {["Easy", "Moderate", "Challenging"].map(diff => (
-                  <Button
-                    key={diff}
-                    variant={selectedDifficulty === diff ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => setSelectedDifficulty(diff)}
-                    className={cn(
-                      "text-xs flex-shrink-0 min-h-[36px] touch-manipulation",
-                      selectedDifficulty === diff && "bg-[#3c431e] text-white hover:bg-[#3c431e]/90"
-                    )}
-                  >
+                {["Easy", "Moderate", "Challenging"].map(diff => <Button key={diff} variant={selectedDifficulty === diff ? "default" : "outline"} size="sm" onClick={() => setSelectedDifficulty(diff)} className={cn("text-xs flex-shrink-0 min-h-[36px] touch-manipulation", selectedDifficulty === diff && "bg-[#3c431e] text-white hover:bg-[#3c431e]/90")}>
                     {diff}
-                  </Button>
-                ))}
+                  </Button>)}
               </div>
             </div>
           </div>
@@ -172,8 +128,7 @@ export default function HiddenGemsPage() {
         {/* Hidden Gems Grid by Region */}
         <section className="py-8 md:py-12">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            {Object.entries(gemsByRegion).map(([region, gems]) => (
-              <ScrollReveal key={region}>
+            {Object.entries(gemsByRegion).map(([region, gems]) => <ScrollReveal key={region}>
                 <div className="mb-12 md:mb-16">
                   <div className="flex items-center gap-3 mb-6 md:mb-8">
                     <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
@@ -186,20 +141,13 @@ export default function HiddenGemsPage() {
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-                    {gems.map((gem) => (
-                      <Link key={gem.id} to={`/hidden-gems/${gem.slug}`}>
-                        <motion.div
-                          whileTap={{ scale: 0.98 }}
-                          className="group bg-card border border-border/50 rounded-xl md:rounded-2xl overflow-hidden active:shadow-elevated md:hover:shadow-elevated md:hover:border-primary/30 transition-all duration-300"
-                        >
+                    {gems.map(gem => <Link key={gem.id} to={`/hidden-gems/${gem.slug}`}>
+                        <motion.div whileTap={{
+                    scale: 0.98
+                  }} className="group bg-card border border-border/50 rounded-xl md:rounded-2xl overflow-hidden active:shadow-elevated md:hover:shadow-elevated md:hover:border-primary/30 transition-all duration-300">
                           {/* Image */}
                           <div className="relative h-40 sm:h-48 overflow-hidden">
-                            <img
-                              src={gem.image}
-                              alt={gem.name}
-                              className="w-full h-full object-cover transition-transform duration-500 md:group-hover:scale-105"
-                              loading="lazy"
-                            />
+                            <img src={gem.image} alt={gem.name} className="w-full h-full object-cover transition-transform duration-500 md:group-hover:scale-105" loading="lazy" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                             
                             {/* Category badge */}
@@ -253,12 +201,10 @@ export default function HiddenGemsPage() {
                             </div>
                           </div>
                         </motion.div>
-                      </Link>
-                    ))}
+                      </Link>)}
                   </div>
                 </div>
-              </ScrollReveal>
-            ))}
+              </ScrollReveal>)}
           </div>
         </section>
 
@@ -286,6 +232,5 @@ export default function HiddenGemsPage() {
       </main>
 
       <Footer />
-    </>
-  );
+    </>;
 }
