@@ -346,7 +346,7 @@ Monsoon months bring mist, slippery trails, and leeches. Winters are harsh, with
     seoDescription: "Trek to Serolsar Lake through dense oak forests near Jalori Pass. Experience a sacred Himalayan lake protected by centuries of local reverence.",
 
     nearbyTreks: ["jalori-pass"],
-    image: "https://blogs.innerpece.com/wp-content/uploads/2025/04/innerpece-Shoja-Village-in-Himalayan.png"
+    image: "https://i0.wp.com/crossroadadventure.com/wp-content/uploads/2020/12/LRM_EXPORT_635821070678497_20181231_111004351-1.jpg?resize=1380%2C920&ssl=1"
   },
 
   {
