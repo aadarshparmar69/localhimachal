@@ -186,7 +186,7 @@ export const ItineraryForm = () => {
                     <div 
                       className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 ${
                         currentStep >= step.id 
-                          ? 'bg-primary text-primary-foreground' 
+                          ? 'bg-[#3c431e] text-white' 
                           : 'bg-secondary text-muted-foreground'
                       }`}
                     >
@@ -204,7 +204,7 @@ export const ItineraryForm = () => {
                   </div>
                   {index < steps.length - 1 && (
                     <div className={`w-12 md:w-24 h-0.5 mx-2 transition-all duration-300 ${
-                      currentStep > step.id ? 'bg-primary' : 'bg-border'
+                      currentStep > step.id ? 'bg-[#3c431e]' : 'bg-border'
                     }`} />
                   )}
                 </div>
@@ -516,12 +516,12 @@ export const ItineraryForm = () => {
                 </Button>
 
                 {currentStep < 4 ? (
-                  <Button type="button" onClick={nextStep} className="gap-2">
+                  <Button type="button" onClick={nextStep} className="gap-2 bg-[#3c431e] text-white hover:bg-[#3c431e]/90">
                     Next
                     <ArrowRight className="w-4 h-4" />
                   </Button>
                 ) : (
-                  <Button type="submit" disabled={isSubmitting} className="gap-2">
+                  <Button type="submit" disabled={isSubmitting} className="gap-2 bg-[#3c431e] text-white hover:bg-[#3c431e]/90">
                     {isSubmitting ? (
                       <>
                         <Loader2 className="w-4 h-4 animate-spin" />
