@@ -92,7 +92,7 @@ const TreksPage = () => {
                     className={cn(
                       "px-3 md:px-4 py-2 rounded-full text-xs md:text-sm font-body font-medium transition-all flex-shrink-0 min-h-[36px] touch-manipulation",
                       selectedDifficulty === difficulty
-                        ? "bg-primary text-primary-foreground"
+                        ? "bg-[#3c431e] text-white"
                         : "bg-secondary text-secondary-foreground active:bg-secondary/80 md:hover:bg-secondary/80"
                     )}
                   >
