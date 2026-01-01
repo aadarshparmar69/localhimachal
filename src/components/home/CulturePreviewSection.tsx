@@ -30,7 +30,7 @@ export const CulturePreviewSection = () => {
           className="absolute inset-0 will-change-transform"
         >
           <img
-            src="https://images.unsplash.com/photo-1545562083-c583d014b4f2?w=1920&q=80"
+            src="https://static.toiimg.com/photo/msid-92006818,width-96,height-65.cms"
             alt="Himachali culture and traditions"
             className="w-full h-[130%] object-cover opacity-15"
             loading="lazy"
