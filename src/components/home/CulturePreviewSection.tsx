@@ -135,9 +135,6 @@ export const CulturePreviewSection = () => {
           </div>
         </div>
       </div>
-
-      {/* Bottom section divider */}
-      <div className="h-16 sm:h-20 bg-gradient-to-b from-muted/40 to-background" />
     </section>
   );
 };
