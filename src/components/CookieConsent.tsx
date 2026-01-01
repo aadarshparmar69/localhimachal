@@ -34,7 +34,7 @@ const CookieConsent = () => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="fixed bottom-0 left-0 right-0 z-[100] bg-header-bg border-t border-border shadow-elevated safe-padding-bottom"
+          className="fixed bottom-0 left-0 right-0 z-[100] bg-[#3c431e] border-t border-border shadow-elevated safe-padding-bottom"
           role="dialog"
           aria-modal="true"
           aria-label="Cookie consent"
@@ -52,7 +52,7 @@ const CookieConsent = () => {
                 <Button
                   onClick={handleAccept}
                   size="sm"
-                  className="bg-foreground text-background hover:bg-foreground/90 px-5 font-medium"
+                  className="bg-foreground text-white hover:bg-foreground/90 px-5 font-medium"
                 >
                   Accept
                 </Button>
