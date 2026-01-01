@@ -3,32 +3,32 @@ import { useState } from "react";
 
 const atmosphereImages = [
   {
-    src: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=600&q=80",
+    src: "https://s7ap1.scene7.com/is/image/incredibleindia/baspa-rever-himachal-pradesh-rural-unique?qlt=82&ts=1726642254388",
     alt: "Mountain sunrise in Himachal",
     caption: "Where light meets stone"
   },
   {
-    src: "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=600&q=80",
+    src: "https://media.istockphoto.com/id/1371289822/photo/himalayan-village-town-of-kalpa-with-kailash-mountain-snow-peaks-at-himachal-pradesh-india.jpg?s=612x612&w=0&k=20&c=ibz1ktqV34YlHk0FeSyBcoykG2IVViXNUxU2NLCGsg8=",
     alt: "Misty valleys",
     caption: "Silence speaks here"
   },
   {
-    src: "https://images.unsplash.com/photo-1545562083-c583d014b4f2?w=600&q=80",
+    src: "https://travellinghigh.wordpress.com/wp-content/uploads/2014/05/dsc0132.jpg",
     alt: "Prayer flags",
     caption: "Prayers carried by wind"
   },
   {
-    src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+    src: "https://upload.wikimedia.org/wikipedia/commons/2/2b/Sarahan_-_Bhimakali_Temple.jpg",
     alt: "Snow peaks",
     caption: "Ancient guardians"
   },
   {
-    src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80",
+    src:"https://s7ap1.scene7.com/is/image/incredibleindia/sangla-valley-himachal-pradesh-rural-unique?qlt=82&ts=1726642072212",
     alt: "Forest path",
     caption: "Every path a story"
   },
   {
-    src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80",
+    src: "https://mysterioushimachal.wordpress.com/wp-content/uploads/2016/05/spiti-lead-image-866x487.jpg",
     alt: "Golden hour mountains",
     caption: "Time stands still"
   },
