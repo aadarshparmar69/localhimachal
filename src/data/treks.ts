@@ -36,7 +36,7 @@ export const treks: Trek[] = [
     altitude: "2,875m",
     bestSeason: "Year-round",
     description: "The perfect introduction to Himalayan trekking with stunning views of the Dhauladhar range.",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7YGe6knDHY5TbfBD9-i9Tl985SkpDqi7wJQ&s",
+    image: "https://media1.thrillophilia.com/filestore/upku8nboo69gwpqkt5dpj2jek3oz_triund%20trek%203.jpg",
     highlights: ["Panoramic Dhauladhar views", "Easy accessibility", "Night camping", "Sunset views"]
   },
   {
@@ -166,7 +166,7 @@ export const treks: Trek[] = [
     altitude: "3,647m",
     bestSeason: "March - June, Sept - Nov",
     description: "Highest peak of outer Himalayas with ancient Shirgul Mahadev temple at the summit.",
-    image: "https://brozaadventures.com/soft/file_store/highlight/530832491CJ.jpg",
+    image: "https://www.hptourtravel.com/wp-content/uploads/2024/04/Churdhar_Trek_Gallery_Image_3.webp",
     highlights: ["Highest outer Himalayan peak", "Ancient temple", "Panoramic views", "Dense forests"]
   }
 ];
