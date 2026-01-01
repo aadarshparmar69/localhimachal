@@ -106,7 +106,7 @@ export const PlanTripSection = () => {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="text-center"
         >
-          <Link to="/plan-your-trip">
+          <Link to="/plan">
             <Button 
               size="lg" 
               className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg"
