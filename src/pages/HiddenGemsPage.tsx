@@ -105,7 +105,10 @@ export default function HiddenGemsPage() {
                   variant={selectedCategory === null ? "default" : "outline"}
                   size="sm"
                   onClick={() => setSelectedCategory(null)}
-                  className="text-xs flex-shrink-0 min-h-[36px] touch-manipulation"
+                  className={cn(
+                    "text-xs flex-shrink-0 min-h-[36px] touch-manipulation",
+                    selectedCategory === null && "bg-[#3c431e] text-white hover:bg-[#3c431e]/90"
+                  )}
                 >
                   All Places
                 </Button>
@@ -115,7 +118,10 @@ export default function HiddenGemsPage() {
                     variant={selectedCategory === cat.id ? "default" : "outline"}
                     size="sm"
                     onClick={() => setSelectedCategory(cat.id)}
-                    className="text-xs flex-shrink-0 min-h-[36px] touch-manipulation"
+                    className={cn(
+                      "text-xs flex-shrink-0 min-h-[36px] touch-manipulation",
+                      selectedCategory === cat.id && "bg-[#3c431e] text-white hover:bg-[#3c431e]/90"
+                    )}
                   >
                     {cat.icon} {cat.name}
                   </Button>
@@ -128,7 +134,10 @@ export default function HiddenGemsPage() {
                   variant={selectedDifficulty === null ? "default" : "outline"}
                   size="sm"
                   onClick={() => setSelectedDifficulty(null)}
-                  className="text-xs flex-shrink-0 min-h-[36px] touch-manipulation"
+                  className={cn(
+                    "text-xs flex-shrink-0 min-h-[36px] touch-manipulation",
+                    selectedDifficulty === null && "bg-[#3c431e] text-white hover:bg-[#3c431e]/90"
+                  )}
                 >
                   Any Difficulty
                 </Button>
@@ -138,7 +147,10 @@ export default function HiddenGemsPage() {
                     variant={selectedDifficulty === diff ? "default" : "outline"}
                     size="sm"
                     onClick={() => setSelectedDifficulty(diff)}
-                    className="text-xs flex-shrink-0 min-h-[36px] touch-manipulation"
+                    className={cn(
+                      "text-xs flex-shrink-0 min-h-[36px] touch-manipulation",
+                      selectedDifficulty === diff && "bg-[#3c431e] text-white hover:bg-[#3c431e]/90"
+                    )}
                   >
                     {diff}
                   </Button>
