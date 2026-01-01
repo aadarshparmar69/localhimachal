@@ -43,7 +43,7 @@ const HomestaysPage = () => {
         <section className="relative py-16 md:py-24 bg-cedar-brown overflow-hidden">
           <div className="absolute inset-0 opacity-20">
             <img
-              src="https://images.unsplash.com/photo-1587381420270-3e1a5b9e6904?w=1920&q=80"
+              src="https://assets.cntraveller.in/photos/60ba23f4f27d46df614fc8e0/master/w_1600%2Cc_limit/Nabakov-Cottage-866x578.jpg"
               alt="Himachali Homestay"
               className="w-full h-full object-cover"
               loading="eager"
