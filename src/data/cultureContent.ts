@@ -100,7 +100,7 @@ export const foodContent = {
     {
       heading: "The Mountain Kitchen",
       content: "Himachali cuisine is born from necessity and refined through generations. At high altitudes where growing seasons are short and winters long, preservation becomes art. Dried meats, fermented vegetables, and grains that store well form the foundation. What might seem like simple fare to plains visitors represents accumulated wisdom about nutrition, storage, and the uses of every available ingredient.",
-      image: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=800&q=80"
+      image: "https://digitalalka.wordpress.com/wp-content/uploads/2017/07/himachali-cuisine.jpg"
     },
     {
       heading: "Dham: The Sacred Feast",
@@ -110,12 +110,12 @@ export const foodContent = {
     {
       heading: "Regional Specialties",
       content: "In the Buddhist highlands, butter tea (gur gur cha) and tsampa (roasted barley flour) sustain life through harsh winters. In Kinnaur, the Chilta and Aktori (buckwheat preparations) speak of a land where wheat doesn't grow. In Kullu, Siddu wheat bread stuffed with poppy seeds, steamed and served with ghee represents festival food at its finest. In Kangra, the influence of plains is visible in richer preparations and wider variety.",
-      image: "https://images.unsplash.com/photo-1567337710282-00832b415979?w=800&q=80"
+      image: "https://captureatrip-cms-storage.s3.ap-south-1.amazonaws.com/siddu_326f0d26f3.webp"
     },
     {
       heading: "Temple Food & Prasad",
       content: "The temple kitchens of Himachal serve food as divine offering. At Chintpurni, at Jwala Ji, at countless smaller shrines, langars feed thousands without distinction. The cooking is simple the taste is in the devotion with which it's prepared. Many Himachalis will tell you that no restaurant food can match the prasad from their village temple, infused as it is with collective faith.",
-      image: "https://images.unsplash.com/photo-1517244683847-7456b63c5969?w=800&q=80"
+      image: "https://images.squarespace-cdn.com/content/v1/653f733bdc9e247d28bcbcee/1715783770312-IZ7G0A50P2LVG9CMVM7M/Himachali+Dham.png"
     }
   ]
 };
