@@ -2,12 +2,12 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 
 const galleryImages = [
-  { src: "https://images.unsplash.com/photo-1585136917704-b2a58f9d8eed?w=800&q=80", caption: "Dawn breaks over Chitkul", size: "large" },
-  { src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80", caption: "Where the trail disappears", size: "small" },
-  { src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80", caption: "Prayers at sunrise", size: "medium" },
-  { src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80", caption: "Kath-Khuni traditions", size: "small" },
-  { src: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80", caption: "The silence between peaks", size: "medium" },
-  { src: "https://images.unsplash.com/photo-1581159959249-fd74c26a5b80?w=600&q=80", caption: "A monastery in the clouds", size: "small" },
+  { src: "https://s7ap1.scene7.com/is/image/incredibleindia/baspa-rever-himachal-pradesh-rural-unique?qlt=82&ts=1726642254388", caption: "Dawn breaks over Chitkul", size: "large" },
+  { src: "https://media.istockphoto.com/id/1371289822/photo/himalayan-village-town-of-kalpa-with-kailash-mountain-snow-peaks-at-himachal-pradesh-india.jpg?s=612x612&w=0&k=20&c=ibz1ktqV34YlHk0FeSyBcoykG2IVViXNUxU2NLCGsg8=", caption: "Where the trail disappears", size: "small" },
+  { src: "https://travellinghigh.wordpress.com/wp-content/uploads/2014/05/dsc0132.jpg", caption: "Prayers at sunrise", size: "medium" },
+  { src: "https://upload.wikimedia.org/wikipedia/commons/2/2b/Sarahan_-_Bhimakali_Temple.jpg", caption: "Kath-Khuni traditions", size: "small" },
+  { src: "https://s7ap1.scene7.com/is/image/incredibleindia/sangla-valley-himachal-pradesh-rural-unique?qlt=82&ts=1726642072212", caption: "The silence between peaks", size: "medium" },
+  { src: "https://mysterioushimachal.wordpress.com/wp-content/uploads/2016/05/spiti-lead-image-866x487.jpg", caption: "A monastery in the clouds", size: "small" },
 ];
 
 export const GallerySection = () => {
