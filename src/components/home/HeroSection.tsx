@@ -43,7 +43,7 @@ export const HeroSection = () => {
       <motion.div style={{
       opacity: contentOpacity,
       y: contentY
-    }} className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-5xl">
+    }} className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-5xl -mt-[14vh] sm:-mt-[10vh] md:-mt-[8vh]">
         {/* Small decorative element */}
         <motion.div initial={{
         opacity: 0,
