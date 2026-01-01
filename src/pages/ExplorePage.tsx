@@ -21,7 +21,7 @@ const ExplorePage = () => {
         <section className="relative py-16 md:py-24 bg-primary overflow-hidden">
           <div className="absolute inset-0 opacity-10">
             <img
-              src="https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=1920&q=80"
+              src="https://i0.wp.com/lahimalaya.com/wp-content/uploads/2020/03/Mountain-Peaks.jpg?fit=1920%2C1280&ssl=1"
               alt="Himachal Mountains"
               className="w-full h-full object-cover"
               loading="eager"
