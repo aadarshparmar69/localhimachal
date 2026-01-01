@@ -13,14 +13,14 @@ const RegionSection = ({ region, index }: RegionSectionProps) => {
   return (
     <section className="relative min-h-[70vh] sm:min-h-[80vh] flex items-center py-12 sm:py-16 overflow-hidden">
       {/* Background Image */}
-      <div className="absolute inset-0 z-0 opacity-35 sm:opacity-45">
+      <div className="absolute inset-0 z-0">
         <img
           src={region.image}
           alt={region.title}
           className="w-full h-full object-cover"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-b sm:bg-gradient-to-r from-foreground/95 via-foreground/85 to-foreground/70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-foreground/90 via-foreground/60 to-transparent" />
       </div>
 
       {/* Region Label */}
@@ -67,7 +67,7 @@ const RegionSection = ({ region, index }: RegionSectionProps) => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.15 }}
             viewport={{ once: true }}
-            className="font-body text-base sm:text-lg text-primary-foreground/80 italic mb-4 sm:mb-6"
+            className="font-body text-base sm:text-lg text-primary-foreground/90 italic mb-4 sm:mb-6"
           >
             {region.description}
           </motion.p>
@@ -80,7 +80,7 @@ const RegionSection = ({ region, index }: RegionSectionProps) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 + pIndex * 0.08 }}
                 viewport={{ once: true }}
-                className="font-body text-sm sm:text-base text-primary-foreground/70 leading-[1.8]"
+                className="font-body text-sm sm:text-base text-primary-foreground/85 leading-[1.8]"
               >
                 {paragraph}
               </motion.p>
