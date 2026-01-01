@@ -80,7 +80,7 @@ export const ClosingSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <Link to="/plan-your-trip">
+          <Link to="/plan">
             <Button 
               size="lg"
               className="bg-primary-foreground text-foreground hover:bg-primary-foreground/90 font-medium shadow-lg"
