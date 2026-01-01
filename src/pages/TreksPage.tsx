@@ -43,7 +43,7 @@ const TreksPage = () => {
         <section className="relative py-16 md:py-24 bg-primary overflow-hidden">
           <div className="absolute inset-0 opacity-10">
             <img
-              src="https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=1920&q=80"
+              src="https://madtrek.com/wp-content/uploads/2023/04/Inderhar-Pass-Trek-Pic.webp"
               alt="Trekking in Himachal"
               className="w-full h-full object-cover"
               loading="eager"
