@@ -340,7 +340,7 @@ const DistrictPage = () => {
 
                   {/* Plan CTA */}
                   <ScrollReveal>
-                    <div className="bg-primary rounded-xl sm:rounded-2xl p-4 sm:p-6">
+                    <div className="bg-[#3c431e] rounded-xl sm:rounded-2xl p-4 sm:p-6">
                       <h3 className="font-display text-lg sm:text-xl font-semibold text-primary-foreground mb-2 sm:mb-3">
                         Plan Your Visit
                       </h3>
