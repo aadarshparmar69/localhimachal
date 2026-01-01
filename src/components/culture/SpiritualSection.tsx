@@ -6,7 +6,7 @@ export const SpiritualSection = () => {
   const prefersReducedMotion = useReducedMotion();
   
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-foreground text-primary-foreground relative overflow-hidden">
+    <section className="py-12 sm:py-16 lg:py-20 bg-[#3c431e] text-primary-foreground relative overflow-hidden">
       {/* Subtle pattern */}
       <div className="absolute inset-0 pointer-events-none opacity-5">
         <div 
