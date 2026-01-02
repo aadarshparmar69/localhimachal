@@ -52,30 +52,35 @@ export default function HiddenGemsPage() {
       
       <main className="min-h-screen bg-background">
         {/* Hero Section */}
-        <section className="relative pt-12 md:pt-16 pb-12 md:pb-20 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent bg-stone-100" />
-          <div className="absolute top-20 left-1/4 w-48 md:w-96 h-48 md:h-96 bg-primary/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-1/4 w-32 md:w-64 h-32 md:h-64 bg-accent/10 rounded-full blur-3xl" />
+        <section className="relative min-h-[50vh] md:min-h-[60vh] flex items-center overflow-hidden">
+          {/* Background Image */}
+          <img
+            src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1920&q=80"
+            alt="Hidden valleys of Himachal"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-black/30" />
           
-          <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
             <ScrollReveal>
               <div className="max-w-4xl mx-auto text-center">
-                <Badge variant="outline" className="mb-4 md:mb-6 px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm font-medium border-primary/30 text-primary">
+                <Badge variant="outline" className="mb-4 md:mb-6 px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm font-medium border-white/40 text-white bg-white/10 backdrop-blur-sm">
                   <Mountain className="w-3.5 h-3.5 md:w-4 md:h-4 mr-1.5 md:mr-2" />
                   Beyond Tourist Trails
                 </Badge>
                 
-                <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 md:mb-6 tracking-tight leading-tight">
+                <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6 tracking-tight leading-tight">
                   Hidden Gems of
-                  <span className="text-primary block mt-1 md:mt-2">Himachal Pradesh</span>
+                  <span className="block mt-1 md:mt-2">Himachal Pradesh</span>
                 </h1>
                 
-                <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-6 md:mb-8 px-2">
+                <p className="text-base sm:text-lg md:text-xl text-white/85 max-w-3xl mx-auto leading-relaxed mb-6 md:mb-8 px-2">
                   Some places remain special because they resist easy access. These are the valleys, villages, and mountain passes where life moves at its own pace.
                 </p>
 
-                <div className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl md:rounded-2xl p-4 md:p-6 max-w-2xl mx-auto">
-                  <p className="text-sm md:text-base text-muted-foreground italic">
+                <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl md:rounded-2xl p-4 md:p-6 max-w-2xl mx-auto">
+                  <p className="text-sm md:text-base text-white/90 italic">
                     "What makes a place truly hidden is not distance, but the way it asks to be approached—slowly, respectfully, and with genuine intention."
                   </p>
                 </div>
