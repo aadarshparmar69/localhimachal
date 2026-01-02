@@ -1,7 +1,24 @@
+# Local Himachal - Robots.txt
+# Domain: localhimachal.in
+
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
 Allow: /
 
 User-agent: Twitterbot
@@ -10,5 +27,31 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Pinterest
+Allow: /
+
 User-agent: *
 Allow: /
+
+# Sitemap location
+Sitemap: https://localhimachal.in/sitemap.xml
+
+# Disallow admin and private routes
+Disallow: /admin
+Disallow: /api/
+Disallow: /*.json$
+
+# Allow important assets
+Allow: /favicon.png
+Allow: /og-image.jpg
+Allow: /*.css
+Allow: /*.js
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.gif
+Allow: /*.svg
+Allow: /*.webp
