@@ -71,7 +71,7 @@ export default function HiddenGemDetailPage() {
             className="absolute inset-0 w-full h-full object-cover"
             loading="eager"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
           
           <div className="absolute inset-0 flex items-end">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12">
