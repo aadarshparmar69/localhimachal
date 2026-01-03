@@ -1,6 +1,5 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { getHiddenPlaceBySlug } from "@/data/hiddenPlaces";
@@ -9,6 +8,8 @@ import { getHomestayBySlug } from "@/data/homestays";
 import { MapPin, Calendar, Mountain, ArrowLeft, Clock, AlertTriangle, Compass, Heart, Route, Home } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ScrollReveal, QuoteFadeIn } from "@/components/animations/ScrollReveal";
+import { SEOHead } from "@/components/SEOHead";
+import { SITE_CONFIG, getBreadcrumbSchema, getPlaceSchema } from "@/lib/seo";
 
 const HiddenPlacePage = () => {
   const { districtSlug, placeSlug } = useParams<{ districtSlug: string; placeSlug: string }>();
@@ -39,13 +40,32 @@ const HiddenPlacePage = () => {
   const nearbyTreks = place.nearbyTreks.map(slug => getTrekBySlug(slug)).filter(Boolean);
   const nearbyHomestays = place.nearbyHomestays.map(slug => getHomestayBySlug(slug)).filter(Boolean);
 
+  const breadcrumbs = [
+    { name: "Home", url: SITE_CONFIG.url },
+    { name: "Explore", url: `${SITE_CONFIG.url}/explore` },
+    { name: place.district, url: `${SITE_CONFIG.url}/district/${districtSlug}` },
+    { name: place.name, url: `${SITE_CONFIG.url}/district/${districtSlug}/${placeSlug}` }
+  ];
+
+  const placeSchema = getPlaceSchema({
+    name: place.name,
+    description: `${place.name} in ${place.district}: ${place.tagline}. An off-the-beaten-path destination in Himachal Pradesh.`,
+    image: place.image,
+    address: `${place.district} District`,
+    url: `${SITE_CONFIG.url}/district/${districtSlug}/${placeSlug}`
+  });
+
   return (
     <>
-      <Helmet>
-        <title>{place.name}, {place.district} - Hidden Places | Local Himachal</title>
-        <meta name="description" content={`Discover ${place.name} in ${place.district}: ${place.tagline}. An off-the-beaten-path destination in Himachal Pradesh.`} />
-        <meta name="keywords" content={`${place.name}, hidden places ${place.district}, offbeat Himachal, ${place.district} travel guide`} />
-      </Helmet>
+      <SEOHead
+        title={`${place.name}, ${place.district} - Hidden Places | Local Himachal`}
+        description={`Discover ${place.name} in ${place.district}: ${place.tagline}. An off-the-beaten-path destination in Himachal Pradesh.`}
+        keywords={`${place.name}, hidden places ${place.district}, offbeat Himachal, ${place.district} travel guide`}
+        url={`/district/${districtSlug}/${placeSlug}`}
+        image={place.image}
+        type="place"
+        schemas={[getBreadcrumbSchema(breadcrumbs), placeSchema]}
+      />
 
       <Navbar />
 

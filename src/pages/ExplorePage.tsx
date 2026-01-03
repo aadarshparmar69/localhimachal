@@ -1,18 +1,27 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { districts } from "@/data/districts";
 import { MapPin, Calendar, ArrowRight } from "lucide-react";
+import { SEOHead } from "@/components/SEOHead";
+import { PAGE_SEO, SITE_CONFIG, getBreadcrumbSchema } from "@/lib/seo";
 
 const ExplorePage = () => {
+  const breadcrumbs = [
+    { name: "Home", url: SITE_CONFIG.url },
+    { name: "Explore Districts", url: `${SITE_CONFIG.url}/explore` }
+  ];
+
   return (
     <>
-      <Helmet>
-        <title>Explore Himachal Pradesh - All 12 Districts | Local Himachal</title>
-        <meta name="description" content="Explore all 12 districts of Himachal Pradesh. From Kinnaur to Kangra, discover hidden gems, local culture, and authentic experiences in each region." />
-      </Helmet>
+      <SEOHead
+        title={PAGE_SEO.explore.title}
+        description={PAGE_SEO.explore.description}
+        keywords={PAGE_SEO.explore.keywords}
+        url="/explore"
+        schemas={[getBreadcrumbSchema(breadcrumbs)]}
+      />
 
       <Navbar />
 

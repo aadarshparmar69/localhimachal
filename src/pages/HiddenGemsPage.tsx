@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { MapPin, Mountain, Compass, Filter, ChevronRight } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
@@ -10,11 +9,15 @@ import { Badge } from "@/components/ui/badge";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { hiddenGems, hiddenGemCategories, HiddenGem } from "@/data/hiddenGems";
 import { cn } from "@/lib/utils";
+import { SEOHead } from "@/components/SEOHead";
+import { PAGE_SEO, SITE_CONFIG, getBreadcrumbSchema } from "@/lib/seo";
+
 const difficultyColors = {
   Easy: "bg-green-500/20 text-green-700 border-green-500/30",
   Moderate: "bg-amber-500/20 text-amber-700 border-amber-500/30",
   Challenging: "bg-red-500/20 text-red-700 border-red-500/30"
 };
+
 const categoryIcons: Record<string, string> = {
   valley: "🏔️",
   village: "🏘️",
@@ -24,9 +27,11 @@ const categoryIcons: Record<string, string> = {
   waterfall: "💦",
   trek: "🥾"
 };
+
 export default function HiddenGemsPage() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedDifficulty, setSelectedDifficulty] = useState<string | null>(null);
+  
   const filteredGems = hiddenGems.filter(gem => {
     if (selectedCategory && gem.category !== selectedCategory) return false;
     if (selectedDifficulty && gem.difficulty !== selectedDifficulty) return false;
@@ -42,11 +47,20 @@ export default function HiddenGemsPage() {
     }
     gemsByRegion[region].push(gem);
   });
+
+  const breadcrumbs = [
+    { name: "Home", url: SITE_CONFIG.url },
+    { name: "Hidden Gems", url: `${SITE_CONFIG.url}/hidden-gems` }
+  ];
+
   return <>
-      <Helmet>
-        <title>Hidden Gems of Himachal Pradesh | Offbeat Destinations | Local Himachal</title>
-        <meta name="description" content="Discover Himachal's best-kept secrets - remote valleys, sacred lakes, ancient villages, and mountain passes that remain untouched by mass tourism." />
-      </Helmet>
+      <SEOHead
+        title={PAGE_SEO.hiddenGems.title}
+        description={PAGE_SEO.hiddenGems.description}
+        keywords={PAGE_SEO.hiddenGems.keywords}
+        url="/hidden-gems"
+        schemas={[getBreadcrumbSchema(breadcrumbs)]}
+      />
 
       <Navbar />
       

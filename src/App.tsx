@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import ScrollRestoration from "./components/ScrollRestoration";
 import CookieConsent from "./components/CookieConsent";
+import { GoogleAnalytics } from "./components/GoogleAnalytics";
 import Index from "./pages/Index";
 import ExplorePage from "./pages/ExplorePage";
 import DistrictPage from "./pages/DistrictPage";
@@ -30,6 +31,7 @@ const App = () => (
         <Sonner />
         <CookieConsent />
         <BrowserRouter>
+          <GoogleAnalytics />
           <ScrollRestoration />
           <Routes>
             <Route path="/" element={<Index />} />

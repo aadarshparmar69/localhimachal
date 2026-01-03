@@ -1,4 +1,3 @@
-import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { CultureHero } from "@/components/culture/CultureHero";
@@ -13,15 +12,34 @@ import { SpiritualSection } from "@/components/culture/SpiritualSection";
 import { ModernLifeSection } from "@/components/culture/ModernLifeSection";
 import { ResponsibleTravelSection } from "@/components/culture/ResponsibleTravelSection";
 import { CultureClosing } from "@/components/culture/CultureClosing";
+import { SEOHead } from "@/components/SEOHead";
+import { PAGE_SEO, SITE_CONFIG, getBreadcrumbSchema, getArticleSchema } from "@/lib/seo";
 
 const CulturePage = () => {
+  const breadcrumbs = [
+    { name: "Home", url: SITE_CONFIG.url },
+    { name: "Culture", url: `${SITE_CONFIG.url}/culture` }
+  ];
+
+  const articleSchema = getArticleSchema({
+    title: PAGE_SEO.culture.title,
+    description: PAGE_SEO.culture.description,
+    image: "https://images.unsplash.com/photo-1623850893288-37a04fa06d3e?auto=format&fit=crop&w=1200&q=80",
+    datePublished: "2024-01-01",
+    dateModified: new Date().toISOString().split('T')[0],
+    url: `${SITE_CONFIG.url}/culture`
+  });
+
   return (
     <>
-      <Helmet>
-        <title>Culture That Lives, Not Performs - Himachal Pradesh | Local Himachal</title>
-        <meta name="description" content="Explore the living cultural heritage of Himachal Pradesh. Festivals, folk traditions, Kath-Khuni architecture, mountain cuisine, and spiritual practices of Dev Bhumi." />
-        <meta name="keywords" content="Himachal culture, Kullu Dussehra, Nati dance, Kath-Khuni architecture, Himachali food, Dev Bhumi traditions, Spiti Buddhist culture" />
-      </Helmet>
+      <SEOHead
+        title={PAGE_SEO.culture.title}
+        description={PAGE_SEO.culture.description}
+        keywords={PAGE_SEO.culture.keywords}
+        url="/culture"
+        type="article"
+        schemas={[getBreadcrumbSchema(breadcrumbs), articleSchema]}
+      />
 
       <Navbar />
 
