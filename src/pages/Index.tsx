@@ -10,16 +10,57 @@ import { CulturePreviewSection } from "@/components/home/CulturePreviewSection";
 import { PlanTripSection } from "@/components/home/PlanTripSection";
 import { AtmosphereSection } from "@/components/home/AtmosphereSection";
 import { ClosingSection } from "@/components/home/ClosingSection";
-import { Helmet } from "react-helmet-async";
+import { SEOHead } from "@/components/SEOHead";
+import { 
+  PAGE_SEO, 
+  SITE_CONFIG,
+  getOrganizationSchema, 
+  getWebsiteSchema, 
+  getTravelAgencySchema,
+  getFAQSchema 
+} from "@/lib/seo";
+
+const homeFaqs = [
+  {
+    question: "What is the best time to visit Himachal Pradesh?",
+    answer: "The best time depends on your interests. March-June for pleasant weather, December-February for snow, June-October for trekking. Monsoon brings lush greenery but also landslides."
+  },
+  {
+    question: "How can I reach Himachal Pradesh?",
+    answer: "Himachal is accessible by air (Dharamshala, Kullu, Shimla airports), rail (Kalka-Shimla toy train), and well-connected highways from Delhi and Chandigarh."
+  },
+  {
+    question: "What are the hidden gems of Himachal Pradesh?",
+    answer: "Beyond popular spots, discover Shangarh meadows, Dodra-Kwar villages, Chitkul, Jibhi, Barot, Bir-Billing, and remote valleys of Spiti and Kinnaur."
+  },
+  {
+    question: "Are homestays available in remote areas?",
+    answer: "Yes, authentic homestays are available throughout Himachal, including remote villages, offering genuine cultural experiences and local cuisine."
+  },
+  {
+    question: "Do I need permits for any areas in Himachal?",
+    answer: "Inner Line Permits are required for certain areas near the Indo-Tibetan border, including parts of Spiti Valley, Kinnaur, and some areas in Lahaul."
+  }
+];
 
 const Index = () => {
+  const schemas = [
+    getOrganizationSchema(),
+    getWebsiteSchema(),
+    getTravelAgencySchema(),
+    getFAQSchema(homeFaqs)
+  ];
+
   return (
     <>
-      <Helmet>
-        <title>Local Himachal - Where Mountains Hold Stories</title>
-        <meta name="description" content="A journey into the heart of Himachal Pradesh. Discover hidden villages, ancient temples, breathtaking treks, and authentic homestays through the eyes of locals." />
-        <meta name="keywords" content="Himachal Pradesh travel, hidden places Himachal, treks Himachal, homestays, local culture, Spiti, Kinnaur, Kullu, Manali" />
-      </Helmet>
+      <SEOHead
+        title={PAGE_SEO.home.title}
+        description={PAGE_SEO.home.description}
+        keywords={PAGE_SEO.home.keywords}
+        url="/"
+        image={SITE_CONFIG.ogImage}
+        schemas={schemas}
+      />
       
       <Navbar />
       

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { treks } from "@/data/treks";
@@ -9,6 +8,8 @@ import { districts } from "@/data/districts";
 import { Clock, Mountain, Calendar, Filter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { SEOHead } from "@/components/SEOHead";
+import { PAGE_SEO, SITE_CONFIG, getBreadcrumbSchema } from "@/lib/seo";
 
 const difficultyColors = {
   Easy: "bg-primary/10 text-primary border-primary/20",
@@ -28,13 +29,20 @@ const TreksPage = () => {
 
   const difficulties = ["All", "Easy", "Moderate", "Hard"];
 
+  const breadcrumbs = [
+    { name: "Home", url: SITE_CONFIG.url },
+    { name: "Treks", url: `${SITE_CONFIG.url}/treks` }
+  ];
+
   return (
     <>
-      <Helmet>
-        <title>Treks in Himachal Pradesh - Complete Trekking Guide | Local Himachal</title>
-        <meta name="description" content="Discover the best treks in Himachal Pradesh. From easy Triund to challenging Pin Parvati Pass. Complete guide with difficulty levels, duration, and best seasons." />
-        <meta name="keywords" content="Himachal treks, trekking Himachal Pradesh, Hampta Pass, Triund trek, Spiti treks, adventure Himachal" />
-      </Helmet>
+      <SEOHead
+        title={PAGE_SEO.treks.title}
+        description={PAGE_SEO.treks.description}
+        keywords={PAGE_SEO.treks.keywords}
+        url="/treks"
+        schemas={[getBreadcrumbSchema(breadcrumbs)]}
+      />
 
       <Navbar />
 

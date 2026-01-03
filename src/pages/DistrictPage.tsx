@@ -1,6 +1,5 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { getEnrichedDistrictBySlug } from "@/data/districtsEnriched";
@@ -15,6 +14,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ScrollReveal, QuoteFadeIn } from "@/components/animations/ScrollReveal";
+import { SEOHead } from "@/components/SEOHead";
+import { SITE_CONFIG, DISTRICT_SEO, getBreadcrumbSchema, getPlaceSchema } from "@/lib/seo";
 
 const DistrictPage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -45,12 +46,39 @@ const DistrictPage = () => {
     );
   }
 
+  const districtSeo = DISTRICT_SEO[slug || ""] || {
+    title: district.seoTitle,
+    description: district.seoDescription,
+    keywords: `${district.name} travel guide, ${district.name} tourism, ${district.name} Himachal Pradesh`
+  };
+
+  const breadcrumbs = [
+    { name: "Home", url: SITE_CONFIG.url },
+    { name: "Explore", url: `${SITE_CONFIG.url}/explore` },
+    { name: district.name, url: `${SITE_CONFIG.url}/district/${slug}` }
+  ];
+
+  const placeSchema = getPlaceSchema({
+    name: district.name,
+    description: district.seoDescription,
+    image: district.image,
+    latitude: String(district.coordinates.lat),
+    longitude: String(district.coordinates.lng),
+    address: `${district.name} District`,
+    url: `${SITE_CONFIG.url}/district/${slug}`
+  });
+
   return (
     <>
-      <Helmet>
-        <title>{district.seoTitle}</title>
-        <meta name="description" content={district.seoDescription} />
-      </Helmet>
+      <SEOHead
+        title={districtSeo.title}
+        description={districtSeo.description}
+        keywords={districtSeo.keywords}
+        url={`/district/${slug}`}
+        image={district.image}
+        type="place"
+        schemas={[getBreadcrumbSchema(breadcrumbs), placeSchema]}
+      />
 
       <Navbar />
 

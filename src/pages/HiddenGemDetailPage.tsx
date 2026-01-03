@@ -1,5 +1,4 @@
 import { useParams, Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { 
   MapPin, Mountain, Calendar, Clock, ArrowLeft, 
@@ -13,6 +12,8 @@ import { Badge } from "@/components/ui/badge";
 import { ScrollReveal, ParallaxImage, QuoteFadeIn } from "@/components/animations/ScrollReveal";
 import { getHiddenGemBySlug, getHiddenGemsByDistrict, HiddenGem } from "@/data/hiddenGems";
 import { cn } from "@/lib/utils";
+import { SEOHead } from "@/components/SEOHead";
+import { SITE_CONFIG, getBreadcrumbSchema, getPlaceSchema } from "@/lib/seo";
 
 const difficultyColors = {
   Easy: "bg-green-500/20 text-green-700 border-green-500/30",
@@ -53,12 +54,31 @@ export default function HiddenGemDetailPage() {
     .filter(g => g.id !== gem.id)
     .slice(0, 3);
 
+  const breadcrumbs = [
+    { name: "Home", url: SITE_CONFIG.url },
+    { name: "Hidden Gems", url: `${SITE_CONFIG.url}/hidden-gems` },
+    { name: gem.name, url: `${SITE_CONFIG.url}/hidden-gems/${slug}` }
+  ];
+
+  const placeSchema = getPlaceSchema({
+    name: gem.name,
+    description: gem.seoDescription,
+    image: gem.image,
+    address: `${gem.district} District`,
+    url: `${SITE_CONFIG.url}/hidden-gems/${slug}`
+  });
+
   return (
     <>
-      <Helmet>
-        <title>{gem.seoTitle}</title>
-        <meta name="description" content={gem.seoDescription} />
-      </Helmet>
+      <SEOHead
+        title={gem.seoTitle}
+        description={gem.seoDescription}
+        keywords={`${gem.name}, ${gem.district} hidden gems, offbeat ${gem.category} Himachal`}
+        url={`/hidden-gems/${slug}`}
+        image={gem.image}
+        type="place"
+        schemas={[getBreadcrumbSchema(breadcrumbs), placeSchema]}
+      />
 
       <Navbar />
       

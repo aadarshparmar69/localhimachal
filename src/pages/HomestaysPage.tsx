@@ -1,9 +1,10 @@
 import { motion, useReducedMotion } from "framer-motion";
-import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { homestays } from "@/data/homestays";
 import { MapPin, ExternalLink, Home } from "lucide-react";
+import { SEOHead } from "@/components/SEOHead";
+import { PAGE_SEO, SITE_CONFIG, getBreadcrumbSchema, getHomestaySchema } from "@/lib/seo";
 
 const HomestaysPage = () => {
   const prefersReducedMotion = useReducedMotion();
@@ -28,13 +29,29 @@ const HomestaysPage = () => {
     }
   };
 
+  const breadcrumbs = [
+    { name: "Home", url: SITE_CONFIG.url },
+    { name: "Homestays", url: `${SITE_CONFIG.url}/homestays` }
+  ];
+
+  const homestaySchemas = homestays.slice(0, 5).map(h => getHomestaySchema({
+    name: h.name,
+    description: h.description,
+    image: h.image,
+    location: `${h.village}, ${h.district}`,
+    priceRange: h.priceRange,
+    url: h.externalLink
+  }));
+
   return (
     <>
-      <Helmet>
-        <title>Homestays in Himachal Pradesh - Authentic Village Stays | Local Himachal</title>
-        <meta name="description" content="Experience authentic Himachali hospitality. Stay with local families in traditional homes, enjoy home-cooked meals, and live the mountain life." />
-        <meta name="keywords" content="Himachal homestays, village stays, authentic accommodation, local families, Spiti homestay, Tirthan homestay" />
-      </Helmet>
+      <SEOHead
+        title={PAGE_SEO.homestays.title}
+        description={PAGE_SEO.homestays.description}
+        keywords={PAGE_SEO.homestays.keywords}
+        url="/homestays"
+        schemas={[getBreadcrumbSchema(breadcrumbs), ...homestaySchemas]}
+      />
 
       <Navbar />
 

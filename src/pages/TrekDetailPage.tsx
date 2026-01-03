@@ -1,6 +1,5 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { getTrekBySlug } from "@/data/treks";
@@ -13,6 +12,8 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
+import { SEOHead } from "@/components/SEOHead";
+import { SITE_CONFIG, getBreadcrumbSchema, getTrekSchema } from "@/lib/seo";
 
 const TrekDetailPage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -50,13 +51,33 @@ const TrekDetailPage = () => {
     "Very Hard": "bg-red-600/20 text-red-800"
   };
 
+  const breadcrumbs = [
+    { name: "Home", url: SITE_CONFIG.url },
+    { name: "Treks", url: `${SITE_CONFIG.url}/treks` },
+    { name: trek.name, url: `${SITE_CONFIG.url}/trek/${slug}` }
+  ];
+
+  const trekSchema = getTrekSchema({
+    name: trek.name,
+    description: trekEnriched?.seo.description || trek.description,
+    image: trek.image,
+    difficulty: trek.difficulty,
+    duration: trek.duration,
+    distance: trekEnriched?.difficulty.totalDistance,
+    elevation: trek.altitude,
+    url: `${SITE_CONFIG.url}/trek/${slug}`
+  });
+
   return (
     <>
-      <Helmet>
-        <title>{trekEnriched?.seo.title || `${trek.name} Trek - Complete Guide | Local Himachal`}</title>
-        <meta name="description" content={trekEnriched?.seo.description || `${trek.name}: ${trek.description}`} />
-        <meta name="keywords" content={trekEnriched?.seo.keywords?.join(", ") || `${trek.name} trek, trekking in ${trek.district}, Himachal treks`} />
-      </Helmet>
+      <SEOHead
+        title={trekEnriched?.seo.title || `${trek.name} Trek - Complete Guide | Local Himachal`}
+        description={trekEnriched?.seo.description || `${trek.name}: ${trek.description}`}
+        keywords={trekEnriched?.seo.keywords?.join(", ") || `${trek.name} trek, trekking in ${trek.district}, Himachal treks`}
+        url={`/trek/${slug}`}
+        image={trek.image}
+        schemas={[getBreadcrumbSchema(breadcrumbs), trekSchema]}
+      />
 
       <Navbar />
 
