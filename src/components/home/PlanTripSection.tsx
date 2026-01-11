@@ -1,7 +1,9 @@
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Compass, Calendar, MapPin, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useRef } from "react";
+import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/animations/ScrollReveal";
 
 const steps = [
   {
@@ -23,97 +25,154 @@ const steps = [
 
 export const PlanTripSection = () => {
   const prefersReducedMotion = useReducedMotion();
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  const backgroundOpacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.2, 0.5, 0.5, 0.2]);
 
   return (
-    <section className="py-14 sm:py-18 lg:py-20 bg-background relative overflow-hidden">
+    <section ref={sectionRef} className="py-20 sm:py-28 lg:py-32 bg-background relative overflow-hidden">
       {/* Subtle background pattern */}
-      <div className="absolute inset-0 opacity-30">
+      <motion.div 
+        style={{ opacity: prefersReducedMotion ? 0.3 : backgroundOpacity }}
+        className="absolute inset-0"
+      >
         <div 
           className="absolute inset-0"
           style={{
-            backgroundImage: `radial-gradient(circle at 20% 80%, hsl(var(--primary) / 0.05) 0%, transparent 40%)`
+            backgroundImage: `radial-gradient(circle at 20% 80%, hsl(var(--primary) / 0.06) 0%, transparent 45%),
+                              radial-gradient(circle at 80% 20%, hsl(var(--accent) / 0.05) 0%, transparent 40%)`
           }}
         />
-      </div>
+      </motion.div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12 sm:mb-14"
-        >
-          <p className="text-sm tracking-[0.2em] uppercase text-muted-foreground mb-3">
+        <ScrollReveal className="text-center mb-16 sm:mb-20" blur scale>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ duration: 0.7 }}
+            className="text-sm tracking-[0.2em] uppercase text-muted-foreground mb-4"
+          >
             Your Journey Begins
-          </p>
-          <h2 className="font-display text-responsive-title text-foreground mb-4">
+          </motion.p>
+          
+          <motion.h2
+            initial={{ opacity: 0, y: 40, filter: "blur(15px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ duration: 0.9, delay: 0.1 }}
+            className="font-display text-responsive-title text-foreground mb-5"
+          >
             Three steps to the mountains
-          </h2>
-        </motion.div>
+          </motion.h2>
+        </ScrollReveal>
 
         {/* Steps with connecting lines */}
-        <div className="relative max-w-4xl mx-auto mb-12 sm:mb-14">
+        <div className="relative max-w-4xl mx-auto mb-14 sm:mb-16">
           {/* Connecting line (desktop only) */}
           <motion.div 
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.3 }}
-            className="hidden sm:block absolute top-7 left-[16%] right-[16%] h-px bg-gradient-to-r from-border via-primary/30 to-border origin-left"
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ duration: 1.5, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="hidden sm:block absolute top-8 left-[16%] right-[16%] h-px bg-gradient-to-r from-border via-primary/30 to-border origin-left"
           />
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-6 lg:gap-12">
+          <StaggerContainer 
+            className="grid grid-cols-1 sm:grid-cols-3 gap-12 sm:gap-8 lg:gap-14"
+            staggerDelay={0.15}
+            delayChildren={0.2}
+          >
             {steps.map((step, index) => (
-              <motion.div
-                key={step.title}
-                initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="text-center relative"
-              >
-                {/* Icon with background */}
-                <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 text-primary mb-5 relative z-10 ring-4 ring-background">
-                  <step.icon className="w-6 h-6" strokeWidth={1.5} />
-                </div>
+              <StaggerItem key={step.title}>
+                <motion.div
+                  whileHover={{ y: prefersReducedMotion ? 0 : -8 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  className="text-center relative"
+                >
+                  {/* Icon with enhanced animation */}
+                  <motion.div 
+                    className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-6 relative z-10 ring-4 ring-background"
+                    initial={{ scale: 0, rotate: -180 }}
+                    whileInView={{ scale: 1, rotate: 0 }}
+                    viewport={{ once: true, margin: "-10%" }}
+                    transition={{ 
+                      type: "spring", 
+                      delay: 0.3 + index * 0.15, 
+                      duration: 0.8,
+                      bounce: 0.4 
+                    }}
+                    whileHover={{ scale: 1.1, rotate: 10 }}
+                  >
+                    <step.icon className="w-7 h-7" strokeWidth={1.5} />
+                  </motion.div>
 
-                {/* Step Number */}
-                <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-2">
-                  Step {index + 1}
-                </p>
+                  {/* Step Number */}
+                  <motion.p
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-10%" }}
+                    transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
+                    className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-3"
+                  >
+                    Step {index + 1}
+                  </motion.p>
 
-                {/* Title */}
-                <h3 className="font-display text-xl text-foreground mb-3">
-                  {step.title}
-                </h3>
+                  {/* Title */}
+                  <motion.h3
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-10%" }}
+                    transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
+                    className="font-display text-xl text-foreground mb-4"
+                  >
+                    {step.title}
+                  </motion.h3>
 
-                {/* Description */}
-                <p className="text-sm text-muted-foreground leading-relaxed max-w-xs mx-auto">
-                  {step.description}
-                </p>
-              </motion.div>
+                  {/* Description */}
+                  <motion.p
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-10%" }}
+                    transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
+                    className="text-sm text-muted-foreground leading-relaxed max-w-xs mx-auto"
+                  >
+                    {step.description}
+                  </motion.p>
+                </motion.div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
 
         {/* CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.5 }}
+          initial={{ opacity: 0, y: 40, scale: 0.95 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 0.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="text-center"
         >
           <Link to="/plan">
-            <Button 
-              size="lg" 
-              className="bg-[#3c431e] text-white hover:bg-[#3c431e]/90 shadow-lg"
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
             >
-              Start Planning
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
+              <Button 
+                size="lg" 
+                className="bg-[#3c431e] text-white hover:bg-[#3c431e]/90 shadow-lg px-8"
+              >
+                Start Planning
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </motion.div>
           </Link>
         </motion.div>
       </div>
