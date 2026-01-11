@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform, useSpring, useInView, useReducedMotion, Variants } from "framer-motion";
-import { useRef, ReactNode, useMemo } from "react";
+import { useRef, ReactNode, useMemo, forwardRef } from "react";
 
 interface ScrollRevealProps {
   children: ReactNode;
@@ -538,32 +538,35 @@ interface FadeUpProps {
   delay?: number;
 }
 
-export const FadeUp = ({ children, className = "", delay = 0 }: FadeUpProps) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-10%" });
-  const prefersReducedMotion = useReducedMotion();
+export const FadeUp = forwardRef<HTMLDivElement, FadeUpProps>(
+  ({ children, className = "", delay = 0 }, forwardedRef) => {
+    const internalRef = useRef(null);
+    const isInView = useInView(internalRef, { once: true, margin: "-10%" });
+    const prefersReducedMotion = useReducedMotion();
 
-  if (prefersReducedMotion) {
-    return <div className={className}>{children}</div>;
+    if (prefersReducedMotion) {
+      return <div ref={forwardedRef as React.Ref<HTMLDivElement>} className={className}>{children}</div>;
+    }
+
+    return (
+      <motion.div
+        ref={internalRef}
+        initial={{ opacity: 0, y: 60 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{
+          type: "spring",
+          stiffness: 100,
+          damping: 20,
+          delay,
+        }}
+        className={className}
+      >
+        {children}
+      </motion.div>
+    );
   }
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 60 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{
-        type: "spring",
-        stiffness: 100,
-        damping: 20,
-        delay,
-      }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-};
+);
+FadeUp.displayName = "FadeUp";
 
 // New: Scale in animation
 interface ScaleInProps {
@@ -572,32 +575,35 @@ interface ScaleInProps {
   delay?: number;
 }
 
-export const ScaleIn = ({ children, className = "", delay = 0 }: ScaleInProps) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-10%" });
-  const prefersReducedMotion = useReducedMotion();
+export const ScaleIn = forwardRef<HTMLDivElement, ScaleInProps>(
+  ({ children, className = "", delay = 0 }, forwardedRef) => {
+    const internalRef = useRef(null);
+    const isInView = useInView(internalRef, { once: true, margin: "-10%" });
+    const prefersReducedMotion = useReducedMotion();
 
-  if (prefersReducedMotion) {
-    return <div className={className}>{children}</div>;
+    if (prefersReducedMotion) {
+      return <div ref={forwardedRef as React.Ref<HTMLDivElement>} className={className}>{children}</div>;
+    }
+
+    return (
+      <motion.div
+        ref={internalRef}
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={isInView ? { opacity: 1, scale: 1 } : {}}
+        transition={{
+          type: "spring",
+          stiffness: 150,
+          damping: 20,
+          delay,
+        }}
+        className={className}
+      >
+        {children}
+      </motion.div>
+    );
   }
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, scale: 0.8 }}
-      animate={isInView ? { opacity: 1, scale: 1 } : {}}
-      transition={{
-        type: "spring",
-        stiffness: 150,
-        damping: 20,
-        delay,
-      }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-};
+);
+ScaleIn.displayName = "ScaleIn";
 
 // New: Slide in from side
 interface SlideInProps {
@@ -607,44 +613,42 @@ interface SlideInProps {
   delay?: number;
 }
 
-export const SlideIn = ({ 
-  children, 
-  className = "", 
-  direction = "left",
-  delay = 0 
-}: SlideInProps) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-10%" });
-  const prefersReducedMotion = useReducedMotion();
+export const SlideIn = forwardRef<HTMLDivElement, SlideInProps>(
+  ({ children, className = "", direction = "left", delay = 0 }, forwardedRef) => {
+    const internalRef = useRef(null);
+    const isInView = useInView(internalRef, { once: true, margin: "-10%" });
+    const prefersReducedMotion = useReducedMotion();
 
-  if (prefersReducedMotion) {
-    return <div className={className}>{children}</div>;
+    if (prefersReducedMotion) {
+      return <div ref={forwardedRef as React.Ref<HTMLDivElement>} className={className}>{children}</div>;
+    }
+
+    return (
+      <motion.div
+        ref={internalRef}
+        initial={{ 
+          opacity: 0, 
+          x: direction === "left" ? -80 : 80,
+          filter: "blur(10px)",
+        }}
+        animate={isInView ? { 
+          opacity: 1, 
+          x: 0,
+          filter: "blur(0px)",
+        } : {}}
+        transition={{
+          duration: 0.8,
+          delay,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+        className={className}
+      >
+        {children}
+      </motion.div>
+    );
   }
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ 
-        opacity: 0, 
-        x: direction === "left" ? -80 : 80,
-        filter: "blur(10px)",
-      }}
-      animate={isInView ? { 
-        opacity: 1, 
-        x: 0,
-        filter: "blur(0px)",
-      } : {}}
-      transition={{
-        duration: 0.8,
-        delay,
-        ease: [0.22, 1, 0.36, 1],
-      }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-};
+);
+SlideIn.displayName = "SlideIn";
 
 // New: Reveal with mask effect
 interface MaskRevealProps {
@@ -653,31 +657,34 @@ interface MaskRevealProps {
   delay?: number;
 }
 
-export const MaskReveal = ({ children, className = "", delay = 0 }: MaskRevealProps) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-10%" });
-  const prefersReducedMotion = useReducedMotion();
+export const MaskReveal = forwardRef<HTMLDivElement, MaskRevealProps>(
+  ({ children, className = "", delay = 0 }, forwardedRef) => {
+    const internalRef = useRef(null);
+    const isInView = useInView(internalRef, { once: true, margin: "-10%" });
+    const prefersReducedMotion = useReducedMotion();
 
-  if (prefersReducedMotion) {
-    return <div className={className}>{children}</div>;
+    if (prefersReducedMotion) {
+      return <div ref={forwardedRef as React.Ref<HTMLDivElement>} className={className}>{children}</div>;
+    }
+
+    return (
+      <div ref={internalRef} className={`overflow-hidden ${className}`}>
+        <motion.div
+          initial={{ y: "100%" }}
+          animate={isInView ? { y: 0 } : {}}
+          transition={{
+            duration: 0.8,
+            delay,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+        >
+          {children}
+        </motion.div>
+      </div>
+    );
   }
-
-  return (
-    <div ref={ref} className={`overflow-hidden ${className}`}>
-      <motion.div
-        initial={{ y: "100%" }}
-        animate={isInView ? { y: 0 } : {}}
-        transition={{
-          duration: 0.8,
-          delay,
-          ease: [0.22, 1, 0.36, 1],
-        }}
-      >
-        {children}
-      </motion.div>
-    </div>
-  );
-};
+);
+MaskReveal.displayName = "MaskReveal";
 
 // New: Blur in animation
 interface BlurInProps {
@@ -686,28 +693,31 @@ interface BlurInProps {
   delay?: number;
 }
 
-export const BlurIn = ({ children, className = "", delay = 0 }: BlurInProps) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-10%" });
-  const prefersReducedMotion = useReducedMotion();
+export const BlurIn = forwardRef<HTMLDivElement, BlurInProps>(
+  ({ children, className = "", delay = 0 }, forwardedRef) => {
+    const internalRef = useRef(null);
+    const isInView = useInView(internalRef, { once: true, margin: "-10%" });
+    const prefersReducedMotion = useReducedMotion();
 
-  if (prefersReducedMotion) {
-    return <div className={className}>{children}</div>;
+    if (prefersReducedMotion) {
+      return <div ref={forwardedRef as React.Ref<HTMLDivElement>} className={className}>{children}</div>;
+    }
+
+    return (
+      <motion.div
+        ref={internalRef}
+        initial={{ opacity: 0, filter: "blur(20px)", scale: 0.95 }}
+        animate={isInView ? { opacity: 1, filter: "blur(0px)", scale: 1 } : {}}
+        transition={{
+          duration: 0.9,
+          delay,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+        className={className}
+      >
+        {children}
+      </motion.div>
+    );
   }
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, filter: "blur(20px)", scale: 0.95 }}
-      animate={isInView ? { opacity: 1, filter: "blur(0px)", scale: 1 } : {}}
-      transition={{
-        duration: 0.9,
-        delay,
-        ease: [0.22, 1, 0.36, 1],
-      }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-};
+);
+BlurIn.displayName = "BlurIn";
