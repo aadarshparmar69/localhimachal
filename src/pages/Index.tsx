@@ -2,13 +2,11 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { HeroSection } from "@/components/home/HeroSection";
 import { IntroSection } from "@/components/home/IntroSection";
-import { StatsSection } from "@/components/home/StatsSection";
 import { DistrictPreviewSection } from "@/components/home/DistrictPreviewSection";
 import { HiddenGemsSection } from "@/components/home/HiddenGemsSection";
 import { TreksSection } from "@/components/home/TreksSection";
 import { HomestaysSection } from "@/components/home/HomestaysSection";
 import { CulturePreviewSection } from "@/components/home/CulturePreviewSection";
-import { GallerySection } from "@/components/home/GallerySection";
 import { PlanTripSection } from "@/components/home/PlanTripSection";
 import { AtmosphereSection } from "@/components/home/AtmosphereSection";
 import { ClosingSection } from "@/components/home/ClosingSection";
@@ -69,12 +67,10 @@ const Index = () => {
       <main>
         <HeroSection />
         <IntroSection />
-        <StatsSection />
         <DistrictPreviewSection />
         <HiddenGemsSection />
         <TreksSection />
         <HomestaysSection />
-        <GallerySection />
         <CulturePreviewSection />
         <PlanTripSection />
         <AtmosphereSection />
