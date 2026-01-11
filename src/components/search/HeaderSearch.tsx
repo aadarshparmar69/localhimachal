@@ -1,9 +1,11 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Search, X, MapPin, Mountain, Home, Sparkles, ArrowRight } from "lucide-react";
+import { Search, X, MapPin, Mountain, Home, Sparkles, ArrowRight, Clock, Trash2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Input } from "@/components/ui/input";
 import { useQuickSearch, SearchResult } from "@/hooks/useSearch";
+import { useRecentSearches } from "@/hooks/useRecentSearches";
+import { HighlightedText } from "@/components/search/HighlightedText";
 import { cn } from "@/lib/utils";
 
 const typeIcons = {
@@ -34,7 +36,9 @@ interface HeaderSearchProps {
 
 export const HeaderSearch = ({ variant = "desktop", onClose }: HeaderSearchProps) => {
   const { query, setQuery, results, isOpen, setIsOpen, close } = useQuickSearch();
+  const { recentSearches, addSearch, removeSearch, clearAll } = useRecentSearches();
   const [selectedIndex, setSelectedIndex] = useState(-1);
+  const [showRecent, setShowRecent] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
@@ -44,6 +48,7 @@ export const HeaderSearch = ({ variant = "desktop", onClose }: HeaderSearchProps
     const handleClickOutside = (e: MouseEvent) => {
       if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
         close();
+        setShowRecent(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -53,70 +58,91 @@ export const HeaderSearch = ({ variant = "desktop", onClose }: HeaderSearchProps
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (!isOpen) return;
+      if (!isOpen && !showRecent) return;
+
+      const totalItems = showRecent && !query ? recentSearches.length : results.length;
 
       switch (e.key) {
         case "ArrowDown":
           e.preventDefault();
           setSelectedIndex(prev => 
-            prev < results.length - 1 ? prev + 1 : 0
+            prev < totalItems - 1 ? prev + 1 : 0
           );
           break;
         case "ArrowUp":
           e.preventDefault();
           setSelectedIndex(prev => 
-            prev > 0 ? prev - 1 : results.length - 1
+            prev > 0 ? prev - 1 : totalItems - 1
           );
           break;
         case "Enter":
           e.preventDefault();
-          if (selectedIndex >= 0 && results[selectedIndex]) {
+          if (showRecent && !query && selectedIndex >= 0 && recentSearches[selectedIndex]) {
+            handleRecentClick(recentSearches[selectedIndex].query);
+          } else if (selectedIndex >= 0 && results[selectedIndex]) {
             handleResultClick(results[selectedIndex]);
           } else if (query.trim()) {
+            addSearch(query.trim());
             navigate(`/search?q=${encodeURIComponent(query.trim())}`);
             close();
           }
           break;
         case "Escape":
           close();
+          setShowRecent(false);
           break;
       }
     };
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, results, selectedIndex, query, navigate, close]);
+  }, [isOpen, showRecent, results, recentSearches, selectedIndex, query, navigate, close, addSearch]);
 
   // Reset selected index when results change
   useEffect(() => {
     setSelectedIndex(-1);
-  }, [results]);
+  }, [results, showRecent]);
 
   const handleResultClick = (result: SearchResult) => {
+    addSearch(query.trim());
     if (result.type === "homestay" && result.url.startsWith("http")) {
       window.open(result.url, "_blank");
     } else {
       navigate(result.url);
     }
     close();
+    setShowRecent(false);
     onClose?.();
+  };
+
+  const handleRecentClick = (recentQuery: string) => {
+    setQuery(recentQuery);
+    setIsOpen(true);
+    setShowRecent(false);
   };
 
   const handleInputChange = (value: string) => {
     setQuery(value);
     if (value.length >= 2) {
       setIsOpen(true);
+      setShowRecent(false);
+    } else if (value.length === 0) {
+      setIsOpen(false);
     }
   };
 
   const handleFocus = () => {
     if (query.length >= 2) {
       setIsOpen(true);
+    } else if (recentSearches.length > 0) {
+      setShowRecent(true);
     }
   };
 
   const showResults = isOpen && results.length > 0;
   const showNoResults = isOpen && query.length >= 2 && results.length === 0;
+  const showRecentSearches = showRecent && !query && recentSearches.length > 0;
+  const showDropdown = showResults || showNoResults || showRecentSearches;
 
   return (
     <div ref={containerRef} className="relative w-full">
@@ -149,7 +175,7 @@ export const HeaderSearch = ({ variant = "desktop", onClose }: HeaderSearchProps
 
       {/* Results Dropdown */}
       <AnimatePresence>
-        {(showResults || showNoResults) && (
+        {showDropdown && (
           <motion.div
             initial={{ opacity: 0, y: -8, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -162,6 +188,57 @@ export const HeaderSearch = ({ variant = "desktop", onClose }: HeaderSearchProps
               variant === "desktop" ? "min-w-[320px] -left-8" : ""
             )}
           >
+            {/* Recent Searches */}
+            {showRecentSearches && (
+              <div className="max-h-[300px] overflow-y-auto">
+                <div className="flex items-center justify-between px-4 py-2 border-b border-border/50">
+                  <span className="text-xs font-medium text-muted-foreground flex items-center gap-1.5">
+                    <Clock className="w-3 h-3" />
+                    Recent Searches
+                  </span>
+                  <button
+                    onClick={clearAll}
+                    className="text-xs text-muted-foreground hover:text-destructive transition-colors"
+                  >
+                    Clear all
+                  </button>
+                </div>
+                <div className="p-2">
+                  {recentSearches.map((recent, index) => (
+                    <motion.div
+                      key={recent.query}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.03 }}
+                      className={cn(
+                        "flex items-center justify-between gap-2 px-3 py-2.5 rounded-lg",
+                        "hover:bg-secondary/80 cursor-pointer group",
+                        selectedIndex === index && "bg-secondary"
+                      )}
+                    >
+                      <button
+                        onClick={() => handleRecentClick(recent.query)}
+                        className="flex items-center gap-2 flex-1 text-left"
+                      >
+                        <Search className="w-4 h-4 text-muted-foreground" />
+                        <span className="text-sm text-foreground">{recent.query}</span>
+                      </button>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          removeSearch(recent.query);
+                        }}
+                        className="p-1 rounded opacity-0 group-hover:opacity-100 hover:bg-destructive/10 transition-all"
+                      >
+                        <X className="w-3.5 h-3.5 text-muted-foreground hover:text-destructive" />
+                      </button>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Search Results */}
             {showResults && (
               <div className="max-h-[400px] overflow-y-auto">
                 <div className="p-2">
@@ -202,10 +279,14 @@ export const HeaderSearch = ({ variant = "desktop", onClose }: HeaderSearchProps
                             </span>
                           </div>
                           <h4 className="font-medium text-foreground text-sm truncate">
-                            {result.title}
+                            <HighlightedText text={result.title} query={query} />
                           </h4>
                           <p className="text-xs text-muted-foreground truncate">
-                            {result.subtitle}
+                            <HighlightedText 
+                              text={result.subtitle} 
+                              query={query}
+                              highlightClassName="bg-primary/10 text-primary/80 font-normal rounded-sm"
+                            />
                           </p>
                         </div>
                       </motion.button>
@@ -217,7 +298,12 @@ export const HeaderSearch = ({ variant = "desktop", onClose }: HeaderSearchProps
                 {query.trim() && (
                   <Link
                     to={`/search?q=${encodeURIComponent(query.trim())}`}
-                    onClick={() => { close(); onClose?.(); }}
+                    onClick={() => { 
+                      addSearch(query.trim());
+                      close(); 
+                      setShowRecent(false);
+                      onClose?.(); 
+                    }}
                     className="flex items-center justify-center gap-2 p-3 border-t border-border/50 text-sm text-primary hover:bg-secondary/50 transition-colors"
                   >
                     View all results
@@ -227,14 +313,20 @@ export const HeaderSearch = ({ variant = "desktop", onClose }: HeaderSearchProps
               </div>
             )}
 
+            {/* No Results */}
             {showNoResults && (
               <div className="p-6 text-center">
                 <p className="text-muted-foreground text-sm">
-                  No results found for "{query}"
+                  No results found for "<span className="text-foreground font-medium">{query}</span>"
                 </p>
                 <Link
                   to={`/search?q=${encodeURIComponent(query.trim())}`}
-                  onClick={() => { close(); onClose?.(); }}
+                  onClick={() => { 
+                    addSearch(query.trim());
+                    close(); 
+                    setShowRecent(false);
+                    onClose?.(); 
+                  }}
                   className="inline-block mt-2 text-sm text-primary hover:underline"
                 >
                   Try advanced search
