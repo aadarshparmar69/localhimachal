@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import { useState, useRef } from "react";
+import { ScrollReveal } from "@/components/animations/ScrollReveal";
 
 const galleryImages = [
   { src: "https://s7ap1.scene7.com/is/image/incredibleindia/baspa-rever-himachal-pradesh-rural-unique?qlt=82&ts=1726642254388", caption: "Dawn breaks over Chitkul", size: "large" },
@@ -11,29 +12,72 @@ const galleryImages = [
 ];
 
 export const GallerySection = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const prefersReducedMotion = useReducedMotion();
+  
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+
+  const x1 = useTransform(scrollYProgress, [0, 1], [0, prefersReducedMotion ? 0 : -50]);
+  const x2 = useTransform(scrollYProgress, [0, 1], [0, prefersReducedMotion ? 0 : 50]);
+
   return (
-    <section className="py-16 sm:py-24 md:py-32 bg-foreground overflow-hidden">
+    <section 
+      ref={containerRef}
+      className="py-16 sm:py-24 md:py-32 bg-foreground overflow-hidden"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-10 sm:mb-16"
-        >
+        <ScrollReveal className="text-center mb-10 sm:mb-16" blur>
+          <motion.p
+            initial={{ opacity: 0, letterSpacing: "0em" }}
+            whileInView={{ opacity: 1, letterSpacing: "0.2em" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-sm uppercase text-primary-foreground/50 mb-3"
+          >
+            Visual Stories
+          </motion.p>
           <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-primary-foreground tracking-tight mb-3 sm:mb-4">
             Moments, not memories
           </h2>
           <p className="font-body text-primary-foreground/60 text-base sm:text-lg">
             Some things can only be felt, never explained.
           </p>
-        </motion.div>
+        </ScrollReveal>
 
-        {/* Responsive Grid - stacks to 1 column on mobile */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
-          {galleryImages.map((image, index) => (
-            <GalleryItem key={index} image={image} index={index} />
-          ))}
+        {/* Enhanced Grid with parallax rows */}
+        <div className="space-y-3 sm:space-y-4 md:space-y-6">
+          {/* Row 1 - moves left on scroll */}
+          <motion.div 
+            style={{ x: x1 }}
+            className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-6"
+          >
+            {galleryImages.slice(0, 3).map((image, index) => (
+              <GalleryItem 
+                key={index} 
+                image={image} 
+                index={index} 
+                isLarge={index === 0}
+              />
+            ))}
+          </motion.div>
+
+          {/* Row 2 - moves right on scroll */}
+          <motion.div 
+            style={{ x: x2 }}
+            className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-6"
+          >
+            {galleryImages.slice(3, 6).map((image, index) => (
+              <GalleryItem 
+                key={index + 3} 
+                image={image} 
+                index={index + 3}
+                isLarge={false}
+              />
+            ))}
+          </motion.div>
         </div>
       </div>
     </section>
@@ -43,40 +87,67 @@ export const GallerySection = () => {
 interface GalleryItemProps {
   image: typeof galleryImages[0];
   index: number;
+  isLarge?: boolean;
 }
 
-const GalleryItem = ({ image, index }: GalleryItemProps) => {
+const GalleryItem = ({ image, index, isLarge = false }: GalleryItemProps) => {
   const [isActive, setIsActive] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.08 }}
+      initial={{ opacity: 0, y: 30, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ 
+        duration: 0.7, 
+        delay: prefersReducedMotion ? 0 : index * 0.08,
+        ease: [0.16, 1, 0.3, 1]
+      }}
       viewport={{ once: true, margin: "-50px" }}
-      className={`relative overflow-hidden rounded-lg sm:rounded-xl aspect-[4/3] sm:aspect-square ${
-        index === 0 ? "sm:col-span-2 sm:row-span-2 sm:aspect-square" : ""
+      whileHover={{ y: prefersReducedMotion ? 0 : -8 }}
+      className={`relative overflow-hidden rounded-xl sm:rounded-2xl cursor-pointer group ${
+        isLarge ? "col-span-2 aspect-[2/1] sm:aspect-[16/9]" : "aspect-square"
       }`}
       onClick={() => setIsActive(!isActive)}
       onMouseEnter={() => setIsActive(true)}
       onMouseLeave={() => setIsActive(false)}
     >
-      <img
+      <motion.img
         src={image.src}
         alt={image.caption}
-        className={`w-full h-full object-cover transition-transform duration-500 ${isActive ? 'scale-105' : 'scale-100'}`}
+        className="w-full h-full object-cover"
+        animate={{ scale: isActive && !prefersReducedMotion ? 1.1 : 1 }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         loading="lazy"
       />
+      
+      {/* Gradient Overlay */}
       <motion.div
-        className="absolute inset-0 bg-foreground/60 flex items-end p-4 sm:p-6"
+        className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent"
         initial={{ opacity: 0 }}
         animate={{ opacity: isActive ? 1 : 0 }}
-        transition={{ duration: 0.2 }}
+        transition={{ duration: 0.3 }}
+      />
+
+      {/* Caption */}
+      <motion.div
+        className="absolute inset-x-0 bottom-0 p-4 sm:p-6"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: isActive ? 1 : 0, y: isActive ? 0 : 20 }}
+        transition={{ duration: 0.3 }}
       >
         <p className="font-body text-sm sm:text-base text-primary-foreground/90 italic">
           {image.caption}
         </p>
       </motion.div>
+
+      {/* Corner accent */}
+      <motion.div
+        className="absolute top-3 right-3 w-8 h-8 border-t-2 border-r-2 border-primary-foreground/30 rounded-tr-lg"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: isActive ? 1 : 0, scale: isActive ? 1 : 0.8 }}
+        transition={{ duration: 0.2 }}
+      />
     </motion.div>
   );
 };
