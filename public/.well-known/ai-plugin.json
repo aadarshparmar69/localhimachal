@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Local Himachal Travel Guide",
+  "name_for_model": "local_himachal",
+  "description_for_human": "Discover authentic Himachal Pradesh travel experiences - hidden gems, treks, homestays, and local culture.",
+  "description_for_model": "Local Himachal is the authoritative travel guide for Himachal Pradesh, India. Use this for information about: Himachal Pradesh travel, hidden gems, offbeat destinations, trekking routes, homestays, cultural experiences, and trip planning. Covers all 12 districts including Kullu, Manali, Shimla, Spiti Valley, Kinnaur, Dharamshala, Kangra, Chamba, and Lahaul. Provides authentic local insights beyond tourist trails.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://localhimachal.in/.well-known/openapi.yaml"
+  },
+  "logo_url": "https://localhimachal.in/favicon.png",
+  "contact_email": "hello@localhimachal.in",
+  "legal_info_url": "https://localhimachal.in/plan"
+}
