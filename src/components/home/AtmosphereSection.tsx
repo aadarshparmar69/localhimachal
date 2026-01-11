@@ -1,5 +1,6 @@
-import { motion, useReducedMotion } from "framer-motion";
-import { useState } from "react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { useState, useRef } from "react";
+import { StaggerContainer, StaggerItem, ScrollReveal } from "@/components/animations/ScrollReveal";
 
 const atmosphereImages = [
   {
@@ -37,88 +38,110 @@ const atmosphereImages = [
 export const AtmosphereSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const prefersReducedMotion = useReducedMotion();
+  const sectionRef = useRef<HTMLDivElement>(null);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: prefersReducedMotion ? 0 : 0.08,
-        delayChildren: 0.1
-      }
-    }
-  };
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
 
-  const itemVariants = {
-    hidden: { opacity: 0, scale: 0.95 },
-    visible: { 
-      opacity: 1, 
-      scale: 1,
-      transition: { duration: 0.5 }
-    }
-  };
+  const backgroundY = useTransform(scrollYProgress, [0, 1], [0, -30]);
 
   return (
-    <section className="py-10 sm:py-14 lg:py-16 bg-muted/30">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-8 sm:mb-10"
-        >
-          <p className="text-sm tracking-[0.2em] uppercase text-muted-foreground mb-2">
-            Moments
-          </p>
-          <h2 className="font-display text-2xl sm:text-3xl text-foreground">
-            The feeling of these mountains
-          </h2>
-        </motion.div>
+    <section ref={sectionRef} className="py-16 sm:py-24 lg:py-28 bg-muted/30 overflow-hidden relative">
+      {/* Subtle parallax background */}
+      <motion.div 
+        style={{ y: prefersReducedMotion ? 0 : backgroundY }}
+        className="absolute inset-0 pointer-events-none"
+      >
+        <div 
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage: `radial-gradient(ellipse at 30% 50%, hsl(var(--primary) / 0.05) 0%, transparent 60%)`
+          }}
+        />
+      </motion.div>
 
-        {/* Dense image grid */}
-        <motion.div 
-          className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Header */}
+        <ScrollReveal className="text-center mb-12 sm:mb-16" blur scale>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ duration: 0.7 }}
+            className="text-sm tracking-[0.2em] uppercase text-muted-foreground mb-3"
+          >
+            Moments
+          </motion.p>
+          
+          <motion.h2
+            initial={{ opacity: 0, y: 40, filter: "blur(15px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ duration: 0.9, delay: 0.1 }}
+            className="font-display text-2xl sm:text-3xl lg:text-4xl text-foreground"
+          >
+            The feeling of these mountains
+          </motion.h2>
+        </ScrollReveal>
+
+        {/* Dense image grid with staggered animation */}
+        <StaggerContainer 
+          className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4"
+          staggerDelay={0.08}
+          delayChildren={0.1}
         >
           {atmosphereImages.map((image, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              className={`relative overflow-hidden rounded-lg cursor-pointer ${
-                index === 0 || index === 5 ? 'aspect-[4/3]' : 'aspect-square'
-              }`}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-              onTouchStart={() => setHoveredIndex(index)}
-              onTouchEnd={() => setHoveredIndex(null)}
-            >
-              <img
-                src={image.src}
-                alt={image.alt}
-                className={`w-full h-full object-cover transition-transform duration-700 ease-out ${
-                  hoveredIndex === index ? 'scale-110' : 'scale-100'
+            <StaggerItem key={index}>
+              <motion.div
+                className={`relative overflow-hidden rounded-xl cursor-pointer ${
+                  index === 0 || index === 5 ? 'aspect-[4/3]' : 'aspect-square'
                 }`}
-                loading="lazy"
-              />
-              
-              {/* Overlay with caption */}
-              <div 
-                className={`absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent flex items-end justify-center p-3 sm:p-4 transition-opacity duration-300 ${
-                  hoveredIndex === index ? 'opacity-100' : 'opacity-0'
-                }`}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                onTouchStart={() => setHoveredIndex(index)}
+                onTouchEnd={() => setHoveredIndex(null)}
+                whileHover={{ scale: prefersReducedMotion ? 1 : 1.03 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
-                <p className="font-display text-sm sm:text-base text-primary-foreground text-center italic">
-                  {image.caption}
-                </p>
-              </div>
-            </motion.div>
+                <motion.img
+                  src={image.src}
+                  alt={image.alt}
+                  className="w-full h-full object-cover"
+                  initial={{ scale: 1.1 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                  animate={{
+                    scale: hoveredIndex === index && !prefersReducedMotion ? 1.15 : 1,
+                  }}
+                  loading="lazy"
+                />
+                
+                {/* Overlay with caption */}
+                <motion.div 
+                  className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent flex items-end justify-center p-4 sm:p-5"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: hoveredIndex === index ? 1 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <motion.p 
+                    className="font-display text-sm sm:text-base text-primary-foreground text-center italic"
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ 
+                      y: hoveredIndex === index ? 0 : 20, 
+                      opacity: hoveredIndex === index ? 1 : 0 
+                    }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {image.caption}
+                  </motion.p>
+                </motion.div>
+              </motion.div>
+            </StaggerItem>
           ))}
-        </motion.div>
+        </StaggerContainer>
       </div>
     </section>
   );
