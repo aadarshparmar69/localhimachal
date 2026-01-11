@@ -18,6 +18,7 @@ import PlanPage from "./pages/PlanPage";
 import HiddenPlacePage from "./pages/HiddenPlacePage";
 import HiddenGemsPage from "./pages/HiddenGemsPage";
 import HiddenGemDetailPage from "./pages/HiddenGemDetailPage";
+import SearchPage from "./pages/SearchPage";
 import AdminPage from "./pages/AdminPage";
 import NotFound from "./pages/NotFound";
 
@@ -36,6 +37,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/explore" element={<ExplorePage />} />
+            <Route path="/search" element={<SearchPage />} />
             <Route path="/district/:slug" element={<DistrictPage />} />
             <Route path="/district/:districtSlug/:placeSlug" element={<HiddenPlacePage />} />
             <Route path="/hidden-gems" element={<HiddenGemsPage />} />
