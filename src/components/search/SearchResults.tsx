@@ -98,7 +98,12 @@ export const SearchResults = ({ results, query, isFiltered }: SearchResultsProps
         
         <div className="grid gap-4">
           {results.map((result, index) => (
-            <SearchResultCard key={`${result.type}-${result.id}`} result={result} index={index} />
+            <SearchResultCard 
+              key={`${result.type}-${result.id}`} 
+              result={result} 
+              index={index} 
+              query={query}
+            />
           ))}
         </div>
       </motion.div>

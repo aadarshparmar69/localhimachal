@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import { MapPin, Mountain, Home, Sparkles, ExternalLink, ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { SearchResult } from "@/hooks/useSearch";
+import { HighlightedText } from "@/components/search/HighlightedText";
 
 interface SearchResultCardProps {
   result: SearchResult;
   index: number;
+  query?: string;
 }
 
 const typeConfig = {
@@ -23,7 +25,7 @@ const difficultyColors: Record<string, string> = {
   challenging: "bg-red-100 text-red-700 border-red-200",
 };
 
-export const SearchResultCard = ({ result, index }: SearchResultCardProps) => {
+export const SearchResultCard = ({ result, index, query = "" }: SearchResultCardProps) => {
   const config = typeConfig[result.type];
   const Icon = config.icon;
   const isExternal = result.url.startsWith("http");
@@ -61,7 +63,7 @@ export const SearchResultCard = ({ result, index }: SearchResultCardProps) => {
         <div>
           <div className="flex items-start justify-between gap-3 mb-2">
             <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-1">
-              {result.title}
+              <HighlightedText text={result.title} query={query} />
             </h3>
             {isExternal ? (
               <ExternalLink className="w-4 h-4 text-muted-foreground flex-shrink-0" />
@@ -71,11 +73,19 @@ export const SearchResultCard = ({ result, index }: SearchResultCardProps) => {
           </div>
           
           <p className="text-sm text-muted-foreground mb-3">
-            {result.subtitle}
+            <HighlightedText 
+              text={result.subtitle} 
+              query={query}
+              highlightClassName="bg-primary/15 text-primary/90 font-normal rounded-sm px-0.5"
+            />
           </p>
           
           <p className="text-sm text-foreground/80 line-clamp-2 mb-4">
-            {result.description}
+            <HighlightedText 
+              text={result.description} 
+              query={query}
+              highlightClassName="bg-primary/10 text-foreground font-normal rounded-sm px-0.5"
+            />
           </p>
         </div>
 
@@ -87,7 +97,11 @@ export const SearchResultCard = ({ result, index }: SearchResultCardProps) => {
               variant="secondary" 
               className="text-xs font-normal"
             >
-              {tag}
+              <HighlightedText 
+                text={tag} 
+                query={query}
+                highlightClassName="bg-primary/20 text-primary font-medium rounded-sm"
+              />
             </Badge>
           ))}
         </div>
