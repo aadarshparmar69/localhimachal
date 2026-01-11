@@ -16,20 +16,12 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
-    // Optimize for SEO - better code splitting
     rollupOptions: {
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom', 'react-router-dom'],
-          ui: ['framer-motion', '@radix-ui/react-accordion', '@radix-ui/react-dialog'],
+          ui: ['framer-motion'],
         },
-      },
-    },
-    // Minify for better performance
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
       },
     },
   },
