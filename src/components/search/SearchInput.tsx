@@ -1,7 +1,6 @@
 import { Search, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 interface SearchInputProps {
   value: string;
@@ -9,6 +8,7 @@ interface SearchInputProps {
   placeholder?: string;
   autoFocus?: boolean;
   size?: "default" | "large";
+  className?: string;
 }
 
 export const SearchInput = ({ 
@@ -16,43 +16,44 @@ export const SearchInput = ({
   onChange, 
   placeholder = "Search destinations, treks, homestays...",
   autoFocus = false,
-  size = "default"
+  size = "default",
+  className,
 }: SearchInputProps) => {
   return (
-    <motion.div 
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="relative w-full"
-    >
-      <div className={`relative flex items-center ${size === "large" ? "text-lg" : ""}`}>
-        <Search className={`absolute left-4 text-muted-foreground ${size === "large" ? "w-6 h-6" : "w-5 h-5"}`} />
-        <Input
-          type="text"
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          placeholder={placeholder}
-          autoFocus={autoFocus}
-          className={`
-            ${size === "large" ? "pl-14 pr-12 py-6 text-lg" : "pl-12 pr-10 py-3"}
-            w-full rounded-2xl border-2 border-border/50 
-            bg-background/80 backdrop-blur-sm
-            focus:border-primary focus:ring-2 focus:ring-primary/20
-            placeholder:text-muted-foreground/60
-            transition-all duration-300
-            shadow-sm hover:shadow-md focus:shadow-lg
-          `}
-        />
-        {value && (
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => onChange("")}
-            className={`absolute right-2 ${size === "large" ? "w-10 h-10" : "w-8 h-8"} rounded-full hover:bg-secondary`}
-          >
-            <X className={size === "large" ? "w-5 h-5" : "w-4 h-4"} />
-          </Button>
+    <div className={cn("relative w-full", className)}>
+      <Search className={cn(
+        "absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground",
+        size === "large" ? "w-5 h-5" : "w-4 h-4"
+      )} />
+      <Input
+        type="text"
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        autoFocus={autoFocus}
+        className={cn(
+          "w-full rounded-xl border-2 border-border/50",
+          "bg-background/80 backdrop-blur-sm",
+          "focus:border-primary focus:ring-2 focus:ring-primary/20",
+          "placeholder:text-muted-foreground/60",
+          "transition-all duration-200",
+          size === "large" 
+            ? "pl-12 pr-12 py-5 text-lg h-14" 
+            : "pl-10 pr-10 py-3 h-11"
         )}
-      </div>
-    </motion.div>
+      />
+      {value && (
+        <button
+          onClick={() => onChange("")}
+          className={cn(
+            "absolute top-1/2 -translate-y-1/2 p-1.5 rounded-full",
+            "hover:bg-secondary transition-colors",
+            size === "large" ? "right-3" : "right-2"
+          )}
+        >
+          <X className={size === "large" ? "w-5 h-5" : "w-4 h-4"} />
+        </button>
+      )}
+    </div>
   );
 };

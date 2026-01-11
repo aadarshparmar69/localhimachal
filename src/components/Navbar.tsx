@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Compass, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { QuickSearch } from "@/components/search/QuickSearch";
+import { HeaderSearch } from "@/components/search/HeaderSearch";
 
 const navItems = [{
   name: "Home",
@@ -29,7 +29,7 @@ const navItems = [{
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
+  const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -44,19 +44,8 @@ export const Navbar = () => {
 
   useEffect(() => {
     setIsOpen(false);
+    setMobileSearchOpen(false);
   }, [location]);
-
-  // Keyboard shortcut for search
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
-        e.preventDefault();
-        setSearchOpen(true);
-      }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -105,18 +94,7 @@ export const Navbar = () => {
 
             {/* Search & CTA Button - Desktop */}
             <div className="hidden lg:flex items-center gap-3">
-              <Button
-                variant="ghost"
-                size="default"
-                onClick={() => setSearchOpen(true)}
-                className="gap-2 text-white hover:bg-white/10 min-h-[44px]"
-              >
-                <Search className="w-4 h-4" />
-                <span className="hidden xl:inline">Search</span>
-                <kbd className="hidden xl:inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white/10 text-[10px] text-white/70">
-                  ⌘K
-                </kbd>
-              </Button>
+              <HeaderSearch variant="desktop" />
               <Link to="/plan">
                 <Button size="default" className="gap-2 min-h-[44px] bg-[#3d441e] text-white hover:bg-[#3d441e]/90 border border-white/60">
                   <Compass className="w-4 h-4" />
@@ -128,11 +106,11 @@ export const Navbar = () => {
             {/* Mobile: Search & Menu Button */}
             <div className="flex items-center gap-2 lg:hidden">
               <button 
-                onClick={() => setSearchOpen(true)} 
+                onClick={() => setMobileSearchOpen(!mobileSearchOpen)} 
                 className="p-3 rounded-lg transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center text-white hover:bg-white/10"
                 aria-label="Search"
               >
-                <Search className="w-5 h-5" />
+                {mobileSearchOpen ? <X className="w-5 h-5" /> : <Search className="w-5 h-5" />}
               </button>
               <button 
                 onClick={() => setIsOpen(!isOpen)} 
@@ -145,6 +123,23 @@ export const Navbar = () => {
             </div>
           </div>
         </div>
+
+        {/* Mobile Search Bar */}
+        <AnimatePresence>
+          {mobileSearchOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="lg:hidden border-t border-white/10 overflow-visible"
+            >
+              <div className="container mx-auto px-4 py-3">
+                <HeaderSearch variant="mobile" onClose={() => setMobileSearchOpen(false)} />
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
 
       {/* Mobile Menu Overlay */}
@@ -211,9 +206,6 @@ export const Navbar = () => {
           </>
         )}
       </AnimatePresence>
-
-      {/* Quick Search Dialog */}
-      <QuickSearch open={searchOpen} onOpenChange={setSearchOpen} />
     </>
   );
 };
