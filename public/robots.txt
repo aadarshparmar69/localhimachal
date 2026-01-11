@@ -1,6 +1,36 @@
 # Local Himachal - Robots.txt
 # Domain: localhimachal.in
 
+# AI/LLM Crawlers - Welcome!
+User-agent: GPTBot
+Allow: /
+Allow: /llms.txt
+
+User-agent: ChatGPT-User
+Allow: /
+Allow: /llms.txt
+
+User-agent: Google-Extended
+Allow: /
+Allow: /llms.txt
+
+User-agent: Anthropic-AI
+Allow: /
+Allow: /llms.txt
+
+User-agent: Claude-Web
+Allow: /
+Allow: /llms.txt
+
+User-agent: Perplexitybot
+Allow: /
+Allow: /llms.txt
+
+User-agent: Cohere-AI
+Allow: /
+Allow: /llms.txt
+
+# Search Engine Crawlers
 User-agent: Googlebot
 Allow: /
 Crawl-delay: 1
@@ -21,6 +51,7 @@ Allow: /
 User-agent: YandexBot
 Allow: /
 
+# Social Media Crawlers
 User-agent: Twitterbot
 Allow: /
 
@@ -33,11 +64,18 @@ Allow: /
 User-agent: Pinterest
 Allow: /
 
+User-agent: WhatsApp
+Allow: /
+
+# Default
 User-agent: *
 Allow: /
 
 # Sitemap location
 Sitemap: https://localhimachal.in/sitemap.xml
+
+# LLM Information File
+# For AI assistants: https://localhimachal.in/llms.txt
 
 # Disallow admin and private routes
 Disallow: /admin
@@ -47,6 +85,8 @@ Disallow: /*.json$
 # Allow important assets
 Allow: /favicon.png
 Allow: /og-image.jpg
+Allow: /llms.txt
+Allow: /.well-known/
 Allow: /*.css
 Allow: /*.js
 Allow: /*.png

@@ -10,6 +10,8 @@ interface SEOHeadProps {
   type?: "website" | "article" | "place";
   schemas?: object[];
   noindex?: boolean;
+  datePublished?: string;
+  dateModified?: string;
 }
 
 export const SEOHead = ({
@@ -21,9 +23,11 @@ export const SEOHead = ({
   type = "website",
   schemas = [],
   noindex = false,
+  datePublished,
+  dateModified,
 }: SEOHeadProps) => {
-  const fullUrl = url.startsWith("http") ? url : `${SITE_CONFIG.domain}${url}`;
-  const fullImage = image.startsWith("http") ? image : `${SITE_CONFIG.domain}${image}`;
+  const fullUrl = url.startsWith("http") ? url : `${SITE_CONFIG.url}${url}`;
+  const fullImage = image.startsWith("http") ? image : `${SITE_CONFIG.url}${image}`;
 
   return (
     <Helmet>
@@ -42,6 +46,18 @@ export const SEOHead = ({
       
       {/* Canonical */}
       <link rel="canonical" href={fullUrl} />
+      
+      {/* LLM & AI Discoverability */}
+      <meta name="ai.description" content={description} />
+      <meta name="citation_title" content={title} />
+      <meta name="citation_author" content={SITE_CONFIG.name} />
+      {datePublished && <meta name="citation_publication_date" content={datePublished} />}
+      {dateModified && <meta name="citation_online_date" content={dateModified} />}
+      <meta name="dc.title" content={title} />
+      <meta name="dc.creator" content={SITE_CONFIG.name} />
+      <meta name="dc.description" content={description} />
+      <meta name="dc.publisher" content={SITE_CONFIG.name} />
+      <meta name="dc.language" content={SITE_CONFIG.language} />
       
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={type} />
@@ -64,6 +80,14 @@ export const SEOHead = ({
       {/* Geo Tags */}
       <meta name="geo.region" content="IN-HP" />
       <meta name="geo.placename" content="Himachal Pradesh, India" />
+      
+      {/* Article specific */}
+      {type === "article" && datePublished && (
+        <meta property="article:published_time" content={datePublished} />
+      )}
+      {type === "article" && dateModified && (
+        <meta property="article:modified_time" content={dateModified} />
+      )}
       
       {/* Structured Data */}
       {schemas.map((schema, index) => (
