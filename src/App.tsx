@@ -19,10 +19,10 @@ const App = () => (
         <TooltipProvider>
           <Toaster />
           <Sonner />
-          <CookieConsent />
           <BrowserRouter>
             <GoogleAnalytics />
             <ScrollRestoration />
+            <CookieConsent />
             <AnimatedRoutes />
           </BrowserRouter>
         </TooltipProvider>
