@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 const COOKIE_CONSENT_KEY = "cookie-consent";
@@ -43,8 +44,15 @@ const CookieConsent = () => {
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-6">
               {/* Text */}
               <p className="text-sm text-white leading-relaxed">
-                This website uses cookies to provide necessary site functionality and to improve your experience. 
-                By using this website, you agree to our use of cookies.
+                This website uses cookies to provide necessary site functionality and improve your experience. 
+                By using this website, you agree to our use of cookies. Read our{" "}
+                <Link 
+                  to="/privacy-policy" 
+                  className="underline hover:text-white/80 transition-colors font-medium"
+                >
+                  Privacy Policy
+                </Link>{" "}
+                for more details.
               </p>
               
               {/* Buttons */}
