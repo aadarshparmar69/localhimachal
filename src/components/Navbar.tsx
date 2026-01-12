@@ -73,6 +73,9 @@ export const Navbar = () => {
                 src={logoImage} 
                 alt="Local Himachal" 
                 className="h-10 sm:h-12 w-auto object-contain"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                }}
               />
               <div className="flex flex-col">
                 <span className="text-white font-display text-base sm:text-lg font-semibold tracking-tight leading-tight">

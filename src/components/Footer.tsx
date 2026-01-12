@@ -76,6 +76,9 @@ export const Footer = () => {
                 src={logoImage} 
                 alt="Local Himachal" 
                 className="h-10 sm:h-12 w-auto object-contain"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                }}
               />
               <div className="flex flex-col">
                 <span className="font-display text-lg sm:text-xl font-semibold tracking-tight">
