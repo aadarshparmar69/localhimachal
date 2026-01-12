@@ -5,6 +5,7 @@ import { Menu, X, Compass, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { HeaderSearch } from "@/components/search/HeaderSearch";
+import logoImage from "@/assets/local-himachal-logo.png";
 
 const navItems = [{
   name: "Home",
@@ -67,10 +68,17 @@ export const Navbar = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 bg-[#3c431e]">
           <div className="flex items-center justify-between h-16 sm:h-20 bg-[#3c431e]">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-2 sm:gap-3 group min-h-[44px]">
+            <Link to="/" className="flex items-center gap-3 group min-h-[44px]">
+              <img 
+                src={logoImage} 
+                alt="Local Himachal" 
+                className="h-10 sm:h-12 w-auto object-contain"
+              />
               <div className="flex flex-col">
-                <span className="text-white font-semibold">Local Himachal</span>
-                <span className="text-[10px] sm:text-xs font-body text-white/80">
+                <span className="text-white font-display text-base sm:text-lg font-semibold tracking-tight leading-tight">
+                  Local Himachal
+                </span>
+                <span className="text-[9px] sm:text-[10px] font-body text-white/70 tracking-wide">
                   Travel Like a Local
                 </span>
               </div>
