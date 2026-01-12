@@ -162,9 +162,26 @@ export const Footer = () => {
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="mt-6 sm:mt-8 text-center text-primary-foreground/50 font-body text-xs sm:text-sm safe-padding-bottom">
-          <p>© 2025 Local Himachal</p>
+        {/* Legal Links & Copyright */}
+        <div className="mt-6 sm:mt-8 text-center safe-padding-bottom">
+          <div className="flex items-center justify-center gap-4 sm:gap-6 mb-4">
+            <Link 
+              to="/terms-of-service" 
+              className="text-primary-foreground/70 hover:text-primary-foreground transition-colors font-body text-xs sm:text-sm"
+            >
+              Terms of Service
+            </Link>
+            <span className="text-primary-foreground/30">|</span>
+            <Link 
+              to="/privacy-policy" 
+              className="text-primary-foreground/70 hover:text-primary-foreground transition-colors font-body text-xs sm:text-sm"
+            >
+              Privacy Policy
+            </Link>
+          </div>
+          <p className="text-primary-foreground/50 font-body text-xs sm:text-sm">
+            © 2025 Local Himachal. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>;

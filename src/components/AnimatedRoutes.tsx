@@ -13,6 +13,8 @@ import HiddenGemsPage from "@/pages/HiddenGemsPage";
 import HiddenGemDetailPage from "@/pages/HiddenGemDetailPage";
 import SearchPage from "@/pages/SearchPage";
 import AdminPage from "@/pages/AdminPage";
+import TermsOfServicePage from "@/pages/TermsOfServicePage";
+import PrivacyPolicyPage from "@/pages/PrivacyPolicyPage";
 import NotFound from "@/pages/NotFound";
 
 const pageTransition = {
@@ -69,6 +71,8 @@ const AnimatedRoutes = () => {
         <Route path="/culture" element={<AnimatedPage><CulturePage /></AnimatedPage>} />
         <Route path="/plan" element={<AnimatedPage><PlanPage /></AnimatedPage>} />
         <Route path="/admin" element={<AnimatedPage><AdminPage /></AnimatedPage>} />
+        <Route path="/terms-of-service" element={<AnimatedPage><TermsOfServicePage /></AnimatedPage>} />
+        <Route path="/privacy-policy" element={<AnimatedPage><PrivacyPolicyPage /></AnimatedPage>} />
         <Route path="*" element={<AnimatedPage><NotFound /></AnimatedPage>} />
       </Routes>
     </AnimatePresence>
