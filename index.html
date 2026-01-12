@@ -339,6 +339,71 @@
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- Non-destructive boot overlay (never mutates #root to avoid React DOM errors) -->
+    <div
+      id="boot-overlay"
+      style="min-height:100vh;display:none;align-items:center;justify-content:center;padding:24px;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;"
+    >
+      <div style="max-width:720px;width:100%;">
+        <h1 style="font-size:28px;margin:0 0 12px;">Site failed to load</h1>
+        <p style="margin:0 0 12px;line-height:1.5;">
+          Please hard refresh (Ctrl+Shift+R / Cmd+Shift+R). If it still fails,
+          share the details below.
+        </p>
+        <pre
+          id="boot-overlay-details"
+          style="white-space:pre-wrap;background:#f6f6f6;border:1px solid #e5e5e5;border-radius:12px;padding:12px;font-size:12px;"
+        ></pre>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        var overlay = document.getElementById('boot-overlay');
+        var detailsEl = document.getElementById('boot-overlay-details');
+        var root = document.getElementById('root');
+
+        function show(details) {
+          if (!overlay || !detailsEl) return;
+          detailsEl.textContent = details ? String(details) : 'Unknown boot error';
+          overlay.style.display = 'flex';
+        }
+
+        function hide() {
+          if (!overlay) return;
+          overlay.style.display = 'none';
+        }
+
+        // Hide overlay as soon as React mounts.
+        if (root && 'MutationObserver' in window) {
+          var obs = new MutationObserver(function () {
+            if (root.childElementCount > 0) {
+              hide();
+              obs.disconnect();
+            }
+          });
+          obs.observe(root, { childList: true });
+        }
+
+        window.addEventListener('error', function (e) {
+          show(e && (e.message || (e.error && e.error.message) || e.type));
+        });
+
+        window.addEventListener('unhandledrejection', function (e) {
+          var reason = e && e.reason;
+          show(reason && (reason.message || JSON.stringify(reason)));
+        });
+
+        // If React hasn't mounted within 4s, show overlay.
+        setTimeout(function () {
+          if (root && root.childElementCount === 0) {
+            show('React did not mount. Possible missing JS bundle, blocked script, or caching issue.');
+          }
+        }, 4000);
+      })();
+    </script>
+
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
