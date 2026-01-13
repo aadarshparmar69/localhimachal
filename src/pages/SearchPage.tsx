@@ -54,6 +54,10 @@ const SearchPage = () => {
 
   const hasFilters = difficultyFilter !== null || districtFilter !== null;
 
+  const handleSearchClick = (term: string) => {
+    setQuery(term);
+  };
+
   const breadcrumbSchema = getBreadcrumbSchema([
     { name: "Home", url: SITE_CONFIG.url },
     { name: "Search", url: `${SITE_CONFIG.url}/search` },
@@ -96,25 +100,28 @@ const SearchPage = () => {
           </div>
         </motion.div>
 
-        {/* Filters */}
-        <div className="mb-8">
-          <SearchFilters
-            category={category}
-            onCategoryChange={setCategory}
-            difficultyFilter={difficultyFilter}
-            onDifficultyChange={(v) => setDifficultyFilter(v === "all-difficulties" ? null : v)}
-            districtFilter={districtFilter}
-            onDistrictChange={(v) => setDistrictFilter(v === "all-districts" ? null : v)}
-            onClearFilters={clearFilters}
-            resultCounts={resultCounts}
-          />
-        </div>
+        {/* Filters - only show when there's a query or filters */}
+        {(query || hasFilters || category !== "all") && (
+          <div className="mb-8">
+            <SearchFilters
+              category={category}
+              onCategoryChange={setCategory}
+              difficultyFilter={difficultyFilter}
+              onDifficultyChange={(v) => setDifficultyFilter(v === "all-difficulties" ? null : v)}
+              districtFilter={districtFilter}
+              onDistrictChange={(v) => setDistrictFilter(v === "all-districts" ? null : v)}
+              onClearFilters={clearFilters}
+              resultCounts={resultCounts}
+            />
+          </div>
+        )}
 
         {/* Results */}
         <SearchResults
           results={results}
           query={query}
           isFiltered={hasFilters || category !== "all"}
+          onSearchClick={handleSearchClick}
         />
       </main>
 

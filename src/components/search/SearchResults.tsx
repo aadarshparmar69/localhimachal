@@ -1,64 +1,23 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Compass, MapPin, Mountain, Home, Sparkles } from "lucide-react";
+import { Search } from "lucide-react";
 import { SearchResult } from "@/hooks/useSearch";
 import { SearchResultCard } from "./SearchResultCard";
+import { SearchSuggestions } from "./SearchSuggestions";
 
 interface SearchResultsProps {
   results: SearchResult[];
   query: string;
   isFiltered: boolean;
+  onSearchClick?: (term: string) => void;
 }
 
-const popularSearches = [
-  { term: "Spiti Valley", icon: MapPin },
-  { term: "Triund Trek", icon: Mountain },
-  { term: "Jibhi", icon: Sparkles },
-  { term: "Homestay Tirthan", icon: Home },
-  { term: "Chandratal", icon: Mountain },
-  { term: "Kinnaur", icon: MapPin },
-];
-
-export const SearchResults = ({ results, query, isFiltered }: SearchResultsProps) => {
+export const SearchResults = ({ results, query, isFiltered, onSearchClick }: SearchResultsProps) => {
+  // Show suggestions when no query and no filters
   if (!query && !isFiltered) {
-    return (
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="text-center py-16"
-      >
-        <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-primary/10 flex items-center justify-center">
-          <Compass className="w-10 h-10 text-primary" />
-        </div>
-        <h3 className="text-2xl font-display font-semibold text-foreground mb-3">
-          Discover Himachal Pradesh
-        </h3>
-        <p className="text-muted-foreground max-w-md mx-auto mb-8">
-          Search for destinations, treks, homestays, and hidden gems across all 12 districts
-        </p>
-        
-        <div className="max-w-2xl mx-auto">
-          <p className="text-sm font-medium text-muted-foreground mb-4">Popular searches</p>
-          <div className="flex flex-wrap justify-center gap-3">
-            {popularSearches.map((item) => {
-              const Icon = item.icon;
-              return (
-                <motion.button
-                  key={item.term}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-secondary hover:bg-secondary/80 text-foreground text-sm transition-colors"
-                >
-                  <Icon className="w-4 h-4 text-muted-foreground" />
-                  {item.term}
-                </motion.button>
-              );
-            })}
-          </div>
-        </div>
-      </motion.div>
-    );
+    return <SearchSuggestions onSearchClick={onSearchClick} />;
   }
 
+  // No results found
   if (results.length === 0) {
     return (
       <motion.div
@@ -72,16 +31,22 @@ export const SearchResults = ({ results, query, isFiltered }: SearchResultsProps
         <h3 className="text-xl font-semibold text-foreground mb-2">
           No results found
         </h3>
-        <p className="text-muted-foreground max-w-md mx-auto">
+        <p className="text-muted-foreground max-w-md mx-auto mb-8">
           {query 
             ? `We couldn't find anything matching "${query}". Try adjusting your search or filters.`
             : "Try adjusting your filters to see more results."
           }
         </p>
+        
+        {/* Show suggestions even when no results */}
+        <div className="mt-12 text-left">
+          <SearchSuggestions onSearchClick={onSearchClick} />
+        </div>
       </motion.div>
     );
   }
 
+  // Show results
   return (
     <AnimatePresence mode="wait">
       <motion.div
@@ -89,12 +54,14 @@ export const SearchResults = ({ results, query, isFiltered }: SearchResultsProps
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="space-y-4"
+        className="space-y-6"
       >
-        <p className="text-sm text-muted-foreground">
-          Found <span className="font-semibold text-foreground">{results.length}</span> result{results.length !== 1 ? 's' : ''}
-          {query && <> for "<span className="font-semibold text-foreground">{query}</span>"</>}
-        </p>
+        <div className="flex items-center justify-between">
+          <p className="text-sm text-muted-foreground">
+            Found <span className="font-semibold text-foreground">{results.length}</span> result{results.length !== 1 ? 's' : ''}
+            {query && <> for "<span className="font-semibold text-foreground">{query}</span>"</>}
+          </p>
+        </div>
         
         <div className="grid gap-4">
           {results.map((result, index) => (
