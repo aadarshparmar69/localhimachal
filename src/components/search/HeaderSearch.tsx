@@ -1,12 +1,13 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Search, X, MapPin, Mountain, Home, Sparkles, ArrowRight, Clock, Trash2 } from "lucide-react";
+import { Search, X, MapPin, Mountain, Home, Sparkles, ArrowRight, Clock, TrendingUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Input } from "@/components/ui/input";
 import { useQuickSearch, SearchResult } from "@/hooks/useSearch";
 import { useRecentSearches } from "@/hooks/useRecentSearches";
 import { HighlightedText } from "@/components/search/HighlightedText";
 import { cn } from "@/lib/utils";
+import { trendingPlaces, popularSearchTerms } from "@/data/suggestedPlaces";
 
 const typeIcons = {
   district: MapPin,
@@ -39,6 +40,7 @@ export const HeaderSearch = ({ variant = "desktop", onClose }: HeaderSearchProps
   const { recentSearches, addSearch, removeSearch, clearAll } = useRecentSearches();
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const [showRecent, setShowRecent] = useState(false);
+  const [showSuggestions, setShowSuggestions] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
@@ -49,6 +51,7 @@ export const HeaderSearch = ({ variant = "desktop", onClose }: HeaderSearchProps
       if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
         close();
         setShowRecent(false);
+        setShowSuggestions(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -58,7 +61,7 @@ export const HeaderSearch = ({ variant = "desktop", onClose }: HeaderSearchProps
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (!isOpen && !showRecent) return;
+      if (!isOpen && !showRecent && !showSuggestions) return;
 
       const totalItems = showRecent && !query ? recentSearches.length : results.length;
 
@@ -90,13 +93,14 @@ export const HeaderSearch = ({ variant = "desktop", onClose }: HeaderSearchProps
         case "Escape":
           close();
           setShowRecent(false);
+          setShowSuggestions(false);
           break;
       }
     };
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, showRecent, results, recentSearches, selectedIndex, query, navigate, close, addSearch]);
+  }, [isOpen, showRecent, showSuggestions, results, recentSearches, selectedIndex, query, navigate, close, addSearch]);
 
   // Reset selected index when results change
   useEffect(() => {
@@ -112,6 +116,7 @@ export const HeaderSearch = ({ variant = "desktop", onClose }: HeaderSearchProps
     }
     close();
     setShowRecent(false);
+    setShowSuggestions(false);
     onClose?.();
   };
 
@@ -119,6 +124,20 @@ export const HeaderSearch = ({ variant = "desktop", onClose }: HeaderSearchProps
     setQuery(recentQuery);
     setIsOpen(true);
     setShowRecent(false);
+    setShowSuggestions(false);
+  };
+
+  const handleSuggestionClick = (term: string) => {
+    setQuery(term);
+    setIsOpen(true);
+    setShowSuggestions(false);
+  };
+
+  const handleTrendingClick = (url: string) => {
+    navigate(url);
+    close();
+    setShowSuggestions(false);
+    onClose?.();
   };
 
   const handleInputChange = (value: string) => {
@@ -126,6 +145,7 @@ export const HeaderSearch = ({ variant = "desktop", onClose }: HeaderSearchProps
     if (value.length >= 2) {
       setIsOpen(true);
       setShowRecent(false);
+      setShowSuggestions(false);
     } else if (value.length === 0) {
       setIsOpen(false);
     }
@@ -136,13 +156,18 @@ export const HeaderSearch = ({ variant = "desktop", onClose }: HeaderSearchProps
       setIsOpen(true);
     } else if (recentSearches.length > 0) {
       setShowRecent(true);
+      setShowSuggestions(false);
+    } else {
+      setShowSuggestions(true);
+      setShowRecent(false);
     }
   };
 
   const showResults = isOpen && results.length > 0;
   const showNoResults = isOpen && query.length >= 2 && results.length === 0;
   const showRecentSearches = showRecent && !query && recentSearches.length > 0;
-  const showDropdown = showResults || showNoResults || showRecentSearches;
+  const showQuickSuggestions = showSuggestions && !query && recentSearches.length === 0;
+  const showDropdown = showResults || showNoResults || showRecentSearches || showQuickSuggestions;
 
   return (
     <div ref={containerRef} className="relative w-full">
@@ -325,11 +350,93 @@ export const HeaderSearch = ({ variant = "desktop", onClose }: HeaderSearchProps
                     addSearch(query.trim());
                     close(); 
                     setShowRecent(false);
+                    setShowSuggestions(false);
                     onClose?.(); 
                   }}
                   className="inline-block mt-2 text-sm text-primary hover:underline"
                 >
                   Try advanced search
+                </Link>
+              </div>
+            )}
+
+            {/* Quick Suggestions for New Users */}
+            {showQuickSuggestions && (
+              <div className="max-h-[400px] overflow-y-auto">
+                {/* Popular Search Terms */}
+                <div className="p-3 border-b border-border/50">
+                  <span className="text-xs font-medium text-muted-foreground flex items-center gap-1.5 mb-3">
+                    <TrendingUp className="w-3 h-3" />
+                    Popular Searches
+                  </span>
+                  <div className="flex flex-wrap gap-2">
+                    {popularSearchTerms.slice(0, 6).map((item, index) => {
+                      const Icon = item.icon;
+                      return (
+                        <motion.button
+                          key={item.term}
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: index * 0.03 }}
+                          onClick={() => handleSuggestionClick(item.term)}
+                          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-secondary hover:bg-secondary/80 text-foreground text-xs transition-colors"
+                        >
+                          <Icon className="w-3 h-3 text-muted-foreground" />
+                          {item.term}
+                        </motion.button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Trending Places */}
+                <div className="p-3">
+                  <span className="text-xs font-medium text-muted-foreground flex items-center gap-1.5 mb-3">
+                    <Sparkles className="w-3 h-3" />
+                    Trending Destinations
+                  </span>
+                  <div className="grid grid-cols-2 gap-2">
+                    {trendingPlaces.slice(0, 4).map((place, index) => {
+                      const Icon = typeIcons[place.type];
+                      return (
+                        <motion.button
+                          key={place.id}
+                          initial={{ opacity: 0, y: 5 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: index * 0.05 }}
+                          onClick={() => handleTrendingClick(place.url)}
+                          className="flex items-center gap-2 p-2 rounded-lg hover:bg-secondary/80 transition-colors text-left"
+                        >
+                          <div className="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 bg-muted">
+                            <img
+                              src={place.image}
+                              alt={place.name}
+                              className="w-full h-full object-cover"
+                              loading="lazy"
+                            />
+                          </div>
+                          <div className="min-w-0">
+                            <p className="text-sm font-medium text-foreground truncate">{place.name}</p>
+                            <p className="text-xs text-muted-foreground truncate">{place.subtitle.split('•')[0]}</p>
+                          </div>
+                        </motion.button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Explore All */}
+                <Link
+                  to="/search"
+                  onClick={() => { 
+                    close(); 
+                    setShowSuggestions(false);
+                    onClose?.(); 
+                  }}
+                  className="flex items-center justify-center gap-2 p-3 border-t border-border/50 text-sm text-primary hover:bg-secondary/50 transition-colors"
+                >
+                  Explore all destinations
+                  <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
             )}
