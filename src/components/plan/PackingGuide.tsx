@@ -1,8 +1,9 @@
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, useInView } from "framer-motion";
 import { 
   Shirt, Pill, Smartphone, FileText, Backpack, 
   Check, Lightbulb
 } from "lucide-react";
+import { useRef } from "react";
 
 const packingCategories = [
   {
@@ -92,47 +93,106 @@ const packingCategories = [
 
 export const PackingGuide = () => {
   const prefersReducedMotion = useReducedMotion();
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.12,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 60, 
+      filter: "blur(12px)",
+      scale: 0.96
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      filter: "blur(0px)",
+      scale: 1,
+      transition: { 
+        duration: 0.7, 
+        ease: [0.22, 1, 0.36, 1] as const
+      } 
+    }
+  };
 
   return (
-    <section className="py-20 md:py-32 bg-background relative">
+    <section ref={sectionRef} className="py-20 md:py-32 bg-background relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true, margin: "-100px" }}
           className="text-center mb-16 md:mb-20"
         >
-          <span className="inline-block font-body text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4">
+          <motion.span 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="inline-block font-body text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4"
+          >
             Pack Smart
-          </span>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-semibold text-foreground mb-6">
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="font-display text-3xl sm:text-4xl md:text-5xl font-semibold text-foreground mb-6"
+          >
             Complete Packing Guide
-          </h2>
-          <p className="font-body text-base md:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="font-body text-base md:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed"
+          >
             The right gear makes all the difference in the mountains. This isn't a checklist — 
             it's practical advice from experience.
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* Packing Categories */}
-        <div className="space-y-8 md:space-y-12">
+        <motion.div 
+          className="space-y-8 md:space-y-12"
+          variants={prefersReducedMotion ? undefined : containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
           {packingCategories.map((category, index) => (
             <motion.div
               key={category.title}
-              initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: prefersReducedMotion ? 0 : index * 0.1 }}
-              viewport={{ once: true, margin: "-50px" }}
+              variants={prefersReducedMotion ? undefined : cardVariants}
               className="bg-card rounded-2xl md:rounded-3xl shadow-card overflow-hidden"
             >
               {/* Category Header */}
-              <div className="p-6 md:p-8 border-b border-border">
+              <motion.div 
+                className="p-6 md:p-8 border-b border-border"
+                whileHover={prefersReducedMotion ? undefined : { backgroundColor: "rgba(0,0,0,0.02)" }}
+              >
                 <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-                  <div className={`flex-shrink-0 w-14 h-14 rounded-xl ${category.color} border flex items-center justify-center`}>
+                  <motion.div 
+                    className={`flex-shrink-0 w-14 h-14 rounded-xl ${category.color} border flex items-center justify-center`}
+                    whileHover={{ rotate: 5, scale: 1.1 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
                     <category.icon className="w-7 h-7" />
-                  </div>
+                  </motion.div>
                   <div className="flex-1">
                     <h3 className="font-display text-xl md:text-2xl font-semibold text-foreground mb-2">
                       {category.title}
@@ -145,15 +205,20 @@ export const PackingGuide = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Items Grid */}
               <div className="p-6 md:p-8">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   {category.items.map((item, itemIndex) => (
-                    <div
+                    <motion.div
                       key={itemIndex}
                       className="flex items-start gap-3 p-3 rounded-lg hover:bg-secondary/50 transition-colors duration-200"
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.03 * itemIndex, duration: 0.4 }}
+                      viewport={{ once: true }}
+                      whileHover={{ x: 4 }}
                     >
                       <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                       <div>
@@ -164,13 +229,13 @@ export const PackingGuide = () => {
                           {item.note}
                         </p>
                       </div>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

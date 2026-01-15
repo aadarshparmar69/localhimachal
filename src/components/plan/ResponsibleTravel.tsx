@@ -1,8 +1,9 @@
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, useInView } from "framer-motion";
 import { 
   Heart, Trash2, Camera, Users, Mountain, Leaf,
   Check, X
 } from "lucide-react";
+import { useRef } from "react";
 
 const principles = [
   {
@@ -94,9 +95,41 @@ const principles = [
 
 export const ResponsibleTravel = () => {
   const prefersReducedMotion = useReducedMotion();
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 50, 
+      filter: "blur(10px)",
+      scale: 0.95
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      filter: "blur(0px)",
+      scale: 1,
+      transition: { 
+        duration: 0.6, 
+        ease: [0.22, 1, 0.36, 1] as const
+      } 
+    }
+  };
 
   return (
-    <section className="py-20 md:py-32 bg-primary relative overflow-hidden">
+    <section ref={sectionRef} className="py-20 md:py-32 bg-primary relative overflow-hidden">
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -107,43 +140,78 @@ export const ResponsibleTravel = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true, margin: "-100px" }}
           className="text-center mb-16 md:mb-20"
         >
-          <div className="flex items-center justify-center gap-2 mb-4">
+          <motion.div 
+            className="flex items-center justify-center gap-2 mb-4"
+            initial={{ opacity: 0, scale: 0.5 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ type: "spring", stiffness: 300, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
             <Heart className="w-5 h-5 text-primary-foreground/60" />
-          </div>
-          <span className="inline-block font-body text-xs uppercase tracking-[0.2em] text-primary-foreground/60 mb-4">
+          </motion.div>
+          <motion.span 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            viewport={{ once: true }}
+            className="inline-block font-body text-xs uppercase tracking-[0.2em] text-primary-foreground/60 mb-4"
+          >
             Travel With Intention
-          </span>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-semibold text-primary-foreground mb-6">
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="font-display text-3xl sm:text-4xl md:text-5xl font-semibold text-primary-foreground mb-6"
+          >
             Responsible & Local Travel
-          </h2>
-          <p className="font-body text-base md:text-lg text-primary-foreground/80 max-w-3xl mx-auto leading-relaxed">
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="font-body text-base md:text-lg text-primary-foreground/80 max-w-3xl mx-auto leading-relaxed"
+          >
             These mountains have sustained communities for millennia. 
             As travelers, we have a responsibility to protect what we came to experience.
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* Principles Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+          variants={prefersReducedMotion ? undefined : containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
           {principles.map((principle, index) => (
             <motion.div
               key={principle.title}
-              initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: prefersReducedMotion ? 0 : Math.min(index * 0.1, 0.3) }}
-              viewport={{ once: true, margin: "-50px" }}
+              variants={prefersReducedMotion ? undefined : cardVariants}
+              whileHover={prefersReducedMotion ? undefined : { 
+                y: -8, 
+                scale: 1.02,
+                transition: { duration: 0.3, ease: "easeOut" } 
+              }}
               className="bg-primary-foreground/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-primary-foreground/10"
             >
               {/* Icon & Title */}
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-primary-foreground/10 flex items-center justify-center">
+                <motion.div 
+                  className="w-10 h-10 rounded-xl bg-primary-foreground/10 flex items-center justify-center"
+                  whileHover={{ rotate: 5, scale: 1.1 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
                   <principle.icon className="w-5 h-5 text-primary-foreground" />
-                </div>
+                </motion.div>
                 <h3 className="font-display text-lg font-semibold text-primary-foreground">
                   {principle.title}
                 </h3>
@@ -161,10 +229,17 @@ export const ResponsibleTravel = () => {
                 </h4>
                 <ul className="space-y-2">
                   {principle.dos.map((item, i) => (
-                    <li key={i} className="flex items-start gap-2 font-body text-sm text-primary-foreground/90">
+                    <motion.li 
+                      key={i} 
+                      className="flex items-start gap-2 font-body text-sm text-primary-foreground/90"
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.05 * i, duration: 0.4 }}
+                      viewport={{ once: true }}
+                    >
                       <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
                       {item}
-                    </li>
+                    </motion.li>
                   ))}
                 </ul>
               </div>
@@ -176,28 +251,41 @@ export const ResponsibleTravel = () => {
                 </h4>
                 <ul className="space-y-2">
                   {principle.donts.map((item, i) => (
-                    <li key={i} className="flex items-start gap-2 font-body text-sm text-primary-foreground/90">
+                    <motion.li 
+                      key={i} 
+                      className="flex items-start gap-2 font-body text-sm text-primary-foreground/90"
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.05 * i + 0.2, duration: 0.4 }}
+                      viewport={{ once: true }}
+                    >
                       <X className="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" />
                       {item}
-                    </li>
+                    </motion.li>
                   ))}
                 </ul>
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Closing Message */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true, margin: "-50px" }}
           className="mt-16 md:mt-20 text-center max-w-2xl mx-auto"
         >
-          <p className="font-display text-xl md:text-2xl text-primary-foreground/90 italic leading-relaxed">
+          <motion.p 
+            className="font-display text-xl md:text-2xl text-primary-foreground/90 italic leading-relaxed"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
             "Take only memories, leave only footprints — and even those, tread lightly."
-          </p>
+          </motion.p>
         </motion.div>
       </div>
     </section>
