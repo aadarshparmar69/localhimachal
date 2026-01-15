@@ -1,5 +1,6 @@
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, useInView } from "framer-motion";
 import { Sun, CloudRain, Leaf, Snowflake, Users, Camera, AlertTriangle, Check } from "lucide-react";
+import { useRef } from "react";
 
 const seasons = [
   {
@@ -94,9 +95,41 @@ const seasons = [
 
 export const BestTimeToVisit = () => {
   const prefersReducedMotion = useReducedMotion();
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 40, 
+      filter: "blur(10px)",
+      scale: 0.98
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      filter: "blur(0px)",
+      scale: 1,
+      transition: { 
+        duration: 0.7, 
+        ease: [0.22, 1, 0.36, 1] as const
+      } 
+    }
+  };
 
   return (
-    <section id="seasons" className="py-20 md:py-32 bg-background relative overflow-hidden">
+    <section id="seasons" ref={sectionRef} className="py-20 md:py-32 bg-background relative overflow-hidden">
       {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-[0.02]" style={{
         backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
@@ -105,33 +138,54 @@ export const BestTimeToVisit = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true, margin: "-100px" }}
           className="text-center mb-16 md:mb-20"
         >
-          <span className="inline-block font-body text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4">
+          <motion.span 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="inline-block font-body text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4"
+          >
             When to Visit
-          </span>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-semibold text-foreground mb-6">
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="font-display text-3xl sm:text-4xl md:text-5xl font-semibold text-foreground mb-6"
+          >
             Best Time to Visit Himachal
-          </h2>
-          <p className="font-body text-base md:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="font-body text-base md:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed"
+          >
             Each season transforms Himachal into a different world. Understanding the seasons 
             helps you choose what you'll experience — from blooming orchards to snow-covered peaks.
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* Season Cards */}
-        <div className="space-y-8 md:space-y-12">
+        <motion.div 
+          className="space-y-8 md:space-y-12"
+          variants={prefersReducedMotion ? undefined : containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
           {seasons.map((season, index) => (
             <motion.div
               key={season.name}
-              initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: prefersReducedMotion ? 0 : index * 0.1 }}
-              viewport={{ once: true, margin: "-50px" }}
+              variants={prefersReducedMotion ? undefined : itemVariants}
+              whileHover={prefersReducedMotion ? undefined : { scale: 1.01, transition: { duration: 0.3 } }}
               className={`relative bg-gradient-to-br ${season.gradient} rounded-2xl md:rounded-3xl p-6 md:p-10 border ${season.borderColor} overflow-hidden`}
             >
               {/* Decorative element */}
@@ -140,9 +194,13 @@ export const BestTimeToVisit = () => {
               <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-10">
                 {/* Header */}
                 <div className="lg:col-span-3">
-                  <div className={`inline-flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-background shadow-soft mb-4`}>
+                  <motion.div 
+                    className={`inline-flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-background shadow-soft mb-4`}
+                    whileHover={{ rotate: 5, scale: 1.05 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
                     <season.icon className={`w-7 h-7 md:w-8 md:h-8 ${season.iconColor}`} />
-                  </div>
+                  </motion.div>
                   <h3 className="font-display text-2xl md:text-3xl font-semibold text-foreground mb-2">
                     {season.name}
                   </h3>
@@ -160,11 +218,18 @@ export const BestTimeToVisit = () => {
                     </h4>
                   </div>
                   <ul className="space-y-2">
-                    {season.bestFor.map((item) => (
-                      <li key={item} className="flex items-start gap-2 font-body text-sm text-muted-foreground">
+                    {season.bestFor.map((item, i) => (
+                      <motion.li 
+                        key={item} 
+                        className="flex items-start gap-2 font-body text-sm text-muted-foreground"
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.1 * i, duration: 0.4 }}
+                        viewport={{ once: true }}
+                      >
                         <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                         {item}
-                      </li>
+                      </motion.li>
                     ))}
                   </ul>
                 </div>
@@ -204,17 +269,21 @@ export const BestTimeToVisit = () => {
                     ))}
                   </ul>
                   
-                  <div className="p-4 bg-background/80 rounded-xl border border-border/50">
+                  <motion.div 
+                    className="p-4 bg-background/80 rounded-xl border border-border/50"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ type: "spring", stiffness: 400 }}
+                  >
                     <p className="font-body text-sm text-foreground">
                       <span className="font-semibold">Pro Tip: </span>
                       {season.proTip}
                     </p>
-                  </div>
+                  </motion.div>
                 </div>
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

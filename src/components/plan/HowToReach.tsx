@@ -1,5 +1,6 @@
-import { motion, useReducedMotion } from "framer-motion";
-import { Plane, Train, Car, Bus, Clock, AlertTriangle, MapPin, ArrowRight } from "lucide-react";
+import { motion, useReducedMotion, useInView } from "framer-motion";
+import { Plane, Train, Car, Bus, Clock, AlertTriangle, MapPin } from "lucide-react";
+import { useRef } from "react";
 
 const transportModes = [
   {
@@ -139,47 +140,106 @@ const seasonalClosures = [
 
 export const HowToReach = () => {
   const prefersReducedMotion = useReducedMotion();
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.12,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 60, 
+      filter: "blur(12px)",
+      scale: 0.96
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      filter: "blur(0px)",
+      scale: 1,
+      transition: { 
+        duration: 0.7, 
+        ease: [0.22, 1, 0.36, 1] as const
+      } 
+    }
+  };
 
   return (
-    <section className="py-20 md:py-32 bg-secondary/30 relative overflow-hidden">
+    <section ref={sectionRef} className="py-20 md:py-32 bg-secondary/30 relative overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true, margin: "-100px" }}
           className="text-center mb-16 md:mb-20"
         >
-          <span className="inline-block font-body text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4">
+          <motion.span 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="inline-block font-body text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4"
+          >
             Getting There
-          </span>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-semibold text-foreground mb-6">
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="font-display text-3xl sm:text-4xl md:text-5xl font-semibold text-foreground mb-6"
+          >
             How to Reach Himachal
-          </h2>
-          <p className="font-body text-base md:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="font-body text-base md:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed"
+          >
             Multiple routes lead to the mountains. Choose based on your time, budget, 
             and how much of the journey you want to be part of the experience.
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* Transport Modes */}
-        <div className="space-y-8 md:space-y-12 mb-16 md:mb-20">
+        <motion.div 
+          className="space-y-8 md:space-y-12 mb-16 md:mb-20"
+          variants={prefersReducedMotion ? undefined : containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
           {transportModes.map((mode, index) => (
             <motion.div
               key={mode.title}
-              initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: prefersReducedMotion ? 0 : index * 0.1 }}
-              viewport={{ once: true, margin: "-50px" }}
+              variants={prefersReducedMotion ? undefined : cardVariants}
               className="bg-card rounded-2xl md:rounded-3xl shadow-card overflow-hidden"
             >
               {/* Mode Header */}
-              <div className="p-6 md:p-8 border-b border-border">
+              <motion.div 
+                className="p-6 md:p-8 border-b border-border"
+                whileHover={prefersReducedMotion ? undefined : { backgroundColor: "rgba(0,0,0,0.02)" }}
+              >
                 <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-                  <div className={`flex-shrink-0 w-14 h-14 rounded-xl ${mode.color} flex items-center justify-center`}>
+                  <motion.div 
+                    className={`flex-shrink-0 w-14 h-14 rounded-xl ${mode.color} flex items-center justify-center`}
+                    whileHover={{ rotate: 5, scale: 1.1 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
                     <mode.icon className="w-7 h-7" />
-                  </div>
+                  </motion.div>
                   <div>
                     <h3 className="font-display text-xl md:text-2xl font-semibold text-foreground mb-1">
                       {mode.title}
@@ -189,28 +249,39 @@ export const HowToReach = () => {
                     </p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Options Grid */}
               <div className="p-6 md:p-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                   {mode.options.map((option, optIndex) => (
-                    <div
+                    <motion.div
                       key={optIndex}
                       className={`p-4 rounded-xl border ${
                         option.recommended 
                           ? 'border-primary/30 bg-primary/5' 
                           : 'border-border bg-secondary/30'
                       }`}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.05 * optIndex, duration: 0.5 }}
+                      viewport={{ once: true }}
+                      whileHover={{ scale: 1.02, y: -4 }}
                     >
                       <div className="flex items-start justify-between mb-2">
                         <h4 className="font-display text-base font-semibold text-foreground">
                           {option.name}
                         </h4>
                         {option.recommended && (
-                          <span className="px-2 py-0.5 text-xs font-medium bg-primary text-primary-foreground rounded-full">
+                          <motion.span 
+                            className="px-2 py-0.5 text-xs font-medium bg-primary text-primary-foreground rounded-full"
+                            initial={{ scale: 0 }}
+                            whileInView={{ scale: 1 }}
+                            transition={{ type: "spring", stiffness: 500, delay: 0.2 }}
+                            viewport={{ once: true }}
+                          >
                             Recommended
-                          </span>
+                          </motion.span>
                         )}
                       </div>
                       <div className="flex items-center gap-1 mb-2">
@@ -222,42 +293,60 @@ export const HowToReach = () => {
                       <p className="font-body text-sm text-muted-foreground">
                         {option.details}
                       </p>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
 
                 {/* Pro Tip */}
-                <div className="p-4 bg-primary/5 rounded-xl border border-primary/20">
+                <motion.div 
+                  className="p-4 bg-primary/5 rounded-xl border border-primary/20"
+                  whileHover={{ scale: 1.01 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                >
                   <p className="font-body text-sm text-foreground">
                     <span className="font-semibold">Pro Tip: </span>
                     {mode.proTip}
                   </p>
-                </div>
+                </motion.div>
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Seasonal Closures */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true, margin: "-50px" }}
           className="bg-destructive/10 rounded-2xl md:rounded-3xl p-6 md:p-8 border border-destructive/20"
         >
-          <div className="flex items-center gap-3 mb-6">
+          <motion.div 
+            className="flex items-center gap-3 mb-6"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            viewport={{ once: true }}
+          >
             <AlertTriangle className="w-6 h-6 text-destructive" />
             <h3 className="font-display text-xl md:text-2xl font-semibold text-foreground">
               Seasonal Road Closures
             </h3>
-          </div>
+          </motion.div>
           <p className="font-body text-sm text-muted-foreground mb-6">
             High passes in Himachal close during winter due to heavy snowfall. Plan accordingly.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {seasonalClosures.map((item, index) => (
-              <div key={index} className="p-4 bg-background rounded-xl">
+              <motion.div 
+                key={index} 
+                className="p-4 bg-background rounded-xl"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 * index, duration: 0.5 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.03, y: -4 }}
+              >
                 <div className="flex items-center gap-2 mb-2">
                   <MapPin className="w-4 h-4 text-destructive" />
                   <h4 className="font-display text-sm font-semibold text-foreground">
@@ -270,7 +359,7 @@ export const HowToReach = () => {
                 <p className="font-body text-xs text-muted-foreground">
                   {item.note}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </motion.div>

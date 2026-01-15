@@ -1,8 +1,9 @@
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, useInView } from "framer-motion";
 import { 
   Route, Mountain, Wifi, Banknote, ShieldCheck, ThermometerSun,
   AlertCircle, Info
 } from "lucide-react";
+import { useRef } from "react";
 
 const essentials = [
   {
@@ -86,49 +87,110 @@ const essentials = [
 
 export const TripEssentials = () => {
   const prefersReducedMotion = useReducedMotion();
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 50, 
+      filter: "blur(10px)",
+      scale: 0.95
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      filter: "blur(0px)",
+      scale: 1,
+      transition: { 
+        duration: 0.6, 
+        ease: [0.22, 1, 0.36, 1] as const
+      } 
+    }
+  };
 
   return (
-    <section className="py-20 md:py-32 bg-secondary/30 relative overflow-hidden">
+    <section ref={sectionRef} className="py-20 md:py-32 bg-secondary/30 relative overflow-hidden">
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background pointer-events-none" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true, margin: "-100px" }}
           className="text-center mb-16 md:mb-20"
         >
-          <span className="inline-block font-body text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4">
+          <motion.span 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="inline-block font-body text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4"
+          >
             Before You Go
-          </span>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-semibold text-foreground mb-6">
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="font-display text-3xl sm:text-4xl md:text-5xl font-semibold text-foreground mb-6"
+          >
             Trip Planning Essentials
-          </h2>
-          <p className="font-body text-base md:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="font-body text-base md:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed"
+          >
             Himachal's beauty comes with challenges. Understanding these realities 
             before you travel will make your journey safer and more enjoyable.
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* Essentials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+          variants={prefersReducedMotion ? undefined : containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
           {essentials.map((item, index) => (
             <motion.article
               key={item.title}
-              initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: prefersReducedMotion ? 0 : Math.min(index * 0.1, 0.3) }}
-              viewport={{ once: true, margin: "-50px" }}
+              variants={prefersReducedMotion ? undefined : cardVariants}
+              whileHover={prefersReducedMotion ? undefined : { 
+                y: -8, 
+                scale: 1.02,
+                transition: { duration: 0.3, ease: "easeOut" } 
+              }}
               className="bg-card rounded-2xl p-6 md:p-8 shadow-card hover:shadow-elevated transition-shadow duration-300"
             >
               {/* Icon & Title */}
               <div className="flex items-start gap-4 mb-5">
-                <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                <motion.div 
+                  className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center"
+                  whileHover={{ rotate: 5, scale: 1.1 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
                   <item.icon className="w-6 h-6 text-primary" />
-                </div>
+                </motion.div>
                 <div>
                   <h3 className="font-display text-xl font-semibold text-foreground mb-1">
                     {item.title}
@@ -144,25 +206,36 @@ export const TripEssentials = () => {
               {/* Tips */}
               <ul className="space-y-2.5 mb-5">
                 {item.tips.map((tip, tipIndex) => (
-                  <li key={tipIndex} className="flex items-start gap-2.5 font-body text-sm text-foreground">
+                  <motion.li 
+                    key={tipIndex} 
+                    className="flex items-start gap-2.5 font-body text-sm text-foreground"
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.05 * tipIndex, duration: 0.4 }}
+                    viewport={{ once: true }}
+                  >
                     <Info className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                     {tip}
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
 
               {/* Warning */}
-              <div className="p-4 bg-destructive/10 rounded-xl border border-destructive/20">
+              <motion.div 
+                className="p-4 bg-destructive/10 rounded-xl border border-destructive/20"
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 400 }}
+              >
                 <div className="flex items-start gap-2">
                   <AlertCircle className="w-4 h-4 text-destructive flex-shrink-0 mt-0.5" />
                   <p className="font-body text-xs text-destructive leading-relaxed">
                     {item.warning}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             </motion.article>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
