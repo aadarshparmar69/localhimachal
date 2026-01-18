@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import ScrollRestoration from "./components/ScrollRestoration";
 import CookieConsent from "./components/CookieConsent";
+import NewsletterPopup from "./components/NewsletterPopup";
 import { GoogleAnalytics } from "./components/GoogleAnalytics";
 import AnimatedRoutes from "./components/AnimatedRoutes";
 import { ErrorBoundary } from "./components/ErrorBoundary";
@@ -23,6 +24,7 @@ const App = () => (
             <GoogleAnalytics />
             <ScrollRestoration />
             <CookieConsent />
+            <NewsletterPopup />
             <AnimatedRoutes />
           </BrowserRouter>
         </TooltipProvider>
