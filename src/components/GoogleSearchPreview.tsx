@@ -1,13 +1,14 @@
 import { ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import logo from "@/assets/local-himachal-logo.png";
 
 const sitelinks = [
-  { title: "Explore", url: "https://www.localhimachal.in/explore", description: "Discover the 12 enchanting districts of Himachal Pradesh..." },
-  { title: "Hidden Gems", url: "https://www.localhimachal.in/hidden-gems", description: "Explore offbeat, untouched destinations across Himachal..." },
-  { title: "Treks", url: "https://www.localhimachal.in/treks", description: "Epic Himalayan treks from easy walks to challenging expeditions..." },
-  { title: "Homestays", url: "https://www.localhimachal.in/homestays", description: "Authentic local stays with Himachali families..." },
-  { title: "Culture", url: "https://www.localhimachal.in/culture", description: "Dive into Himachali traditions, festivals, and heritage..." },
-  { title: "Plan Your Trip", url: "https://www.localhimachal.in/plan", description: "Get personalized itineraries crafted by local experts..." },
+  { title: "Explore", path: "/explore", description: "Discover the 12 enchanting districts of Himachal Pradesh..." },
+  { title: "Hidden Gems", path: "/hidden-gems", description: "Explore offbeat, untouched destinations across Himachal..." },
+  { title: "Treks", path: "/treks", description: "Epic Himalayan treks from easy walks to challenging expeditions..." },
+  { title: "Homestays", path: "/homestays", description: "Authentic local stays with Himachali families..." },
+  { title: "Culture", path: "/culture", description: "Dive into Himachali traditions, festivals, and heritage..." },
+  { title: "Plan Your Trip", path: "/plan", description: "Get personalized itineraries crafted by local experts..." },
 ];
 
 export default function GoogleSearchPreview() {
@@ -33,9 +34,11 @@ export default function GoogleSearchPreview() {
           </div>
 
           {/* Title */}
-          <h1 className="text-xl md:text-2xl text-[#8ab4f8] hover:underline cursor-pointer mb-2 leading-tight">
-            Local Himachal – Your Complete Travel Guide to the Land of Gods
-          </h1>
+          <Link to="/">
+            <h1 className="text-xl md:text-2xl text-[#8ab4f8] hover:underline cursor-pointer mb-2 leading-tight">
+              Local Himachal – Your Complete Travel Guide to the Land of Gods
+            </h1>
+          </Link>
 
           {/* Description */}
           <p className="text-sm text-[#bdc1c6] leading-relaxed">
@@ -46,9 +49,10 @@ export default function GoogleSearchPreview() {
         {/* Sitelinks */}
         <div className="border-t border-[#3c4043] pt-4">
           {sitelinks.map((link, index) => (
-            <div
+            <Link
               key={index}
-              className="py-4 border-b border-[#3c4043] last:border-b-0 flex items-start justify-between group cursor-pointer hover:bg-[#303134] -mx-4 px-4 transition-colors"
+              to={link.path}
+              className="py-4 border-b border-[#3c4043] last:border-b-0 flex items-start justify-between group cursor-pointer hover:bg-[#303134] -mx-4 px-4 transition-colors block"
             >
               <div className="flex-1">
                 <h2 className="text-lg text-[#8ab4f8] group-hover:underline mb-1">
@@ -57,15 +61,15 @@ export default function GoogleSearchPreview() {
                 <p className="text-sm text-[#bdc1c6]">{link.description}</p>
               </div>
               <ChevronRight className="w-5 h-5 text-[#8ab4f8] mt-1 flex-shrink-0 ml-4" />
-            </div>
+            </Link>
           ))}
         </div>
 
         {/* More Results Link */}
         <div className="mt-6 pt-4">
-          <a href="#" className="text-[#8ab4f8] text-sm hover:underline">
+          <Link to="/" className="text-[#8ab4f8] text-sm hover:underline">
             More results from localhimachal.in »
-          </a>
+          </Link>
         </div>
       </div>
     </div>
