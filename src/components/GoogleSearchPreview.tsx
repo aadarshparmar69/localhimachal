@@ -1,4 +1,5 @@
 import { ChevronRight } from "lucide-react";
+import logo from "@/assets/local-himachal-logo.png";
 
 const sitelinks = [
   { title: "Explore", url: "https://www.localhimachal.in/explore", description: "Discover the 12 enchanting districts of Himachal Pradesh..." },
@@ -17,9 +18,11 @@ export default function GoogleSearchPreview() {
         <div className="mb-6">
           {/* Site Info Row */}
           <div className="flex items-center gap-3 mb-2">
-            <div className="w-7 h-7 rounded-full bg-[#3c431e] flex items-center justify-center text-xs font-bold text-white">
-              LH
-            </div>
+            <img 
+              src={logo} 
+              alt="Local Himachal" 
+              className="w-7 h-7 rounded-full object-cover"
+            />
             <div>
               <div className="text-sm text-[#dadce0]">Local Himachal</div>
               <div className="text-xs text-[#969ba1] flex items-center gap-1">
