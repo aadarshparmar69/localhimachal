@@ -2026,10 +2026,10 @@ export const getHiddenGemsByDifficulty = (difficulty: HiddenGem['difficulty']): 
 
 // Categories for filtering
 export const hiddenGemCategories = [
-  { id: 'valley', name: 'Valleys & Villages', icon: '🏔️' },
-  { id: 'lake', name: 'Sacred Lakes', icon: '💧' },
-  { id: 'pass', name: 'Mountain Passes', icon: '⛰️' },
-  { id: 'meadow', name: 'Alpine Meadows', icon: '🌿' },
-  { id: 'village', name: 'Remote Villages', icon: '🏘️' },
-  { id: 'waterfall', name: 'Waterfalls', icon: '💦' }
+  { id: 'valley', name: 'Valleys & Villages' },
+  { id: 'lake', name: 'Sacred Lakes' },
+  { id: 'pass', name: 'Mountain Passes' },
+  { id: 'meadow', name: 'Alpine Meadows' },
+  { id: 'village', name: 'Remote Villages' },
+  { id: 'waterfall', name: 'Waterfalls' }
 ];

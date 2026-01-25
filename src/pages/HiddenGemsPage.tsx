@@ -18,14 +18,14 @@ const difficultyColors = {
   Challenging: "bg-red-500/20 text-red-700 border-red-500/30"
 };
 
-const categoryIcons: Record<string, string> = {
-  valley: "🏔️",
-  village: "🏘️",
-  lake: "💧",
-  pass: "⛰️",
-  meadow: "🌿",
-  waterfall: "💦",
-  trek: "🥾"
+const categoryLabels: Record<string, string> = {
+  valley: "Valley",
+  village: "Village",
+  lake: "Lake",
+  pass: "Pass",
+  meadow: "Meadow",
+  waterfall: "Waterfall",
+  trek: "Trek"
 };
 
 export default function HiddenGemsPage() {
@@ -118,7 +118,7 @@ export default function HiddenGemsPage() {
                   All Places
                 </Button>
                 {hiddenGemCategories.map(cat => <Button key={cat.id} variant={selectedCategory === cat.id ? "default" : "outline"} size="sm" onClick={() => setSelectedCategory(cat.id)} className={cn("text-xs flex-shrink-0 min-h-[36px] touch-manipulation", selectedCategory === cat.id && "bg-[#3c431e] text-white hover:bg-[#3c431e]/90")}>
-                    {cat.icon} {cat.name}
+                    {cat.name}
                   </Button>)}
               </div>
 
@@ -171,8 +171,8 @@ export default function HiddenGemsPage() {
                             
                             {/* Category badge */}
                             <div className="absolute top-3 md:top-4 left-3 md:left-4">
-                              <Badge variant="secondary" className="bg-background/80 backdrop-blur-sm text-xs">
-                                {categoryIcons[gem.category]} {gem.category}
+                              <Badge variant="secondary" className="bg-background/80 backdrop-blur-sm text-xs capitalize">
+                                {categoryLabels[gem.category]}
                               </Badge>
                             </div>
 
