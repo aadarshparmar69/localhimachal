@@ -1,1 +1,10 @@
 project_id = "kaiqpvkcfyncjkfwhfkt"
+
+[functions.get-itinerary-requests]
+verify_jwt = false
+
+[functions.verify-admin]
+verify_jwt = false
+
+[functions.local-himachal-ai]
+verify_jwt = false
