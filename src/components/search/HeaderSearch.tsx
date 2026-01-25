@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Search, X, MapPin, Mountain, Home, Sparkles, ArrowRight, Clock, TrendingUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Input } from "@/components/ui/input";
 import { useQuickSearch, SearchResult } from "@/hooks/useSearch";
 import { useRecentSearches } from "@/hooks/useRecentSearches";
 import { HighlightedText } from "@/components/search/HighlightedText";
@@ -170,11 +169,16 @@ export const HeaderSearch = ({ variant = "desktop", onClose }: HeaderSearchProps
   const showDropdown = showResults || showNoResults || showRecentSearches || showQuickSuggestions;
 
   return (
-    <div ref={containerRef} className="relative w-full">
+    <div ref={containerRef} className={cn("relative", variant === "desktop" ? "w-auto" : "w-full")}>
       {/* Search Input */}
-      <div className="relative">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/60" />
-        <Input
+      <div className={cn(
+        "flex items-center bg-white/10 rounded-full overflow-hidden border border-white/20",
+        "hover:border-white/30 focus-within:border-white/40 focus-within:bg-white/15",
+        "transition-all duration-200",
+        variant === "desktop" ? "w-52 xl:w-60" : "w-full"
+      )}>
+        <Search className="w-4 h-4 text-white/50 ml-4 flex-shrink-0" />
+        <input
           ref={inputRef}
           type="text"
           value={query}
@@ -182,16 +186,15 @@ export const HeaderSearch = ({ variant = "desktop", onClose }: HeaderSearchProps
           onFocus={handleFocus}
           placeholder="Search places, treks..."
           className={cn(
-            "pl-9 pr-8 bg-white/10 border-white/20 text-white placeholder:text-white/50",
-            "focus:bg-white/15 focus:border-white/40 focus:ring-1 focus:ring-white/20",
+            "bg-transparent text-white placeholder:text-white/50 text-sm outline-none flex-1",
             "transition-all duration-200",
-            variant === "desktop" ? "w-48 xl:w-56 h-9" : "w-full h-11"
+            variant === "desktop" ? "py-2.5 px-3" : "py-3 px-3"
           )}
         />
         {query && (
           <button
             onClick={() => setQuery("")}
-            className="absolute right-2 top-1/2 -translate-y-1/2 p-1 rounded-full hover:bg-white/10"
+            className="p-1.5 mr-2 rounded-full hover:bg-white/10 transition-colors"
           >
             <X className="w-3.5 h-3.5 text-white/60" />
           </button>
