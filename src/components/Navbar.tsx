@@ -1,9 +1,10 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Compass, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { HeaderSearch } from "@/components/search/HeaderSearch";
 import logoImage from "@/assets/local-himachal-logo.png";
 
 const navItems = [{
@@ -30,9 +31,7 @@ export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
   const location = useLocation();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,14 +59,6 @@ export const Navbar = () => {
       document.body.style.overflow = '';
     };
   }, [isOpen]);
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
-      setSearchQuery("");
-    }
-  };
 
   return (
     <>
@@ -119,19 +110,7 @@ export const Navbar = () => {
 
             {/* Search & CTA Button - Desktop */}
             <div className="hidden lg:flex items-center gap-3">
-              {/* Integrated Search Bar */}
-              <form onSubmit={handleSearch} className="relative">
-                <div className="flex items-center bg-white/10 rounded-full overflow-hidden border border-white/20 hover:border-white/30 focus-within:border-white/40 transition-colors">
-                  <Search className="w-4 h-4 text-white/60 ml-4" />
-                  <input
-                    type="text"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Search places, treks..."
-                    className="bg-transparent text-white placeholder:text-white/50 text-sm py-2.5 px-3 w-44 focus:w-52 transition-all duration-300 outline-none"
-                  />
-                </div>
-              </form>
+              <HeaderSearch variant="desktop" />
               
               <Link to="/plan">
                 <Button 
@@ -173,22 +152,10 @@ export const Navbar = () => {
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="lg:hidden border-t border-white/10 overflow-hidden"
+              className="lg:hidden border-t border-white/10 overflow-visible"
             >
               <div className="container mx-auto px-4 py-3">
-                <form onSubmit={handleSearch} className="relative">
-                  <div className="flex items-center bg-white/10 rounded-full overflow-hidden border border-white/20">
-                    <Search className="w-4 h-4 text-white/60 ml-4" />
-                    <input
-                      type="text"
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      placeholder="Search places, treks, homestays..."
-                      className="bg-transparent text-white placeholder:text-white/50 text-sm py-3 px-3 w-full outline-none"
-                      autoFocus
-                    />
-                  </div>
-                </form>
+                <HeaderSearch variant="mobile" onClose={() => setMobileSearchOpen(false)} />
               </div>
             </motion.div>
           )}
