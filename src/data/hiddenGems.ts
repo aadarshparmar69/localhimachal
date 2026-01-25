@@ -961,6 +961,1049 @@ The rest of the year, Pangi remains largely inaccessible due to snow and extreme
     seoDescription: "Explore Pangi Valley - one of Himachal's most remote regions. Dramatic landscapes, resilient culture, and true Himalayan isolation beyond Sach Pass.",
 
     image: "https://www.himalayanecotourism.com/wp-content/uploads/2023/06/pangi-031.jpg"
+  },
+
+  // Kinnaur Region - Upper Kinnaur & Trans-Himalayan
+  {
+    id: "hangrang-valley",
+    slug: "hangrang-valley",
+    name: "Hangrang Valley",
+    district: "Kinnaur",
+    districtSlug: "kinnaur",
+    category: "valley",
+    altitude: "3,000–4,000m",
+    bestTime: "Late May to June, September to October",
+    difficulty: "Challenging",
+    shortDescription: "A high-altitude valley beyond Pooh in Upper Kinnaur, where life follows ancient rhythms closer to Tibet than typical Himachal.",
+    poeticQuote: "Where the wind speaks in whispers, and silence becomes the loudest sound.",
+
+    emotionalOpening: `Hangrang Valley lies deep in the upper reaches of Kinnaur district, beyond the town of Pooh, where the familiar green landscapes of lower Kinnaur slowly give way to the stark, trans-Himalayan terrain. This is a high-altitude valley shaped by wind, stone, and time—quiet, expansive, and largely untouched by tourism.
+
+Sitting between 3,000 and 4,000 meters in elevation, Hangrang feels closer in spirit to the Tibetan plateau than to the hill regions most travelers associate with Himachal Pradesh. What keeps Hangrang Valley truly hidden is not just its distance, but its rhythm of life.
+
+The region is home to a cluster of small villages such as Lippa, Spillow, and nearby hamlets that remain deeply rooted in agriculture and seasonal movement. There are no curated experiences, no signboards calling attention, and no sense of performance for visitors.`,
+
+    locationDescription: `Hangrang Valley is located in Upper Kinnaur district, beyond the administrative town of Pooh. Reckong Peo serves as the last major hub with basic facilities, after which the journey follows the old Hindustan–Tibet road corridor toward Pooh and then into interior side valleys.
+
+From Shimla, reaching Hangrang requires a long mountain drive through Rampur, Karcham, and Reckong Peo. The final stretch beyond Pooh is narrow, exposed in sections, and vulnerable to landslides.`,
+
+    whyHidden: `Roads are motorable but demand patience and experienced driving. Public transport exists only in the form of limited local buses that operate irregularly, often depending on weather and road conditions.
+
+Seasonal accessibility defines travel here. Monsoon months can bring road disruptions, while winter snowfall isolates parts of the valley for extended periods.`,
+
+    villageLife: `The valley reflects a unique blend of Buddhist and indigenous Kinnauri belief systems. Prayer flags, chortens, and small monasteries sit alongside village temples dedicated to local deities.
+
+Traditional stone-and-wood houses with flat roofs dominate the architecture, designed to withstand strong winds and heavy snow. Agriculture here is limited by climate, yet villagers continue to cultivate barley, peas, and potatoes using glacial meltwater channels.`,
+
+    bestTimeDetailed: `The best time to visit Hangrang Valley is from late May to June and again from September to early October. During these months, roads are generally open, skies remain clear, and village life is active.
+
+July and August carry landslide risks, though rainfall is lighter than lower Himachal. Winters are severe—from November onward, temperatures drop sharply, water sources freeze, and movement becomes limited.`,
+
+    howToReach: `From Shimla, drive through Rampur, Karcham, and Reckong Peo (10-12 hours). From Reckong Peo, continue to Pooh and then into the valley. Public transport is limited to irregular local buses. High-clearance vehicle and experienced driver recommended.`,
+
+    thingsToDo: [
+      "Village walks through terraced fields and ancient irrigation channels",
+      "Photography of traditional stone-and-wood architecture",
+      "Stargazing with minimal light pollution",
+      "Observing Buddhist-Kinnauri cultural blend",
+      "Short walks along valley edges for mountain views"
+    ],
+
+    responsibleTravel: [
+      "Respect local customs and seek permission before photographing religious spaces",
+      "Carry sufficient cash—no ATMs beyond Reckong Peo",
+      "Waste must be carried back as disposal systems are limited",
+      "Avoid loud behavior in this fragile high-altitude environment",
+      "Support local homestays and eat home-cooked meals"
+    ],
+
+    stayOptions: `Accommodation is limited to basic homestays in a few villages. Facilities are minimal but genuine. Electricity supply can be inconsistent, and mobile network coverage is weak or absent. Fuel, medical facilities, and supplies are available only in larger towns.`,
+
+    seoTitle: "Hangrang Valley: Trans-Himalayan Hidden Gem in Upper Kinnaur | Local Himachal",
+    seoDescription: "Discover Hangrang Valley beyond Pooh in Upper Kinnaur. Experience authentic trans-Himalayan life, Buddhist-Kinnauri culture, and untouched high-altitude landscapes.",
+
+    image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800"
+  },
+
+  {
+    id: "kunnu-charang-valley",
+    slug: "kunnu-charang-valley",
+    name: "Kunnu–Charang Valley",
+    district: "Kinnaur",
+    districtSlug: "kinnaur",
+    category: "valley",
+    altitude: "3,500–4,500m",
+    bestTime: "Late June to early September",
+    difficulty: "Challenging",
+    shortDescription: "A remote alpine grazing corridor in Upper Kinnaur, accessible only on foot through traditional shepherd trails.",
+    poeticQuote: "Where the mountains guard their secrets, and only the patient are welcomed.",
+
+    emotionalOpening: `Kunnu–Charang Valley lies deep within the interior of Upper Kinnaur, far beyond the routes most travelers associate with the region. Even among experienced trekkers, the name remains unfamiliar. This valley does not appear on mainstream trekking lists, nor is it promoted through adventure circuits.
+
+Stretching between the high settlements near Charang and the isolated alpine basins of Kunnu, the valley sits at elevations that gradually rise from around 3,500 meters to well above 4,500 meters. The landscape transitions from cultivated terraces and juniper slopes into vast grazing grounds, glacial streams, and silent mountain bowls.
+
+What defines Kunnu–Charang is not visual drama alone, but the sense of distance—both physical and emotional—from the outside world.`,
+
+    locationDescription: `Kunnu–Charang Valley is located in Upper Kinnaur district, beyond the village of Charang. Reckong Peo remains the last major administrative base with basic supplies.
+
+From Charang village, there is no motorable access into the valley itself. The journey continues entirely on foot along traditional shepherd trails that connect seasonal grazing areas. These routes are not marked, and navigation depends heavily on local knowledge.`,
+
+    whyHidden: `Public transport reaches only up to the nearest road-connected villages. Travel into the valley requires careful planning, physical preparation, and the support of local guides familiar with weather patterns and grazing routes.
+
+Seasonal accessibility plays a critical role, as snow blocks entry for much of the year. This valley represents wilderness in its truest form.`,
+
+    villageLife: `Kunnu–Charang Valley is known locally as a high-altitude grazing corridor used by shepherd communities during summer months. The valley holds importance not as a trekking destination, but as a functional landscape that supports pastoral life.
+
+Natural features include wide alpine meadows, glacial streams, moraine fields, and high ridgelines. There are no permanent structures once you move beyond the last villages.`,
+
+    bestTimeDetailed: `The only viable window to explore Kunnu–Charang Valley is from late June to early September. Snow conditions determine access each year, and even during summer, lingering snowfields may remain at higher sections.
+
+Early monsoon can bring unstable weather, while late September marks the onset of cold winds and early snowfall. Outside this short period, the valley becomes inaccessible and unsafe.`,
+
+    howToReach: `From Reckong Peo, travel to Charang village. From there, continue on foot along shepherd trails—no motorable access exists. Local guides essential for navigation. Allow 3-4 days for proper exploration.`,
+
+    thingsToDo: [
+      "Alpine walking through glacial basins",
+      "Observing shepherd camps and pastoral traditions",
+      "Photography of dramatic high-altitude terrain",
+      "Quiet contemplation in complete mountain silence",
+      "Understanding traditional transhumance patterns"
+    ],
+
+    responsibleTravel: [
+      "All supplies must be carried from the last village",
+      "Camp responsibly away from water sources and grazing land",
+      "Never disturb grazing routes or shepherd camps",
+      "Leave no waste—carry everything back",
+      "Drones and amplified sound have no place here"
+    ],
+
+    stayOptions: `There are no accommodations beyond the last inhabited villages. Camping is the only option. Mobile networks do not exist in the valley. Medical facilities are extremely far away, making acclimatization and fitness essential.`,
+
+    seoTitle: "Kunnu-Charang Valley: Remote Alpine Wilderness in Upper Kinnaur | Local Himachal",
+    seoDescription: "Explore Kunnu-Charang Valley, one of Himachal's most untouched alpine corridors. Experience shepherd trails, glacial meadows, and true wilderness in Upper Kinnaur.",
+
+    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800"
+  },
+
+  {
+    id: "tidong-valley",
+    slug: "tidong-valley",
+    name: "Tidong Valley",
+    district: "Kinnaur",
+    districtSlug: "kinnaur",
+    category: "valley",
+    altitude: "2,400–3,200m",
+    bestTime: "April to June, September to October",
+    difficulty: "Moderate",
+    shortDescription: "A gentle agricultural valley near Kalpa, representing everyday Kinnauri life away from tourist circuits.",
+    poeticQuote: "Where orchards whisper stories, and every terrace holds a generation's work.",
+
+    emotionalOpening: `Tidong Valley lies quietly behind the well-known settlements of Kalpa and Reckong Peo, yet it remains almost entirely absent from mainstream Kinnaur travel routes. While most visitors stop at Kalpa for views of the Kinner Kailash range, very few venture into the side valleys that stretch away from the highway.
+
+Flowing along the Tidong River, a tributary of the Sutlej, the valley sits at an altitude ranging roughly between 2,400 and 3,200 meters. The landscape here is gentler than Upper Kinnaur's cold desert but quieter than the orchard-heavy belts of Kalpa.
+
+Terraced fields, forest patches, and small villages form a continuous human landscape shaped by agriculture and tradition.`,
+
+    locationDescription: `Tidong Valley is located in Kinnaur district, branching off near Kalpa and Reckong Peo. Reckong Peo acts as the nearest major base with administrative services, fuel, and medical facilities.
+
+From the main highway, a narrow interior road descends toward the valley, following the course of the Tidong River. The drive is short in distance but slow in pace.`,
+
+    whyHidden: `Roads are generally motorable but vulnerable to landslides, particularly during monsoon months. Public transport into the valley is limited to occasional local buses or shared jeeps used by residents.
+
+Among offbeat destinations in Himachal, Tidong stands out for representing everyday Kinnauri life rather than dramatic landscapes.`,
+
+    villageLife: `Tidong Valley is known locally for its fertile land and strong agricultural base. Apple orchards, pea fields, and seasonal vegetables dominate the valley floor. The Tidong River provides irrigation and shapes daily life.
+
+Culturally, the valley reflects traditional Kinnauri beliefs. Small temples, village deities, and seasonal festivals remain central to community life. Architecture combines stone foundations with wooden upper floors.`,
+
+    bestTimeDetailed: `The best time to explore Tidong Valley is from April to June and from September to October. Spring brings flowering orchards and renewed agricultural activity, while autumn offers clear skies and calm atmosphere.
+
+July and August can bring landslides and road damage. Winters are cold but less severe than Upper Kinnaur, suitable only for travelers comfortable with basic conditions.`,
+
+    howToReach: `From Reckong Peo, take the interior road toward Tidong Valley (1-2 hours depending on conditions). Public transport is limited—shared jeeps or private vehicles recommended.`,
+
+    thingsToDo: [
+      "Village walks along terraced fields",
+      "Riverside paths and forest exploration",
+      "Short nature walks between hamlets",
+      "Photography of traditional Kinnauri architecture",
+      "Observing seasonal farming activities"
+    ],
+
+    responsibleTravel: [
+      "Respect private fields and village boundaries",
+      "Photograph religious spaces only with permission",
+      "Carry cash—no ATMs inside the valley",
+      "Keep noise levels low",
+      "Manage waste responsibly"
+    ],
+
+    stayOptions: `Accommodation is limited to a few homestays and small guesthouses in nearby villages. Facilities are basic but comfortable. Electricity is generally available but can be irregular. Mobile network coverage is limited.`,
+
+    seoTitle: "Tidong Valley: Authentic Kinnauri Village Life Near Kalpa | Local Himachal",
+    seoDescription: "Discover Tidong Valley near Kalpa - terraced orchards, traditional villages, and genuine Kinnauri culture away from mainstream tourism.",
+
+    image: "https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=800"
+  },
+
+  // Kullu Region - Sainj Valley Interior
+  {
+    id: "ropa-valley",
+    slug: "ropa-valley",
+    name: "Ropa Valley",
+    district: "Kullu",
+    districtSlug: "kullu",
+    category: "valley",
+    altitude: "2,000–2,800m",
+    bestTime: "April to June, September to October",
+    difficulty: "Moderate",
+    shortDescription: "Deep within Sainj Valley beyond Shangarh, inside the Great Himalayan National Park ecozone.",
+    poeticQuote: "Where the forest guards its boundaries, and every step asks for permission.",
+
+    emotionalOpening: `Ropa Valley lies deep within the interior of Sainj Valley, beyond the open grasslands of Shangarh that most travelers consider the end of the road. While Shangarh Meadows have slowly gained attention, very few people continue further into the upper reaches where Ropa Valley begins.
+
+The shift is immediate—forests grow denser, villages become fewer, and the sense of isolation deepens. Situated within the eco-sensitive zone of the Great Himalayan National Park (GHNP), Ropa Valley unfolds quietly along forested slopes and narrow river corridors.
+
+The altitude ranges between 2,000 and 2,800 meters, creating a landscape of mixed forests, traditional hamlets, and high mountain silence.`,
+
+    locationDescription: `Ropa Valley is located in Kullu district, inside the Sainj Valley region. Shangarh village serves as the last commonly visited point. From there, a narrow mountain road continues deeper toward Ropa and nearby settlements.
+
+Access begins from Aut on the Chandigarh–Manali highway, from where a diversion leads into Sainj Valley.`,
+
+    whyHidden: `Life here is shaped more by conservation rules and seasonal rhythms than by tourism. The road toward Ropa is motorable but slow, passing through forest stretches and landslide-prone sections.
+
+Travel beyond Shangarh requires patience and local awareness, particularly during monsoon months.`,
+
+    villageLife: `Ropa Valley is known locally for its deep forest cover and traditional way of life preserved under the GHNP ecozone framework. The valley is home to old wooden houses, slate roofs, and clustered settlements built for warmth and community living.
+
+Agriculture remains small-scale, focused on grains, vegetables, and seasonal produce. Forest resources are used carefully under conservation norms.`,
+
+    bestTimeDetailed: `The best time to visit Ropa Valley is from April to June and from September to October. During these periods, the weather is stable, forests are active with birdlife, and village paths remain accessible.
+
+July and August bring heavy rainfall, increasing the risk of landslides. Winters are cold and quiet, with occasional snowfall.`,
+
+    howToReach: `From Aut, drive to Sainj town, then continue to Shangarh. Beyond Shangarh, narrow roads lead to Ropa (2-3 hours from Sainj). Public transport is limited beyond Sainj.`,
+
+    thingsToDo: [
+      "Village walks along forest edges",
+      "Time spent near small streams",
+      "Short nature walks with local guidance",
+      "Birdwatching in minimal disturbance zones",
+      "Forest photography at dawn and dusk"
+    ],
+
+    responsibleTravel: [
+      "Follow all local conservation guidelines",
+      "Avoid plastic use within the ecozone",
+      "Respect forest boundaries strictly",
+      "No drones or off-trail exploration",
+      "Keep noise levels minimal"
+    ],
+
+    stayOptions: `Accommodation is limited to a few homestays in and around Ropa village. Facilities are basic but clean. Electricity may be inconsistent. No ATMs, fuel stations, or medical facilities beyond Sainj town.`,
+
+    seoTitle: "Ropa Valley: GHNP Ecozone Hidden Gem Beyond Shangarh | Local Himachal",
+    seoDescription: "Explore Ropa Valley in Sainj's interior - dense forests, traditional villages, and protected wilderness within the Great Himalayan National Park buffer zone.",
+
+    image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800"
+  },
+
+  {
+    id: "pekhari-village",
+    slug: "pekhari-village",
+    name: "Pekhari Village",
+    district: "Kullu",
+    districtSlug: "kullu",
+    category: "village",
+    altitude: "2,100–2,400m",
+    bestTime: "April to June, September to October",
+    difficulty: "Moderate",
+    shortDescription: "A small, deeply rooted village in inner Sainj Valley, surrounded by thick forests within the GHNP ecozone.",
+    poeticQuote: "Where every path is walked daily, and strangers are still a story worth telling.",
+
+    emotionalOpening: `Pekhari is a small, deeply rooted village tucked inside the inner reaches of Sainj Valley, far beyond the areas most travelers associate with the region. While Sainj itself is known among nature-focused visitors, Pekhari lies even further within the eco-sensitive landscape that borders the Great Himalayan National Park.
+
+Set at an altitude of around 2,100–2,400 meters, Pekhari is surrounded by thick mixed forests of deodar, oak, and rhododendron. The atmosphere here is noticeably different from roadside villages—quieter, slower, and more self-contained.
+
+There are no signs advertising stays or viewpoints. Life continues according to agricultural seasons and forest regulations.`,
+
+    locationDescription: `Pekhari Village is located in Kullu district, within the inner Sainj Valley ecozone. Sainj town acts as the nearest administrative base.
+
+From Aut on the Chandigarh–Manali highway, a diversion leads into Sainj Valley. The road toward Pekhari is narrow, winding, and primarily used by locals. It passes through forested stretches and small hamlets before reaching the village.`,
+
+    whyHidden: `Public buses and shared taxis operate up to Sainj, but transport beyond that becomes infrequent. During monsoon months, landslides can temporarily block access. Winter travel is possible but limited.
+
+This location alone has kept it almost entirely absent from tourism narratives.`,
+
+    villageLife: `Pekhari is known locally for its close relationship with the surrounding forest ecosystem. Being part of the GHNP ecozone, the village follows strict conservation norms that shape daily life.
+
+Traditional wooden houses with slate roofs dominate the architecture. Community life remains strong, guided by village councils and local deities.`,
+
+    bestTimeDetailed: `The best time to visit Pekhari Village is from April to June and from September to October. Spring brings flowering forests and active farming, while autumn offers stable weather and clear mountain air.
+
+July and August are not recommended due to heavy rainfall and road instability. Winters are cold and quiet, suitable only for travelers comfortable with basic conditions.`,
+
+    howToReach: `From Sainj town, continue on interior roads toward Pekhari (1-2 hours). Public transport is infrequent—arrange local transport or walk from nearby villages.`,
+
+    thingsToDo: [
+      "Village walks through terraced fields",
+      "Time spent near forest edges",
+      "Short forest walks in permitted areas",
+      "Birdwatching in rich forest cover",
+      "Observing daily agricultural rhythms"
+    ],
+
+    responsibleTravel: [
+      "Follow all local GHNP guidelines",
+      "Avoid plastic use completely",
+      "Refrain from entering restricted forest zones",
+      "No drones or off-trail movement",
+      "Keep noise to minimum"
+    ],
+
+    stayOptions: `Accommodation is limited to a few basic homestays. Facilities are minimal but warm. Electricity can be irregular, mobile coverage weak. No ATMs or medical facilities nearby—carry essentials from Sainj or Aut.`,
+
+    seoTitle: "Pekhari Village: Inner Sainj Valley Forest Hamlet | Local Himachal",
+    seoDescription: "Discover Pekhari Village in inner Sainj Valley - a forest hamlet within the GHNP ecozone offering authentic village life and protected wilderness.",
+
+    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800"
+  },
+
+  // Mandi Region - Forest Belt Villages
+  {
+    id: "shikari-devi-forest-belt",
+    slug: "shikari-devi-forest-belt",
+    name: "Shikari Devi Forest Belt",
+    district: "Mandi",
+    districtSlug: "mandi",
+    category: "village",
+    altitude: "2,400–3,300m",
+    bestTime: "May to June, September to October",
+    difficulty: "Moderate",
+    shortDescription: "Sacred forest villages surrounding the Shikari Devi Temple, where spiritual geography shapes daily life.",
+    poeticQuote: "Where the forest is temple, and every tree holds a prayer.",
+
+    emotionalOpening: `The Shikari Devi forest belt stretches across the high ridgelines of Mandi district, surrounding the revered Shikari Devi Temple. While the temple itself is known among devotees, the vast forested region that lies beyond it remains almost entirely unexplored.
+
+Scattered across dense deodar and oak forests are small villages and seasonal hamlets that continue to live quietly under the canopy of one of Himachal's most sacred mountain zones.
+
+Located at elevations ranging roughly between 2,400 and 3,300 meters, this belt experiences long winters, short growing seasons, and deep isolation. The villages here are not destinations—they are lived landscapes shaped by faith, forest dependence, and resilience.`,
+
+    locationDescription: `The Shikari Devi forest belt lies in upper Mandi district, extending across the ridges above Janjheli, Thunag, and surrounding interior regions. The nearest towns with basic facilities include Thunag and Janjheli.
+
+Access usually begins from Mandi town, followed by long mountain drives through narrow forest roads. While a road reaches the Shikari Devi temple area, most interior villages lie beyond the main route.`,
+
+    whyHidden: `Public transport is extremely limited and often seasonal. Local buses operate irregularly, mainly serving residents. Private vehicles or shared local taxis are the most reliable option.
+
+The villages are valued locally as sacred land rather than tourist territory.`,
+
+    villageLife: `The forest belt is known primarily for its spiritual importance. Shikari Devi Temple, dedicated to the goddess of the forests, plays a central role in local belief systems.
+
+Beyond religion, the area is known for its dense forests, wildlife corridors, and traditional forest-based livelihoods. Villages rely on seasonal agriculture, livestock grazing, and careful use of forest resources.`,
+
+    bestTimeDetailed: `The best time to explore the Shikari Devi forest belt is from May to June and September to October. These months offer accessible forests and stable weather.
+
+July and August bring heavy monsoon rains, increasing landslide risk. Winters are harsh, with heavy snowfall isolating villages for months. December to March access is often not possible.`,
+
+    howToReach: `From Mandi, drive to Thunag or Janjheli (3-4 hours). Continue on forest roads toward the temple area and interior villages. Public transport is seasonal and irregular.`,
+
+    thingsToDo: [
+      "Village walks through forest clearings",
+      "Quiet temple visits at dawn and dusk",
+      "Forest-edge exploration with local guidance",
+      "Photography of traditional architecture",
+      "Observing sacred grove ecosystems"
+    ],
+
+    responsibleTravel: [
+      "Dress modestly—this is sacred territory",
+      "Avoid loud behavior completely",
+      "Respect forest boundaries and sacred groves",
+      "Plastic waste and noise disturb sanctity",
+      "Photographing religious spaces requires permission"
+    ],
+
+    stayOptions: `Accommodation is limited to basic homestays and simple guesthouses near Janjheli or Thunag. Electricity can be unreliable, mobile coverage weak. ATMs and medical facilities are far below in larger towns.`,
+
+    seoTitle: "Shikari Devi Forest Belt: Sacred Forest Villages in Mandi | Local Himachal",
+    seoDescription: "Explore the Shikari Devi forest belt - sacred villages surrounding the ancient temple, dense deodar forests, and spiritual mountain life in upper Mandi.",
+
+    image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800"
+  },
+
+  {
+    id: "dehuri-valley",
+    slug: "dehuri-valley",
+    name: "Dehuri Valley",
+    district: "Kullu",
+    districtSlug: "kullu",
+    category: "valley",
+    altitude: "1,800–2,600m",
+    bestTime: "April to June, September to October",
+    difficulty: "Moderate",
+    shortDescription: "A forested valley at the Ani-Seraj border, where Devta traditions guide village life.",
+    poeticQuote: "Where the forest paths remember every footstep, and hospitality needs no words.",
+
+    emotionalOpening: `Dehuri Valley lies quietly along the lesser-traveled border between Ani (Kullu side) and the Seraj region of Mandi district. While Ani itself is known among locals as a gateway to interior valleys, very few travelers continue beyond its outskirts.
+
+Dehuri begins where the road thins, the forests grow denser, and the idea of tourism fades completely. The valley sits at elevations ranging roughly between 1,800 and 2,600 meters, wrapped in thick deodar, oak, and pine forests.
+
+Small villages are scattered along slopes and ridgelines, connected more by footpaths than by clear roads. Life here follows agricultural seasons, forest access rules, and long-standing community rhythms.`,
+
+    locationDescription: `Dehuri Valley lies near the Ani–Seraj border, where Kullu district gradually merges into the interior of Mandi. Ani town serves as the nearest recognizable base.
+
+From Aut on the Chandigarh–Manali highway, travelers reach Ani via Banjar. Beyond Ani, narrow interior roads lead toward Dehuri-side villages. These roads are motorable but rough.`,
+
+    whyHidden: `Public transport is extremely limited. Local buses run irregularly and are primarily used by residents. Most access is via shared local jeeps or private vehicles arranged from Ani.
+
+Among lesser-known places near Ani and Seraj, Dehuri is valued not for viewpoints but for continuity of culture and forest life.`,
+
+    villageLife: `Dehuri Valley is known locally for its forest wealth and traditional farming culture. Villagers depend on terraced agriculture, growing maize, wheat, and seasonal vegetables.
+
+The valley reflects a strong Devta-based social system. Local deities guide seasonal rituals, village decisions, and festivals. Wooden temples and sacred forest patches remain central to community identity.`,
+
+    bestTimeDetailed: `The best time to visit Dehuri Valley is from April to June and from September to October. Weather is stable, forest paths are accessible, and agricultural activity brings the valley to life.
+
+July and August are risky due to heavy rainfall and landslides. Winters are cold and long, with fog, frost, and occasional snowfall.`,
+
+    howToReach: `From Aut, drive to Ani via Banjar (3-4 hours). From Ani, continue on interior roads toward Dehuri villages. Public transport is extremely limited—arrange local transport from Ani.`,
+
+    thingsToDo: [
+      "Village walks through terraced fields",
+      "Forest-edge paths and ridge trails",
+      "Early morning birdwatching",
+      "Photography of wooden temples",
+      "Observing Devta-based traditions"
+    ],
+
+    responsibleTravel: [
+      "Respect private farmland—don't trespass",
+      "Avoid loud behavior in forests",
+      "Carry back all waste",
+      "Forest areas are community-managed—seek permission",
+      "Support local homestays"
+    ],
+
+    stayOptions: `Accommodation is limited to homestays in interior villages. Facilities are basic but welcoming. Electricity can be irregular, mobile coverage weak. No ATMs or medical facilities nearby.`,
+
+    seoTitle: "Dehuri Valley: Forest Valley at Ani-Seraj Border | Local Himachal",
+    seoDescription: "Discover Dehuri Valley at the Ani-Seraj border - dense forests, Devta traditions, and authentic mountain village life away from all tourism.",
+
+    image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800"
+  },
+
+  {
+    id: "kamand-uhl-upper-belt",
+    slug: "kamand-uhl-upper-belt",
+    name: "Kamand–Uhl Upper Belt",
+    district: "Mandi",
+    districtSlug: "mandi",
+    category: "village",
+    altitude: "1,800–2,800m",
+    bestTime: "April to June, September to October",
+    difficulty: "Moderate",
+    shortDescription: "Interior forest villages above IIT Mandi, where the modern presence fades into traditional mountain rhythms.",
+    poeticQuote: "Where the road climbs beyond institutions, and the forest reclaims its space.",
+
+    emotionalOpening: `The Kamand–Uhl upper belt lies quietly above the well-known IIT Mandi campus, yet it remains almost entirely unknown outside local circles. While the institute has brought visibility to the lower Uhl valley, very few people realize that above it stretches a network of interior villages, forest hamlets, and old mountain trails.
+
+This upper belt rises gradually from the Uhl River basin toward densely forested ridges, sitting between 1,800 and 2,800 meters in elevation. As the road climbs, the environment changes noticeably—human movement thins, forests grow denser, and the modern presence fades.
+
+These villages were established long before roads existed and still retain a rhythm shaped by agriculture, livestock, and seasonal isolation.`,
+
+    locationDescription: `The Kamand–Uhl upper belt is located in Mandi district, above the Uhl River valley and beyond the IIT Mandi campus near Kamand. Mandi town serves as the nearest major base.
+
+From Mandi, the road toward Kamand is well known. Beyond the campus, roads become narrow and far less maintained. Interior villages are reached through steep mountain tracks.`,
+
+    whyHidden: `Public transport operates reliably only up to Kamand. Beyond that, bus services are extremely limited and used mainly by local residents.
+
+This region remains hidden simply because no one comes here with travel intent.`,
+
+    villageLife: `This region is known locally for its forest-based livelihoods and traditional hill agriculture. Villages cultivate maize, wheat, and seasonal vegetables on terraced slopes, while cattle rearing remains essential.
+
+The Uhl River continues to influence life even in upper villages through irrigation channels. Cultural life revolves around village deities, forest rituals, and community gatherings.`,
+
+    bestTimeDetailed: `The most suitable time to explore the Kamand–Uhl upper belt is from April to June and September to October. These months offer stable weather, clear forest paths, and active village life.
+
+July and August bring heavy monsoon rainfall, increasing landslide risks. Winters are cold and foggy, with occasional snowfall at higher elevations.`,
+
+    howToReach: `From Mandi, drive to Kamand (30 minutes). Beyond IIT campus, continue on steep interior roads to upper villages. Public transport is extremely limited—arrange local transport or walk.`,
+
+    thingsToDo: [
+      "Village walks along old footpaths",
+      "Early morning forest bird observation",
+      "Photography of traditional architecture",
+      "Observing agricultural routines",
+      "Quiet time in forested landscapes"
+    ],
+
+    responsibleTravel: [
+      "Respect private land strictly",
+      "Avoid loud behavior",
+      "Manage waste carefully",
+      "Forest areas are community-managed—seek consent",
+      "Travel quietly to preserve the atmosphere"
+    ],
+
+    stayOptions: `Accommodation is limited to a few homestays in upper villages. Facilities are basic. Electricity can be irregular, mobile coverage fades as you climb. No ATMs or medical centers beyond Mandi town.`,
+
+    seoTitle: "Kamand-Uhl Upper Belt: Forest Villages Above IIT Mandi | Local Himachal",
+    seoDescription: "Explore the Kamand-Uhl upper belt - interior forest villages above IIT Mandi offering traditional mountain life and untouched landscapes.",
+
+    image: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800"
+  },
+
+  {
+    id: "thachi-karsog-interior",
+    slug: "thachi-karsog-interior",
+    name: "Thachi–Karsog Interior",
+    district: "Mandi",
+    districtSlug: "mandi",
+    category: "village",
+    altitude: "1,800–2,700m",
+    bestTime: "April to June, September to October",
+    difficulty: "Easy",
+    shortDescription: "A forest and orchard belt beyond Karsog town, where ancient temples sit in sacred groves.",
+    poeticQuote: "Where every orchard tells a season's story, and the temples remember centuries.",
+
+    emotionalOpening: `The Thachi–Karsog interior villages lie quietly beyond the small town of Karsog, tucked into the mid-Himalayan forests of Mandi district. While Karsog itself is known locally as a market and administrative center, the villages that spread into its interior remain almost entirely unknown.
+
+Located between 1,800 and 2,700 meters in elevation, this belt forms a gentle yet secluded landscape of terraced fields, forest ridges, and narrow valleys. Unlike high-altitude regions, the Thachi–Karsog area feels lived-in and fertile.
+
+Life here is calm and cyclical, following orchard seasons rather than visitor flow.`,
+
+    locationDescription: `The Thachi–Karsog belt is situated in Mandi district, southwest of Mandi town. Karsog serves as the nearest base with markets, fuel, and basic services.
+
+From Mandi, the road to Karsog is motorable and reasonably maintained. Beyond Karsog town, narrow interior roads branch toward Thachi and surrounding villages.`,
+
+    whyHidden: `Public buses operate up to Karsog, but services into interior villages are limited and irregular. Shared local taxis or private vehicles are the most reliable option.
+
+During monsoon months, landslides and slippery roads can significantly slow travel.`,
+
+    villageLife: `This region is locally known for its apple orchards, traditional farming methods, and forest-based culture. Along with apples, villagers grow maize, wheat, and seasonal vegetables on terraced land.
+
+Religious life plays a central role. Ancient temples dedicated to local deities are scattered across ridges, often surrounded by sacred groves.`,
+
+    bestTimeDetailed: `The best time to visit is from April to June and from September to October. Spring brings flowering orchards and fresh greenery, while autumn offers clear skies and harvest activity.
+
+July and August see heavy rainfall and landslide risks. Winters are cold but manageable, with occasional snowfall at higher elevations.`,
+
+    howToReach: `From Mandi, drive to Karsog (2-3 hours). From Karsog, continue on interior roads toward Thachi villages. Public buses run to Karsog; interior transport is limited.`,
+
+    thingsToDo: [
+      "Slow village walks through orchards",
+      "Short forest walks with local guidance",
+      "Visiting ancient temples in sacred groves",
+      "Photography of seasonal farming patterns",
+      "Observing rural rhythms"
+    ],
+
+    responsibleTravel: [
+      "Avoid entering private fields",
+      "Respect sacred groves—these are protected",
+      "Keep noise levels low",
+      "Carry back all waste",
+      "Support local homestays and shops"
+    ],
+
+    stayOptions: `Accommodation is available in small homestays and modest guesthouses near Karsog. Facilities are basic but comfortable. Mobile coverage varies. ATMs and fuel available only in Karsog.`,
+
+    seoTitle: "Thachi-Karsog Interior: Orchard Villages in Mandi | Local Himachal",
+    seoDescription: "Discover Thachi-Karsog interior villages - apple orchards, ancient temples, sacred groves, and authentic mid-Himalayan life in Mandi district.",
+
+    image: "https://images.unsplash.com/photo-1476231682828-37e571bc172f?w=800"
+  },
+
+  // Shimla Region - Interior Pabbar & Border Villages
+  {
+    id: "hatkoti-upper-villages",
+    slug: "hatkoti-upper-villages",
+    name: "Hatkoti Upper Villages",
+    district: "Shimla",
+    districtSlug: "shimla",
+    category: "village",
+    altitude: "1,900–2,800m",
+    bestTime: "April to June, September to October",
+    difficulty: "Moderate",
+    shortDescription: "Ancient temple traditions meet high-altitude farming in villages above the famous Hatkoti temple complex.",
+    poeticQuote: "Where the temple bells fade into forest silence, and the path continues upward.",
+
+    emotionalOpening: `Hatkoti is widely known for its ancient temple complex at the confluence of the Pabbar River, yet very few travelers venture beyond this point. Once the temple area is left behind, the road climbs quietly into a network of upper villages that remain almost entirely untouched by tourism.
+
+These settlements sit high above the main valley, where forested slopes, terraced fields, and traditional homes define daily life. Located between 1,900 and 2,800 meters in elevation, the Hatkoti upper villages form a transitional zone between the lower Pabbar belt and the colder interiors toward Rohru and Chanshal.
+
+The atmosphere changes quickly—traffic disappears, sounds soften, and life slows.`,
+
+    locationDescription: `The Hatkoti upper villages are located in Shimla district within the Pabbar Valley region. Hatkoti village serves as the entry point, situated along the Rohru–Chirgaon road.
+
+From Rohru, Hatkoti is reached by road. Beyond the temple complex, narrow interior roads branch upward toward higher villages.`,
+
+    whyHidden: `Public transport is available up to Hatkoti, but services into the upper villages are infrequent and irregular. Local shared jeeps or private vehicles are the most practical way to reach these settlements.
+
+During monsoon and winter, access can be affected by landslides and snowfall.`,
+
+    villageLife: `The upper Hatkoti region is known locally for its strong agricultural base and cultural continuity. Villagers grow wheat, barley, maize, and seasonal vegetables on terraced fields.
+
+Religious life remains closely connected to the Hatkoti temple traditions, with local deities playing an important role in seasonal rituals and village decisions.`,
+
+    bestTimeDetailed: `The most suitable time to visit is from April to June and September to October. Weather remains stable, farming activity is visible, and village paths are accessible.
+
+July and August bring heavy monsoon rains. Winters are cold, with snowfall common in higher villages from December onward.`,
+
+    howToReach: `From Rohru, drive to Hatkoti temple (30 minutes). Continue on interior roads to upper villages. Public transport runs to Hatkoti; beyond that, arrange local transport.`,
+
+    thingsToDo: [
+      "Village walks along terraced fields",
+      "Photography at dawn and dusk",
+      "Cultural observation of temple traditions",
+      "Quiet viewpoints over Pabbar Valley",
+      "Understanding seasonal agricultural rhythms"
+    ],
+
+    responsibleTravel: [
+      "Dress modestly near religious and private spaces",
+      "Avoid loud behavior",
+      "Seek permission before entering religious spaces",
+      "Carry back all waste",
+      "Carry cash—no ATMs in upper areas"
+    ],
+
+    stayOptions: `Accommodation is limited to a few homestays in nearby villages and basic guesthouses in Rohru. Electricity is generally available but can be inconsistent. Mobile coverage is weak in higher areas.`,
+
+    seoTitle: "Hatkoti Upper Villages: Temple Traditions & Farming Life | Local Himachal",
+    seoDescription: "Explore Hatkoti upper villages beyond the famous temple - terraced farming, cultural continuity, and authentic Pabbar Valley life in Shimla district.",
+
+    image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800"
+  },
+
+  {
+    id: "sarahan-jeori-forest-belt",
+    slug: "sarahan-jeori-forest-belt",
+    name: "Sarahan–Jeori Forest Belt",
+    district: "Shimla",
+    districtSlug: "shimla",
+    category: "village",
+    altitude: "1,800–2,900m",
+    bestTime: "April to June, September to October",
+    difficulty: "Moderate",
+    shortDescription: "Dense forest villages along the Shimla-Kinnaur border, where travelers rarely slow down.",
+    poeticQuote: "Where the forest stands between two worlds, and silence is the only guide.",
+
+    emotionalOpening: `The Sarahan–Jeori forest belt lies quietly along the transition zone between Shimla district and the outer edges of Kinnaur. While Sarahan is known for the Bhimakali Temple and Jeori is often treated as a brief roadside halt, the dense forest region that stretches between and beyond these two settlements remains almost entirely overlooked.
+
+This belt is defined by steep forested slopes, deep gorges, and scattered villages tucked into folds of the mountains. Elevations range roughly between 1,800 and 2,900 meters, creating a cool, moist environment dominated by deodar, pine, and oak forests.
+
+Life here unfolds far from tourist movement, guided instead by agriculture, forest use, and traditional belief systems.`,
+
+    locationDescription: `The Sarahan–Jeori forest belt is located along the old Hindustan–Tibet road corridor, between Jeori and Sarahan, extending into interior forest villages on both sides.
+
+Jeori serves as the main junction, accessible from Shimla via Rampur. From Jeori, a road climbs toward Sarahan, while several smaller interior roads branch off into forest settlements.`,
+
+    whyHidden: `Public transport is available only on the main routes. Buses to Sarahan run at fixed times, but access to interior villages depends on shared local vehicles or private transport.
+
+This region remains hidden simply because travelers rarely slow down.`,
+
+    villageLife: `This forest belt is locally known for its dense tree cover and traditional wooden architecture. Villages have historically depended on forest resources, agriculture, and trade movement along the old route.
+
+Apple orchards, seasonal crops, and cattle rearing form the backbone of livelihoods. Religious life centers around village deities and forest shrines.`,
+
+    bestTimeDetailed: `The best time to explore is from April to June and from September to October. These months offer stable weather, accessible roads, and active village life.
+
+July and August bring heavy rainfall, making forest roads risky. Winters are cold, with snowfall common in upper villages from December onward.`,
+
+    howToReach: `From Shimla, drive to Jeori via Rampur (6-7 hours). From Jeori, continue to Sarahan or branch into interior forest roads. Public transport runs on main routes only.`,
+
+    thingsToDo: [
+      "Slow village walks through forest trails",
+      "Bird observation in minimal disturbance zones",
+      "Photography of traditional wooden houses",
+      "Forest edge exploration on old footpaths",
+      "Quiet reflection in forested landscapes"
+    ],
+
+    responsibleTravel: [
+      "Avoid loud behavior in forest areas",
+      "Respect sacred forest spaces",
+      "Carry back all waste",
+      "Don't disturb forest ecosystems",
+      "Support village homestays"
+    ],
+
+    stayOptions: `Accommodation is limited to homestays in select villages and small guesthouses near Sarahan. Electricity can be inconsistent during storms, mobile coverage fades in forests. Fuel and medical services available only at Rampur or Jeori.`,
+
+    seoTitle: "Sarahan-Jeori Forest Belt: Hidden Villages at Shimla-Kinnaur Border | Local Himachal",
+    seoDescription: "Discover the Sarahan-Jeori forest belt - dense forests, traditional villages, and quiet mountain life along the Shimla-Kinnaur border.",
+
+    image: "https://images.unsplash.com/photo-1448375240586-882707db888b?w=800"
+  },
+
+  // Chamba Region - Interior & High-Altitude
+  {
+    id: "dunali-region",
+    slug: "dunali-region",
+    name: "Dunali Region Villages",
+    district: "Chamba",
+    districtSlug: "chamba",
+    category: "village",
+    altitude: "2,000–2,800m",
+    bestTime: "May to June, September to October",
+    difficulty: "Challenging",
+    shortDescription: "Forest-bound villages along the Sach Pass approach, where travelers pass through without realizing.",
+    poeticQuote: "Where the road rushes past, and the villages wait in silence.",
+
+    emotionalOpening: `The Dunali region lies deep within the interior of Chamba district, along the remote approach toward Sach Pass. While Sach Pass itself draws seasonal attention, the villages surrounding Dunali remain almost entirely overlooked.
+
+Most travelers pass through quickly, focused on crossing the pass, without realizing that an entire cluster of forest-bound settlements exists quietly below the road.
+
+Set between 2,000 and 2,800 meters in elevation, the Dunali region forms a transition zone between the greener mid-Himalayan forests of Chamba and the harsher high-altitude terrain beyond.`,
+
+    locationDescription: `The Dunali region is located in Chamba district, on the approach route toward Sach Pass. Chamba town serves as the nearest major base with hospitals, fuel stations, and supplies.
+
+From Chamba, the road climbs steadily through remote terrain toward Bairagarh and Sach Pass. Dunali lies along this interior route, with smaller villages branching off from the main road.`,
+
+    whyHidden: `Public transport operates sporadically, mainly during summer months. Buses and shared taxis are limited and primarily serve local residents.
+
+During monsoon and early winter, landslides and snowfall can restrict access without notice.`,
+
+    villageLife: `Dunali villages are known locally for their strong forest dependence and resilient mountain lifestyle. Agriculture is limited to short seasons, with crops such as barley, potatoes, and seasonal vegetables.
+
+Traditional wooden houses with slate roofs dominate, built to withstand heavy snowfall. Community life revolves around village deities, seasonal festivals, and collective labor.`,
+
+    bestTimeDetailed: `The best time to visit is from May to June and September to early October. These months offer safer road conditions and active village life.
+
+July and August are risky due to heavy rainfall and landslides. Winters are long and severe—from November onward, snowfall often isolates the region completely.`,
+
+    howToReach: `From Chamba, drive toward Sach Pass. Dunali villages are along this route (4-5 hours from Chamba). Public transport is sporadic—arrange local transport or travel with private vehicle.`,
+
+    thingsToDo: [
+      "Village walks and forest-edge exploration",
+      "Early morning valley photography",
+      "Cultural observation of traditional life",
+      "Quiet contemplation in deep forest silence",
+      "Understanding seasonal survival patterns"
+    ],
+
+    responsibleTravel: [
+      "Avoid littering—carry everything back",
+      "Respect forest boundaries",
+      "Keep noise levels low",
+      "Local customs and sacred spaces require care",
+      "Carry all essentials from Chamba"
+    ],
+
+    stayOptions: `Accommodation is limited to basic homestays and seasonal guesthouses. Electricity and mobile networks are unreliable. No ATMs or medical facilities nearby.`,
+
+    seoTitle: "Dunali Region: Hidden Villages on Sach Pass Route | Local Himachal",
+    seoDescription: "Explore Dunali region villages on the Sach Pass approach - forest-bound settlements, traditional life, and authentic Chamba wilderness.",
+
+    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800"
+  },
+
+  {
+    id: "sural-valley",
+    slug: "sural-valley",
+    name: "Sural Valley",
+    district: "Chamba",
+    districtSlug: "chamba",
+    category: "valley",
+    altitude: "2,600–3,400m",
+    bestTime: "Late May to early October",
+    difficulty: "Challenging",
+    shortDescription: "A remote, snowbound valley in upper Chamba where geography dictates every aspect of life.",
+    poeticQuote: "Where winter writes the calendar, and survival is the only tradition.",
+
+    emotionalOpening: `Sural Valley lies deep within the interior of Chamba district, tucked away between high mountain ridges and cut off from the rest of Himachal Pradesh for much of the year. Even within Chamba, Sural is spoken of as a distant and difficult region—one that few outsiders ever reach.
+
+Its isolation is not romantic or symbolic; it is lived daily through long winters, limited access, and complete dependence on seasonal rhythms.
+
+Situated at elevations ranging roughly between 2,600 and 3,400 meters, Sural Valley experiences heavy snowfall and prolonged cold conditions. Tourism has never shaped this valley.`,
+
+    locationDescription: `Sural Valley is located in the upper reaches of Chamba district, close to the border regions leading toward Pangi and Lahaul. Chamba town serves as the last major administrative base.
+
+From Chamba, travel continues through long interior mountain roads that gradually climb into higher terrain. The final approach involves narrow roads and footpaths vulnerable to landslides and snow.`,
+
+    whyHidden: `Public transport is extremely limited and seasonal. Local buses operate only during short summer windows. Most travel is done via shared jeeps used by residents.
+
+Access is heavily dependent on weather and road conditions.`,
+
+    villageLife: `Sural Valley is known locally for its resilience and strong community structure. Agriculture is limited by climate, with barley, potatoes, and hardy vegetables forming the agricultural base.
+
+The valley holds strong spiritual traditions, with village deities guiding seasonal activities and festivals. Architecture reflects survival—thick stone walls, wooden interiors, and compact layouts.`,
+
+    bestTimeDetailed: `The only suitable time to visit Sural Valley is from late May to early October. Even during summer, temperatures remain cool and nights are cold.
+
+From October onward, snowfall begins to block roads. Winter isolation can last several months. Winter travel is not recommended under any circumstances.`,
+
+    howToReach: `From Chamba, travel on interior roads toward Sural (5-6 hours depending on conditions). Public transport is seasonal and limited. Private vehicles or shared jeeps with experienced drivers essential.`,
+
+    thingsToDo: [
+      "Observing daily life and survival patterns",
+      "Village walks through agricultural areas",
+      "Forest-edge exploration",
+      "Photography with sensitivity",
+      "Quiet reflection in mountain silence"
+    ],
+
+    responsibleTravel: [
+      "Avoid noise, littering, and unnecessary movement",
+      "Local customs and sacred spaces must be observed carefully",
+      "Carry all essential supplies",
+      "Travel conservatively—conditions can change quickly",
+      "Respect the valley's isolation"
+    ],
+
+    stayOptions: `Accommodation is extremely limited to basic homestays. Electricity supply is inconsistent, mobile networks mostly absent. Medical facilities, fuel, and ATMs are located far away in Chamba.`,
+
+    seoTitle: "Sural Valley: Remote Snowbound Valley in Chamba | Local Himachal",
+    seoDescription: "Discover Sural Valley in upper Chamba - a remote, snowbound valley where geography dictates life and true Himalayan isolation still exists.",
+
+    image: "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=800"
+  },
+
+  {
+    id: "kugti-valley",
+    slug: "kugti-valley",
+    name: "Kugti Valley",
+    district: "Chamba",
+    districtSlug: "chamba",
+    category: "valley",
+    altitude: "2,700–4,000m+",
+    bestTime: "Late June to early September",
+    difficulty: "Challenging",
+    shortDescription: "Vast alpine wilderness beyond the Kugti Pass trailhead, where shepherds have walked for centuries.",
+    poeticQuote: "Where the trail ends for most, the valley truly begins.",
+
+    emotionalOpening: `Kugti Valley lies deep within the high mountain interior of Chamba district, extending far beyond the point where most trekkers begin the well-known Kugti Pass route. While the name "Kugti" is occasionally mentioned in trekking circles, very few people ever see the valley beyond its initial trailhead.
+
+Past the last commonly visited point, the landscape opens into a vast and silent world shaped by glaciers, alpine meadows, and seasonal human movement.
+
+At elevations ranging from around 2,700 meters to well above 4,000 meters, the valley transitions rapidly from forested slopes into open alpine terrain.`,
+
+    locationDescription: `Kugti Valley is located in the Bharmour region of Chamba district. Bharmour town serves as the nearest administrative base with basic facilities.
+
+From Bharmour, a motorable road leads toward Kugti village, commonly considered the trek starting point. Beyond this village, there is no road access—the interior valley unfolds only on foot.`,
+
+    whyHidden: `Public transport reaches only up to Bharmour and occasionally to Kugti village during summer. Access beyond depends entirely on walking routes and local knowledge.
+
+There are no signboards, no marked routes, and no tourism presence.`,
+
+    villageLife: `Beyond the trek start, Kugti Valley is known locally for its expansive alpine meadows, glacial streams, and seasonal shepherd camps. These high pastures support livestock grazing and form a critical part of regional pastoral culture.
+
+The valley holds cultural significance through its role in transhumance—seasonal migration practiced by shepherd communities for centuries.`,
+
+    bestTimeDetailed: `The only suitable time to explore the interior is from late June to early September. Snow conditions determine yearly accessibility.
+
+Monsoon rainfall can increase river crossings and trail risk. Early snowfall can begin as early as September. Outside this short window, the valley becomes inaccessible.`,
+
+    howToReach: `From Chamba, drive to Bharmour (3-4 hours). Continue to Kugti village (1-2 hours). Beyond Kugti, trek on foot along shepherd trails. Local guide essential.`,
+
+    thingsToDo: [
+      "Walking through alpine basins",
+      "Observing seasonal shepherd camps",
+      "Understanding transhumance traditions",
+      "Photography of glacial landscapes",
+      "Experiencing complete mountain silence"
+    ],
+
+    responsibleTravel: [
+      "All supplies must be carried from Bharmour",
+      "Camp responsibly away from water and grazing land",
+      "Never disturb grazing routes or shepherd camps",
+      "No drones or amplified sound",
+      "Leave no waste—carry everything back"
+    ],
+
+    stayOptions: `Accommodation is limited to basic stays in Kugti village. Beyond that, camping is the only option. Mobile networks don't exist beyond the village. Medical facilities are extremely far away.`,
+
+    seoTitle: "Kugti Valley: Alpine Wilderness Beyond Kugti Pass | Local Himachal",
+    seoDescription: "Explore Kugti Valley beyond the Kugti Pass trailhead - vast alpine meadows, shepherd traditions, and true Himalayan wilderness in Chamba's Bharmour region.",
+
+    image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800"
+  },
+
+  // Kangra Region - Dhauladhar Belt
+  {
+    id: "kareri-upper-villages",
+    slug: "kareri-upper-villages",
+    name: "Kareri Upper Villages",
+    district: "Kangra",
+    districtSlug: "kangra",
+    category: "village",
+    altitude: "2,500–3,400m",
+    bestTime: "Late May to early October",
+    difficulty: "Moderate",
+    shortDescription: "Seasonal settlements beyond the famous Kareri Lake trek, where shepherd life continues unchanged.",
+    poeticQuote: "Where the lake is just the beginning, and the mountains guard what lies beyond.",
+
+    emotionalOpening: `Kareri is widely known for its alpine lake trek, yet very few travelers ever look beyond the popular trail. Once the familiar path toward Kareri Lake is left behind, the landscape opens into a quieter and far more remote region—an expanse of upper villages, seasonal grazing grounds, and old shepherd routes that extend deeper into the Dhauladhar range.
+
+These upper settlements exist beyond tourism attention, preserved by altitude, effort, and local rhythm.
+
+Located between roughly 2,500 and 3,400 meters, the Kareri upper villages form a transitional zone between permanent habitation and high mountain pasture.`,
+
+    locationDescription: `The Kareri upper villages lie in Kangra district, beyond Kareri village and the standard Kareri Lake trekking route. Dharamshala serves as the nearest major base.
+
+From Dharamshala, travelers reach Kareri village by road. Beyond this point, motorable access ends. Entry into the upper region requires walking along traditional mountain trails.`,
+
+    whyHidden: `Public transport operates up to Kareri village, though services are limited. Access beyond depends entirely on footpaths and local guidance.
+
+Weather conditions can change quickly due to proximity to the Dhauladhar crest.`,
+
+    villageLife: `The upper Kareri region is known locally for its alpine pastures, glacial streams, and shepherd culture. These meadows—locally called thach—have supported pastoral life for generations.
+
+Stone shelters, grazing markers, and seasonal dwellings reflect a way of life that predates trekking routes.`,
+
+    bestTimeDetailed: `The best time to explore is from late May to early October. During this period, snow melts enough to allow movement across higher ground.
+
+July and August bring frequent rain and fog. From October onward, early snowfall begins to limit access. Winter travel is not possible.`,
+
+    howToReach: `From Dharamshala, drive to Kareri village (1-2 hours). Trek on foot to upper villages and grazing areas. Local guidance recommended.`,
+
+    thingsToDo: [
+      "Walking slowly through alpine meadows",
+      "Observing shepherd routines",
+      "Time spent in mountain silence",
+      "Photography with respect for camps",
+      "Understanding landscape transitions"
+    ],
+
+    responsibleTravel: [
+      "Avoid disturbing livestock or shelters",
+      "Carry back all waste",
+      "Don't camp in grazing zones",
+      "Respect private seasonal dwellings",
+      "Preserve the dignity of working landscapes"
+    ],
+
+    stayOptions: `Accommodation is limited to homestays in Kareri village. Camping beyond should be avoided unless necessary. Mobile coverage disappears quickly beyond the village. Medical facilities are far away.`,
+
+    seoTitle: "Kareri Upper Villages: Beyond Kareri Lake Trek | Local Himachal",
+    seoDescription: "Explore Kareri upper villages beyond the famous lake trek - alpine pastures, shepherd traditions, and Dhauladhar wilderness near Dharamshala.",
+
+    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800"
+  },
+
+  {
+    id: "khanyara-upper-belt",
+    slug: "khanyara-upper-belt",
+    name: "Khanyara Upper Belt",
+    district: "Kangra",
+    districtSlug: "kangra",
+    category: "village",
+    altitude: "1,900–3,000m+",
+    bestTime: "May to early October",
+    difficulty: "Moderate",
+    shortDescription: "Forest and pasture zone above Khanyara village, minutes from Dharamshala yet completely unknown.",
+    poeticQuote: "Where the tourist trail ends at the waterfall, and the forest continues in silence.",
+
+    emotionalOpening: `Khanyara village, located on the outskirts of Dharamshala, is known locally for its waterfalls and access routes toward the Dhauladhar range. Yet very few people venture beyond the last houses of the village.
+
+Above Khanyara begins an entirely different landscape—the upper forest and pasture belt that climbs steadily into dense deodar woods and open grazing grounds. This region remains almost invisible to tourism, despite being only a short distance from one of Himachal's most visited towns.
+
+Rising from around 1,900 meters to well above 3,000 meters, the Khanyara upper belt marks the gradual ascent from cultivated land into alpine terrain.`,
+
+    locationDescription: `The Khanyara upper belt lies in Kangra district, above Khanyara village near Dharamshala. Dharamshala and McLeod Ganj act as the nearest urban bases.
+
+From Dharamshala, Khanyara village is reachable by road. Beyond the village, there is no motorable access. Entry into the upper belt is on foot, following forest trails.`,
+
+    whyHidden: `Public transport runs only up to Khanyara village. Beyond that, travel depends entirely on walking routes and local familiarity with the terrain.
+
+This belt survives untouched because it offers no spectacle—only continuity.`,
+
+    villageLife: `The upper Khanyara region is known locally for its dense deodar forests, alpine pastures, and seasonal shepherd settlements. These meadows support livestock grazing during summer and are essential to the regional pastoral economy.
+
+Stone shelters and temporary huts reflect long-standing migration practices.`,
+
+    bestTimeDetailed: `The best time to explore is from May to early October. During this period, forest trails are accessible and grazing activity is visible.
+
+July and August experience heavy rainfall, making trails slippery. From October onward, cold winds and early snowfall restrict movement.`,
+
+    howToReach: `From Dharamshala, drive to Khanyara village (20-30 minutes). Trek on foot into the upper forest and pasture belt. Return before evening.`,
+
+    thingsToDo: [
+      "Forest walks through deodar woods",
+      "Observation of pasture landscapes",
+      "Early morning mist-filled forest photography",
+      "Quiet time in nature",
+      "Understanding forest-pasture transitions"
+    ],
+
+    responsibleTravel: [
+      "Don't disturb livestock or enter shelters",
+      "Leave no waste",
+      "Stay on established paths",
+      "Carry water and warm layers",
+      "Return before evening—conditions change quickly"
+    ],
+
+    stayOptions: `Accommodation is available only in Khanyara village and Dharamshala. Camping in upper pastures should be avoided unless permitted. Mobile coverage fades quickly beyond the village.`,
+
+    seoTitle: "Khanyara Upper Belt: Forest Pastures Above Dharamshala | Local Himachal",
+    seoDescription: "Discover Khanyara upper belt - deodar forests and alpine pastures just minutes from Dharamshala, yet completely unknown to tourism.",
+
+    image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800"
+  },
+
+  {
+    id: "chhota-bhangal-interior",
+    slug: "chhota-bhangal-interior",
+    name: "Chhota Bhangal Interior",
+    district: "Kangra",
+    districtSlug: "kangra",
+    category: "valley",
+    altitude: "2,300–3,500m",
+    bestTime: "Late May to September",
+    difficulty: "Challenging",
+    shortDescription: "One of Himachal's most isolated tribal valleys, hidden beyond the paragliding hills of Billing.",
+    poeticQuote: "Where Billing ends, a different Himalaya begins—older, quieter, and deeply its own.",
+
+    emotionalOpening: `Chhota Bhangal is one of the most isolated and culturally distinct regions in Himachal Pradesh, lying far beyond the paragliding hills of Billing that dominate popular travel narratives. While Billing attracts global attention, the valley that unfolds deeper behind it remains almost invisible.
+
+Few travelers realize that beyond the last tourist cafés and launch sites begins a completely different Himalayan world—one shaped by remoteness, tribal identity, and long seasonal isolation.
+
+Situated between 2,300 and 3,500 meters, the interior of Chhota Bhangal is enclosed by the high ridges of the Dhauladhar and Thamsar ranges.`,
+
+    locationDescription: `Chhota Bhangal lies along the Kangra–Mandi border, beyond Billing and Rajgundha. Bir serves as the last well-connected base town.
+
+From Bir, the road climbs toward Billing and then continues onward into increasingly remote terrain. Beyond the paragliding zone, traffic thins quickly.`,
+
+    whyHidden: `Public transport is extremely limited beyond Billing, with only a few local buses operating depending on season. Most access into interior villages is through shared local jeeps or private vehicles.
+
+During winter and early spring, snowfall and road damage can isolate the region completely.`,
+
+    villageLife: `Chhota Bhangal is known for its distinct tribal culture, often described locally as separate from the Kangra plains. Language, dress, architecture, and social customs differ noticeably.
+
+Villages rely heavily on pastoralism and seasonal agriculture. Stone houses with wooden interiors dominate, built to withstand heavy snow. Community life is guided by local deities and collective decision-making.`,
+
+    bestTimeDetailed: `The best time to visit is from late May to September. During this window, roads are open, grazing activity is visible, and villages are fully inhabited.
+
+July and August bring monsoon rainfall that can trigger landslides. From October onward, temperatures drop sharply and early snowfall may block access.`,
+
+    howToReach: `From Bir, drive toward Billing and continue beyond (2-3 hours to interior villages). Public transport is extremely limited. Shared jeeps or private vehicles recommended. Allow extra buffer days.`,
+
+    thingsToDo: [
+      "Village walks along old shepherd paths",
+      "Observing unique tribal architecture",
+      "Cultural observation with respect",
+      "Photography during festivals (with permission)",
+      "Understanding isolation and resilience"
+    ],
+
+    responsibleTravel: [
+      "Move quietly and respect local customs",
+      "Avoid imposing expectations",
+      "Carry back all waste",
+      "Don't photograph private moments without consent",
+      "Carry all essentials from Bir or Baijnath"
+    ],
+
+    stayOptions: `Accommodation is limited to a few basic homestays in select villages. Facilities are minimal. Electricity supply is inconsistent, mobile coverage weak or absent. No ATMs or medical facilities nearby.`,
+
+    seoTitle: "Chhota Bhangal Interior: Tribal Valley Beyond Billing | Local Himachal",
+    seoDescription: "Explore Chhota Bhangal interior - one of Himachal's most isolated tribal valleys with distinct culture, hidden beyond the paragliding hills of Billing.",
+
+    image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800"
   }
 ];
 
