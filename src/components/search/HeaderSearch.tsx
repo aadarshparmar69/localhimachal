@@ -172,12 +172,14 @@ export const HeaderSearch = ({ variant = "desktop", onClose }: HeaderSearchProps
     <div ref={containerRef} className={cn("relative", variant === "desktop" ? "w-auto" : "w-full")}>
       {/* Search Input */}
       <div className={cn(
-        "flex items-center bg-white/10 rounded-full overflow-hidden border border-white/20",
-        "hover:border-white/30 focus-within:border-white/40 focus-within:bg-white/15",
-        "transition-all duration-200",
-        variant === "desktop" ? "w-52 xl:w-60" : "w-full"
+        "group flex items-center rounded-full overflow-hidden",
+        "bg-[#4a5223]/60 border border-white/20",
+        "hover:bg-[#4a5223]/80 hover:border-white/30",
+        "focus-within:bg-[#4a5223] focus-within:border-white/40 focus-within:shadow-lg focus-within:shadow-black/10",
+        "transition-all duration-300 ease-out",
+        variant === "desktop" ? "w-56 xl:w-64 focus-within:w-72" : "w-full"
       )}>
-        <Search className="w-4 h-4 text-white/50 ml-4 flex-shrink-0" />
+        <Search className="w-4 h-4 text-white/60 ml-4 flex-shrink-0 transition-colors duration-200 group-focus-within:text-white/80" />
         <input
           ref={inputRef}
           type="text"
@@ -187,16 +189,16 @@ export const HeaderSearch = ({ variant = "desktop", onClose }: HeaderSearchProps
           placeholder="Search places, treks..."
           className={cn(
             "bg-transparent text-white placeholder:text-white/50 text-sm outline-none flex-1",
-            "transition-all duration-200",
-            variant === "desktop" ? "py-2.5 px-3" : "py-3 px-3"
+            "transition-all duration-300",
+            variant === "desktop" ? "py-3 px-3" : "py-3.5 px-3"
           )}
         />
         {query && (
           <button
             onClick={() => setQuery("")}
-            className="p-1.5 mr-2 rounded-full hover:bg-white/10 transition-colors"
+            className="p-1.5 mr-3 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-200"
           >
-            <X className="w-3.5 h-3.5 text-white/60" />
+            <X className="w-3.5 h-3.5 text-white/70" />
           </button>
         )}
       </div>

@@ -2,7 +2,6 @@ import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Compass, Search } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { HeaderSearch } from "@/components/search/HeaderSearch";
 import logoImage from "@/assets/local-himachal-logo.png";
@@ -109,17 +108,15 @@ export const Navbar = () => {
             </div>
 
             {/* Search & CTA Button - Desktop */}
-            <div className="hidden lg:flex items-center gap-3">
+            <div className="hidden lg:flex items-center gap-4">
               <HeaderSearch variant="desktop" />
               
               <Link to="/plan">
-                <Button 
-                  size="default" 
-                  className="gap-2 rounded-full bg-white/10 border border-white/30 text-white hover:bg-white/20 hover:border-white/50 transition-all duration-200 font-medium"
-                >
-                  <Compass className="w-4 h-4" />
-                  Plan Your Trip
-                </Button>
+                <button className="group relative flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-[#4a5223] border border-white/25 text-white font-medium text-sm overflow-hidden transition-all duration-300 hover:bg-[#525a28] hover:border-white/40 hover:shadow-lg hover:shadow-black/20">
+                  <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/5 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                  <Compass className="w-4 h-4 transition-transform duration-300 group-hover:rotate-45" />
+                  <span className="relative">Plan Your Trip</span>
+                </button>
               </Link>
             </div>
 
@@ -214,14 +211,11 @@ export const Navbar = () => {
                     className="pt-4 mt-2 border-t border-white/20"
                   >
                     <Link to="/plan" onClick={() => setIsOpen(false)}>
-                      <Button 
-                        variant="default" 
-                        size="lg" 
-                        className="w-full gap-2 min-h-[52px] rounded-xl bg-white/10 border border-white/30 text-white hover:bg-white/20"
-                      >
-                        <Compass className="w-5 h-5" />
-                        Plan Your Trip
-                      </Button>
+                      <button className="group relative w-full flex items-center justify-center gap-2.5 px-6 py-4 rounded-xl bg-[#4a5223] border border-white/25 text-white font-medium overflow-hidden transition-all duration-300 hover:bg-[#525a28] hover:border-white/40">
+                        <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/5 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                        <Compass className="w-5 h-5 transition-transform duration-300 group-hover:rotate-45" />
+                        <span className="relative">Plan Your Trip</span>
+                      </button>
                     </Link>
                   </motion.div>
                 </div>
