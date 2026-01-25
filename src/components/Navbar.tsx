@@ -99,13 +99,13 @@ export const Navbar = () => {
 
             {/* Desktop Nav - Pill Container */}
             <div className="hidden lg:flex items-center">
-              <div className="flex items-center bg-white/10 rounded-full px-1 py-1">
+              <div className="flex items-center bg-white/10 rounded-full px-1.5 py-1.5">
                 {navItems.map(item => (
                   <Link 
                     key={item.path} 
                     to={item.path} 
                     className={cn(
-                      "px-4 py-2 rounded-full font-body text-sm font-medium transition-all duration-200 whitespace-nowrap",
+                      "px-5 py-2.5 rounded-full font-body text-sm font-medium transition-all duration-200 whitespace-nowrap flex items-center justify-center leading-none",
                       location.pathname === item.path 
                         ? "bg-white/20 text-white shadow-sm" 
                         : "text-white/80 hover:text-white hover:bg-white/10"
