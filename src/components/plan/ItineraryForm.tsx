@@ -5,8 +5,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { 
   User, Mail, Phone, Wallet, Users, Calendar, MapPin, 
-  Heart, MessageSquare, ArrowRight, ArrowLeft, Check, Loader2, Send
+  Heart, MessageSquare, ArrowRight, ArrowLeft, Check, Loader2, Send, Sparkles
 } from "lucide-react";
+import { AIItineraryChat } from "./AIItineraryChat";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -46,6 +47,8 @@ export const ItineraryForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [showAIChat, setShowAIChat] = useState(false);
+  const [submittedData, setSubmittedData] = useState<FormData | null>(null);
   const prefersReducedMotion = useReducedMotion();
 
   const form = useForm<FormData>({
@@ -103,10 +106,12 @@ export const ItineraryForm = () => {
 
       if (error) throw error;
 
+      setSubmittedData(data);
       setIsSubmitted(true);
+      setShowAIChat(true);
       toast({
         title: "Request Submitted!",
-        description: "We'll get back to you within 24 hours with a custom itinerary.",
+        description: "Your AI travel assistant is now creating your personalized itinerary.",
       });
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -120,7 +125,36 @@ export const ItineraryForm = () => {
     }
   };
 
-  if (isSubmitted) {
+  const handleResetChat = () => {
+    setShowAIChat(false);
+    setIsSubmitted(false);
+    setSubmittedData(null);
+    setCurrentStep(1);
+    form.reset();
+  };
+
+  // Show AI Chat after form submission
+  if (isSubmitted && showAIChat && submittedData) {
+    return (
+      <AIItineraryChat
+        tripContext={{
+          fullName: submittedData.fullName,
+          email: submittedData.email,
+          phone: submittedData.phone,
+          budget: submittedData.budget,
+          travelers: submittedData.travelers,
+          duration: submittedData.duration,
+          districts: submittedData.districts,
+          holidayType: submittedData.holidayType,
+          notes: submittedData.notes,
+        }}
+        onReset={handleResetChat}
+      />
+    );
+  }
+
+  // Show success state without AI chat (fallback)
+  if (isSubmitted && !showAIChat) {
     return (
       <section id="itinerary-form" className="py-20 md:py-32 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -141,7 +175,7 @@ export const ItineraryForm = () => {
               itinerary based on your preferences and get back to you within 24 hours.
             </p>
             <Button 
-              onClick={() => { setIsSubmitted(false); setCurrentStep(1); form.reset(); }}
+              onClick={handleResetChat}
               variant="outline"
               className="gap-2"
             >
