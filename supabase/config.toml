@@ -1,7 +1,1 @@
 project_id = "kaiqpvkcfyncjkfwhfkt"
-
-[functions.verify-admin]
-verify_jwt = false
-
-[functions.get-itinerary-requests]
-verify_jwt = false
