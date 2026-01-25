@@ -78,10 +78,10 @@ export const Navbar = () => {
                 }}
               />
               <div className="flex flex-col">
-                <span className="text-white font-display text-base sm:text-lg font-semibold tracking-tight leading-tight">
-                  Local Himachal
+                <span className="text-white font-display text-lg sm:text-xl font-bold tracking-tight leading-tight drop-shadow-sm">
+                  Local <span className="font-light italic">Himachal</span>
                 </span>
-                <span className="text-[9px] sm:text-[10px] font-body text-white/70 tracking-wide">
+                <span className="text-[10px] sm:text-xs font-body text-white/80 tracking-widest uppercase font-medium">
                   Travel Like a Local
                 </span>
               </div>
