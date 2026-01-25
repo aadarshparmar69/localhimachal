@@ -35,12 +35,12 @@ const CookieConsent = () => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="fixed bottom-0 left-0 right-0 z-[100] bg-[#3c431e] shadow-elevated safe-padding-bottom"
+          className="fixed bottom-0 left-0 right-0 z-[100] bg-[#3c431e] shadow-elevated"
           role="dialog"
           aria-modal="true"
           aria-label="Cookie consent"
         >
-          <div className="safe-container py-3 sm:py-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-6">
               {/* Text */}
               <p className="text-sm text-white leading-relaxed">
