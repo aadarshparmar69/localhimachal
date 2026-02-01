@@ -2,7 +2,7 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
 const SYSTEM_PROMPT = `You are "Local Himachal AI", the official travel planning assistant of the website "Local Himachal".
@@ -109,10 +109,10 @@ serve(async (req) => {
 
   try {
     const { messages, tripContext } = await req.json();
-    const GEMINI_API_KEY = Deno.env.get("GEMINI_API_KEY");
+    const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     
-    if (!GEMINI_API_KEY) {
-      console.error("GEMINI_API_KEY is not configured");
+    if (!LOVABLE_API_KEY) {
+      console.error("LOVABLE_API_KEY is not configured");
       throw new Error("AI service is not configured");
     }
 
@@ -137,53 +137,60 @@ The user has submitted the following trip details:
 Based on these details, create a personalized travel itinerary for this traveler.`;
     }
 
-    // Prepare messages for Gemini API
+    // Prepare messages for Lovable AI API (OpenAI-compatible format)
     const conversationHistory = messages.map((msg: { role: string; content: string }) => ({
-      role: msg.role === "assistant" ? "model" : "user",
-      parts: [{ text: msg.content }]
+      role: msg.role,
+      content: msg.content
     }));
 
     // Add trip context to the first user message if it exists
     if (contextMessage && conversationHistory.length > 0) {
-      conversationHistory[0].parts[0].text = contextMessage + "\n\n" + conversationHistory[0].parts[0].text;
+      conversationHistory[0].content = contextMessage + "\n\n" + conversationHistory[0].content;
     }
 
     const requestBody = {
-      contents: conversationHistory,
-      systemInstruction: {
-        parts: [{ text: SYSTEM_PROMPT }]
-      },
-      generationConfig: {
-        temperature: 0.7,
-        topK: 40,
-        topP: 0.95,
-        maxOutputTokens: 8192,
-      }
+      model: "google/gemini-3-flash-preview",
+      messages: [
+        { role: "system", content: SYSTEM_PROMPT },
+        ...conversationHistory
+      ],
     };
 
-    console.log("Calling Gemini API...");
+    console.log("Calling Lovable AI Gateway...");
 
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(requestBody),
-      }
-    );
+    const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${LOVABLE_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestBody),
+    });
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error("Gemini API error:", response.status, errorText);
+      console.error("Lovable AI error:", response.status, errorText);
+      
+      if (response.status === 429) {
+        return new Response(
+          JSON.stringify({ error: "Rate limit exceeded. Please try again in a moment." }),
+          { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+      if (response.status === 402) {
+        return new Response(
+          JSON.stringify({ error: "AI credits exhausted. Please add credits to continue." }),
+          { status: 402, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+      
       throw new Error(`AI service error: ${response.status}`);
     }
 
     const data = await response.json();
-    console.log("Gemini API response received");
+    console.log("Lovable AI response received");
 
-    const aiResponse = data.candidates?.[0]?.content?.parts?.[0]?.text;
+    const aiResponse = data.choices?.[0]?.message?.content;
 
     if (!aiResponse) {
       console.error("No response from AI:", data);
