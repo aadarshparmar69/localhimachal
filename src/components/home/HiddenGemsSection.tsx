@@ -228,7 +228,7 @@ export const HiddenGemsSection = () => {
             repeat: Infinity,
             ease: "easeInOut"
           }}>
-              <Sparkles className="w-4 h-4 text-primary" />
+              
             </motion.div>
             <span>Explore all hidden gems</span>
             <motion.div whileHover={{
