@@ -1,11 +1,12 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, Loader2, Download, RotateCcw, Sparkles, User, Mountain } from "lucide-react";
+import { Send, Loader2, Download, RotateCcw, Sparkles, User, Mountain, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import jsPDF from "jspdf";
 
 interface TripContext {
   fullName: string;
@@ -132,7 +133,7 @@ export const AIItineraryChat = ({ tripContext, onReset }: AIItineraryChatProps) 
     }
   };
 
-  const downloadItinerary = () => {
+  const downloadPDF = () => {
     const itineraryContent = messages
       .filter((m) => m.role === "assistant")
       .map((m) => m.content)
@@ -147,22 +148,108 @@ export const AIItineraryChat = ({ tripContext, onReset }: AIItineraryChatProps) 
       return;
     }
 
-    const blob = new Blob(
-      [`LOCAL HIMACHAL - Custom Travel Itinerary\n\nTraveler: ${tripContext.fullName}\nGenerated on: ${new Date().toLocaleDateString()}\n\n${itineraryContent}`],
-      { type: "text/plain" }
-    );
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `${tripContext.fullName.replace(/\s+/g, "-")}-himachal-itinerary.txt`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    const pdf = new jsPDF({
+      orientation: "portrait",
+      unit: "mm",
+      format: "a4",
+    });
+
+    const pageWidth = pdf.internal.pageSize.getWidth();
+    const pageHeight = pdf.internal.pageSize.getHeight();
+    const margin = 20;
+    const contentWidth = pageWidth - margin * 2;
+
+    // Header with brand colors
+    pdf.setFillColor(34, 82, 65); // Deep forest green
+    pdf.rect(0, 0, pageWidth, 40, "F");
+
+    // Brand title
+    pdf.setTextColor(255, 255, 255);
+    pdf.setFontSize(24);
+    pdf.setFont("helvetica", "bold");
+    pdf.text("LOCAL HIMACHAL", pageWidth / 2, 18, { align: "center" });
+
+    pdf.setFontSize(12);
+    pdf.setFont("helvetica", "normal");
+    pdf.text("Custom Travel Itinerary", pageWidth / 2, 28, { align: "center" });
+
+    // Decorative line
+    pdf.setDrawColor(200, 162, 84); // Gold accent
+    pdf.setLineWidth(0.5);
+    pdf.line(margin, 35, pageWidth - margin, 35);
+
+    // Trip details box
+    let yPos = 50;
+    pdf.setTextColor(34, 82, 65);
+    pdf.setFontSize(11);
+    pdf.setFont("helvetica", "bold");
+    pdf.text(`Traveler: ${tripContext.fullName}`, margin, yPos);
+    yPos += 6;
+    pdf.setFont("helvetica", "normal");
+    pdf.text(`Duration: ${tripContext.duration} days  |  Style: ${tripContext.holidayType}  |  Budget: ${tripContext.budget}`, margin, yPos);
+    yPos += 6;
+    pdf.text(`Districts: ${tripContext.districts.join(", ")}`, margin, yPos);
+    yPos += 6;
+    pdf.text(`Generated: ${new Date().toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}`, margin, yPos);
+
+    // Divider
+    yPos += 8;
+    pdf.setDrawColor(200, 162, 84);
+    pdf.line(margin, yPos, pageWidth - margin, yPos);
+    yPos += 10;
+
+    // Main content
+    pdf.setTextColor(51, 51, 51);
+    pdf.setFontSize(10);
+    pdf.setFont("helvetica", "normal");
+
+    const lines = pdf.splitTextToSize(itineraryContent, contentWidth);
+
+    for (const line of lines) {
+      if (yPos > pageHeight - 30) {
+        pdf.addPage();
+        yPos = 20;
+        
+        // Add subtle header on new pages
+        pdf.setFillColor(34, 82, 65);
+        pdf.rect(0, 0, pageWidth, 15, "F");
+        pdf.setTextColor(255, 255, 255);
+        pdf.setFontSize(10);
+        pdf.text("LOCAL HIMACHAL - Travel Itinerary", pageWidth / 2, 10, { align: "center" });
+        yPos = 25;
+        pdf.setTextColor(51, 51, 51);
+        pdf.setFontSize(10);
+      }
+
+      // Style DAY headers
+      if (line.match(/^DAY \d+/i)) {
+        yPos += 4;
+        pdf.setFont("helvetica", "bold");
+        pdf.setTextColor(34, 82, 65);
+        pdf.text(line, margin, yPos);
+        pdf.setFont("helvetica", "normal");
+        pdf.setTextColor(51, 51, 51);
+      } else {
+        pdf.text(line, margin, yPos);
+      }
+      yPos += 5;
+    }
+
+    // Footer
+    const footerY = pageHeight - 15;
+    pdf.setFillColor(34, 82, 65);
+    pdf.rect(0, footerY - 5, pageWidth, 20, "F");
+    pdf.setTextColor(255, 255, 255);
+    pdf.setFontSize(9);
+    pdf.text("Explore Himachal like a local — slow, soulful, and responsible.", pageWidth / 2, footerY + 3, { align: "center" });
+    pdf.setFontSize(8);
+    pdf.text("localhimachal.lovable.app", pageWidth / 2, footerY + 8, { align: "center" });
+
+    pdf.save(`${tripContext.fullName.replace(/\s+/g, "-")}-himachal-itinerary.pdf`);
 
     toast({
-      title: "Downloaded",
-      description: "Your itinerary has been saved.",
+      title: "PDF Downloaded",
+      description: "Your branded itinerary has been saved.",
     });
   };
 
@@ -286,12 +373,12 @@ export const AIItineraryChat = ({ tripContext, onReset }: AIItineraryChatProps) 
                 <Button
                   variant="outline"
                   size="sm"
-                  onClick={downloadItinerary}
+                  onClick={downloadPDF}
                   disabled={messages.length < 2}
                   className="gap-2"
                 >
-                  <Download className="w-4 h-4" />
-                  Download Itinerary
+                  <FileText className="w-4 h-4" />
+                  Download PDF
                 </Button>
                 <Button
                   variant="ghost"
