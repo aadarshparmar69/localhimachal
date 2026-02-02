@@ -137,7 +137,7 @@ export const AIItineraryChat = ({ tripContext, onReset }: AIItineraryChatProps) 
     const itineraryContent = messages
       .filter((m) => m.role === "assistant")
       .map((m) => m.content)
-      .join("\n\n---\n\n");
+      .join("\n\n");
 
     if (!itineraryContent) {
       toast({
@@ -156,100 +156,226 @@ export const AIItineraryChat = ({ tripContext, onReset }: AIItineraryChatProps) 
 
     const pageWidth = pdf.internal.pageSize.getWidth();
     const pageHeight = pdf.internal.pageSize.getHeight();
-    const margin = 20;
+    const margin = 18;
     const contentWidth = pageWidth - margin * 2;
 
-    // Header with brand colors
-    pdf.setFillColor(34, 82, 65); // Deep forest green
-    pdf.rect(0, 0, pageWidth, 40, "F");
-
-    // Brand title
+    // Premium Cover Page
+    // Full page gradient background simulation
+    pdf.setFillColor(24, 54, 44); // Deep forest green
+    pdf.rect(0, 0, pageWidth, pageHeight, "F");
+    
+    // Decorative top border
+    pdf.setFillColor(194, 154, 76); // Gold
+    pdf.rect(0, 0, pageWidth, 3, "F");
+    
+    // Main title area
+    pdf.setTextColor(194, 154, 76); // Gold
+    pdf.setFontSize(14);
+    pdf.setFont("helvetica", "normal");
+    pdf.text("— YOUR JOURNEY AWAITS —", pageWidth / 2, 60, { align: "center" });
+    
     pdf.setTextColor(255, 255, 255);
-    pdf.setFontSize(24);
+    pdf.setFontSize(42);
     pdf.setFont("helvetica", "bold");
-    pdf.text("LOCAL HIMACHAL", pageWidth / 2, 18, { align: "center" });
-
-    pdf.setFontSize(12);
+    pdf.text("LOCAL", pageWidth / 2, 85, { align: "center" });
+    pdf.text("HIMACHAL", pageWidth / 2, 100, { align: "center" });
+    
+    pdf.setFontSize(16);
     pdf.setFont("helvetica", "normal");
-    pdf.text("Custom Travel Itinerary", pageWidth / 2, 28, { align: "center" });
-
-    // Decorative line
-    pdf.setDrawColor(200, 162, 84); // Gold accent
-    pdf.setLineWidth(0.5);
-    pdf.line(margin, 35, pageWidth - margin, 35);
-
-    // Trip details box
-    let yPos = 50;
-    pdf.setTextColor(34, 82, 65);
-    pdf.setFontSize(11);
+    pdf.setTextColor(194, 154, 76);
+    pdf.text("Personalized Travel Itinerary", pageWidth / 2, 115, { align: "center" });
+    
+    // Decorative divider
+    pdf.setDrawColor(194, 154, 76);
+    pdf.setLineWidth(0.8);
+    pdf.line(pageWidth / 2 - 40, 125, pageWidth / 2 + 40, 125);
+    
+    // Trip details card
+    const cardY = 145;
+    const cardHeight = 70;
+    pdf.setFillColor(34, 64, 54); // Slightly lighter green
+    pdf.roundedRect(margin + 10, cardY, contentWidth - 20, cardHeight, 4, 4, "F");
+    
+    pdf.setTextColor(194, 154, 76);
+    pdf.setFontSize(10);
     pdf.setFont("helvetica", "bold");
-    pdf.text(`Traveler: ${tripContext.fullName}`, margin, yPos);
-    yPos += 6;
-    pdf.setFont("helvetica", "normal");
-    pdf.text(`Duration: ${tripContext.duration} days  |  Style: ${tripContext.holidayType}  |  Budget: ${tripContext.budget}`, margin, yPos);
-    yPos += 6;
-    pdf.text(`Districts: ${tripContext.districts.join(", ")}`, margin, yPos);
-    yPos += 6;
-    pdf.text(`Generated: ${new Date().toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}`, margin, yPos);
-
-    // Divider
-    yPos += 8;
-    pdf.setDrawColor(200, 162, 84);
-    pdf.line(margin, yPos, pageWidth - margin, yPos);
-    yPos += 10;
-
-    // Main content
-    pdf.setTextColor(51, 51, 51);
+    pdf.text("PREPARED FOR", margin + 20, cardY + 15);
+    pdf.setTextColor(255, 255, 255);
+    pdf.setFontSize(18);
+    pdf.text(tripContext.fullName, margin + 20, cardY + 28);
+    
+    pdf.setDrawColor(194, 154, 76);
+    pdf.setLineWidth(0.3);
+    pdf.line(margin + 20, cardY + 35, pageWidth - margin - 30, cardY + 35);
+    
+    pdf.setTextColor(200, 200, 200);
     pdf.setFontSize(10);
     pdf.setFont("helvetica", "normal");
-
-    const lines = pdf.splitTextToSize(itineraryContent, contentWidth);
-
-    for (const line of lines) {
-      if (yPos > pageHeight - 30) {
-        pdf.addPage();
-        yPos = 20;
-        
-        // Add subtle header on new pages
-        pdf.setFillColor(34, 82, 65);
-        pdf.rect(0, 0, pageWidth, 15, "F");
-        pdf.setTextColor(255, 255, 255);
-        pdf.setFontSize(10);
-        pdf.text("LOCAL HIMACHAL - Travel Itinerary", pageWidth / 2, 10, { align: "center" });
-        yPos = 25;
-        pdf.setTextColor(51, 51, 51);
-        pdf.setFontSize(10);
-      }
-
-      // Style DAY headers
-      if (line.match(/^DAY \d+/i)) {
-        yPos += 4;
-        pdf.setFont("helvetica", "bold");
-        pdf.setTextColor(34, 82, 65);
-        pdf.text(line, margin, yPos);
-        pdf.setFont("helvetica", "normal");
-        pdf.setTextColor(51, 51, 51);
-      } else {
-        pdf.text(line, margin, yPos);
-      }
-      yPos += 5;
-    }
-
-    // Footer
-    const footerY = pageHeight - 15;
-    pdf.setFillColor(34, 82, 65);
-    pdf.rect(0, footerY - 5, pageWidth, 20, "F");
-    pdf.setTextColor(255, 255, 255);
-    pdf.setFontSize(9);
-    pdf.text("Explore Himachal like a local — slow, soulful, and responsible.", pageWidth / 2, footerY + 3, { align: "center" });
+    const detailsY = cardY + 48;
+    pdf.text(`Duration: ${tripContext.duration} Days`, margin + 20, detailsY);
+    pdf.text(`Style: ${tripContext.holidayType}`, margin + 75, detailsY);
+    pdf.text(`Budget: ${tripContext.budget}`, margin + 130, detailsY);
+    pdf.text(`Districts: ${tripContext.districts.join(", ")}`, margin + 20, detailsY + 12);
+    
+    // Quote
+    pdf.setTextColor(194, 154, 76);
+    pdf.setFontSize(12);
+    pdf.setFont("helvetica", "italic");
+    pdf.text('"Explore Himachal like a local —', pageWidth / 2, pageHeight - 60, { align: "center" });
+    pdf.text('slow, soulful, and responsible."', pageWidth / 2, pageHeight - 50, { align: "center" });
+    
+    // Footer on cover
+    pdf.setFillColor(194, 154, 76);
+    pdf.rect(0, pageHeight - 25, pageWidth, 25, "F");
+    pdf.setTextColor(24, 54, 44);
+    pdf.setFontSize(11);
+    pdf.setFont("helvetica", "bold");
+    pdf.text("localhimachal.lovable.app", pageWidth / 2, pageHeight - 12, { align: "center" });
     pdf.setFontSize(8);
-    pdf.text("localhimachal.lovable.app", pageWidth / 2, footerY + 8, { align: "center" });
+    pdf.setFont("helvetica", "normal");
+    pdf.text(`Generated on ${new Date().toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}`, pageWidth / 2, pageHeight - 6, { align: "center" });
+    
+    // Start content pages
+    pdf.addPage();
+    
+    // Content page header
+    const addPageHeader = () => {
+      pdf.setFillColor(24, 54, 44);
+      pdf.rect(0, 0, pageWidth, 22, "F");
+      pdf.setFillColor(194, 154, 76);
+      pdf.rect(0, 22, pageWidth, 1.5, "F");
+      pdf.setTextColor(255, 255, 255);
+      pdf.setFontSize(12);
+      pdf.setFont("helvetica", "bold");
+      pdf.text("LOCAL HIMACHAL", margin, 14);
+      pdf.setTextColor(194, 154, 76);
+      pdf.setFontSize(9);
+      pdf.setFont("helvetica", "normal");
+      pdf.text("Travel Itinerary", pageWidth - margin, 14, { align: "right" });
+    };
+    
+    // Content page footer
+    const addPageFooter = (pageNum: number) => {
+      pdf.setFillColor(245, 243, 240);
+      pdf.rect(0, pageHeight - 15, pageWidth, 15, "F");
+      pdf.setDrawColor(194, 154, 76);
+      pdf.setLineWidth(0.5);
+      pdf.line(0, pageHeight - 15, pageWidth, pageHeight - 15);
+      pdf.setTextColor(100, 100, 100);
+      pdf.setFontSize(8);
+      pdf.text(`Page ${pageNum}`, pageWidth / 2, pageHeight - 6, { align: "center" });
+      pdf.text("localhimachal.lovable.app", pageWidth - margin, pageHeight - 6, { align: "right" });
+    };
+    
+    addPageHeader();
+    let yPos = 35;
+    let currentPage = 1;
+    
+    // Process content with improved styling
+    const lines = itineraryContent.split('\n');
+    
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i].trim();
+      
+      // Check for page break
+      if (yPos > pageHeight - 25) {
+        addPageFooter(currentPage);
+        pdf.addPage();
+        currentPage++;
+        addPageHeader();
+        yPos = 35;
+      }
+      
+      // Style different content types
+      if (line.match(/^DAY \d+/i) || line.match(/^DAY \d+ —/i)) {
+        // Day headers - make them prominent
+        yPos += 6;
+        pdf.setFillColor(24, 54, 44);
+        pdf.roundedRect(margin - 2, yPos - 5, contentWidth + 4, 10, 2, 2, "F");
+        pdf.setTextColor(255, 255, 255);
+        pdf.setFontSize(12);
+        pdf.setFont("helvetica", "bold");
+        pdf.text(line, margin + 2, yPos + 2);
+        yPos += 12;
+      } else if (line.match(/^(Route|Stay|Hidden Gem|Local Flavours|Explore|Insider Tips|TRAVELER|IMPORTANT|Weather|Altitude|Permits|Packing)/i)) {
+        // Section headers
+        yPos += 3;
+        pdf.setTextColor(194, 154, 76);
+        pdf.setFontSize(10);
+        pdf.setFont("helvetica", "bold");
+        pdf.text(line, margin, yPos);
+        yPos += 6;
+      } else if (line.match(/^[═─•]/)) {
+        // Decorative lines - skip or add subtle divider
+        if (line.includes('═')) {
+          pdf.setDrawColor(194, 154, 76);
+          pdf.setLineWidth(0.3);
+          pdf.line(margin, yPos, pageWidth - margin, yPos);
+          yPos += 4;
+        }
+      } else if (line.length > 0) {
+        // Regular content
+        pdf.setTextColor(60, 60, 60);
+        pdf.setFontSize(10);
+        pdf.setFont("helvetica", "normal");
+        
+        const wrappedLines = pdf.splitTextToSize(line, contentWidth);
+        for (const wrappedLine of wrappedLines) {
+          if (yPos > pageHeight - 25) {
+            addPageFooter(currentPage);
+            pdf.addPage();
+            currentPage++;
+            addPageHeader();
+            yPos = 35;
+          }
+          pdf.text(wrappedLine, margin, yPos);
+          yPos += 5;
+        }
+      } else {
+        yPos += 2; // Empty line spacing
+      }
+    }
+    
+    // Add final footer
+    addPageFooter(currentPage);
+    
+    // Back cover page
+    pdf.addPage();
+    pdf.setFillColor(24, 54, 44);
+    pdf.rect(0, 0, pageWidth, pageHeight, "F");
+    
+    pdf.setTextColor(194, 154, 76);
+    pdf.setFontSize(24);
+    pdf.setFont("helvetica", "bold");
+    pdf.text("Thank You", pageWidth / 2, pageHeight / 2 - 30, { align: "center" });
+    
+    pdf.setTextColor(255, 255, 255);
+    pdf.setFontSize(12);
+    pdf.setFont("helvetica", "normal");
+    pdf.text("for choosing Local Himachal", pageWidth / 2, pageHeight / 2 - 15, { align: "center" });
+    pdf.text("as your travel companion.", pageWidth / 2, pageHeight / 2 - 3, { align: "center" });
+    
+    pdf.setDrawColor(194, 154, 76);
+    pdf.setLineWidth(0.5);
+    pdf.line(pageWidth / 2 - 30, pageHeight / 2 + 10, pageWidth / 2 + 30, pageHeight / 2 + 10);
+    
+    pdf.setTextColor(200, 200, 200);
+    pdf.setFontSize(10);
+    pdf.text("Questions about your itinerary?", pageWidth / 2, pageHeight / 2 + 25, { align: "center" });
+    pdf.text("Reach us at localhimachal.lovable.app", pageWidth / 2, pageHeight / 2 + 35, { align: "center" });
+    
+    pdf.setFillColor(194, 154, 76);
+    pdf.rect(0, pageHeight - 20, pageWidth, 20, "F");
+    pdf.setTextColor(24, 54, 44);
+    pdf.setFontSize(10);
+    pdf.setFont("helvetica", "bold");
+    pdf.text("LOCAL HIMACHAL", pageWidth / 2, pageHeight - 8, { align: "center" });
 
     pdf.save(`${tripContext.fullName.replace(/\s+/g, "-")}-himachal-itinerary.pdf`);
 
     toast({
-      title: "PDF Downloaded",
-      description: "Your branded itinerary has been saved.",
+      title: "Itinerary Downloaded",
+      description: "Your premium travel guide has been saved.",
     });
   };
 
