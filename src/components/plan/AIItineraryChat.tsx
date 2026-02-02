@@ -1,12 +1,13 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, Loader2, Download, RotateCcw, Sparkles, User, Mountain, FileText } from "lucide-react";
+import { Send, Loader2, RotateCcw, Sparkles, User, Mountain, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import jsPDF from "jspdf";
+import logoImage from "@/assets/local-himachal-logo.png";
 
 interface TripContext {
   fullName: string;
@@ -35,8 +36,34 @@ export const AIItineraryChat = ({ tripContext, onReset }: AIItineraryChatProps) 
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
+  const [logoBase64, setLogoBase64] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  // Convert logo to base64 for PDF embedding
+  useEffect(() => {
+    const loadLogo = async () => {
+      try {
+        const img = new Image();
+        img.crossOrigin = "anonymous";
+        img.onload = () => {
+          const canvas = document.createElement("canvas");
+          canvas.width = img.width;
+          canvas.height = img.height;
+          const ctx = canvas.getContext("2d");
+          if (ctx) {
+            ctx.drawImage(img, 0, 0);
+            const dataURL = canvas.toDataURL("image/png");
+            setLogoBase64(dataURL);
+          }
+        };
+        img.src = logoImage;
+      } catch (error) {
+        console.error("Failed to load logo for PDF:", error);
+      }
+    };
+    loadLogo();
+  }, []);
 
   // Auto-generate itinerary on mount
   useEffect(() => {
@@ -168,30 +195,38 @@ export const AIItineraryChat = ({ tripContext, onReset }: AIItineraryChatProps) 
     pdf.setFillColor(194, 154, 76); // Gold
     pdf.rect(0, 0, pageWidth, 3, "F");
     
-    // Main title area
+    // Add logo to cover page
+    if (logoBase64) {
+      const logoWidth = 50;
+      const logoHeight = 50;
+      pdf.addImage(logoBase64, "PNG", (pageWidth - logoWidth) / 2, 35, logoWidth, logoHeight);
+    }
+    
+    // Main title area - adjusted position for logo
+    const titleStartY = logoBase64 ? 95 : 60;
     pdf.setTextColor(194, 154, 76); // Gold
     pdf.setFontSize(14);
     pdf.setFont("helvetica", "normal");
-    pdf.text("— YOUR JOURNEY AWAITS —", pageWidth / 2, 60, { align: "center" });
+    pdf.text("— YOUR JOURNEY AWAITS —", pageWidth / 2, titleStartY, { align: "center" });
     
     pdf.setTextColor(255, 255, 255);
     pdf.setFontSize(42);
     pdf.setFont("helvetica", "bold");
-    pdf.text("LOCAL", pageWidth / 2, 85, { align: "center" });
-    pdf.text("HIMACHAL", pageWidth / 2, 100, { align: "center" });
+    pdf.text("LOCAL", pageWidth / 2, titleStartY + 20, { align: "center" });
+    pdf.text("HIMACHAL", pageWidth / 2, titleStartY + 35, { align: "center" });
     
     pdf.setFontSize(16);
     pdf.setFont("helvetica", "normal");
     pdf.setTextColor(194, 154, 76);
-    pdf.text("Personalized Travel Itinerary", pageWidth / 2, 115, { align: "center" });
+    pdf.text("Personalized Travel Itinerary", pageWidth / 2, titleStartY + 50, { align: "center" });
     
     // Decorative divider
     pdf.setDrawColor(194, 154, 76);
     pdf.setLineWidth(0.8);
-    pdf.line(pageWidth / 2 - 40, 125, pageWidth / 2 + 40, 125);
+    pdf.line(pageWidth / 2 - 40, titleStartY + 60, pageWidth / 2 + 40, titleStartY + 60);
     
     // Trip details card
-    const cardY = 145;
+    const cardY = titleStartY + 75;
     const cardHeight = 70;
     pdf.setFillColor(34, 64, 54); // Slightly lighter green
     pdf.roundedRect(margin + 10, cardY, contentWidth - 20, cardHeight, 4, 4, "F");
@@ -238,16 +273,27 @@ export const AIItineraryChat = ({ tripContext, onReset }: AIItineraryChatProps) 
     // Start content pages
     pdf.addPage();
     
-    // Content page header
+    // Content page header with logo
     const addPageHeader = () => {
       pdf.setFillColor(24, 54, 44);
       pdf.rect(0, 0, pageWidth, 22, "F");
       pdf.setFillColor(194, 154, 76);
       pdf.rect(0, 22, pageWidth, 1.5, "F");
-      pdf.setTextColor(255, 255, 255);
-      pdf.setFontSize(12);
-      pdf.setFont("helvetica", "bold");
-      pdf.text("LOCAL HIMACHAL", margin, 14);
+      
+      // Add small logo in header
+      if (logoBase64) {
+        pdf.addImage(logoBase64, "PNG", margin - 2, 3, 16, 16);
+        pdf.setTextColor(255, 255, 255);
+        pdf.setFontSize(11);
+        pdf.setFont("helvetica", "bold");
+        pdf.text("LOCAL HIMACHAL", margin + 18, 13);
+      } else {
+        pdf.setTextColor(255, 255, 255);
+        pdf.setFontSize(12);
+        pdf.setFont("helvetica", "bold");
+        pdf.text("LOCAL HIMACHAL", margin, 14);
+      }
+      
       pdf.setTextColor(194, 154, 76);
       pdf.setFontSize(9);
       pdf.setFont("helvetica", "normal");
@@ -344,25 +390,32 @@ export const AIItineraryChat = ({ tripContext, onReset }: AIItineraryChatProps) 
     pdf.setFillColor(24, 54, 44);
     pdf.rect(0, 0, pageWidth, pageHeight, "F");
     
+    // Add logo to back cover
+    if (logoBase64) {
+      const backLogoWidth = 40;
+      const backLogoHeight = 40;
+      pdf.addImage(logoBase64, "PNG", (pageWidth - backLogoWidth) / 2, pageHeight / 2 - 70, backLogoWidth, backLogoHeight);
+    }
+    
     pdf.setTextColor(194, 154, 76);
     pdf.setFontSize(24);
     pdf.setFont("helvetica", "bold");
-    pdf.text("Thank You", pageWidth / 2, pageHeight / 2 - 30, { align: "center" });
+    pdf.text("Thank You", pageWidth / 2, pageHeight / 2 - 15, { align: "center" });
     
     pdf.setTextColor(255, 255, 255);
     pdf.setFontSize(12);
     pdf.setFont("helvetica", "normal");
-    pdf.text("for choosing Local Himachal", pageWidth / 2, pageHeight / 2 - 15, { align: "center" });
-    pdf.text("as your travel companion.", pageWidth / 2, pageHeight / 2 - 3, { align: "center" });
+    pdf.text("for choosing Local Himachal", pageWidth / 2, pageHeight / 2, { align: "center" });
+    pdf.text("as your travel companion.", pageWidth / 2, pageHeight / 2 + 12, { align: "center" });
     
     pdf.setDrawColor(194, 154, 76);
     pdf.setLineWidth(0.5);
-    pdf.line(pageWidth / 2 - 30, pageHeight / 2 + 10, pageWidth / 2 + 30, pageHeight / 2 + 10);
+    pdf.line(pageWidth / 2 - 30, pageHeight / 2 + 25, pageWidth / 2 + 30, pageHeight / 2 + 25);
     
     pdf.setTextColor(200, 200, 200);
     pdf.setFontSize(10);
-    pdf.text("Questions about your itinerary?", pageWidth / 2, pageHeight / 2 + 25, { align: "center" });
-    pdf.text("Reach us at localhimachal.lovable.app", pageWidth / 2, pageHeight / 2 + 35, { align: "center" });
+    pdf.text("Questions about your itinerary?", pageWidth / 2, pageHeight / 2 + 40, { align: "center" });
+    pdf.text("Reach us at localhimachal.lovable.app", pageWidth / 2, pageHeight / 2 + 50, { align: "center" });
     
     pdf.setFillColor(194, 154, 76);
     pdf.rect(0, pageHeight - 20, pageWidth, 20, "F");
