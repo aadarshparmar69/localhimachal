@@ -415,7 +415,7 @@ export const AIItineraryChat = ({ tripContext, onReset }: AIItineraryChatProps) 
     pdf.setTextColor(200, 200, 200);
     pdf.setFontSize(10);
     pdf.text("Questions about your itinerary?", pageWidth / 2, pageHeight / 2 + 40, { align: "center" });
-    pdf.text("Reach us at localhimachal.lovable.app", pageWidth / 2, pageHeight / 2 + 50, { align: "center" });
+    pdf.text("Reach us at contact@localhimachal.in", pageWidth / 2, pageHeight / 2 + 50, { align: "center" });
     
     pdf.setFillColor(194, 154, 76);
     pdf.rect(0, pageHeight - 20, pageWidth, 20, "F");
