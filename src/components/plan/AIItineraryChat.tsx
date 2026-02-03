@@ -265,7 +265,7 @@ export const AIItineraryChat = ({ tripContext, onReset }: AIItineraryChatProps) 
     pdf.setTextColor(24, 54, 44);
     pdf.setFontSize(11);
     pdf.setFont("helvetica", "bold");
-    pdf.text("localhimachal.lovable.app", pageWidth / 2, pageHeight - 12, { align: "center" });
+    pdf.text("localhimachal.in", pageWidth / 2, pageHeight - 12, { align: "center" });
     pdf.setFontSize(8);
     pdf.setFont("helvetica", "normal");
     pdf.text(`Generated on ${new Date().toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}`, pageWidth / 2, pageHeight - 6, { align: "center" });
@@ -310,7 +310,7 @@ export const AIItineraryChat = ({ tripContext, onReset }: AIItineraryChatProps) 
       pdf.setTextColor(100, 100, 100);
       pdf.setFontSize(8);
       pdf.text(`Page ${pageNum}`, pageWidth / 2, pageHeight - 6, { align: "center" });
-      pdf.text("localhimachal.lovable.app", pageWidth - margin, pageHeight - 6, { align: "right" });
+      pdf.text("localhimachal.in", pageWidth - margin, pageHeight - 6, { align: "right" });
     };
     
     addPageHeader();
