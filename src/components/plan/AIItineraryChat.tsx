@@ -479,15 +479,15 @@ export const AIItineraryChat = ({ tripContext, onReset }: AIItineraryChatProps) 
                         className={`flex gap-3 ${message.role === "user" ? "justify-end" : "justify-start"}`}
                       >
                         {message.role === "assistant" && (
-                          <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                            <Mountain className="w-4 h-4 text-primary" />
+                          <div className="w-8 h-8 rounded-full bg-[#3c431e] flex items-center justify-center flex-shrink-0">
+                            <Mountain className="w-4 h-4 text-white" />
                           </div>
                         )}
                         <div
                           className={`max-w-[85%] md:max-w-[75%] rounded-2xl px-4 py-3 ${
                             message.role === "user"
                               ? "bg-primary text-primary-foreground"
-                              : "bg-secondary/50"
+                              : "bg-[#3c431e]/10 border border-[#3c431e]/20"
                           }`}
                         >
                           <p className="font-body text-sm whitespace-pre-wrap leading-relaxed">
