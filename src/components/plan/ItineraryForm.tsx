@@ -12,7 +12,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
@@ -320,96 +319,122 @@ export const ItineraryForm = () => {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: prefersReducedMotion ? 0 : -20 }}
                     transition={{ duration: 0.3 }}
-                    className="space-y-8"
+                    className="space-y-10"
                   >
                     <div>
-                      <Label className="flex items-center gap-2 mb-4">
-                        <Wallet className="w-4 h-4" />
-                        Budget *
+                      <Label className="flex items-center gap-2 mb-2 text-base font-medium">
+                        <Wallet className="w-4 h-4 text-[#3c431e]" />
+                        Budget Range
                       </Label>
+                      <p className="text-sm text-muted-foreground mb-5">Select your daily budget preference</p>
                       <RadioGroup
                         value={watch("budget")}
                         onValueChange={(value) => setValue("budget", value as FormData["budget"])}
-                        className="grid grid-cols-3 gap-4"
+                        className="flex flex-wrap gap-3"
                       >
                         {[
-                          { value: "budget", label: "Budget", desc: "₹1,500-2,500/day" },
-                          { value: "mid-range", label: "Mid-Range", desc: "₹3,000-5,000/day" },
-                          { value: "premium", label: "Premium", desc: "₹6,000+/day" }
-                        ].map((option) => (
-                          <label
-                            key={option.value}
-                            className={`flex flex-col items-center p-4 rounded-xl border-2 cursor-pointer transition-all ${
-                              watch("budget") === option.value
-                                ? 'border-primary bg-primary/5'
-                                : 'border-border hover:border-primary/50'
-                            }`}
-                          >
-                            <RadioGroupItem value={option.value} className="sr-only" />
-                            <span className="font-body text-sm font-medium text-foreground">{option.label}</span>
-                            <span className="font-body text-xs text-muted-foreground mt-1">{option.desc}</span>
-                          </label>
-                        ))}
+                          { value: "budget", label: "Budget", desc: "₹1.5-2.5K/day", icon: "💰" },
+                          { value: "mid-range", label: "Mid-Range", desc: "₹3-5K/day", icon: "✨" },
+                          { value: "premium", label: "Premium", desc: "₹6K+/day", icon: "👑" }
+                        ].map((option) => {
+                          const isSelected = watch("budget") === option.value;
+                          return (
+                            <label
+                              key={option.value}
+                              className={`
+                                flex items-center gap-3 px-5 py-3.5 rounded-2xl cursor-pointer
+                                transition-all duration-200 ease-out
+                                ${isSelected
+                                  ? 'bg-[#3c431e] text-white shadow-lg'
+                                  : 'bg-secondary/60 hover:bg-secondary hover:shadow-sm'
+                                }
+                              `}
+                            >
+                              <RadioGroupItem value={option.value} className="sr-only" />
+                              <span className="text-lg">{option.icon}</span>
+                              <div className="flex flex-col">
+                                <span className="font-body text-sm font-semibold">{option.label}</span>
+                                <span className={`font-body text-xs ${isSelected ? 'text-white/80' : 'text-muted-foreground'}`}>{option.desc}</span>
+                              </div>
+                            </label>
+                          );
+                        })}
                       </RadioGroup>
                     </div>
 
                     <div>
-                      <Label className="flex items-center gap-2 mb-4">
-                        <Users className="w-4 h-4" />
-                        Number of Travelers *
+                      <Label className="flex items-center gap-2 mb-2 text-base font-medium">
+                        <Users className="w-4 h-4 text-[#3c431e]" />
+                        Group Size
                       </Label>
+                      <p className="text-sm text-muted-foreground mb-5">How many travelers in your group?</p>
                       <RadioGroup
                         value={watch("travelers")}
                         onValueChange={(value) => setValue("travelers", value as FormData["travelers"])}
-                        className="grid grid-cols-3 gap-4"
+                        className="flex flex-wrap gap-3"
                       >
                         {[
-                          { value: "1-2", label: "1-2" },
-                          { value: "3-5", label: "3-5" },
-                          { value: "6+", label: "6+" }
-                        ].map((option) => (
-                          <label
-                            key={option.value}
-                            className={`flex items-center justify-center p-4 rounded-xl border-2 cursor-pointer transition-all ${
-                              watch("travelers") === option.value
-                                ? 'border-primary bg-primary/5'
-                                : 'border-border hover:border-primary/50'
-                            }`}
-                          >
-                            <RadioGroupItem value={option.value} className="sr-only" />
-                            <span className="font-body text-sm font-medium text-foreground">{option.label}</span>
-                          </label>
-                        ))}
+                          { value: "1-2", label: "1-2 Travelers", icon: "👤" },
+                          { value: "3-5", label: "3-5 Travelers", icon: "👥" },
+                          { value: "6+", label: "6+ Travelers", icon: "👨‍👩‍👧‍👦" }
+                        ].map((option) => {
+                          const isSelected = watch("travelers") === option.value;
+                          return (
+                            <label
+                              key={option.value}
+                              className={`
+                                inline-flex items-center gap-2 px-5 py-3 rounded-full cursor-pointer
+                                font-body text-sm font-medium transition-all duration-200 ease-out
+                                ${isSelected
+                                  ? 'bg-[#3c431e] text-white shadow-md'
+                                  : 'bg-secondary/60 text-foreground hover:bg-secondary hover:shadow-sm'
+                                }
+                              `}
+                            >
+                              <RadioGroupItem value={option.value} className="sr-only" />
+                              <span>{option.icon}</span>
+                              <span>{option.label}</span>
+                            </label>
+                          );
+                        })}
                       </RadioGroup>
                     </div>
 
                     <div>
-                      <Label className="flex items-center gap-2 mb-4">
-                        <Calendar className="w-4 h-4" />
-                        Trip Duration *
+                      <Label className="flex items-center gap-2 mb-2 text-base font-medium">
+                        <Calendar className="w-4 h-4 text-[#3c431e]" />
+                        Trip Duration
                       </Label>
+                      <p className="text-sm text-muted-foreground mb-5">How long will you be exploring?</p>
                       <RadioGroup
                         value={watch("duration")}
                         onValueChange={(value) => setValue("duration", value as FormData["duration"])}
-                        className="grid grid-cols-3 gap-4"
+                        className="flex flex-wrap gap-3"
                       >
                         {[
-                          { value: "3-5", label: "3-5 Days" },
-                          { value: "6-9", label: "6-9 Days" },
-                          { value: "10+", label: "10+ Days" }
-                        ].map((option) => (
-                          <label
-                            key={option.value}
-                            className={`flex items-center justify-center p-4 rounded-xl border-2 cursor-pointer transition-all ${
-                              watch("duration") === option.value
-                                ? 'border-primary bg-primary/5'
-                                : 'border-border hover:border-primary/50'
-                            }`}
-                          >
-                            <RadioGroupItem value={option.value} className="sr-only" />
-                            <span className="font-body text-sm font-medium text-foreground">{option.label}</span>
-                          </label>
-                        ))}
+                          { value: "3-5", label: "3-5 Days", icon: "📅" },
+                          { value: "6-9", label: "6-9 Days", icon: "🗓️" },
+                          { value: "10+", label: "10+ Days", icon: "📆" }
+                        ].map((option) => {
+                          const isSelected = watch("duration") === option.value;
+                          return (
+                            <label
+                              key={option.value}
+                              className={`
+                                inline-flex items-center gap-2 px-5 py-3 rounded-full cursor-pointer
+                                font-body text-sm font-medium transition-all duration-200 ease-out
+                                ${isSelected
+                                  ? 'bg-[#3c431e] text-white shadow-md'
+                                  : 'bg-secondary/60 text-foreground hover:bg-secondary hover:shadow-sm'
+                                }
+                              `}
+                            >
+                              <RadioGroupItem value={option.value} className="sr-only" />
+                              <span>{option.icon}</span>
+                              <span>{option.label}</span>
+                            </label>
+                          );
+                        })}
                       </RadioGroup>
                     </div>
                   </motion.div>
@@ -423,67 +448,81 @@ export const ItineraryForm = () => {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: prefersReducedMotion ? 0 : -20 }}
                     transition={{ duration: 0.3 }}
-                    className="space-y-8"
+                    className="space-y-10"
                   >
                     <div>
-                      <Label className="flex items-center gap-2 mb-4">
-                        <MapPin className="w-4 h-4" />
-                        Select Districts (Choose one or more) *
+                      <Label className="flex items-center gap-2 mb-2 text-base font-medium">
+                        <MapPin className="w-4 h-4 text-[#3c431e]" />
+                        Select Districts
                       </Label>
-                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-                        {districts.map((district) => (
-                          <label
-                            key={district}
-                            className={`flex items-center gap-2 p-3 rounded-lg border cursor-pointer transition-all ${
-                              watchedDistricts?.includes(district)
-                                ? 'border-primary bg-primary/5'
-                                : 'border-border hover:border-primary/50'
-                            }`}
-                          >
-                            <Checkbox
-                              checked={watchedDistricts?.includes(district)}
-                              onCheckedChange={() => handleDistrictToggle(district)}
-                            />
-                            <span className="font-body text-sm text-foreground">{district}</span>
-                          </label>
-                        ))}
+                      <p className="text-sm text-muted-foreground mb-5">Choose one or more destinations you'd like to explore</p>
+                      <div className="flex flex-wrap gap-2.5">
+                        {districts.map((district) => {
+                          const isSelected = watchedDistricts?.includes(district);
+                          return (
+                            <button
+                              key={district}
+                              type="button"
+                              onClick={() => handleDistrictToggle(district)}
+                              className={`
+                                inline-flex items-center gap-2 px-4 py-2.5 rounded-full font-body text-sm font-medium
+                                transition-all duration-200 ease-out
+                                ${isSelected
+                                  ? 'bg-[#3c431e] text-white shadow-md'
+                                  : 'bg-secondary/60 text-foreground hover:bg-secondary hover:shadow-sm'
+                                }
+                              `}
+                            >
+                              {isSelected && <Check className="w-3.5 h-3.5" />}
+                              {district}
+                            </button>
+                          );
+                        })}
                       </div>
                       {errors.districts && (
-                        <p className="text-sm text-destructive mt-2">{errors.districts.message}</p>
+                        <p className="text-sm text-destructive mt-3">{errors.districts.message}</p>
                       )}
                     </div>
 
-                    <div>
-                      <Label className="flex items-center gap-2 mb-4">
-                        <Heart className="w-4 h-4" />
-                        Type of Holiday *
+                    <div className="pt-2">
+                      <Label className="flex items-center gap-2 mb-2 text-base font-medium">
+                        <Heart className="w-4 h-4 text-[#3c431e]" />
+                        Type of Holiday
                       </Label>
+                      <p className="text-sm text-muted-foreground mb-5">What kind of experience are you looking for?</p>
                       <RadioGroup
                         value={watch("holidayType")}
                         onValueChange={(value) => setValue("holidayType", value as FormData["holidayType"])}
-                        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"
+                        className="flex flex-wrap gap-2.5"
                       >
                         {[
-                          { value: "honeymoon", label: "Honeymoon" },
-                          { value: "family", label: "Family" },
-                          { value: "solo", label: "Solo" },
-                          { value: "friends", label: "Friends" },
-                          { value: "adventure", label: "Adventure" },
-                          { value: "spiritual", label: "Spiritual" },
-                          { value: "slow", label: "Slow Travel" }
-                        ].map((option) => (
-                          <label
-                            key={option.value}
-                            className={`flex items-center justify-center p-3 rounded-lg border-2 cursor-pointer transition-all ${
-                              watch("holidayType") === option.value
-                                ? 'border-primary bg-primary/5'
-                                : 'border-border hover:border-primary/50'
-                            }`}
-                          >
-                            <RadioGroupItem value={option.value} className="sr-only" />
-                            <span className="font-body text-sm font-medium text-foreground">{option.label}</span>
-                          </label>
-                        ))}
+                          { value: "honeymoon", label: "Honeymoon", icon: "💑" },
+                          { value: "family", label: "Family", icon: "👨‍👩‍👧‍👦" },
+                          { value: "solo", label: "Solo", icon: "🧘" },
+                          { value: "friends", label: "Friends", icon: "👯" },
+                          { value: "adventure", label: "Adventure", icon: "🏔️" },
+                          { value: "spiritual", label: "Spiritual", icon: "🙏" },
+                          { value: "slow", label: "Slow Travel", icon: "🌿" }
+                        ].map((option) => {
+                          const isSelected = watch("holidayType") === option.value;
+                          return (
+                            <label
+                              key={option.value}
+                              className={`
+                                inline-flex items-center gap-2 px-4 py-2.5 rounded-full cursor-pointer
+                                font-body text-sm font-medium transition-all duration-200 ease-out
+                                ${isSelected
+                                  ? 'bg-[#3c431e] text-white shadow-md'
+                                  : 'bg-secondary/60 text-foreground hover:bg-secondary hover:shadow-sm'
+                                }
+                              `}
+                            >
+                              <RadioGroupItem value={option.value} className="sr-only" />
+                              <span>{option.icon}</span>
+                              <span>{option.label}</span>
+                            </label>
+                          );
+                        })}
                       </RadioGroup>
                     </div>
                   </motion.div>
