@@ -120,14 +120,14 @@ export const HeroSection = () => {
           transition={{ delay: 0.9, duration: 0.7, ease: [0.22, 1, 0.36, 1] }} 
           className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4"
         >
-          <Link to="/explore">
+          <Link to="/plan#itinerary-form">
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
               <Button 
                 variant="default" 
                 size="lg" 
                 className="w-full sm:w-auto bg-primary-foreground text-foreground hover:bg-primary-foreground/90 font-medium px-8 shadow-lg"
               >
-                Explore Districts
+                Start Planning
               </Button>
             </motion.div>
           </Link>
