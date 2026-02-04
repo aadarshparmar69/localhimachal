@@ -486,7 +486,7 @@ export const AIItineraryChat = ({ tripContext, onReset }: AIItineraryChatProps) 
                         <div
                           className={`max-w-[85%] md:max-w-[75%] rounded-2xl px-4 py-3 ${
                             message.role === "user"
-                              ? "bg-primary text-primary-foreground"
+                              ? "bg-[#3c431e] text-white"
                               : "bg-[#3c431e]/10 border border-[#3c431e]/20"
                           }`}
                         >
@@ -495,8 +495,8 @@ export const AIItineraryChat = ({ tripContext, onReset }: AIItineraryChatProps) 
                           </p>
                         </div>
                         {message.role === "user" && (
-                          <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
-                            <User className="w-4 h-4 text-primary-foreground" />
+                          <div className="w-8 h-8 rounded-full bg-[#3c431e] flex items-center justify-center flex-shrink-0">
+                            <User className="w-4 h-4 text-white" />
                           </div>
                         )}
                       </motion.div>
@@ -541,7 +541,7 @@ export const AIItineraryChat = ({ tripContext, onReset }: AIItineraryChatProps) 
                   onClick={sendMessage}
                   disabled={!input.trim() || isLoading || !hasStarted}
                   size="icon"
-                  className="h-12 w-12 bg-primary hover:bg-primary/90"
+                  className="h-12 w-12 bg-[#3c431e] hover:bg-[#3c431e]/90 text-white"
                 >
                   <Send className="w-4 h-4" />
                 </Button>
