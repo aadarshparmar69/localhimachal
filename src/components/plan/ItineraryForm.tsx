@@ -333,9 +333,9 @@ export const ItineraryForm = () => {
                         className="flex flex-wrap gap-3"
                       >
                         {[
-                          { value: "budget", label: "Budget", desc: "₹1.5-2.5K/day", icon: "💰" },
-                          { value: "mid-range", label: "Mid-Range", desc: "₹3-5K/day", icon: "✨" },
-                          { value: "premium", label: "Premium", desc: "₹6K+/day", icon: "👑" }
+                          { value: "budget", label: "Budget", desc: "₹1.5-2.5K/day" },
+                          { value: "mid-range", label: "Mid-Range", desc: "₹3-5K/day" },
+                          { value: "premium", label: "Premium", desc: "₹6K+/day" }
                         ].map((option) => {
                           const isSelected = watch("budget") === option.value;
                           return (
@@ -351,7 +351,6 @@ export const ItineraryForm = () => {
                               `}
                             >
                               <RadioGroupItem value={option.value} className="sr-only" />
-                              <span className="text-lg">{option.icon}</span>
                               <div className="flex flex-col">
                                 <span className="font-body text-sm font-semibold">{option.label}</span>
                                 <span className={`font-body text-xs ${isSelected ? 'text-white/80' : 'text-muted-foreground'}`}>{option.desc}</span>
@@ -374,9 +373,9 @@ export const ItineraryForm = () => {
                         className="flex flex-wrap gap-3"
                       >
                         {[
-                          { value: "1-2", label: "1-2 Travelers", icon: "👤" },
-                          { value: "3-5", label: "3-5 Travelers", icon: "👥" },
-                          { value: "6+", label: "6+ Travelers", icon: "👨‍👩‍👧‍👦" }
+                          { value: "1-2", label: "1-2 Travelers" },
+                          { value: "3-5", label: "3-5 Travelers" },
+                          { value: "6+", label: "6+ Travelers" }
                         ].map((option) => {
                           const isSelected = watch("travelers") === option.value;
                           return (
@@ -392,7 +391,6 @@ export const ItineraryForm = () => {
                               `}
                             >
                               <RadioGroupItem value={option.value} className="sr-only" />
-                              <span>{option.icon}</span>
                               <span>{option.label}</span>
                             </label>
                           );
@@ -412,9 +410,9 @@ export const ItineraryForm = () => {
                         className="flex flex-wrap gap-3"
                       >
                         {[
-                          { value: "3-5", label: "3-5 Days", icon: "📅" },
-                          { value: "6-9", label: "6-9 Days", icon: "🗓️" },
-                          { value: "10+", label: "10+ Days", icon: "📆" }
+                          { value: "3-5", label: "3-5 Days" },
+                          { value: "6-9", label: "6-9 Days" },
+                          { value: "10+", label: "10+ Days" }
                         ].map((option) => {
                           const isSelected = watch("duration") === option.value;
                           return (
@@ -430,7 +428,6 @@ export const ItineraryForm = () => {
                               `}
                             >
                               <RadioGroupItem value={option.value} className="sr-only" />
-                              <span>{option.icon}</span>
                               <span>{option.label}</span>
                             </label>
                           );
@@ -496,13 +493,13 @@ export const ItineraryForm = () => {
                         className="flex flex-wrap gap-2.5"
                       >
                         {[
-                          { value: "honeymoon", label: "Honeymoon", icon: "💑" },
-                          { value: "family", label: "Family", icon: "👨‍👩‍👧‍👦" },
-                          { value: "solo", label: "Solo", icon: "🧘" },
-                          { value: "friends", label: "Friends", icon: "👯" },
-                          { value: "adventure", label: "Adventure", icon: "🏔️" },
-                          { value: "spiritual", label: "Spiritual", icon: "🙏" },
-                          { value: "slow", label: "Slow Travel", icon: "🌿" }
+                          { value: "honeymoon", label: "Honeymoon" },
+                          { value: "family", label: "Family" },
+                          { value: "solo", label: "Solo" },
+                          { value: "friends", label: "Friends" },
+                          { value: "adventure", label: "Adventure" },
+                          { value: "spiritual", label: "Spiritual" },
+                          { value: "slow", label: "Slow Travel" }
                         ].map((option) => {
                           const isSelected = watch("holidayType") === option.value;
                           return (
@@ -518,7 +515,6 @@ export const ItineraryForm = () => {
                               `}
                             >
                               <RadioGroupItem value={option.value} className="sr-only" />
-                              <span>{option.icon}</span>
                               <span>{option.label}</span>
                             </label>
                           );
