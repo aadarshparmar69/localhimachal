@@ -507,12 +507,12 @@ export const AIItineraryChat = ({ tripContext, onReset }: AIItineraryChatProps) 
                         animate={{ opacity: 1 }}
                         className="flex gap-3 justify-start"
                       >
-                        <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                          <Mountain className="w-4 h-4 text-primary" />
+                        <div className="w-8 h-8 rounded-full bg-[#3c431e] flex items-center justify-center flex-shrink-0">
+                          <Mountain className="w-4 h-4 text-white" />
                         </div>
-                        <div className="bg-secondary/50 rounded-2xl px-4 py-3">
+                        <div className="bg-[#3c431e]/10 border border-[#3c431e]/20 rounded-2xl px-4 py-3">
                           <div className="flex items-center gap-2">
-                            <Loader2 className="w-4 h-4 animate-spin text-primary" />
+                            <Loader2 className="w-4 h-4 animate-spin text-[#3c431e]" />
                             <span className="font-body text-sm text-muted-foreground">
                               Crafting your itinerary...
                             </span>
